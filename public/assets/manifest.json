@@ -1,0 +1,4018 @@
+{
+  "generatedAt": "2026-10-04T02:19:12.319Z",
+  "source": {
+    "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+    "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+    "lastUpdated": "2026-10-04"
+  },
+  "totalHeroes": 133,
+  "heroes": {
+    "h001": {
+      "name": "Miya",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/miya-portrait.png",
+          "bytes": 171813
+        },
+        "avatar": {
+          "path": "/assets/heroes/miya-avatar.png",
+          "bytes": 41632
+        },
+        "splash": {
+          "path": "/assets/heroes/miya-splash.jpg",
+          "bytes": 107010
+        },
+        "skills": {
+          "1": "/assets/skills/miya/01.png",
+          "2": "/assets/skills/miya/02.png",
+          "3": "/assets/skills/miya/03.png",
+          "4": "/assets/skills/miya/04.png"
+        }
+      }
+    },
+    "h002": {
+      "name": "Balmond",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/balmond-portrait.png",
+          "bytes": 190489
+        },
+        "avatar": {
+          "path": "/assets/heroes/balmond-avatar.png",
+          "bytes": 40902
+        },
+        "splash": {
+          "path": "/assets/heroes/balmond-splash.jpg",
+          "bytes": 121513
+        },
+        "skills": {
+          "1": "/assets/skills/balmond/01.png",
+          "2": "/assets/skills/balmond/02.png",
+          "3": "/assets/skills/balmond/03.png",
+          "4": "/assets/skills/balmond/04.png"
+        }
+      }
+    },
+    "h003": {
+      "name": "Saber",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling",
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/saber-portrait.png",
+          "bytes": 192697
+        },
+        "avatar": {
+          "path": "/assets/heroes/saber-avatar.png",
+          "bytes": 47194
+        },
+        "splash": {
+          "path": "/assets/heroes/saber-splash.jpg",
+          "bytes": 117877
+        },
+        "skills": {
+          "1": "/assets/skills/saber/01.png",
+          "2": "/assets/skills/saber/02.png",
+          "3": "/assets/skills/saber/03.png",
+          "4": "/assets/skills/saber/04.png"
+        }
+      }
+    },
+    "h004": {
+      "name": "Alice",
+      "roles": [
+        "Tank",
+        "Mage"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/alice-portrait.png",
+          "bytes": 219954
+        },
+        "avatar": {
+          "path": "/assets/heroes/alice-avatar.png",
+          "bytes": 40019
+        },
+        "splash": {
+          "path": "/assets/heroes/alice-splash.jpg",
+          "bytes": 111492
+        },
+        "skills": {
+          "1": "/assets/skills/alice/01.png",
+          "2": "/assets/skills/alice/02.png",
+          "3": "/assets/skills/alice/03.png",
+          "4": "/assets/skills/alice/04.png"
+        }
+      }
+    },
+    "h005": {
+      "name": "Nana",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/nana-portrait.png",
+          "bytes": 190498
+        },
+        "avatar": {
+          "path": "/assets/heroes/nana-avatar.png",
+          "bytes": 42480
+        },
+        "splash": {
+          "path": "/assets/heroes/nana-splash.jpg",
+          "bytes": 98298
+        },
+        "skills": {
+          "1": "/assets/skills/nana/01.png",
+          "2": "/assets/skills/nana/02.png",
+          "3": "/assets/skills/nana/03.png",
+          "4": "/assets/skills/nana/04.png"
+        }
+      }
+    },
+    "h006": {
+      "name": "Tigreal",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/tigreal-portrait.png",
+          "bytes": 168888
+        },
+        "avatar": {
+          "path": "/assets/heroes/tigreal-avatar.png",
+          "bytes": 43215
+        },
+        "splash": {
+          "path": "/assets/heroes/tigreal-splash.jpg",
+          "bytes": 112034
+        },
+        "skills": {
+          "1": "/assets/skills/tigreal/01.png",
+          "2": "/assets/skills/tigreal/02.png",
+          "3": "/assets/skills/tigreal/03.png",
+          "4": "/assets/skills/tigreal/04.png"
+        }
+      }
+    },
+    "h007": {
+      "name": "Alucard",
+      "roles": [
+        "Fighter",
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/alucard-portrait.png",
+          "bytes": 180675
+        },
+        "avatar": {
+          "path": "/assets/heroes/alucard-avatar.png",
+          "bytes": 44627
+        },
+        "splash": {
+          "path": "/assets/heroes/alucard-splash.jpg",
+          "bytes": 108981
+        },
+        "skills": {
+          "1": "/assets/skills/alucard/01.png",
+          "2": "/assets/skills/alucard/02.png",
+          "3": "/assets/skills/alucard/03.png",
+          "4": "/assets/skills/alucard/04.png"
+        }
+      }
+    },
+    "h008": {
+      "name": "Karina",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/karina-portrait.png",
+          "bytes": 184242
+        },
+        "avatar": {
+          "path": "/assets/heroes/karina-avatar.png",
+          "bytes": 44181
+        },
+        "splash": {
+          "path": "/assets/heroes/karina-splash.jpg",
+          "bytes": 109184
+        },
+        "skills": {
+          "1": "/assets/skills/karina/01.png",
+          "2": "/assets/skills/karina/02.png",
+          "3": "/assets/skills/karina/03.png",
+          "4": "/assets/skills/karina/04.png"
+        }
+      }
+    },
+    "h009": {
+      "name": "Akai",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/akai-portrait.png",
+          "bytes": 178536
+        },
+        "avatar": {
+          "path": "/assets/heroes/akai-avatar.png",
+          "bytes": 44698
+        },
+        "splash": {
+          "path": "/assets/heroes/akai-splash.jpg",
+          "bytes": 95504
+        },
+        "skills": {
+          "1": "/assets/skills/akai/01.png",
+          "2": "/assets/skills/akai/02.png",
+          "3": "/assets/skills/akai/03.png",
+          "4": "/assets/skills/akai/04.png"
+        }
+      }
+    },
+    "h010": {
+      "name": "Franco",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/franco-portrait.png",
+          "bytes": 218520
+        },
+        "avatar": {
+          "path": "/assets/heroes/franco-avatar.png",
+          "bytes": 39362
+        },
+        "splash": {
+          "path": "/assets/heroes/franco-splash.jpg",
+          "bytes": 105427
+        },
+        "skills": {
+          "1": "/assets/skills/franco/01.png",
+          "2": "/assets/skills/franco/02.png",
+          "3": "/assets/skills/franco/03.png",
+          "4": "/assets/skills/franco/04.png"
+        }
+      }
+    },
+    "h011": {
+      "name": "Bane",
+      "roles": [
+        "Fighter",
+        "Mage"
+      ],
+      "lanes": [
+        "Jungling",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/bane-portrait.png",
+          "bytes": 192125
+        },
+        "avatar": {
+          "path": "/assets/heroes/bane-avatar.png",
+          "bytes": 41316
+        },
+        "splash": {
+          "path": "/assets/heroes/bane-splash.jpg",
+          "bytes": 107979
+        },
+        "skills": {
+          "1": "/assets/skills/bane/01.png",
+          "2": "/assets/skills/bane/02.png",
+          "3": "/assets/skills/bane/03.png",
+          "4": "/assets/skills/bane/04.png"
+        }
+      }
+    },
+    "h012": {
+      "name": "Bruno",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/bruno-portrait.png",
+          "bytes": 196667
+        },
+        "avatar": {
+          "path": "/assets/heroes/bruno-avatar.png",
+          "bytes": 41512
+        },
+        "splash": {
+          "path": "/assets/heroes/bruno-splash.jpg",
+          "bytes": 97989
+        },
+        "skills": {
+          "1": "/assets/skills/bruno/01.png",
+          "2": "/assets/skills/bruno/02.png",
+          "3": "/assets/skills/bruno/03.png",
+          "4": "/assets/skills/bruno/04.png"
+        }
+      }
+    },
+    "h013": {
+      "name": "Clint",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/clint-portrait.png",
+          "bytes": 186724
+        },
+        "avatar": {
+          "path": "/assets/heroes/clint-avatar.png",
+          "bytes": 42574
+        },
+        "splash": {
+          "path": "/assets/heroes/clint-splash.jpg",
+          "bytes": 92734
+        },
+        "skills": {
+          "1": "/assets/skills/clint/01.png",
+          "2": "/assets/skills/clint/02.png",
+          "3": "/assets/skills/clint/03.png",
+          "4": "/assets/skills/clint/04.png"
+        }
+      }
+    },
+    "h014": {
+      "name": "Rafaela",
+      "roles": [
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/rafaela-portrait.png",
+          "bytes": 173011
+        },
+        "avatar": {
+          "path": "/assets/heroes/rafaela-avatar.png",
+          "bytes": 42809
+        },
+        "splash": {
+          "path": "/assets/heroes/rafaela-splash.jpg",
+          "bytes": 109368
+        },
+        "skills": {
+          "1": "/assets/skills/rafaela/01.png",
+          "2": "/assets/skills/rafaela/02.png",
+          "3": "/assets/skills/rafaela/03.png",
+          "4": "/assets/skills/rafaela/04.png"
+        }
+      }
+    },
+    "h015": {
+      "name": "Eudora",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/eudora-portrait.png",
+          "bytes": 216136
+        },
+        "avatar": {
+          "path": "/assets/heroes/eudora-avatar.png",
+          "bytes": 43857
+        },
+        "splash": {
+          "path": "/assets/heroes/eudora-splash.jpg",
+          "bytes": 95071
+        },
+        "skills": {
+          "1": "/assets/skills/eudora/01.png",
+          "2": "/assets/skills/eudora/02.png",
+          "3": "/assets/skills/eudora/03.png",
+          "4": "/assets/skills/eudora/04.png"
+        }
+      }
+    },
+    "h016": {
+      "name": "Zilong",
+      "roles": [
+        "Fighter",
+        "Assassin"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/zilong-portrait.png",
+          "bytes": 175165
+        },
+        "avatar": {
+          "path": "/assets/heroes/zilong-avatar.png",
+          "bytes": 41945
+        },
+        "splash": {
+          "path": "/assets/heroes/zilong-splash.jpg",
+          "bytes": 93857
+        },
+        "skills": {
+          "1": "/assets/skills/zilong/01.png",
+          "2": "/assets/skills/zilong/02.png",
+          "3": "/assets/skills/zilong/03.png",
+          "4": "/assets/skills/zilong/04.png"
+        }
+      }
+    },
+    "h017": {
+      "name": "Fanny",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/fanny-portrait.png",
+          "bytes": 166751
+        },
+        "avatar": {
+          "path": "/assets/heroes/fanny-avatar.png",
+          "bytes": 41246
+        },
+        "splash": {
+          "path": "/assets/heroes/fanny-splash.jpg",
+          "bytes": 99454
+        },
+        "skills": {
+          "1": "/assets/skills/fanny/01.png",
+          "2": "/assets/skills/fanny/02.png",
+          "3": "/assets/skills/fanny/03.png",
+          "4": "/assets/skills/fanny/04.png"
+        }
+      }
+    },
+    "h018": {
+      "name": "Layla",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/layla-portrait.png",
+          "bytes": 176134
+        },
+        "avatar": {
+          "path": "/assets/heroes/layla-avatar.png",
+          "bytes": 39665
+        },
+        "splash": {
+          "path": "/assets/heroes/layla-splash.jpg",
+          "bytes": 104711
+        },
+        "skills": {
+          "1": "/assets/skills/layla/01.png",
+          "2": "/assets/skills/layla/02.png",
+          "3": "/assets/skills/layla/03.png",
+          "4": "/assets/skills/layla/04.png"
+        }
+      }
+    },
+    "h019": {
+      "name": "Minotaur",
+      "roles": [
+        "Tank",
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/minotaur-portrait.png",
+          "bytes": 164600
+        },
+        "avatar": {
+          "path": "/assets/heroes/minotaur-avatar.png",
+          "bytes": 40521
+        },
+        "splash": {
+          "path": "/assets/heroes/minotaur-splash.jpg",
+          "bytes": 111060
+        },
+        "skills": {
+          "1": "/assets/skills/minotaur/01.png",
+          "2": "/assets/skills/minotaur/02.png",
+          "3": "/assets/skills/minotaur/03.png",
+          "4": "/assets/skills/minotaur/04.png"
+        }
+      }
+    },
+    "h020": {
+      "name": "Lolita",
+      "roles": [
+        "Support",
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/lolita-portrait.png",
+          "bytes": 152337
+        },
+        "avatar": {
+          "path": "/assets/heroes/lolita-avatar.png",
+          "bytes": 36808
+        },
+        "splash": {
+          "path": "/assets/heroes/lolita-splash.jpg",
+          "bytes": 123064
+        },
+        "skills": {
+          "1": "/assets/skills/lolita/01.png",
+          "2": "/assets/skills/lolita/02.png",
+          "3": "/assets/skills/lolita/03.png",
+          "4": "/assets/skills/lolita/04.png"
+        }
+      }
+    },
+    "h021": {
+      "name": "Hayabusa",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/hayabusa-portrait.png",
+          "bytes": 169778
+        },
+        "avatar": {
+          "path": "/assets/heroes/hayabusa-avatar.png",
+          "bytes": 39896
+        },
+        "splash": {
+          "path": "/assets/heroes/hayabusa-splash.jpg",
+          "bytes": 97081
+        },
+        "skills": {
+          "1": "/assets/skills/hayabusa/01.png",
+          "2": "/assets/skills/hayabusa/02.png",
+          "3": "/assets/skills/hayabusa/03.png",
+          "4": "/assets/skills/hayabusa/04.png"
+        }
+      }
+    },
+    "h022": {
+      "name": "Freya",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/freya-portrait.png",
+          "bytes": 215510
+        },
+        "avatar": {
+          "path": "/assets/heroes/freya-avatar.png",
+          "bytes": 46491
+        },
+        "splash": {
+          "path": "/assets/heroes/freya-splash.jpg",
+          "bytes": 101258
+        },
+        "skills": {
+          "1": "/assets/skills/freya/01.png",
+          "2": "/assets/skills/freya/02.png",
+          "3": "/assets/skills/freya/03.png",
+          "4": "/assets/skills/freya/04.png"
+        }
+      }
+    },
+    "h023": {
+      "name": "Gord",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/gord-portrait.png",
+          "bytes": 171701
+        },
+        "avatar": {
+          "path": "/assets/heroes/gord-avatar.png",
+          "bytes": 43174
+        },
+        "splash": {
+          "path": "/assets/heroes/gord-splash.jpg",
+          "bytes": 102331
+        },
+        "skills": {
+          "1": "/assets/skills/gord/01.png",
+          "2": "/assets/skills/gord/02.png",
+          "3": "/assets/skills/gord/03.png",
+          "4": "/assets/skills/gord/04.png"
+        }
+      }
+    },
+    "h024": {
+      "name": "Natalia",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling",
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/natalia-portrait.png",
+          "bytes": 168512
+        },
+        "avatar": {
+          "path": "/assets/heroes/natalia-avatar.png",
+          "bytes": 43501
+        },
+        "splash": {
+          "path": "/assets/heroes/natalia-splash.jpg",
+          "bytes": 105708
+        },
+        "skills": {
+          "1": "/assets/skills/natalia/01.png",
+          "2": "/assets/skills/natalia/02.png",
+          "3": "/assets/skills/natalia/03.png",
+          "4": "/assets/skills/natalia/04.png"
+        }
+      }
+    },
+    "h025": {
+      "name": "Kagura",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/kagura-portrait.png",
+          "bytes": 182192
+        },
+        "avatar": {
+          "path": "/assets/heroes/kagura-avatar.png",
+          "bytes": 36691
+        },
+        "splash": {
+          "path": "/assets/heroes/kagura-splash.jpg",
+          "bytes": 91966
+        },
+        "skills": {
+          "1": "/assets/skills/kagura/01.png",
+          "2": "/assets/skills/kagura/02.png",
+          "3": "/assets/skills/kagura/03.png",
+          "4": "/assets/skills/kagura/04.png",
+          "5": "/assets/skills/kagura/05.png",
+          "6": "/assets/skills/kagura/06.png",
+          "7": "/assets/skills/kagura/07.png",
+          "8": "/assets/skills/kagura/08.png"
+        }
+      }
+    },
+    "h026": {
+      "name": "Chou",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/chou-portrait.png",
+          "bytes": 152328
+        },
+        "avatar": {
+          "path": "/assets/heroes/chou-avatar.png",
+          "bytes": 42082
+        },
+        "splash": {
+          "path": "/assets/heroes/chou-splash.jpg",
+          "bytes": 96346
+        },
+        "skills": {
+          "1": "/assets/skills/chou/01.png",
+          "2": "/assets/skills/chou/02.png",
+          "3": "/assets/skills/chou/03.png",
+          "4": "/assets/skills/chou/04.png"
+        }
+      }
+    },
+    "h027": {
+      "name": "Sun",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/sun-portrait.png",
+          "bytes": 199339
+        },
+        "avatar": {
+          "path": "/assets/heroes/sun-avatar.png",
+          "bytes": 43672
+        },
+        "splash": {
+          "path": "/assets/heroes/sun-splash.jpg",
+          "bytes": 108352
+        },
+        "skills": {
+          "1": "/assets/skills/sun/01.png",
+          "2": "/assets/skills/sun/02.png",
+          "3": "/assets/skills/sun/03.png",
+          "4": "/assets/skills/sun/04.png",
+          "5": "/assets/skills/sun/05.png"
+        }
+      }
+    },
+    "h028": {
+      "name": "Alpha",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Jungling",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/alpha-portrait.png",
+          "bytes": 183858
+        },
+        "avatar": {
+          "path": "/assets/heroes/alpha-avatar.png",
+          "bytes": 41647
+        },
+        "splash": {
+          "path": "/assets/heroes/alpha-splash.jpg",
+          "bytes": 113915
+        },
+        "skills": {
+          "1": "/assets/skills/alpha/01.png",
+          "2": "/assets/skills/alpha/02.png",
+          "3": "/assets/skills/alpha/03.png",
+          "4": "/assets/skills/alpha/04.png"
+        }
+      }
+    },
+    "h029": {
+      "name": "Ruby",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/ruby-portrait.png",
+          "bytes": 168732
+        },
+        "avatar": {
+          "path": "/assets/heroes/ruby-avatar.png",
+          "bytes": 44009
+        },
+        "splash": {
+          "path": "/assets/heroes/ruby-splash.jpg",
+          "bytes": 94845
+        },
+        "skills": {
+          "1": "/assets/skills/ruby/01.png",
+          "2": "/assets/skills/ruby/02.png",
+          "3": "/assets/skills/ruby/03.png",
+          "4": "/assets/skills/ruby/04.png"
+        }
+      }
+    },
+    "h030": {
+      "name": "Yi Sun-shin",
+      "roles": [
+        "Assassin",
+        "Marksman"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/yi-sun-shin-portrait.png",
+          "bytes": 183352
+        },
+        "avatar": {
+          "path": "/assets/heroes/yi-sun-shin-avatar.png",
+          "bytes": 40961
+        },
+        "splash": {
+          "path": "/assets/heroes/yi-sun-shin-splash.jpg",
+          "bytes": 104590
+        },
+        "skills": {
+          "1": "/assets/skills/yi-sun-shin/01.png",
+          "2": "/assets/skills/yi-sun-shin/02.png",
+          "3": "/assets/skills/yi-sun-shin/03.png",
+          "4": "/assets/skills/yi-sun-shin/04.png"
+        }
+      }
+    },
+    "h031": {
+      "name": "Moskov",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/moskov-portrait.png",
+          "bytes": 175285
+        },
+        "avatar": {
+          "path": "/assets/heroes/moskov-avatar.png",
+          "bytes": 40201
+        },
+        "splash": {
+          "path": "/assets/heroes/moskov-splash.jpg",
+          "bytes": 103257
+        },
+        "skills": {
+          "1": "/assets/skills/moskov/01.png",
+          "2": "/assets/skills/moskov/02.png",
+          "3": "/assets/skills/moskov/03.png",
+          "4": "/assets/skills/moskov/04.png"
+        }
+      }
+    },
+    "h032": {
+      "name": "Johnson",
+      "roles": [
+        "Tank",
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/johnson-portrait.png",
+          "bytes": 160401
+        },
+        "avatar": {
+          "path": "/assets/heroes/johnson-avatar.png",
+          "bytes": 43351
+        },
+        "splash": {
+          "path": "/assets/heroes/johnson-splash.jpg",
+          "bytes": 112998
+        },
+        "skills": {
+          "1": "/assets/skills/johnson/01.png",
+          "2": "/assets/skills/johnson/02.png",
+          "3": "/assets/skills/johnson/03.png",
+          "4": "/assets/skills/johnson/04.png"
+        }
+      }
+    },
+    "h033": {
+      "name": "Cyclops",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/cyclops-portrait.png",
+          "bytes": 166130
+        },
+        "avatar": {
+          "path": "/assets/heroes/cyclops-avatar.png",
+          "bytes": 41927
+        },
+        "splash": {
+          "path": "/assets/heroes/cyclops-splash.jpg",
+          "bytes": 99070
+        },
+        "skills": {
+          "1": "/assets/skills/cyclops/01.png",
+          "2": "/assets/skills/cyclops/02.png",
+          "3": "/assets/skills/cyclops/03.png",
+          "4": "/assets/skills/cyclops/04.png"
+        }
+      }
+    },
+    "h034": {
+      "name": "Estes",
+      "roles": [
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/estes-portrait.png",
+          "bytes": 173262
+        },
+        "avatar": {
+          "path": "/assets/heroes/estes-avatar.png",
+          "bytes": 43009
+        },
+        "splash": {
+          "path": "/assets/heroes/estes-splash.jpg",
+          "bytes": 93381
+        },
+        "skills": {
+          "1": "/assets/skills/estes/01.png",
+          "2": "/assets/skills/estes/02.png",
+          "3": "/assets/skills/estes/03.png",
+          "4": "/assets/skills/estes/04.png"
+        }
+      }
+    },
+    "h035": {
+      "name": "Hilda",
+      "roles": [
+        "Fighter",
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/hilda-portrait.png",
+          "bytes": 165839
+        },
+        "avatar": {
+          "path": "/assets/heroes/hilda-avatar.png",
+          "bytes": 43260
+        },
+        "splash": {
+          "path": "/assets/heroes/hilda-splash.jpg",
+          "bytes": 109831
+        },
+        "skills": {
+          "1": "/assets/skills/hilda/01.png",
+          "2": "/assets/skills/hilda/02.png",
+          "3": "/assets/skills/hilda/03.png",
+          "4": "/assets/skills/hilda/04.png"
+        }
+      }
+    },
+    "h036": {
+      "name": "Aurora",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/aurora-portrait.png",
+          "bytes": 186167
+        },
+        "avatar": {
+          "path": "/assets/heroes/aurora-avatar.png",
+          "bytes": 42332
+        },
+        "splash": {
+          "path": "/assets/heroes/aurora-splash.jpg",
+          "bytes": 118025
+        },
+        "skills": {
+          "1": "/assets/skills/aurora/01.png",
+          "2": "/assets/skills/aurora/02.png",
+          "3": "/assets/skills/aurora/03.png",
+          "4": "/assets/skills/aurora/04.png"
+        }
+      }
+    },
+    "h037": {
+      "name": "Lapu-Lapu",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/lapu-lapu-portrait.png",
+          "bytes": 151983
+        },
+        "avatar": {
+          "path": "/assets/heroes/lapu-lapu-avatar.png",
+          "bytes": 39768
+        },
+        "splash": {
+          "path": "/assets/heroes/lapu-lapu-splash.jpg",
+          "bytes": 101474
+        },
+        "skills": {
+          "1": "/assets/skills/lapu-lapu/01.png",
+          "2": "/assets/skills/lapu-lapu/02.png",
+          "3": "/assets/skills/lapu-lapu/03.png",
+          "4": "/assets/skills/lapu-lapu/04.png",
+          "5": "/assets/skills/lapu-lapu/05.png",
+          "6": "/assets/skills/lapu-lapu/06.png",
+          "7": "/assets/skills/lapu-lapu/07.png",
+          "8": "/assets/skills/lapu-lapu/08.png"
+        }
+      }
+    },
+    "h038": {
+      "name": "Vexana",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/vexana-portrait.png",
+          "bytes": 137922
+        },
+        "avatar": {
+          "path": "/assets/heroes/vexana-avatar.png",
+          "bytes": 40320
+        },
+        "splash": {
+          "path": "/assets/heroes/vexana-splash.jpg",
+          "bytes": 95713
+        },
+        "skills": {
+          "1": "/assets/skills/vexana/01.png",
+          "2": "/assets/skills/vexana/02.png",
+          "3": "/assets/skills/vexana/03.png",
+          "4": "/assets/skills/vexana/04.png"
+        }
+      }
+    },
+    "h039": {
+      "name": "Roger",
+      "roles": [
+        "Fighter",
+        "Marksman"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/roger-portrait.png",
+          "bytes": 145781
+        },
+        "avatar": {
+          "path": "/assets/heroes/roger-avatar.png",
+          "bytes": 45040
+        },
+        "splash": {
+          "path": "/assets/heroes/roger-splash.jpg",
+          "bytes": 105053
+        },
+        "skills": {
+          "1": "/assets/skills/roger/01.png",
+          "2": "/assets/skills/roger/02.png",
+          "3": "/assets/skills/roger/03.png",
+          "4": "/assets/skills/roger/04.png",
+          "5": "/assets/skills/roger/05.png",
+          "6": "/assets/skills/roger/06.png",
+          "7": "/assets/skills/roger/07.png",
+          "8": "/assets/skills/roger/08.png"
+        }
+      }
+    },
+    "h040": {
+      "name": "Karrie",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/karrie-portrait.png",
+          "bytes": 172071
+        },
+        "avatar": {
+          "path": "/assets/heroes/karrie-avatar.png",
+          "bytes": 40131
+        },
+        "splash": {
+          "path": "/assets/heroes/karrie-splash.jpg",
+          "bytes": 109285
+        },
+        "skills": {
+          "1": "/assets/skills/karrie/01.png",
+          "2": "/assets/skills/karrie/02.png",
+          "3": "/assets/skills/karrie/03.png",
+          "4": "/assets/skills/karrie/04.png"
+        }
+      }
+    },
+    "h041": {
+      "name": "Gatotkaca",
+      "roles": [
+        "Tank",
+        "Fighter"
+      ],
+      "lanes": [
+        "Roaming",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/gatotkaca-portrait.png",
+          "bytes": 377627
+        },
+        "avatar": {
+          "path": "/assets/heroes/gatotkaca-avatar.png",
+          "bytes": 40444
+        },
+        "splash": {
+          "path": "/assets/heroes/gatotkaca-splash.jpg",
+          "bytes": 99626
+        },
+        "skills": {
+          "1": "/assets/skills/gatotkaca/01.png",
+          "2": "/assets/skills/gatotkaca/02.png",
+          "3": "/assets/skills/gatotkaca/03.png",
+          "4": "/assets/skills/gatotkaca/04.png"
+        }
+      }
+    },
+    "h042": {
+      "name": "Harley",
+      "roles": [
+        "Assassin",
+        "Mage"
+      ],
+      "lanes": [
+        "Jungling",
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/harley-portrait.png",
+          "bytes": 173678
+        },
+        "avatar": {
+          "path": "/assets/heroes/harley-avatar.png",
+          "bytes": 37448
+        },
+        "splash": {
+          "path": "/assets/heroes/harley-splash.jpg",
+          "bytes": 95951
+        },
+        "skills": {
+          "1": "/assets/skills/harley/01.png",
+          "2": "/assets/skills/harley/02.png",
+          "3": "/assets/skills/harley/03.png",
+          "4": "/assets/skills/harley/04.png"
+        }
+      }
+    },
+    "h043": {
+      "name": "Irithel",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/irithel-portrait.png",
+          "bytes": 227954
+        },
+        "avatar": {
+          "path": "/assets/heroes/irithel-avatar.png",
+          "bytes": 38768
+        },
+        "splash": {
+          "path": "/assets/heroes/irithel-splash.jpg",
+          "bytes": 113009
+        },
+        "skills": {
+          "1": "/assets/skills/irithel/01.png",
+          "2": "/assets/skills/irithel/02.png",
+          "3": "/assets/skills/irithel/03.png",
+          "4": "/assets/skills/irithel/04.png"
+        }
+      }
+    },
+    "h044": {
+      "name": "Grock",
+      "roles": [
+        "Tank",
+        "Fighter"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/grock-portrait.png",
+          "bytes": 204511
+        },
+        "avatar": {
+          "path": "/assets/heroes/grock-avatar.png",
+          "bytes": 43625
+        },
+        "splash": {
+          "path": "/assets/heroes/grock-splash.jpg",
+          "bytes": 103521
+        },
+        "skills": {
+          "1": "/assets/skills/grock/01.png",
+          "2": "/assets/skills/grock/02.png",
+          "3": "/assets/skills/grock/03.png",
+          "4": "/assets/skills/grock/04.png"
+        }
+      }
+    },
+    "h045": {
+      "name": "Argus",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/argus-portrait.png",
+          "bytes": 208377
+        },
+        "avatar": {
+          "path": "/assets/heroes/argus-avatar.png",
+          "bytes": 41532
+        },
+        "splash": {
+          "path": "/assets/heroes/argus-splash.jpg",
+          "bytes": 130765
+        },
+        "skills": {
+          "1": "/assets/skills/argus/01.png",
+          "2": "/assets/skills/argus/02.png",
+          "3": "/assets/skills/argus/03.png",
+          "4": "/assets/skills/argus/04.png"
+        }
+      }
+    },
+    "h046": {
+      "name": "Odette",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/odette-portrait.png",
+          "bytes": 187514
+        },
+        "avatar": {
+          "path": "/assets/heroes/odette-avatar.png",
+          "bytes": 42904
+        },
+        "splash": {
+          "path": "/assets/heroes/odette-splash.jpg",
+          "bytes": 118159
+        },
+        "skills": {
+          "1": "/assets/skills/odette/01.png",
+          "2": "/assets/skills/odette/02.png",
+          "3": "/assets/skills/odette/03.png",
+          "4": "/assets/skills/odette/04.png"
+        }
+      }
+    },
+    "h047": {
+      "name": "Lancelot",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/lancelot-portrait.png",
+          "bytes": 146892
+        },
+        "avatar": {
+          "path": "/assets/heroes/lancelot-avatar.png",
+          "bytes": 36915
+        },
+        "splash": {
+          "path": "/assets/heroes/lancelot-splash.jpg",
+          "bytes": 102662
+        },
+        "skills": {
+          "1": "/assets/skills/lancelot/01.png",
+          "2": "/assets/skills/lancelot/02.png",
+          "3": "/assets/skills/lancelot/03.png",
+          "4": "/assets/skills/lancelot/04.png"
+        }
+      }
+    },
+    "h048": {
+      "name": "Diggie",
+      "roles": [
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/diggie-portrait.png",
+          "bytes": 213861
+        },
+        "avatar": {
+          "path": "/assets/heroes/diggie-avatar.png",
+          "bytes": 46860
+        },
+        "splash": {
+          "path": "/assets/heroes/diggie-splash.jpg",
+          "bytes": 99200
+        },
+        "skills": {
+          "1": "/assets/skills/diggie/01.png",
+          "2": "/assets/skills/diggie/02.png",
+          "3": "/assets/skills/diggie/03.png",
+          "4": "/assets/skills/diggie/04.png"
+        }
+      }
+    },
+    "h049": {
+      "name": "Hylos",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/hylos-portrait.png",
+          "bytes": 174183
+        },
+        "avatar": {
+          "path": "/assets/heroes/hylos-avatar.png",
+          "bytes": 44652
+        },
+        "splash": {
+          "path": "/assets/heroes/hylos-splash.jpg",
+          "bytes": 108261
+        },
+        "skills": {
+          "1": "/assets/skills/hylos/01.png",
+          "2": "/assets/skills/hylos/02.png",
+          "3": "/assets/skills/hylos/03.png",
+          "4": "/assets/skills/hylos/04.png"
+        }
+      }
+    },
+    "h050": {
+      "name": "Zhask",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/zhask-portrait.png",
+          "bytes": 159993
+        },
+        "avatar": {
+          "path": "/assets/heroes/zhask-avatar.png",
+          "bytes": 43992
+        },
+        "splash": {
+          "path": "/assets/heroes/zhask-splash.jpg",
+          "bytes": 99195
+        },
+        "skills": {
+          "1": "/assets/skills/zhask/01.png",
+          "2": "/assets/skills/zhask/02.png",
+          "3": "/assets/skills/zhask/03.png",
+          "4": "/assets/skills/zhask/04.png",
+          "5": "/assets/skills/zhask/05.png"
+        }
+      }
+    },
+    "h051": {
+      "name": "Helcurt",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling",
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/helcurt-portrait.png",
+          "bytes": 83742
+        },
+        "avatar": {
+          "path": "/assets/heroes/helcurt-avatar.png",
+          "bytes": 38280
+        },
+        "splash": {
+          "path": "/assets/heroes/helcurt-splash.jpg",
+          "bytes": 117922
+        },
+        "skills": {
+          "1": "/assets/skills/helcurt/01.png",
+          "2": "/assets/skills/helcurt/02.png",
+          "3": "/assets/skills/helcurt/03.png",
+          "4": "/assets/skills/helcurt/04.png"
+        }
+      }
+    },
+    "h052": {
+      "name": "Pharsa",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/pharsa-portrait.png",
+          "bytes": 157485
+        },
+        "avatar": {
+          "path": "/assets/heroes/pharsa-avatar.png",
+          "bytes": 44765
+        },
+        "splash": {
+          "path": "/assets/heroes/pharsa-splash.jpg",
+          "bytes": 103339
+        },
+        "skills": {
+          "1": "/assets/skills/pharsa/01.png",
+          "2": "/assets/skills/pharsa/02.png",
+          "3": "/assets/skills/pharsa/03.png",
+          "4": "/assets/skills/pharsa/04.png",
+          "5": "/assets/skills/pharsa/05.png"
+        }
+      }
+    },
+    "h053": {
+      "name": "Lesley",
+      "roles": [
+        "Marksman",
+        "Assassin"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/lesley-portrait.png",
+          "bytes": 162927
+        },
+        "avatar": {
+          "path": "/assets/heroes/lesley-avatar.png",
+          "bytes": 40583
+        },
+        "splash": {
+          "path": "/assets/heroes/lesley-splash.jpg",
+          "bytes": 102628
+        },
+        "skills": {
+          "1": "/assets/skills/lesley/01.png",
+          "2": "/assets/skills/lesley/02.png",
+          "3": "/assets/skills/lesley/03.png",
+          "4": "/assets/skills/lesley/04.png"
+        }
+      }
+    },
+    "h054": {
+      "name": "Jawhead",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/jawhead-portrait.png",
+          "bytes": 171208
+        },
+        "avatar": {
+          "path": "/assets/heroes/jawhead-avatar.png",
+          "bytes": 43217
+        },
+        "splash": {
+          "path": "/assets/heroes/jawhead-splash.jpg",
+          "bytes": 108332
+        },
+        "skills": {
+          "1": "/assets/skills/jawhead/01.png",
+          "2": "/assets/skills/jawhead/02.png",
+          "3": "/assets/skills/jawhead/03.png",
+          "4": "/assets/skills/jawhead/04.png"
+        }
+      }
+    },
+    "h055": {
+      "name": "Angela",
+      "roles": [
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/angela-portrait.png",
+          "bytes": 162235
+        },
+        "avatar": {
+          "path": "/assets/heroes/angela-avatar.png",
+          "bytes": 38597
+        },
+        "splash": {
+          "path": "/assets/heroes/angela-splash.jpg",
+          "bytes": 96437
+        },
+        "skills": {
+          "1": "/assets/skills/angela/01.png",
+          "2": "/assets/skills/angela/02.png",
+          "3": "/assets/skills/angela/03.png",
+          "4": "/assets/skills/angela/04.png"
+        }
+      }
+    },
+    "h056": {
+      "name": "Gusion",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/gusion-portrait.png",
+          "bytes": 178578
+        },
+        "avatar": {
+          "path": "/assets/heroes/gusion-avatar.png",
+          "bytes": 42898
+        },
+        "splash": {
+          "path": "/assets/heroes/gusion-splash.jpg",
+          "bytes": 99170
+        },
+        "skills": {
+          "1": "/assets/skills/gusion/01.png",
+          "2": "/assets/skills/gusion/02.png",
+          "3": "/assets/skills/gusion/03.png",
+          "4": "/assets/skills/gusion/04.png"
+        }
+      }
+    },
+    "h057": {
+      "name": "Valir",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/valir-portrait.png",
+          "bytes": 174781
+        },
+        "avatar": {
+          "path": "/assets/heroes/valir-avatar.png",
+          "bytes": 42421
+        },
+        "splash": {
+          "path": "/assets/heroes/valir-splash.jpg",
+          "bytes": 110695
+        },
+        "skills": {
+          "1": "/assets/skills/valir/01.png",
+          "2": "/assets/skills/valir/02.png",
+          "3": "/assets/skills/valir/03.png",
+          "4": "/assets/skills/valir/04.png"
+        }
+      }
+    },
+    "h058": {
+      "name": "Martis",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Jungling",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/martis-portrait.png",
+          "bytes": 163733
+        },
+        "avatar": {
+          "path": "/assets/heroes/martis-avatar.png",
+          "bytes": 40450
+        },
+        "splash": {
+          "path": "/assets/heroes/martis-splash.jpg",
+          "bytes": 97721
+        },
+        "skills": {
+          "1": "/assets/skills/martis/01.png",
+          "2": "/assets/skills/martis/02.png",
+          "3": "/assets/skills/martis/03.png",
+          "4": "/assets/skills/martis/04.png"
+        }
+      }
+    },
+    "h059": {
+      "name": "Uranus",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/uranus-portrait.png",
+          "bytes": 169400
+        },
+        "avatar": {
+          "path": "/assets/heroes/uranus-avatar.png",
+          "bytes": 39295
+        },
+        "splash": {
+          "path": "/assets/heroes/uranus-splash.jpg",
+          "bytes": 107119
+        },
+        "skills": {
+          "1": "/assets/skills/uranus/01.png",
+          "2": "/assets/skills/uranus/02.png",
+          "3": "/assets/skills/uranus/03.png",
+          "4": "/assets/skills/uranus/04.png"
+        }
+      }
+    },
+    "h060": {
+      "name": "Hanabi",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/hanabi-portrait.png",
+          "bytes": 184567
+        },
+        "avatar": {
+          "path": "/assets/heroes/hanabi-avatar.png",
+          "bytes": 37977
+        },
+        "splash": {
+          "path": "/assets/heroes/hanabi-splash.jpg",
+          "bytes": 106261
+        },
+        "skills": {
+          "1": "/assets/skills/hanabi/01.png",
+          "2": "/assets/skills/hanabi/02.png",
+          "3": "/assets/skills/hanabi/03.png",
+          "4": "/assets/skills/hanabi/04.png"
+        }
+      }
+    },
+    "h061": {
+      "name": "Chang'e",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/change-portrait.png",
+          "bytes": 172225
+        },
+        "avatar": {
+          "path": "/assets/heroes/change-avatar.png",
+          "bytes": 40703
+        },
+        "splash": {
+          "path": "/assets/heroes/change-splash.jpg",
+          "bytes": 89342
+        },
+        "skills": {
+          "1": "/assets/skills/change/01.png",
+          "2": "/assets/skills/change/02.png",
+          "3": "/assets/skills/change/03.png",
+          "4": "/assets/skills/change/04.png"
+        }
+      }
+    },
+    "h062": {
+      "name": "Kaja",
+      "roles": [
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/kaja-portrait.png",
+          "bytes": 214060
+        },
+        "avatar": {
+          "path": "/assets/heroes/kaja-avatar.png",
+          "bytes": 46083
+        },
+        "splash": {
+          "path": "/assets/heroes/kaja-splash.jpg",
+          "bytes": 108152
+        },
+        "skills": {
+          "1": "/assets/skills/kaja/01.png",
+          "2": "/assets/skills/kaja/02.png",
+          "3": "/assets/skills/kaja/03.png",
+          "4": "/assets/skills/kaja/04.png"
+        }
+      }
+    },
+    "h063": {
+      "name": "Selena",
+      "roles": [
+        "Assassin",
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/selena-portrait.png",
+          "bytes": 171853
+        },
+        "avatar": {
+          "path": "/assets/heroes/selena-avatar.png",
+          "bytes": 40627
+        },
+        "splash": {
+          "path": "/assets/heroes/selena-splash.jpg",
+          "bytes": 97268
+        },
+        "skills": {
+          "1": "/assets/skills/selena/01.png",
+          "2": "/assets/skills/selena/02.png",
+          "3": "/assets/skills/selena/03.png",
+          "4": "/assets/skills/selena/04.png",
+          "5": "/assets/skills/selena/05.png",
+          "6": "/assets/skills/selena/06.png",
+          "7": "/assets/skills/selena/07.png",
+          "8": "/assets/skills/selena/08.png"
+        }
+      }
+    },
+    "h064": {
+      "name": "Aldous",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/aldous-portrait.png",
+          "bytes": 155994
+        },
+        "avatar": {
+          "path": "/assets/heroes/aldous-avatar.png",
+          "bytes": 40253
+        },
+        "splash": {
+          "path": "/assets/heroes/aldous-splash.jpg",
+          "bytes": 97394
+        },
+        "skills": {
+          "1": "/assets/skills/aldous/01.png",
+          "2": "/assets/skills/aldous/02.png",
+          "3": "/assets/skills/aldous/03.png",
+          "4": "/assets/skills/aldous/04.png"
+        }
+      }
+    },
+    "h065": {
+      "name": "Claude",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/claude-portrait.png",
+          "bytes": 170537
+        },
+        "avatar": {
+          "path": "/assets/heroes/claude-avatar.png",
+          "bytes": 39301
+        },
+        "splash": {
+          "path": "/assets/heroes/claude-splash.jpg",
+          "bytes": 97026
+        },
+        "skills": {
+          "1": "/assets/skills/claude/01.png",
+          "2": "/assets/skills/claude/02.png",
+          "3": "/assets/skills/claude/03.png",
+          "4": "/assets/skills/claude/04.png"
+        }
+      }
+    },
+    "h066": {
+      "name": "Vale",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/vale-portrait.png",
+          "bytes": 172478
+        },
+        "avatar": {
+          "path": "/assets/heroes/vale-avatar.png",
+          "bytes": 43468
+        },
+        "splash": {
+          "path": "/assets/heroes/vale-splash.jpg",
+          "bytes": 117304
+        },
+        "skills": {
+          "1": "/assets/skills/vale/01.png",
+          "2": "/assets/skills/vale/02.png",
+          "3": "/assets/skills/vale/03.png",
+          "4": "/assets/skills/vale/04.png"
+        }
+      }
+    },
+    "h067": {
+      "name": "Leomord",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/leomord-portrait.png",
+          "bytes": 158564
+        },
+        "avatar": {
+          "path": "/assets/heroes/leomord-avatar.png",
+          "bytes": 42743
+        },
+        "splash": {
+          "path": "/assets/heroes/leomord-splash.jpg",
+          "bytes": 111080
+        },
+        "skills": {
+          "1": "/assets/skills/leomord/01.png",
+          "2": "/assets/skills/leomord/02.png",
+          "3": "/assets/skills/leomord/03.png",
+          "4": "/assets/skills/leomord/04.png",
+          "5": "/assets/skills/leomord/05.png",
+          "6": "/assets/skills/leomord/06.png",
+          "7": "/assets/skills/leomord/07.png",
+          "8": "/assets/skills/leomord/08.png"
+        }
+      }
+    },
+    "h068": {
+      "name": "Lunox",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/lunox-portrait.png",
+          "bytes": 189522
+        },
+        "avatar": {
+          "path": "/assets/heroes/lunox-avatar.png",
+          "bytes": 45581
+        },
+        "splash": {
+          "path": "/assets/heroes/lunox-splash.jpg",
+          "bytes": 101325
+        },
+        "skills": {
+          "1": "/assets/skills/lunox/01.png",
+          "2": "/assets/skills/lunox/02.png",
+          "3": "/assets/skills/lunox/03.png",
+          "4": "/assets/skills/lunox/04.png",
+          "5": "/assets/skills/lunox/05.png",
+          "6": "/assets/skills/lunox/06.png",
+          "7": "/assets/skills/lunox/07.png",
+          "8": "/assets/skills/lunox/08.png",
+          "9": "/assets/skills/lunox/09.png",
+          "10": "/assets/skills/lunox/10.png",
+          "11": "/assets/skills/lunox/11.png",
+          "12": "/assets/skills/lunox/12.png",
+          "13": "/assets/skills/lunox/13.png",
+          "14": "/assets/skills/lunox/14.png",
+          "15": "/assets/skills/lunox/15.png"
+        }
+      }
+    },
+    "h069": {
+      "name": "Hanzo",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/hanzo-portrait.png",
+          "bytes": 171348
+        },
+        "avatar": {
+          "path": "/assets/heroes/hanzo-avatar.png",
+          "bytes": 44965
+        },
+        "splash": {
+          "path": "/assets/heroes/hanzo-splash.jpg",
+          "bytes": 119084
+        },
+        "skills": {
+          "1": "/assets/skills/hanzo/01.png",
+          "2": "/assets/skills/hanzo/02.png",
+          "3": "/assets/skills/hanzo/03.png",
+          "4": "/assets/skills/hanzo/04.png",
+          "5": "/assets/skills/hanzo/05.png",
+          "6": "/assets/skills/hanzo/06.png",
+          "7": "/assets/skills/hanzo/07.png",
+          "8": "/assets/skills/hanzo/08.png"
+        }
+      }
+    },
+    "h070": {
+      "name": "Belerick",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/belerick-portrait.png",
+          "bytes": 182551
+        },
+        "avatar": {
+          "path": "/assets/heroes/belerick-avatar.png",
+          "bytes": 45371
+        },
+        "splash": {
+          "path": "/assets/heroes/belerick-splash.jpg",
+          "bytes": 115332
+        },
+        "skills": {
+          "1": "/assets/skills/belerick/01.png",
+          "2": "/assets/skills/belerick/02.png",
+          "3": "/assets/skills/belerick/03.png",
+          "4": "/assets/skills/belerick/04.png"
+        }
+      }
+    },
+    "h071": {
+      "name": "Kimmy",
+      "roles": [
+        "Marksman",
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/kimmy-portrait.png",
+          "bytes": 180662
+        },
+        "avatar": {
+          "path": "/assets/heroes/kimmy-avatar.png",
+          "bytes": 43595
+        },
+        "splash": {
+          "path": "/assets/heroes/kimmy-splash.jpg",
+          "bytes": 86487
+        },
+        "skills": {
+          "1": "/assets/skills/kimmy/01.png",
+          "2": "/assets/skills/kimmy/02.png",
+          "3": "/assets/skills/kimmy/03.png",
+          "4": "/assets/skills/kimmy/04.png"
+        }
+      }
+    },
+    "h072": {
+      "name": "Thamuz",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/thamuz-portrait.png",
+          "bytes": 244011
+        },
+        "avatar": {
+          "path": "/assets/heroes/thamuz-avatar.png",
+          "bytes": 50188
+        },
+        "splash": {
+          "path": "/assets/heroes/thamuz-splash.jpg",
+          "bytes": 114599
+        },
+        "skills": {
+          "1": "/assets/skills/thamuz/01.png",
+          "2": "/assets/skills/thamuz/02.png",
+          "3": "/assets/skills/thamuz/03.png",
+          "4": "/assets/skills/thamuz/04.png"
+        }
+      }
+    },
+    "h073": {
+      "name": "Harith",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/harith-portrait.png",
+          "bytes": 186934
+        },
+        "avatar": {
+          "path": "/assets/heroes/harith-avatar.png",
+          "bytes": 43144
+        },
+        "splash": {
+          "path": "/assets/heroes/harith-splash.jpg",
+          "bytes": 106014
+        },
+        "skills": {
+          "1": "/assets/skills/harith/01.png",
+          "2": "/assets/skills/harith/02.png",
+          "3": "/assets/skills/harith/03.png",
+          "4": "/assets/skills/harith/04.png"
+        }
+      }
+    },
+    "h074": {
+      "name": "Minsitthar",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/minsitthar-portrait.png",
+          "bytes": 173501
+        },
+        "avatar": {
+          "path": "/assets/heroes/minsitthar-avatar.png",
+          "bytes": 43374
+        },
+        "splash": {
+          "path": "/assets/heroes/minsitthar-splash.jpg",
+          "bytes": 109303
+        },
+        "skills": {
+          "1": "/assets/skills/minsitthar/01.png",
+          "2": "/assets/skills/minsitthar/02.png",
+          "3": "/assets/skills/minsitthar/03.png",
+          "4": "/assets/skills/minsitthar/04.png"
+        }
+      }
+    },
+    "h075": {
+      "name": "Kadita",
+      "roles": [
+        "Mage",
+        "Assassin"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/kadita-portrait.png",
+          "bytes": 213522
+        },
+        "avatar": {
+          "path": "/assets/heroes/kadita-avatar.png",
+          "bytes": 46373
+        },
+        "splash": {
+          "path": "/assets/heroes/kadita-splash.jpg",
+          "bytes": 110533
+        },
+        "skills": {
+          "1": "/assets/skills/kadita/01.png",
+          "2": "/assets/skills/kadita/02.png",
+          "3": "/assets/skills/kadita/03.png",
+          "4": "/assets/skills/kadita/04.png"
+        }
+      }
+    },
+    "h076": {
+      "name": "Faramis",
+      "roles": [
+        "Support",
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/faramis-portrait.png",
+          "bytes": 156563
+        },
+        "avatar": {
+          "path": "/assets/heroes/faramis-avatar.png",
+          "bytes": 47127
+        },
+        "splash": {
+          "path": "/assets/heroes/faramis-splash.jpg",
+          "bytes": 103190
+        },
+        "skills": {
+          "1": "/assets/skills/faramis/01.png",
+          "2": "/assets/skills/faramis/02.png",
+          "3": "/assets/skills/faramis/03.png",
+          "4": "/assets/skills/faramis/04.png"
+        }
+      }
+    },
+    "h077": {
+      "name": "Badang",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Roaming",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/badang-portrait.png",
+          "bytes": 183188
+        },
+        "avatar": {
+          "path": "/assets/heroes/badang-avatar.png",
+          "bytes": 43808
+        },
+        "splash": {
+          "path": "/assets/heroes/badang-splash.jpg",
+          "bytes": 139302
+        },
+        "skills": {
+          "1": "/assets/skills/badang/01.png",
+          "2": "/assets/skills/badang/02.png",
+          "3": "/assets/skills/badang/03.png",
+          "4": "/assets/skills/badang/04.png"
+        }
+      }
+    },
+    "h078": {
+      "name": "Khufra",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/khufra-portrait.png",
+          "bytes": 189842
+        },
+        "avatar": {
+          "path": "/assets/heroes/khufra-avatar.png",
+          "bytes": 46844
+        },
+        "splash": {
+          "path": "/assets/heroes/khufra-splash.jpg",
+          "bytes": 121905
+        },
+        "skills": {
+          "1": "/assets/skills/khufra/01.png",
+          "2": "/assets/skills/khufra/02.png",
+          "3": "/assets/skills/khufra/03.png",
+          "4": "/assets/skills/khufra/04.png"
+        }
+      }
+    },
+    "h079": {
+      "name": "Granger",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/granger-portrait.png",
+          "bytes": 171250
+        },
+        "avatar": {
+          "path": "/assets/heroes/granger-avatar.png",
+          "bytes": 47005
+        },
+        "splash": {
+          "path": "/assets/heroes/granger-splash.jpg",
+          "bytes": 115007
+        },
+        "skills": {
+          "1": "/assets/skills/granger/01.png",
+          "2": "/assets/skills/granger/02.png",
+          "3": "/assets/skills/granger/03.png",
+          "4": "/assets/skills/granger/04.png"
+        }
+      }
+    },
+    "h080": {
+      "name": "Guinevere",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/guinevere-portrait.png",
+          "bytes": 155646
+        },
+        "avatar": {
+          "path": "/assets/heroes/guinevere-avatar.png",
+          "bytes": 41235
+        },
+        "splash": {
+          "path": "/assets/heroes/guinevere-splash.jpg",
+          "bytes": 96431
+        },
+        "skills": {
+          "1": "/assets/skills/guinevere/01.png",
+          "2": "/assets/skills/guinevere/02.png",
+          "3": "/assets/skills/guinevere/03.png",
+          "4": "/assets/skills/guinevere/04.png"
+        }
+      }
+    },
+    "h081": {
+      "name": "Esmeralda",
+      "roles": [
+        "Tank",
+        "Mage"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/esmeralda-portrait.png",
+          "bytes": 173030
+        },
+        "avatar": {
+          "path": "/assets/heroes/esmeralda-avatar.png",
+          "bytes": 39267
+        },
+        "splash": {
+          "path": "/assets/heroes/esmeralda-splash.jpg",
+          "bytes": 102586
+        },
+        "skills": {
+          "1": "/assets/skills/esmeralda/01.png",
+          "2": "/assets/skills/esmeralda/02.png",
+          "3": "/assets/skills/esmeralda/03.png",
+          "4": "/assets/skills/esmeralda/04.png"
+        }
+      }
+    },
+    "h082": {
+      "name": "Terizla",
+      "roles": [
+        "Fighter",
+        "Tank"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/terizla-portrait.png",
+          "bytes": 175603
+        },
+        "avatar": {
+          "path": "/assets/heroes/terizla-avatar.png",
+          "bytes": 42965
+        },
+        "splash": {
+          "path": "/assets/heroes/terizla-splash.jpg",
+          "bytes": 132925
+        },
+        "skills": {
+          "1": "/assets/skills/terizla/01.png",
+          "2": "/assets/skills/terizla/02.png",
+          "3": "/assets/skills/terizla/03.png",
+          "4": "/assets/skills/terizla/04.png"
+        }
+      }
+    },
+    "h083": {
+      "name": "X.Borg",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/x-borg-portrait.png",
+          "bytes": 165681
+        },
+        "avatar": {
+          "path": "/assets/heroes/x-borg-avatar.png",
+          "bytes": 40842
+        },
+        "splash": {
+          "path": "/assets/heroes/x-borg-splash.jpg",
+          "bytes": 107329
+        },
+        "skills": {
+          "1": "/assets/skills/x-borg/01.png",
+          "2": "/assets/skills/x-borg/02.png",
+          "3": "/assets/skills/x-borg/03.png",
+          "4": "/assets/skills/x-borg/04.png"
+        }
+      }
+    },
+    "h084": {
+      "name": "Ling",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/ling-portrait.png",
+          "bytes": 95431
+        },
+        "avatar": {
+          "path": "/assets/heroes/ling-avatar.png",
+          "bytes": 40458
+        },
+        "splash": {
+          "path": "/assets/heroes/ling-splash.jpg",
+          "bytes": 103426
+        },
+        "skills": {
+          "1": "/assets/skills/ling/01.png",
+          "2": "/assets/skills/ling/02.png",
+          "3": "/assets/skills/ling/03.png",
+          "4": "/assets/skills/ling/04.png"
+        }
+      }
+    },
+    "h085": {
+      "name": "Dyrroth",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/dyrroth-portrait.png",
+          "bytes": 198280
+        },
+        "avatar": {
+          "path": "/assets/heroes/dyrroth-avatar.png",
+          "bytes": 45614
+        },
+        "splash": {
+          "path": "/assets/heroes/dyrroth-splash.jpg",
+          "bytes": 122088
+        },
+        "skills": {
+          "1": "/assets/skills/dyrroth/01.png",
+          "2": "/assets/skills/dyrroth/02.png",
+          "3": "/assets/skills/dyrroth/03.png",
+          "4": "/assets/skills/dyrroth/04.png"
+        }
+      }
+    },
+    "h086": {
+      "name": "Lylia",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/lylia-portrait.png",
+          "bytes": 189221
+        },
+        "avatar": {
+          "path": "/assets/heroes/lylia-avatar.png",
+          "bytes": 44396
+        },
+        "splash": {
+          "path": "/assets/heroes/lylia-splash.jpg",
+          "bytes": 107731
+        },
+        "skills": {
+          "1": "/assets/skills/lylia/01.png",
+          "2": "/assets/skills/lylia/02.png",
+          "3": "/assets/skills/lylia/03.png",
+          "4": "/assets/skills/lylia/04.png"
+        }
+      }
+    },
+    "h087": {
+      "name": "Baxia",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/baxia-portrait.png",
+          "bytes": 173667
+        },
+        "avatar": {
+          "path": "/assets/heroes/baxia-avatar.png",
+          "bytes": 45263
+        },
+        "splash": {
+          "path": "/assets/heroes/baxia-splash.jpg",
+          "bytes": 135689
+        },
+        "skills": {
+          "1": "/assets/skills/baxia/01.png",
+          "2": "/assets/skills/baxia/02.png",
+          "3": "/assets/skills/baxia/03.png",
+          "4": "/assets/skills/baxia/04.png"
+        }
+      }
+    },
+    "h088": {
+      "name": "Masha",
+      "roles": [
+        "Fighter",
+        "Tank"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/masha-portrait.png",
+          "bytes": 180426
+        },
+        "avatar": {
+          "path": "/assets/heroes/masha-avatar.png",
+          "bytes": 42783
+        },
+        "splash": {
+          "path": "/assets/heroes/masha-splash.jpg",
+          "bytes": 99191
+        },
+        "skills": {
+          "1": "/assets/skills/masha/01.png",
+          "2": "/assets/skills/masha/02.png",
+          "3": "/assets/skills/masha/03.png",
+          "4": "/assets/skills/masha/04.png"
+        }
+      }
+    },
+    "h089": {
+      "name": "Wanwan",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/wanwan-portrait.png",
+          "bytes": 173430
+        },
+        "avatar": {
+          "path": "/assets/heroes/wanwan-avatar.png",
+          "bytes": 43123
+        },
+        "splash": {
+          "path": "/assets/heroes/wanwan-splash.jpg",
+          "bytes": 100383
+        },
+        "skills": {
+          "1": "/assets/skills/wanwan/01.png",
+          "2": "/assets/skills/wanwan/02.png",
+          "3": "/assets/skills/wanwan/03.png",
+          "4": "/assets/skills/wanwan/04.png"
+        }
+      }
+    },
+    "h090": {
+      "name": "Silvanna",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/silvanna-portrait.png",
+          "bytes": 157165
+        },
+        "avatar": {
+          "path": "/assets/heroes/silvanna-avatar.png",
+          "bytes": 39045
+        },
+        "splash": {
+          "path": "/assets/heroes/silvanna-splash.jpg",
+          "bytes": 96398
+        },
+        "skills": {
+          "1": "/assets/skills/silvanna/01.png",
+          "2": "/assets/skills/silvanna/02.png",
+          "3": "/assets/skills/silvanna/03.png",
+          "4": "/assets/skills/silvanna/04.png"
+        }
+      }
+    },
+    "h091": {
+      "name": "Cecilion",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/cecilion-portrait.png",
+          "bytes": 161950
+        },
+        "avatar": {
+          "path": "/assets/heroes/cecilion-avatar.png",
+          "bytes": 43381
+        },
+        "splash": {
+          "path": "/assets/heroes/cecilion-splash.jpg",
+          "bytes": 99512
+        },
+        "skills": {
+          "1": "/assets/skills/cecilion/01.png",
+          "2": "/assets/skills/cecilion/02.png",
+          "3": "/assets/skills/cecilion/03.png",
+          "4": "/assets/skills/cecilion/04.png",
+          "5": "/assets/skills/cecilion/05.png"
+        }
+      }
+    },
+    "h092": {
+      "name": "Carmilla",
+      "roles": [
+        "Support",
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/carmilla-portrait.png",
+          "bytes": 159454
+        },
+        "avatar": {
+          "path": "/assets/heroes/carmilla-avatar.png",
+          "bytes": 39977
+        },
+        "splash": {
+          "path": "/assets/heroes/carmilla-splash.jpg",
+          "bytes": 92776
+        },
+        "skills": {
+          "1": "/assets/skills/carmilla/01.png",
+          "2": "/assets/skills/carmilla/02.png",
+          "3": "/assets/skills/carmilla/03.png",
+          "4": "/assets/skills/carmilla/04.png"
+        }
+      }
+    },
+    "h093": {
+      "name": "Atlas",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/atlas-portrait.png",
+          "bytes": 169111
+        },
+        "avatar": {
+          "path": "/assets/heroes/atlas-avatar.png",
+          "bytes": 39679
+        },
+        "splash": {
+          "path": "/assets/heroes/atlas-splash.jpg",
+          "bytes": 126830
+        },
+        "skills": {
+          "1": "/assets/skills/atlas/01.png",
+          "2": "/assets/skills/atlas/02.png",
+          "3": "/assets/skills/atlas/03.png",
+          "4": "/assets/skills/atlas/04.png"
+        }
+      }
+    },
+    "h094": {
+      "name": "Popol and Kupa",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Jungling",
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/popol-and-kupa-portrait.png",
+          "bytes": 155469
+        },
+        "avatar": {
+          "path": "/assets/heroes/popol-and-kupa-avatar.png",
+          "bytes": 45307
+        },
+        "splash": {
+          "path": "/assets/heroes/popol-and-kupa-splash.jpg",
+          "bytes": 120046
+        },
+        "skills": {
+          "1": "/assets/skills/popol-and-kupa/01.png",
+          "2": "/assets/skills/popol-and-kupa/02.png",
+          "3": "/assets/skills/popol-and-kupa/03.png",
+          "4": "/assets/skills/popol-and-kupa/04.png",
+          "5": "/assets/skills/popol-and-kupa/05.png",
+          "6": "/assets/skills/popol-and-kupa/06.png",
+          "7": "/assets/skills/popol-and-kupa/07.png",
+          "8": "/assets/skills/popol-and-kupa/08.png",
+          "9": "/assets/skills/popol-and-kupa/09.png",
+          "10": "/assets/skills/popol-and-kupa/10.png"
+        }
+      }
+    },
+    "h095": {
+      "name": "Yu Zhong",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/yu-zhong-portrait.png",
+          "bytes": 173065
+        },
+        "avatar": {
+          "path": "/assets/heroes/yu-zhong-avatar.png",
+          "bytes": 41472
+        },
+        "splash": {
+          "path": "/assets/heroes/yu-zhong-splash.jpg",
+          "bytes": 104453
+        },
+        "skills": {
+          "1": "/assets/skills/yu-zhong/01.png",
+          "2": "/assets/skills/yu-zhong/02.png",
+          "3": "/assets/skills/yu-zhong/03.png",
+          "4": "/assets/skills/yu-zhong/04.png",
+          "5": "/assets/skills/yu-zhong/05.png"
+        }
+      }
+    },
+    "h096": {
+      "name": "Luo Yi",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/luo-yi-portrait.png",
+          "bytes": 213796
+        },
+        "avatar": {
+          "path": "/assets/heroes/luo-yi-avatar.png",
+          "bytes": 44552
+        },
+        "splash": {
+          "path": "/assets/heroes/luo-yi-splash.jpg",
+          "bytes": 103507
+        },
+        "skills": {
+          "1": "/assets/skills/luo-yi/01.png",
+          "2": "/assets/skills/luo-yi/02.png",
+          "3": "/assets/skills/luo-yi/03.png",
+          "4": "/assets/skills/luo-yi/04.png"
+        }
+      }
+    },
+    "h097": {
+      "name": "Benedetta",
+      "roles": [
+        "Assassin",
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/benedetta-portrait.png",
+          "bytes": 165038
+        },
+        "avatar": {
+          "path": "/assets/heroes/benedetta-avatar.png",
+          "bytes": 39702
+        },
+        "splash": {
+          "path": "/assets/heroes/benedetta-splash.jpg",
+          "bytes": 106361
+        },
+        "skills": {
+          "1": "/assets/skills/benedetta/01.png",
+          "2": "/assets/skills/benedetta/02.png",
+          "3": "/assets/skills/benedetta/03.png",
+          "4": "/assets/skills/benedetta/04.png"
+        }
+      }
+    },
+    "h098": {
+      "name": "Khaleed",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Roaming",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/khaleed-portrait.png",
+          "bytes": 162833
+        },
+        "avatar": {
+          "path": "/assets/heroes/khaleed-avatar.png",
+          "bytes": 42887
+        },
+        "splash": {
+          "path": "/assets/heroes/khaleed-splash.jpg",
+          "bytes": 102139
+        },
+        "skills": {
+          "1": "/assets/skills/khaleed/01.png",
+          "2": "/assets/skills/khaleed/02.png",
+          "3": "/assets/skills/khaleed/03.png",
+          "4": "/assets/skills/khaleed/04.png"
+        }
+      }
+    },
+    "h099": {
+      "name": "Barats",
+      "roles": [
+        "Tank",
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/barats-portrait.png",
+          "bytes": 148920
+        },
+        "avatar": {
+          "path": "/assets/heroes/barats-avatar.png",
+          "bytes": 41514
+        },
+        "splash": {
+          "path": "/assets/heroes/barats-splash.jpg",
+          "bytes": 110755
+        },
+        "skills": {
+          "1": "/assets/skills/barats/01.png",
+          "2": "/assets/skills/barats/02.png",
+          "3": "/assets/skills/barats/03.png",
+          "4": "/assets/skills/barats/04.png"
+        }
+      }
+    },
+    "h100": {
+      "name": "Brody",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/brody-portrait.png",
+          "bytes": 225349
+        },
+        "avatar": {
+          "path": "/assets/heroes/brody-avatar.png",
+          "bytes": 44855
+        },
+        "splash": {
+          "path": "/assets/heroes/brody-splash.jpg",
+          "bytes": 100331
+        },
+        "skills": {
+          "1": "/assets/skills/brody/01.png",
+          "2": "/assets/skills/brody/02.png",
+          "3": "/assets/skills/brody/03.png",
+          "4": "/assets/skills/brody/04.png"
+        }
+      }
+    },
+    "h101": {
+      "name": "Yve",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/yve-portrait.png",
+          "bytes": 177480
+        },
+        "avatar": {
+          "path": "/assets/heroes/yve-avatar.png",
+          "bytes": 45294
+        },
+        "splash": {
+          "path": "/assets/heroes/yve-splash.jpg",
+          "bytes": 117405
+        },
+        "skills": {
+          "1": "/assets/skills/yve/01.png",
+          "2": "/assets/skills/yve/02.png",
+          "3": "/assets/skills/yve/03.png",
+          "4": "/assets/skills/yve/04.png"
+        }
+      }
+    },
+    "h102": {
+      "name": "Mathilda",
+      "roles": [
+        "Support",
+        "Assassin"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/mathilda-portrait.png",
+          "bytes": 153092
+        },
+        "avatar": {
+          "path": "/assets/heroes/mathilda-avatar.png",
+          "bytes": 40340
+        },
+        "splash": {
+          "path": "/assets/heroes/mathilda-splash.jpg",
+          "bytes": 102248
+        },
+        "skills": {
+          "1": "/assets/skills/mathilda/01.png",
+          "2": "/assets/skills/mathilda/02.png",
+          "3": "/assets/skills/mathilda/03.png",
+          "4": "/assets/skills/mathilda/04.png"
+        }
+      }
+    },
+    "h103": {
+      "name": "Paquito",
+      "roles": [
+        "Fighter",
+        "Assassin"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/paquito-portrait.png",
+          "bytes": 200732
+        },
+        "avatar": {
+          "path": "/assets/heroes/paquito-avatar.png",
+          "bytes": 39651
+        },
+        "splash": {
+          "path": "/assets/heroes/paquito-splash.jpg",
+          "bytes": 103707
+        },
+        "skills": {
+          "1": "/assets/skills/paquito/01.png",
+          "2": "/assets/skills/paquito/02.png",
+          "3": "/assets/skills/paquito/03.png",
+          "4": "/assets/skills/paquito/04.png"
+        }
+      }
+    },
+    "h104": {
+      "name": "Gloo",
+      "roles": [
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/gloo-portrait.png",
+          "bytes": 198645
+        },
+        "avatar": {
+          "path": "/assets/heroes/gloo-avatar.png",
+          "bytes": 43396
+        },
+        "splash": {
+          "path": "/assets/heroes/gloo-splash.jpg",
+          "bytes": 107489
+        },
+        "skills": {
+          "1": "/assets/skills/gloo/01.png",
+          "2": "/assets/skills/gloo/02.png",
+          "3": "/assets/skills/gloo/03.png",
+          "4": "/assets/skills/gloo/04.png"
+        }
+      }
+    },
+    "h105": {
+      "name": "Beatrix",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/beatrix-portrait.png",
+          "bytes": 190619
+        },
+        "avatar": {
+          "path": "/assets/heroes/beatrix-avatar.png",
+          "bytes": 43855
+        },
+        "splash": {
+          "path": "/assets/heroes/beatrix-splash.jpg",
+          "bytes": 98877
+        },
+        "skills": {
+          "1": "/assets/skills/beatrix/01.png",
+          "2": "/assets/skills/beatrix/02.png",
+          "3": "/assets/skills/beatrix/03.png",
+          "4": "/assets/skills/beatrix/04.png",
+          "5": "/assets/skills/beatrix/05.png",
+          "6": "/assets/skills/beatrix/06.png",
+          "7": "/assets/skills/beatrix/07.png",
+          "8": "/assets/skills/beatrix/08.png",
+          "9": "/assets/skills/beatrix/09.png",
+          "10": "/assets/skills/beatrix/10.png",
+          "11": "/assets/skills/beatrix/11.png",
+          "12": "/assets/skills/beatrix/12.png",
+          "13": "/assets/skills/beatrix/13.png",
+          "14": "/assets/skills/beatrix/14.png",
+          "15": "/assets/skills/beatrix/15.png",
+          "16": "/assets/skills/beatrix/16.png",
+          "17": "/assets/skills/beatrix/17.png",
+          "18": "/assets/skills/beatrix/18.png",
+          "19": "/assets/skills/beatrix/19.png",
+          "20": "/assets/skills/beatrix/20.png"
+        }
+      }
+    },
+    "h106": {
+      "name": "Phoveus",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/phoveus-portrait.png",
+          "bytes": 187511
+        },
+        "avatar": {
+          "path": "/assets/heroes/phoveus-avatar.png",
+          "bytes": 44426
+        },
+        "splash": {
+          "path": "/assets/heroes/phoveus-splash.jpg",
+          "bytes": 99704
+        },
+        "skills": {
+          "1": "/assets/skills/phoveus/01.png",
+          "2": "/assets/skills/phoveus/02.png",
+          "3": "/assets/skills/phoveus/03.png",
+          "4": "/assets/skills/phoveus/04.png"
+        }
+      }
+    },
+    "h107": {
+      "name": "Natan",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/natan-portrait.png",
+          "bytes": 180413
+        },
+        "avatar": {
+          "path": "/assets/heroes/natan-avatar.png",
+          "bytes": 41019
+        },
+        "splash": {
+          "path": "/assets/heroes/natan-splash.jpg",
+          "bytes": 106638
+        },
+        "skills": {
+          "1": "/assets/skills/natan/01.png",
+          "2": "/assets/skills/natan/02.png",
+          "3": "/assets/skills/natan/03.png",
+          "4": "/assets/skills/natan/04.png"
+        }
+      }
+    },
+    "h108": {
+      "name": "Aulus",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Jungling",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/aulus-portrait.png",
+          "bytes": 215036
+        },
+        "avatar": {
+          "path": "/assets/heroes/aulus-avatar.png",
+          "bytes": 47182
+        },
+        "splash": {
+          "path": "/assets/heroes/aulus-splash.jpg",
+          "bytes": 116813
+        },
+        "skills": {
+          "1": "/assets/skills/aulus/01.png",
+          "2": "/assets/skills/aulus/02.png",
+          "3": "/assets/skills/aulus/03.png",
+          "4": "/assets/skills/aulus/04.png"
+        }
+      }
+    },
+    "h109": {
+      "name": "Aamon",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/aamon-portrait.png",
+          "bytes": 161938
+        },
+        "avatar": {
+          "path": "/assets/heroes/aamon-avatar.png",
+          "bytes": 43540
+        },
+        "splash": {
+          "path": "/assets/heroes/aamon-splash.jpg",
+          "bytes": 110167
+        },
+        "skills": {
+          "1": "/assets/skills/aamon/01.png",
+          "2": "/assets/skills/aamon/02.png",
+          "3": "/assets/skills/aamon/03.png",
+          "4": "/assets/skills/aamon/04.png"
+        }
+      }
+    },
+    "h110": {
+      "name": "Valentina",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/valentina-portrait.png",
+          "bytes": 174292
+        },
+        "avatar": {
+          "path": "/assets/heroes/valentina-avatar.png",
+          "bytes": 46295
+        },
+        "splash": {
+          "path": "/assets/heroes/valentina-splash.jpg",
+          "bytes": 107798
+        },
+        "skills": {
+          "1": "/assets/skills/valentina/01.png",
+          "2": "/assets/skills/valentina/02.png",
+          "3": "/assets/skills/valentina/03.png",
+          "4": "/assets/skills/valentina/04.png"
+        }
+      }
+    },
+    "h111": {
+      "name": "Edith",
+      "roles": [
+        "Tank",
+        "Marksman"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/edith-portrait.png",
+          "bytes": 194105
+        },
+        "avatar": {
+          "path": "/assets/heroes/edith-avatar.png",
+          "bytes": 42904
+        },
+        "splash": {
+          "path": "/assets/heroes/edith-splash.jpg",
+          "bytes": 115065
+        },
+        "skills": {
+          "1": "/assets/skills/edith/01.png",
+          "2": "/assets/skills/edith/02.png",
+          "3": "/assets/skills/edith/03.png",
+          "4": "/assets/skills/edith/04.png",
+          "5": "/assets/skills/edith/05.png",
+          "6": "/assets/skills/edith/06.png",
+          "7": "/assets/skills/edith/07.png",
+          "8": "/assets/skills/edith/08.png"
+        }
+      }
+    },
+    "h112": {
+      "name": "Floryn",
+      "roles": [
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/floryn-portrait.png",
+          "bytes": 186072
+        },
+        "avatar": {
+          "path": "/assets/heroes/floryn-avatar.png",
+          "bytes": 39317
+        },
+        "splash": {
+          "path": "/assets/heroes/floryn-splash.jpg",
+          "bytes": 93916
+        },
+        "skills": {
+          "1": "/assets/skills/floryn/01.png",
+          "2": "/assets/skills/floryn/02.png",
+          "3": "/assets/skills/floryn/03.png",
+          "4": "/assets/skills/floryn/04.png"
+        }
+      }
+    },
+    "h113": {
+      "name": "Yin",
+      "roles": [
+        "Fighter",
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling",
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/yin-portrait.png",
+          "bytes": 186623
+        },
+        "avatar": {
+          "path": "/assets/heroes/yin-avatar.png",
+          "bytes": 43095
+        },
+        "splash": {
+          "path": "/assets/heroes/yin-splash.jpg",
+          "bytes": 94495
+        },
+        "skills": {
+          "1": "/assets/skills/yin/01.png",
+          "2": "/assets/skills/yin/02.png",
+          "3": "/assets/skills/yin/03.png",
+          "4": "/assets/skills/yin/04.png",
+          "5": "/assets/skills/yin/05.png",
+          "6": "/assets/skills/yin/06.png",
+          "7": "/assets/skills/yin/07.png",
+          "8": "/assets/skills/yin/08.png"
+        }
+      }
+    },
+    "h114": {
+      "name": "Melissa",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/melissa-portrait.png",
+          "bytes": 154166
+        },
+        "avatar": {
+          "path": "/assets/heroes/melissa-avatar.png",
+          "bytes": 42701
+        },
+        "splash": {
+          "path": "/assets/heroes/melissa-splash.jpg",
+          "bytes": 102370
+        },
+        "skills": {
+          "1": "/assets/skills/melissa/01.png",
+          "2": "/assets/skills/melissa/02.png",
+          "3": "/assets/skills/melissa/03.png",
+          "4": "/assets/skills/melissa/04.png"
+        }
+      }
+    },
+    "h115": {
+      "name": "Xavier",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/xavier-portrait.png",
+          "bytes": 176066
+        },
+        "avatar": {
+          "path": "/assets/heroes/xavier-avatar.png",
+          "bytes": 39147
+        },
+        "splash": {
+          "path": "/assets/heroes/xavier-splash.jpg",
+          "bytes": 109021
+        },
+        "skills": {
+          "1": "/assets/skills/xavier/01.png",
+          "2": "/assets/skills/xavier/02.png",
+          "3": "/assets/skills/xavier/03.png",
+          "4": "/assets/skills/xavier/04.png"
+        }
+      }
+    },
+    "h116": {
+      "name": "Julian",
+      "roles": [
+        "Assassin",
+        "Fighter"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/julian-portrait.png",
+          "bytes": 180647
+        },
+        "avatar": {
+          "path": "/assets/heroes/julian-avatar.png",
+          "bytes": 37939
+        },
+        "splash": {
+          "path": "/assets/heroes/julian-splash.jpg",
+          "bytes": 108739
+        },
+        "skills": {
+          "1": "/assets/skills/julian/01.png",
+          "2": "/assets/skills/julian/02.png",
+          "3": "/assets/skills/julian/03.png",
+          "4": "/assets/skills/julian/04.png",
+          "5": "/assets/skills/julian/05.png",
+          "6": "/assets/skills/julian/06.png",
+          "7": "/assets/skills/julian/07.png",
+          "8": "/assets/skills/julian/08.png"
+        }
+      }
+    },
+    "h117": {
+      "name": "Fredrinn",
+      "roles": [
+        "Fighter",
+        "Tank"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/fredrinn-portrait.png",
+          "bytes": 155217
+        },
+        "avatar": {
+          "path": "/assets/heroes/fredrinn-avatar.png",
+          "bytes": 38892
+        },
+        "splash": {
+          "path": "/assets/heroes/fredrinn-splash.jpg",
+          "bytes": 110301
+        },
+        "skills": {
+          "1": "/assets/skills/fredrinn/01.png",
+          "2": "/assets/skills/fredrinn/02.png",
+          "3": "/assets/skills/fredrinn/03.png",
+          "4": "/assets/skills/fredrinn/04.png",
+          "5": "/assets/skills/fredrinn/05.png"
+        }
+      }
+    },
+    "h118": {
+      "name": "Joy",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/joy-portrait.png",
+          "bytes": 168708
+        },
+        "avatar": {
+          "path": "/assets/heroes/joy-avatar.png",
+          "bytes": 41043
+        },
+        "splash": {
+          "path": "/assets/heroes/joy-splash.jpg",
+          "bytes": 377126
+        },
+        "skills": {
+          "1": "/assets/skills/joy/01.png",
+          "2": "/assets/skills/joy/02.png",
+          "3": "/assets/skills/joy/03.png",
+          "4": "/assets/skills/joy/04.png"
+        }
+      }
+    },
+    "h119": {
+      "name": "Novaria",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/novaria-portrait.png",
+          "bytes": 154548
+        },
+        "avatar": {
+          "path": "/assets/heroes/novaria-avatar.png",
+          "bytes": 42106
+        },
+        "splash": {
+          "path": "/assets/heroes/novaria-splash.jpg",
+          "bytes": 65113
+        },
+        "skills": {
+          "1": "/assets/skills/novaria/01.png",
+          "2": "/assets/skills/novaria/02.png",
+          "3": "/assets/skills/novaria/03.png",
+          "4": "/assets/skills/novaria/04.png"
+        }
+      }
+    },
+    "h120": {
+      "name": "Arlott",
+      "roles": [
+        "Fighter",
+        "Assassin"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/arlott-portrait.png",
+          "bytes": 165416
+        },
+        "avatar": {
+          "path": "/assets/heroes/arlott-avatar.png",
+          "bytes": 43139
+        },
+        "splash": {
+          "path": "/assets/heroes/arlott-splash.jpg",
+          "bytes": 79643
+        },
+        "skills": {
+          "1": "/assets/skills/arlott/01.png",
+          "2": "/assets/skills/arlott/02.png",
+          "3": "/assets/skills/arlott/03.png",
+          "4": "/assets/skills/arlott/04.png"
+        }
+      }
+    },
+    "h121": {
+      "name": "Ixia",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/ixia-portrait.png",
+          "bytes": 177238
+        },
+        "avatar": {
+          "path": "/assets/heroes/ixia-avatar.png",
+          "bytes": 39658
+        },
+        "splash": {
+          "path": "/assets/heroes/ixia-splash.jpg",
+          "bytes": 68474
+        },
+        "skills": {
+          "1": "/assets/skills/ixia/01.png",
+          "2": "/assets/skills/ixia/02.png",
+          "3": "/assets/skills/ixia/03.png",
+          "4": "/assets/skills/ixia/04.png"
+        }
+      }
+    },
+    "h122": {
+      "name": "Nolan",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/nolan-portrait.png",
+          "bytes": 171109
+        },
+        "avatar": {
+          "path": "/assets/heroes/nolan-avatar.png",
+          "bytes": 41134
+        },
+        "splash": {
+          "path": "/assets/heroes/nolan-splash.jpg",
+          "bytes": 78902
+        },
+        "skills": {
+          "1": "/assets/skills/nolan/01.png",
+          "2": "/assets/skills/nolan/02.png",
+          "3": "/assets/skills/nolan/03.png",
+          "4": "/assets/skills/nolan/04.png"
+        }
+      }
+    },
+    "h123": {
+      "name": "Cici",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/cici-portrait.png",
+          "bytes": 195795
+        },
+        "avatar": {
+          "path": "/assets/heroes/cici-avatar.png",
+          "bytes": 44396
+        },
+        "splash": {
+          "path": "/assets/heroes/cici-splash.jpg",
+          "bytes": 90718
+        },
+        "skills": {
+          "1": "/assets/skills/cici/01.png",
+          "2": "/assets/skills/cici/02.png",
+          "3": "/assets/skills/cici/03.png",
+          "4": "/assets/skills/cici/04.png"
+        }
+      }
+    },
+    "h124": {
+      "name": "Chip",
+      "roles": [
+        "Support",
+        "Tank"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/chip-portrait.png",
+          "bytes": 187539
+        },
+        "avatar": {
+          "path": "/assets/heroes/chip-avatar.png",
+          "bytes": 43816
+        },
+        "splash": {
+          "path": "/assets/heroes/chip-splash.jpg",
+          "bytes": 76281
+        },
+        "skills": {
+          "1": "/assets/skills/chip/01.png",
+          "2": "/assets/skills/chip/02.png",
+          "3": "/assets/skills/chip/03.png",
+          "4": "/assets/skills/chip/04.png",
+          "5": "/assets/skills/chip/05.png"
+        }
+      }
+    },
+    "h125": {
+      "name": "Zhuxin",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/zhuxin-portrait.png",
+          "bytes": 207703
+        },
+        "avatar": {
+          "path": "/assets/heroes/zhuxin-avatar.png",
+          "bytes": 39657
+        },
+        "splash": {
+          "path": "/assets/heroes/zhuxin-splash.jpg",
+          "bytes": 55632
+        },
+        "skills": {
+          "1": "/assets/skills/zhuxin/01.png",
+          "2": "/assets/skills/zhuxin/02.png",
+          "3": "/assets/skills/zhuxin/03.png",
+          "4": "/assets/skills/zhuxin/04.png"
+        }
+      }
+    },
+    "h126": {
+      "name": "Suyou",
+      "roles": [
+        "Assassin",
+        "Fighter"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/suyou-portrait.png",
+          "bytes": 203059
+        },
+        "avatar": {
+          "path": "/assets/heroes/suyou-avatar.png",
+          "bytes": 48349
+        },
+        "splash": {
+          "path": "/assets/heroes/suyou-splash.jpg",
+          "bytes": 37629
+        },
+        "skills": {
+          "1": "/assets/skills/suyou/01.png",
+          "2": "/assets/skills/suyou/02.png",
+          "3": "/assets/skills/suyou/03.png",
+          "4": "/assets/skills/suyou/04.png"
+        }
+      }
+    },
+    "h127": {
+      "name": "Lukas",
+      "roles": [
+        "Fighter"
+      ],
+      "lanes": [
+        "Exp Lane",
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/lukas-portrait.png",
+          "bytes": 189598
+        },
+        "avatar": {
+          "path": "/assets/heroes/lukas-avatar.png",
+          "bytes": 45171
+        },
+        "splash": {
+          "path": "/assets/heroes/lukas-splash.jpg",
+          "bytes": 36398
+        },
+        "skills": {
+          "1": "/assets/skills/lukas/01.png",
+          "2": "/assets/skills/lukas/02.png",
+          "3": "/assets/skills/lukas/03.png",
+          "4": "/assets/skills/lukas/04.png",
+          "5": "/assets/skills/lukas/05.png",
+          "6": "/assets/skills/lukas/06.png",
+          "7": "/assets/skills/lukas/07.png",
+          "8": "/assets/skills/lukas/08.png"
+        }
+      }
+    },
+    "h128": {
+      "name": "Kalea",
+      "roles": [
+        "Support",
+        "Fighter"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/kalea-portrait.png",
+          "bytes": 193770
+        },
+        "avatar": {
+          "path": "/assets/heroes/kalea-avatar.png",
+          "bytes": 46197
+        },
+        "splash": {
+          "path": "/assets/heroes/kalea-splash.jpg",
+          "bytes": 81226
+        },
+        "skills": {
+          "1": "/assets/skills/kalea/01.png",
+          "2": "/assets/skills/kalea/02.png",
+          "3": "/assets/skills/kalea/03.png",
+          "4": "/assets/skills/kalea/04.png"
+        }
+      }
+    },
+    "h129": {
+      "name": "Zetian",
+      "roles": [
+        "Mage"
+      ],
+      "lanes": [
+        "Mid Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/zetian-portrait.png",
+          "bytes": 202741
+        },
+        "avatar": {
+          "path": "/assets/heroes/zetian-avatar.png",
+          "bytes": 42838
+        },
+        "splash": {
+          "path": "/assets/heroes/zetian-splash.jpg",
+          "bytes": 55369
+        },
+        "skills": {
+          "1": "/assets/skills/zetian/01.png",
+          "2": "/assets/skills/zetian/02.png",
+          "3": "/assets/skills/zetian/03.png",
+          "4": "/assets/skills/zetian/04.png"
+        }
+      }
+    },
+    "h130": {
+      "name": "Obsidia",
+      "roles": [
+        "Marksman"
+      ],
+      "lanes": [
+        "Gold Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/obsidia-portrait.png",
+          "bytes": 212267
+        },
+        "avatar": {
+          "path": "/assets/heroes/obsidia-avatar.png",
+          "bytes": 44747
+        },
+        "splash": {
+          "path": "/assets/heroes/obsidia-splash.jpg",
+          "bytes": 97967
+        },
+        "skills": {
+          "1": "/assets/skills/obsidia/01.png",
+          "2": "/assets/skills/obsidia/02.png",
+          "3": "/assets/skills/obsidia/03.png",
+          "4": "/assets/skills/obsidia/04.png"
+        }
+      }
+    },
+    "h131": {
+      "name": "Sora",
+      "roles": [
+        "Fighter",
+        "Assassin"
+      ],
+      "lanes": [
+        "Exp Lane"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/sora-portrait.png",
+          "bytes": 234424
+        },
+        "avatar": {
+          "path": "/assets/heroes/sora-avatar.png",
+          "bytes": 45524
+        },
+        "splash": {
+          "path": "/assets/heroes/sora-splash.jpg",
+          "bytes": 40984
+        },
+        "skills": {
+          "1": "/assets/skills/sora/01.png",
+          "2": "/assets/skills/sora/02.png",
+          "3": "/assets/skills/sora/03.png",
+          "4": "/assets/skills/sora/04.png",
+          "5": "/assets/skills/sora/05.png",
+          "6": "/assets/skills/sora/06.png",
+          "7": "/assets/skills/sora/07.png",
+          "8": "/assets/skills/sora/08.png",
+          "9": "/assets/skills/sora/09.png",
+          "10": "/assets/skills/sora/10.png",
+          "11": "/assets/skills/sora/11.png",
+          "12": "/assets/skills/sora/12.png"
+        }
+      }
+    },
+    "h132": {
+      "name": "Marcel",
+      "roles": [
+        "Support"
+      ],
+      "lanes": [
+        "Roaming"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/marcel-portrait.png",
+          "bytes": 218555
+        },
+        "avatar": {
+          "path": "/assets/heroes/marcel-avatar.png",
+          "bytes": 42832
+        },
+        "splash": {
+          "path": "/assets/heroes/marcel-splash.jpg",
+          "bytes": 102571
+        },
+        "skills": {
+          "1": "/assets/skills/marcel/01.png",
+          "2": "/assets/skills/marcel/02.png",
+          "3": "/assets/skills/marcel/03.png",
+          "4": "/assets/skills/marcel/04.png"
+        }
+      }
+    },
+    "h133": {
+      "name": "Hirara",
+      "roles": [
+        "Assassin"
+      ],
+      "lanes": [
+        "Jungling"
+      ],
+      "files": {
+        "portrait": {
+          "path": "/assets/heroes/hirara-portrait.png",
+          "bytes": 224817
+        },
+        "avatar": {
+          "path": "/assets/heroes/hirara-avatar.png",
+          "bytes": 45189
+        },
+        "splash": {
+          "path": "/assets/heroes/hirara-splash.jpg",
+          "bytes": 117178
+        },
+        "skills": {
+          "1": "/assets/skills/hirara/01.png",
+          "2": "/assets/skills/hirara/02.png",
+          "3": "/assets/skills/hirara/03.png",
+          "4": "/assets/skills/hirara/04.png",
+          "5": "/assets/skills/hirara/05.png",
+          "6": "/assets/skills/hirara/06.png"
+        }
+      }
+    }
+  }
+}

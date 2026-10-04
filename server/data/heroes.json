@@ -1,0 +1,3650 @@
+[
+  {
+    "id": "h001",
+    "numericId": 1,
+    "name": "Miya",
+    "slug": "miya",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/miya-portrait.png",
+      "avatar": "/assets/heroes/miya-avatar.png",
+      "splash": "/assets/heroes/miya-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h002",
+    "numericId": 2,
+    "name": "Balmond",
+    "slug": "balmond",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Damage",
+      "Regen"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/balmond-portrait.png",
+      "avatar": "/assets/heroes/balmond-avatar.png",
+      "splash": "/assets/heroes/balmond-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h003",
+    "numericId": 3,
+    "name": "Saber",
+    "slug": "saber",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling",
+      "Roaming"
+    ],
+    "speciality": [
+      "Charge",
+      "Finisher"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/saber-portrait.png",
+      "avatar": "/assets/heroes/saber-avatar.png",
+      "splash": "/assets/heroes/saber-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h004",
+    "numericId": 4,
+    "name": "Alice",
+    "slug": "alice",
+    "roles": [
+      "Tank",
+      "Mage"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Jungling"
+    ],
+    "speciality": [
+      "Charge",
+      "Regen"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/alice-portrait.png",
+      "avatar": "/assets/heroes/alice-avatar.png",
+      "splash": "/assets/heroes/alice-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h005",
+    "numericId": 5,
+    "name": "Nana",
+    "slug": "nana",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Poke",
+      "Burst"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/nana-portrait.png",
+      "avatar": "/assets/heroes/nana-avatar.png",
+      "splash": "/assets/heroes/nana-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h006",
+    "numericId": 6,
+    "name": "Tigreal",
+    "slug": "tigreal",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Crowd Control"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/tigreal-portrait.png",
+      "avatar": "/assets/heroes/tigreal-avatar.png",
+      "splash": "/assets/heroes/tigreal-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h007",
+    "numericId": 7,
+    "name": "Alucard",
+    "slug": "alucard",
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/alucard-portrait.png",
+      "avatar": "/assets/heroes/alucard-avatar.png",
+      "splash": "/assets/heroes/alucard-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h008",
+    "numericId": 8,
+    "name": "Karina",
+    "slug": "karina",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Finisher",
+      "Magic Damage"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/karina-portrait.png",
+      "avatar": "/assets/heroes/karina-avatar.png",
+      "splash": "/assets/heroes/karina-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h009",
+    "numericId": 9,
+    "name": "Akai",
+    "slug": "akai",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Guard",
+      "Crowd Control"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/akai-portrait.png",
+      "avatar": "/assets/heroes/akai-avatar.png",
+      "splash": "/assets/heroes/akai-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h010",
+    "numericId": 10,
+    "name": "Franco",
+    "slug": "franco",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Initiator",
+      "Control"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/franco-portrait.png",
+      "avatar": "/assets/heroes/franco-avatar.png",
+      "splash": "/assets/heroes/franco-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h011",
+    "numericId": 11,
+    "name": "Bane",
+    "slug": "bane",
+    "roles": [
+      "Fighter",
+      "Mage"
+    ],
+    "lanes": [
+      "Jungling",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Push",
+      "Burst"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/bane-portrait.png",
+      "avatar": "/assets/heroes/bane-avatar.png",
+      "splash": "/assets/heroes/bane-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h012",
+    "numericId": 12,
+    "name": "Bruno",
+    "slug": "bruno",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Burst"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/bruno-portrait.png",
+      "avatar": "/assets/heroes/bruno-avatar.png",
+      "splash": "/assets/heroes/bruno-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h013",
+    "numericId": 13,
+    "name": "Clint",
+    "slug": "clint",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/clint-portrait.png",
+      "avatar": "/assets/heroes/clint-avatar.png",
+      "splash": "/assets/heroes/clint-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h014",
+    "numericId": 14,
+    "name": "Rafaela",
+    "slug": "rafaela",
+    "roles": [
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Regen",
+      "Guard"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/rafaela-portrait.png",
+      "avatar": "/assets/heroes/rafaela-avatar.png",
+      "splash": "/assets/heroes/rafaela-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h015",
+    "numericId": 15,
+    "name": "Eudora",
+    "slug": "eudora",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Control",
+      "Burst"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/eudora-portrait.png",
+      "avatar": "/assets/heroes/eudora-avatar.png",
+      "splash": "/assets/heroes/eudora-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h016",
+    "numericId": 16,
+    "name": "Zilong",
+    "slug": "zilong",
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/zilong-portrait.png",
+      "avatar": "/assets/heroes/zilong-avatar.png",
+      "splash": "/assets/heroes/zilong-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h017",
+    "numericId": 17,
+    "name": "Fanny",
+    "slug": "fanny",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Finisher"
+    ],
+    "difficulty": 100,
+    "assets": {
+      "portrait": "/assets/heroes/fanny-portrait.png",
+      "avatar": "/assets/heroes/fanny-avatar.png",
+      "splash": "/assets/heroes/fanny-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h018",
+    "numericId": 18,
+    "name": "Layla",
+    "slug": "layla",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/layla-portrait.png",
+      "avatar": "/assets/heroes/layla-avatar.png",
+      "splash": "/assets/heroes/layla-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h019",
+    "numericId": 19,
+    "name": "Minotaur",
+    "slug": "minotaur",
+    "roles": [
+      "Tank",
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Crowd Control"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/minotaur-portrait.png",
+      "avatar": "/assets/heroes/minotaur-avatar.png",
+      "splash": "/assets/heroes/minotaur-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h020",
+    "numericId": 20,
+    "name": "Lolita",
+    "slug": "lolita",
+    "roles": [
+      "Support",
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Guard",
+      "Crowd Control"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/lolita-portrait.png",
+      "avatar": "/assets/heroes/lolita-avatar.png",
+      "splash": "/assets/heroes/lolita-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h021",
+    "numericId": 21,
+    "name": "Hayabusa",
+    "slug": "hayabusa",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/hayabusa-portrait.png",
+      "avatar": "/assets/heroes/hayabusa-avatar.png",
+      "splash": "/assets/heroes/hayabusa-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h022",
+    "numericId": 22,
+    "name": "Freya",
+    "slug": "freya",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/freya-portrait.png",
+      "avatar": "/assets/heroes/freya-avatar.png",
+      "splash": "/assets/heroes/freya-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h023",
+    "numericId": 23,
+    "name": "Gord",
+    "slug": "gord",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Poke",
+      "Burst"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/gord-portrait.png",
+      "avatar": "/assets/heroes/gord-avatar.png",
+      "splash": "/assets/heroes/gord-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h024",
+    "numericId": 24,
+    "name": "Natalia",
+    "slug": "natalia",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling",
+      "Roaming"
+    ],
+    "speciality": [
+      "Chase",
+      "Finisher"
+    ],
+    "difficulty": 90,
+    "assets": {
+      "portrait": "/assets/heroes/natalia-portrait.png",
+      "avatar": "/assets/heroes/natalia-avatar.png",
+      "splash": "/assets/heroes/natalia-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h025",
+    "numericId": 25,
+    "name": "Kagura",
+    "slug": "kagura",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Poke",
+      "Finisher"
+    ],
+    "difficulty": 90,
+    "assets": {
+      "portrait": "/assets/heroes/kagura-portrait.png",
+      "avatar": "/assets/heroes/kagura-avatar.png",
+      "splash": "/assets/heroes/kagura-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h026",
+    "numericId": 26,
+    "name": "Chou",
+    "slug": "chou",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Roaming"
+    ],
+    "speciality": [
+      "Chase",
+      "Control"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/chou-portrait.png",
+      "avatar": "/assets/heroes/chou-avatar.png",
+      "splash": "/assets/heroes/chou-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h027",
+    "numericId": 27,
+    "name": "Sun",
+    "slug": "sun",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Jungling"
+    ],
+    "speciality": [
+      "Push",
+      "Damage"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/sun-portrait.png",
+      "avatar": "/assets/heroes/sun-avatar.png",
+      "splash": "/assets/heroes/sun-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h028",
+    "numericId": 28,
+    "name": "Alpha",
+    "slug": "alpha",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Jungling",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Charge",
+      "Damage"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/alpha-portrait.png",
+      "avatar": "/assets/heroes/alpha-avatar.png",
+      "splash": "/assets/heroes/alpha-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h029",
+    "numericId": 29,
+    "name": "Ruby",
+    "slug": "ruby",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Regen"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/ruby-portrait.png",
+      "avatar": "/assets/heroes/ruby-avatar.png",
+      "splash": "/assets/heroes/ruby-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h030",
+    "numericId": 30,
+    "name": "Yi Sun-shin",
+    "slug": "yi-sun-shin",
+    "roles": [
+      "Assassin",
+      "Marksman"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Finisher",
+      "Chase"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/yi-sun-shin-portrait.png",
+      "avatar": "/assets/heroes/yi-sun-shin-avatar.png",
+      "splash": "/assets/heroes/yi-sun-shin-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h031",
+    "numericId": 31,
+    "name": "Moskov",
+    "slug": "moskov",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Chase"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/moskov-portrait.png",
+      "avatar": "/assets/heroes/moskov-avatar.png",
+      "splash": "/assets/heroes/moskov-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h032",
+    "numericId": 32,
+    "name": "Johnson",
+    "slug": "johnson",
+    "roles": [
+      "Tank",
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Support",
+      "Crowd Control"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/johnson-portrait.png",
+      "avatar": "/assets/heroes/johnson-avatar.png",
+      "splash": "/assets/heroes/johnson-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h033",
+    "numericId": 33,
+    "name": "Cyclops",
+    "slug": "cyclops",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Control"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/cyclops-portrait.png",
+      "avatar": "/assets/heroes/cyclops-avatar.png",
+      "splash": "/assets/heroes/cyclops-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h034",
+    "numericId": 34,
+    "name": "Estes",
+    "slug": "estes",
+    "roles": [
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Regen",
+      "Guard"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/estes-portrait.png",
+      "avatar": "/assets/heroes/estes-avatar.png",
+      "splash": "/assets/heroes/estes-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h035",
+    "numericId": 35,
+    "name": "Hilda",
+    "slug": "hilda",
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Regen"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/hilda-portrait.png",
+      "avatar": "/assets/heroes/hilda-avatar.png",
+      "splash": "/assets/heroes/hilda-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h036",
+    "numericId": 36,
+    "name": "Aurora",
+    "slug": "aurora",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Poke"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/aurora-portrait.png",
+      "avatar": "/assets/heroes/aurora-avatar.png",
+      "splash": "/assets/heroes/aurora-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h037",
+    "numericId": 37,
+    "name": "Lapu-Lapu",
+    "slug": "lapu-lapu",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/lapu-lapu-portrait.png",
+      "avatar": "/assets/heroes/lapu-lapu-avatar.png",
+      "splash": "/assets/heroes/lapu-lapu-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h038",
+    "numericId": 38,
+    "name": "Vexana",
+    "slug": "vexana",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Poke",
+      "Control"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/vexana-portrait.png",
+      "avatar": "/assets/heroes/vexana-avatar.png",
+      "splash": "/assets/heroes/vexana-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h039",
+    "numericId": 39,
+    "name": "Roger",
+    "slug": "roger",
+    "roles": [
+      "Fighter",
+      "Marksman"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Finisher",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/roger-portrait.png",
+      "avatar": "/assets/heroes/roger-avatar.png",
+      "splash": "/assets/heroes/roger-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h040",
+    "numericId": 40,
+    "name": "Karrie",
+    "slug": "karrie",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/karrie-portrait.png",
+      "avatar": "/assets/heroes/karrie-avatar.png",
+      "splash": "/assets/heroes/karrie-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h041",
+    "numericId": 41,
+    "name": "Gatotkaca",
+    "slug": "gatotkaca",
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
+    "lanes": [
+      "Roaming",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Burst"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/gatotkaca-portrait.png",
+      "avatar": "/assets/heroes/gatotkaca-avatar.png",
+      "splash": "/assets/heroes/gatotkaca-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h042",
+    "numericId": 42,
+    "name": "Harley",
+    "slug": "harley",
+    "roles": [
+      "Assassin",
+      "Mage"
+    ],
+    "lanes": [
+      "Jungling",
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Poke"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/harley-portrait.png",
+      "avatar": "/assets/heroes/harley-avatar.png",
+      "splash": "/assets/heroes/harley-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h043",
+    "numericId": 43,
+    "name": "Irithel",
+    "slug": "irithel",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Burst"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/irithel-portrait.png",
+      "avatar": "/assets/heroes/irithel-avatar.png",
+      "splash": "/assets/heroes/irithel-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h044",
+    "numericId": 44,
+    "name": "Grock",
+    "slug": "grock",
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Initiator"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/grock-portrait.png",
+      "avatar": "/assets/heroes/grock-avatar.png",
+      "splash": "/assets/heroes/grock-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h045",
+    "numericId": 45,
+    "name": "Argus",
+    "slug": "argus",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Charge",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/argus-portrait.png",
+      "avatar": "/assets/heroes/argus-avatar.png",
+      "splash": "/assets/heroes/argus-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h046",
+    "numericId": 46,
+    "name": "Odette",
+    "slug": "odette",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Poke"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/odette-portrait.png",
+      "avatar": "/assets/heroes/odette-avatar.png",
+      "splash": "/assets/heroes/odette-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h047",
+    "numericId": 47,
+    "name": "Lancelot",
+    "slug": "lancelot",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/lancelot-portrait.png",
+      "avatar": "/assets/heroes/lancelot-avatar.png",
+      "splash": "/assets/heroes/lancelot-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h048",
+    "numericId": 48,
+    "name": "Diggie",
+    "slug": "diggie",
+    "roles": [
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Guard",
+      "Poke"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/diggie-portrait.png",
+      "avatar": "/assets/heroes/diggie-avatar.png",
+      "splash": "/assets/heroes/diggie-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h049",
+    "numericId": 49,
+    "name": "Hylos",
+    "slug": "hylos",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Guard",
+      "Initiator"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/hylos-portrait.png",
+      "avatar": "/assets/heroes/hylos-avatar.png",
+      "splash": "/assets/heroes/hylos-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h050",
+    "numericId": 50,
+    "name": "Zhask",
+    "slug": "zhask",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/zhask-portrait.png",
+      "avatar": "/assets/heroes/zhask-avatar.png",
+      "splash": "/assets/heroes/zhask-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h051",
+    "numericId": 51,
+    "name": "Helcurt",
+    "slug": "helcurt",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling",
+      "Roaming"
+    ],
+    "speciality": [
+      "Push",
+      "Burst"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/helcurt-portrait.png",
+      "avatar": "/assets/heroes/helcurt-avatar.png",
+      "splash": "/assets/heroes/helcurt-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h052",
+    "numericId": 52,
+    "name": "Pharsa",
+    "slug": "pharsa",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Poke"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/pharsa-portrait.png",
+      "avatar": "/assets/heroes/pharsa-avatar.png",
+      "splash": "/assets/heroes/pharsa-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h053",
+    "numericId": 53,
+    "name": "Lesley",
+    "slug": "lesley",
+    "roles": [
+      "Marksman",
+      "Assassin"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/lesley-portrait.png",
+      "avatar": "/assets/heroes/lesley-avatar.png",
+      "splash": "/assets/heroes/lesley-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h054",
+    "numericId": 54,
+    "name": "Jawhead",
+    "slug": "jawhead",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Roaming"
+    ],
+    "speciality": [
+      "Charge",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/jawhead-portrait.png",
+      "avatar": "/assets/heroes/jawhead-avatar.png",
+      "splash": "/assets/heroes/jawhead-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h055",
+    "numericId": 55,
+    "name": "Angela",
+    "slug": "angela",
+    "roles": [
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Guard",
+      "Support"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/angela-portrait.png",
+      "avatar": "/assets/heroes/angela-avatar.png",
+      "splash": "/assets/heroes/angela-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h056",
+    "numericId": 56,
+    "name": "Gusion",
+    "slug": "gusion",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Burst",
+      "Magic Damage"
+    ],
+    "difficulty": 80,
+    "assets": {
+      "portrait": "/assets/heroes/gusion-portrait.png",
+      "avatar": "/assets/heroes/gusion-avatar.png",
+      "splash": "/assets/heroes/gusion-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h057",
+    "numericId": 57,
+    "name": "Valir",
+    "slug": "valir",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Guard"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/valir-portrait.png",
+      "avatar": "/assets/heroes/valir-avatar.png",
+      "splash": "/assets/heroes/valir-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h058",
+    "numericId": 58,
+    "name": "Martis",
+    "slug": "martis",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Jungling",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Charge"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/martis-portrait.png",
+      "avatar": "/assets/heroes/martis-avatar.png",
+      "splash": "/assets/heroes/martis-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h059",
+    "numericId": 59,
+    "name": "Uranus",
+    "slug": "uranus",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Regen"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/uranus-portrait.png",
+      "avatar": "/assets/heroes/uranus-avatar.png",
+      "splash": "/assets/heroes/uranus-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h060",
+    "numericId": 60,
+    "name": "Hanabi",
+    "slug": "hanabi",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/hanabi-portrait.png",
+      "avatar": "/assets/heroes/hanabi-avatar.png",
+      "splash": "/assets/heroes/hanabi-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h061",
+    "numericId": 61,
+    "name": "Chang'e",
+    "slug": "change",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Poke",
+      "Burst"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/change-portrait.png",
+      "avatar": "/assets/heroes/change-avatar.png",
+      "splash": "/assets/heroes/change-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h062",
+    "numericId": 62,
+    "name": "Kaja",
+    "slug": "kaja",
+    "roles": [
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Initiator",
+      "Charge"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/kaja-portrait.png",
+      "avatar": "/assets/heroes/kaja-avatar.png",
+      "splash": "/assets/heroes/kaja-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h063",
+    "numericId": 63,
+    "name": "Selena",
+    "slug": "selena",
+    "roles": [
+      "Assassin",
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Initiator",
+      "Finisher"
+    ],
+    "difficulty": 80,
+    "assets": {
+      "portrait": "/assets/heroes/selena-portrait.png",
+      "avatar": "/assets/heroes/selena-avatar.png",
+      "splash": "/assets/heroes/selena-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h064",
+    "numericId": 64,
+    "name": "Aldous",
+    "slug": "aldous",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Support"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/aldous-portrait.png",
+      "avatar": "/assets/heroes/aldous-avatar.png",
+      "splash": "/assets/heroes/aldous-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h065",
+    "numericId": 65,
+    "name": "Claude",
+    "slug": "claude",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Chase"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/claude-portrait.png",
+      "avatar": "/assets/heroes/claude-avatar.png",
+      "splash": "/assets/heroes/claude-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h066",
+    "numericId": 66,
+    "name": "Vale",
+    "slug": "vale",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Crowd Control"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/vale-portrait.png",
+      "avatar": "/assets/heroes/vale-avatar.png",
+      "splash": "/assets/heroes/vale-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h067",
+    "numericId": 67,
+    "name": "Leomord",
+    "slug": "leomord",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/leomord-portrait.png",
+      "avatar": "/assets/heroes/leomord-avatar.png",
+      "splash": "/assets/heroes/leomord-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h068",
+    "numericId": 68,
+    "name": "Lunox",
+    "slug": "lunox",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Damage"
+    ],
+    "difficulty": 90,
+    "assets": {
+      "portrait": "/assets/heroes/lunox-portrait.png",
+      "avatar": "/assets/heroes/lunox-avatar.png",
+      "splash": "/assets/heroes/lunox-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h069",
+    "numericId": 69,
+    "name": "Hanzo",
+    "slug": "hanzo",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Poke",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/hanzo-portrait.png",
+      "avatar": "/assets/heroes/hanzo-avatar.png",
+      "splash": "/assets/heroes/hanzo-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h070",
+    "numericId": 70,
+    "name": "Belerick",
+    "slug": "belerick",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Regen"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/belerick-portrait.png",
+      "avatar": "/assets/heroes/belerick-avatar.png",
+      "splash": "/assets/heroes/belerick-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h071",
+    "numericId": 71,
+    "name": "Kimmy",
+    "slug": "kimmy",
+    "roles": [
+      "Marksman",
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Magic Damage"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/kimmy-portrait.png",
+      "avatar": "/assets/heroes/kimmy-avatar.png",
+      "splash": "/assets/heroes/kimmy-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h072",
+    "numericId": 72,
+    "name": "Thamuz",
+    "slug": "thamuz",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/thamuz-portrait.png",
+      "avatar": "/assets/heroes/thamuz-avatar.png",
+      "splash": "/assets/heroes/thamuz-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h073",
+    "numericId": 73,
+    "name": "Harith",
+    "slug": "harith",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/harith-portrait.png",
+      "avatar": "/assets/heroes/harith-avatar.png",
+      "splash": "/assets/heroes/harith-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h074",
+    "numericId": 74,
+    "name": "Minsitthar",
+    "slug": "minsitthar",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Roaming"
+    ],
+    "speciality": [
+      "Initiator",
+      "Crowd Control"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/minsitthar-portrait.png",
+      "avatar": "/assets/heroes/minsitthar-avatar.png",
+      "splash": "/assets/heroes/minsitthar-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h075",
+    "numericId": 75,
+    "name": "Kadita",
+    "slug": "kadita",
+    "roles": [
+      "Mage",
+      "Assassin"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Charge"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/kadita-portrait.png",
+      "avatar": "/assets/heroes/kadita-avatar.png",
+      "splash": "/assets/heroes/kadita-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h076",
+    "numericId": 76,
+    "name": "Faramis",
+    "slug": "faramis",
+    "roles": [
+      "Support",
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Guard",
+      "Charge"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/faramis-portrait.png",
+      "avatar": "/assets/heroes/faramis-avatar.png",
+      "splash": "/assets/heroes/faramis-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h077",
+    "numericId": 77,
+    "name": "Badang",
+    "slug": "badang",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Roaming",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Charge",
+      "Burst"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/badang-portrait.png",
+      "avatar": "/assets/heroes/badang-avatar.png",
+      "splash": "/assets/heroes/badang-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h078",
+    "numericId": 78,
+    "name": "Khufra",
+    "slug": "khufra",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Initiator",
+      "Crowd Control"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/khufra-portrait.png",
+      "avatar": "/assets/heroes/khufra-avatar.png",
+      "splash": "/assets/heroes/khufra-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h079",
+    "numericId": 79,
+    "name": "Granger",
+    "slug": "granger",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Finisher"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/granger-portrait.png",
+      "avatar": "/assets/heroes/granger-avatar.png",
+      "splash": "/assets/heroes/granger-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h080",
+    "numericId": 80,
+    "name": "Guinevere",
+    "slug": "guinevere",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Magic Damage"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/guinevere-portrait.png",
+      "avatar": "/assets/heroes/guinevere-avatar.png",
+      "splash": "/assets/heroes/guinevere-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h081",
+    "numericId": 81,
+    "name": "Esmeralda",
+    "slug": "esmeralda",
+    "roles": [
+      "Tank",
+      "Mage"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Regen",
+      "Mixed Damage"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/esmeralda-portrait.png",
+      "avatar": "/assets/heroes/esmeralda-avatar.png",
+      "splash": "/assets/heroes/esmeralda-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h082",
+    "numericId": 82,
+    "name": "Terizla",
+    "slug": "terizla",
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Crowd Control"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/terizla-portrait.png",
+      "avatar": "/assets/heroes/terizla-avatar.png",
+      "splash": "/assets/heroes/terizla-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h083",
+    "numericId": 83,
+    "name": "X.Borg",
+    "slug": "x-borg",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Regen",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/x-borg-portrait.png",
+      "avatar": "/assets/heroes/x-borg-avatar.png",
+      "splash": "/assets/heroes/x-borg-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h084",
+    "numericId": 84,
+    "name": "Ling",
+    "slug": "ling",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/ling-portrait.png",
+      "avatar": "/assets/heroes/ling-avatar.png",
+      "splash": "/assets/heroes/ling-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h085",
+    "numericId": 85,
+    "name": "Dyrroth",
+    "slug": "dyrroth",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Jungling"
+    ],
+    "speciality": [
+      "Charge",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/dyrroth-portrait.png",
+      "avatar": "/assets/heroes/dyrroth-avatar.png",
+      "splash": "/assets/heroes/dyrroth-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h086",
+    "numericId": 86,
+    "name": "Lylia",
+    "slug": "lylia",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Push",
+      "Damage"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/lylia-portrait.png",
+      "avatar": "/assets/heroes/lylia-avatar.png",
+      "splash": "/assets/heroes/lylia-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h087",
+    "numericId": 87,
+    "name": "Baxia",
+    "slug": "baxia",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Support",
+      "Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/baxia-portrait.png",
+      "avatar": "/assets/heroes/baxia-avatar.png",
+      "splash": "/assets/heroes/baxia-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h088",
+    "numericId": 88,
+    "name": "Masha",
+    "slug": "masha",
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Push",
+      "Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/masha-portrait.png",
+      "avatar": "/assets/heroes/masha-avatar.png",
+      "splash": "/assets/heroes/masha-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h089",
+    "numericId": 89,
+    "name": "Wanwan",
+    "slug": "wanwan",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Burst"
+    ],
+    "difficulty": 80,
+    "assets": {
+      "portrait": "/assets/heroes/wanwan-portrait.png",
+      "avatar": "/assets/heroes/wanwan-avatar.png",
+      "splash": "/assets/heroes/wanwan-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h090",
+    "numericId": 90,
+    "name": "Silvanna",
+    "slug": "silvanna",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Initiator",
+      "Magic Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/silvanna-portrait.png",
+      "avatar": "/assets/heroes/silvanna-avatar.png",
+      "splash": "/assets/heroes/silvanna-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h091",
+    "numericId": 91,
+    "name": "Cecilion",
+    "slug": "cecilion",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Poke",
+      "Burst"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/cecilion-portrait.png",
+      "avatar": "/assets/heroes/cecilion-avatar.png",
+      "splash": "/assets/heroes/cecilion-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h092",
+    "numericId": 92,
+    "name": "Carmilla",
+    "slug": "carmilla",
+    "roles": [
+      "Support",
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Damage"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/carmilla-portrait.png",
+      "avatar": "/assets/heroes/carmilla-avatar.png",
+      "splash": "/assets/heroes/carmilla-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h093",
+    "numericId": 93,
+    "name": "Atlas",
+    "slug": "atlas",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Initiator"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/atlas-portrait.png",
+      "avatar": "/assets/heroes/atlas-avatar.png",
+      "splash": "/assets/heroes/atlas-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h094",
+    "numericId": 94,
+    "name": "Popol and Kupa",
+    "slug": "popol-and-kupa",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Jungling",
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Push",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/popol-and-kupa-portrait.png",
+      "avatar": "/assets/heroes/popol-and-kupa-avatar.png",
+      "splash": "/assets/heroes/popol-and-kupa-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h095",
+    "numericId": 95,
+    "name": "Yu Zhong",
+    "slug": "yu-zhong",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Regen",
+      "Damage"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/yu-zhong-portrait.png",
+      "avatar": "/assets/heroes/yu-zhong-avatar.png",
+      "splash": "/assets/heroes/yu-zhong-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h096",
+    "numericId": 96,
+    "name": "Luo Yi",
+    "slug": "luo-yi",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Support",
+      "Crowd Control"
+    ],
+    "difficulty": 80,
+    "assets": {
+      "portrait": "/assets/heroes/luo-yi-portrait.png",
+      "avatar": "/assets/heroes/luo-yi-avatar.png",
+      "splash": "/assets/heroes/luo-yi-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h097",
+    "numericId": 97,
+    "name": "Benedetta",
+    "slug": "benedetta",
+    "roles": [
+      "Assassin",
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 80,
+    "assets": {
+      "portrait": "/assets/heroes/benedetta-portrait.png",
+      "avatar": "/assets/heroes/benedetta-avatar.png",
+      "splash": "/assets/heroes/benedetta-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h098",
+    "numericId": 98,
+    "name": "Khaleed",
+    "slug": "khaleed",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Roaming",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Regen"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/khaleed-portrait.png",
+      "avatar": "/assets/heroes/khaleed-avatar.png",
+      "splash": "/assets/heroes/khaleed-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h099",
+    "numericId": 99,
+    "name": "Barats",
+    "slug": "barats",
+    "roles": [
+      "Tank",
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Jungling"
+    ],
+    "speciality": [
+      "Damage",
+      "Crowd Control"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/barats-portrait.png",
+      "avatar": "/assets/heroes/barats-avatar.png",
+      "splash": "/assets/heroes/barats-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h100",
+    "numericId": 100,
+    "name": "Brody",
+    "slug": "brody",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Finisher"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/brody-portrait.png",
+      "avatar": "/assets/heroes/brody-avatar.png",
+      "splash": "/assets/heroes/brody-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h101",
+    "numericId": 101,
+    "name": "Yve",
+    "slug": "yve",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Poke",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/yve-portrait.png",
+      "avatar": "/assets/heroes/yve-avatar.png",
+      "splash": "/assets/heroes/yve-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h102",
+    "numericId": 102,
+    "name": "Mathilda",
+    "slug": "mathilda",
+    "roles": [
+      "Support",
+      "Assassin"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Initiator",
+      "Guard"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/mathilda-portrait.png",
+      "avatar": "/assets/heroes/mathilda-avatar.png",
+      "splash": "/assets/heroes/mathilda-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h103",
+    "numericId": 103,
+    "name": "Paquito",
+    "slug": "paquito",
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 90,
+    "assets": {
+      "portrait": "/assets/heroes/paquito-portrait.png",
+      "avatar": "/assets/heroes/paquito-avatar.png",
+      "splash": "/assets/heroes/paquito-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h104",
+    "numericId": 104,
+    "name": "Gloo",
+    "slug": "gloo",
+    "roles": [
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Regen",
+      "Control"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/gloo-portrait.png",
+      "avatar": "/assets/heroes/gloo-avatar.png",
+      "splash": "/assets/heroes/gloo-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h105",
+    "numericId": 105,
+    "name": "Beatrix",
+    "slug": "beatrix",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/beatrix-portrait.png",
+      "avatar": "/assets/heroes/beatrix-avatar.png",
+      "splash": "/assets/heroes/beatrix-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h106",
+    "numericId": 106,
+    "name": "Phoveus",
+    "slug": "phoveus",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Regen",
+      "Damage"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/phoveus-portrait.png",
+      "avatar": "/assets/heroes/phoveus-avatar.png",
+      "splash": "/assets/heroes/phoveus-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h107",
+    "numericId": 107,
+    "name": "Natan",
+    "slug": "natan",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Magic Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/natan-portrait.png",
+      "avatar": "/assets/heroes/natan-avatar.png",
+      "splash": "/assets/heroes/natan-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h108",
+    "numericId": 108,
+    "name": "Aulus",
+    "slug": "aulus",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Jungling",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Charge"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/aulus-portrait.png",
+      "avatar": "/assets/heroes/aulus-avatar.png",
+      "splash": "/assets/heroes/aulus-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h109",
+    "numericId": 109,
+    "name": "Aamon",
+    "slug": "aamon",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Magic Damage"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/aamon-portrait.png",
+      "avatar": "/assets/heroes/aamon-avatar.png",
+      "splash": "/assets/heroes/aamon-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h110",
+    "numericId": 110,
+    "name": "Valentina",
+    "slug": "valentina",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Finisher"
+    ],
+    "difficulty": 80,
+    "assets": {
+      "portrait": "/assets/heroes/valentina-portrait.png",
+      "avatar": "/assets/heroes/valentina-avatar.png",
+      "splash": "/assets/heroes/valentina-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h111",
+    "numericId": 111,
+    "name": "Edith",
+    "slug": "edith",
+    "roles": [
+      "Tank",
+      "Marksman"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Roaming"
+    ],
+    "speciality": [
+      "Control",
+      "Burst"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/edith-portrait.png",
+      "avatar": "/assets/heroes/edith-avatar.png",
+      "splash": "/assets/heroes/edith-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h112",
+    "numericId": 112,
+    "name": "Floryn",
+    "slug": "floryn",
+    "roles": [
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Poke",
+      "Guard"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/floryn-portrait.png",
+      "avatar": "/assets/heroes/floryn-avatar.png",
+      "splash": "/assets/heroes/floryn-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h113",
+    "numericId": 113,
+    "name": "Yin",
+    "slug": "yin",
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling",
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Control"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/yin-portrait.png",
+      "avatar": "/assets/heroes/yin-avatar.png",
+      "splash": "/assets/heroes/yin-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h114",
+    "numericId": 114,
+    "name": "Melissa",
+    "slug": "melissa",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/melissa-portrait.png",
+      "avatar": "/assets/heroes/melissa-avatar.png",
+      "splash": "/assets/heroes/melissa-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h115",
+    "numericId": 115,
+    "name": "Xavier",
+    "slug": "xavier",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/xavier-portrait.png",
+      "avatar": "/assets/heroes/xavier-avatar.png",
+      "splash": "/assets/heroes/xavier-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h116",
+    "numericId": 116,
+    "name": "Julian",
+    "slug": "julian",
+    "roles": [
+      "Assassin",
+      "Fighter"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Magic Damage"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/julian-portrait.png",
+      "avatar": "/assets/heroes/julian-avatar.png",
+      "splash": "/assets/heroes/julian-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h117",
+    "numericId": 117,
+    "name": "Fredrinn",
+    "slug": "fredrinn",
+    "roles": [
+      "Fighter",
+      "Tank"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Damage",
+      "Chase"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/fredrinn-portrait.png",
+      "avatar": "/assets/heroes/fredrinn-avatar.png",
+      "splash": "/assets/heroes/fredrinn-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h118",
+    "numericId": 118,
+    "name": "Joy",
+    "slug": "joy",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Damage"
+    ],
+    "difficulty": 90,
+    "assets": {
+      "portrait": "/assets/heroes/joy-portrait.png",
+      "avatar": "/assets/heroes/joy-avatar.png",
+      "splash": "/assets/heroes/joy-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h119",
+    "numericId": 119,
+    "name": "Novaria",
+    "slug": "novaria",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Burst",
+      "Poke"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/novaria-portrait.png",
+      "avatar": "/assets/heroes/novaria-avatar.png",
+      "splash": "/assets/heroes/novaria-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h120",
+    "numericId": 120,
+    "name": "Arlott",
+    "slug": "arlott",
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Charge",
+      "Burst"
+    ],
+    "difficulty": 70,
+    "assets": {
+      "portrait": "/assets/heroes/arlott-portrait.png",
+      "avatar": "/assets/heroes/arlott-avatar.png",
+      "splash": "/assets/heroes/arlott-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h121",
+    "numericId": 121,
+    "name": "Ixia",
+    "slug": "ixia",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/ixia-portrait.png",
+      "avatar": "/assets/heroes/ixia-avatar.png",
+      "splash": "/assets/heroes/ixia-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h122",
+    "numericId": 122,
+    "name": "Nolan",
+    "slug": "nolan",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/nolan-portrait.png",
+      "avatar": "/assets/heroes/nolan-avatar.png",
+      "splash": "/assets/heroes/nolan-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h123",
+    "numericId": 123,
+    "name": "Cici",
+    "slug": "cici",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Regen"
+    ],
+    "difficulty": 20,
+    "assets": {
+      "portrait": "/assets/heroes/cici-portrait.png",
+      "avatar": "/assets/heroes/cici-avatar.png",
+      "splash": "/assets/heroes/cici-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h124",
+    "numericId": 124,
+    "name": "Chip",
+    "slug": "chip",
+    "roles": [
+      "Support",
+      "Tank"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Support",
+      "Crowd Control"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/chip-portrait.png",
+      "avatar": "/assets/heroes/chip-avatar.png",
+      "splash": "/assets/heroes/chip-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h125",
+    "numericId": 125,
+    "name": "Zhuxin",
+    "slug": "zhuxin",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Crowd Control"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/zhuxin-portrait.png",
+      "avatar": "/assets/heroes/zhuxin-avatar.png",
+      "splash": "/assets/heroes/zhuxin-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h126",
+    "numericId": 126,
+    "name": "Suyou",
+    "slug": "suyou",
+    "roles": [
+      "Assassin",
+      "Fighter"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/suyou-portrait.png",
+      "avatar": "/assets/heroes/suyou-avatar.png",
+      "splash": "/assets/heroes/suyou-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h127",
+    "numericId": 127,
+    "name": "Lukas",
+    "slug": "lukas",
+    "roles": [
+      "Fighter"
+    ],
+    "lanes": [
+      "Exp Lane",
+      "Jungling"
+    ],
+    "speciality": [
+      "Regen",
+      "Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/lukas-portrait.png",
+      "avatar": "/assets/heroes/lukas-avatar.png",
+      "splash": "/assets/heroes/lukas-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h128",
+    "numericId": 128,
+    "name": "Kalea",
+    "slug": "kalea",
+    "roles": [
+      "Support",
+      "Fighter"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Control",
+      "Regen"
+    ],
+    "difficulty": 40,
+    "assets": {
+      "portrait": "/assets/heroes/kalea-portrait.png",
+      "avatar": "/assets/heroes/kalea-avatar.png",
+      "splash": "/assets/heroes/kalea-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h129",
+    "numericId": 129,
+    "name": "Zetian",
+    "slug": "zetian",
+    "roles": [
+      "Mage"
+    ],
+    "lanes": [
+      "Mid Lane"
+    ],
+    "speciality": [
+      "Damage",
+      "Crowd Control"
+    ],
+    "difficulty": 10,
+    "assets": {
+      "portrait": "/assets/heroes/zetian-portrait.png",
+      "avatar": "/assets/heroes/zetian-avatar.png",
+      "splash": "/assets/heroes/zetian-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h130",
+    "numericId": 130,
+    "name": "Obsidia",
+    "slug": "obsidia",
+    "roles": [
+      "Marksman"
+    ],
+    "lanes": [
+      "Gold Lane"
+    ],
+    "speciality": [
+      "Finisher",
+      "Damage"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/obsidia-portrait.png",
+      "avatar": "/assets/heroes/obsidia-avatar.png",
+      "splash": "/assets/heroes/obsidia-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h131",
+    "numericId": 131,
+    "name": "Sora",
+    "slug": "sora",
+    "roles": [
+      "Fighter",
+      "Assassin"
+    ],
+    "lanes": [
+      "Exp Lane"
+    ],
+    "speciality": [
+      "Charge",
+      "Burst"
+    ],
+    "difficulty": 50,
+    "assets": {
+      "portrait": "/assets/heroes/sora-portrait.png",
+      "avatar": "/assets/heroes/sora-avatar.png",
+      "splash": "/assets/heroes/sora-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h132",
+    "numericId": 132,
+    "name": "Marcel",
+    "slug": "marcel",
+    "roles": [
+      "Support"
+    ],
+    "lanes": [
+      "Roaming"
+    ],
+    "speciality": [
+      "Crowd Control",
+      "Support"
+    ],
+    "difficulty": 30,
+    "assets": {
+      "portrait": "/assets/heroes/marcel-portrait.png",
+      "avatar": "/assets/heroes/marcel-avatar.png",
+      "splash": "/assets/heroes/marcel-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  },
+  {
+    "id": "h133",
+    "numericId": 133,
+    "name": "Hirara",
+    "slug": "hirara",
+    "roles": [
+      "Assassin"
+    ],
+    "lanes": [
+      "Jungling"
+    ],
+    "speciality": [
+      "Chase",
+      "Finisher"
+    ],
+    "difficulty": 60,
+    "assets": {
+      "portrait": "/assets/heroes/hirara-portrait.png",
+      "avatar": "/assets/heroes/hirara-avatar.png",
+      "splash": "/assets/heroes/hirara-splash.jpg"
+    },
+    "metadata": {
+      "source": "Moonton GMS API (via metode warungerik/MLBB-Hero-Scraper, MIT)",
+      "sourceUrl": "https://github.com/warungerik/MLBB-Hero-Scraper",
+      "lastUpdated": "2026-10-04"
+    }
+  }
+]

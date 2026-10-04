@@ -1,0 +1,16 @@
+node_modules/
+dist/
+
+# log proses lokal
+.server-*.log
+.server-*.err.log
+
+# data runtime (berubah tiap sesi; dibuat ulang otomatis oleh server)
+server/data/state.json
+server/data/matches-index.json
+server/data/backups/
+server/data/matches/
+server/data/logos/
+
+# hasil uji (dihasilkan ulang oleh `npm test` / `npm run test:server`)
+scripts/report/

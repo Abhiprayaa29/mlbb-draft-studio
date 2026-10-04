@@ -1,0 +1,388 @@
+{
+  "metadata": {
+    "title": "MLBB Professional Meta Draft Pick Data 2026 By MPL",
+    "source": "github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "sourceUrl": "https://github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "licenseDeclared": "MIT (dinyatakan di README; file LICENSE tidak tersedia di repo)",
+    "importedAt": "2026-10-04T02:23:25.427Z"
+  },
+  "lanes": {
+    "exp_lane": {
+      "h104": {
+        "heroId": "h104",
+        "name": "Gloo",
+        "tier": "S-Tier"
+      },
+      "h120": {
+        "heroId": "h120",
+        "name": "Arlott",
+        "tier": "S-Tier"
+      },
+      "h123": {
+        "heroId": "h123",
+        "name": "Cici",
+        "tier": "A-Tier"
+      },
+      "h004": {
+        "heroId": "h004",
+        "name": "Alice",
+        "tier": "A-Tier"
+      },
+      "h103": {
+        "heroId": "h103",
+        "name": "Paquito",
+        "tier": "A-Tier"
+      },
+      "h037": {
+        "heroId": "h037",
+        "name": "Lapu-Lapu",
+        "tier": "A-Tier"
+      }
+    },
+    "roamer": {
+      "h132": {
+        "heroId": "h132",
+        "name": "Marcel",
+        "tier": "S-Tier"
+      },
+      "h112": {
+        "heroId": "h112",
+        "name": "Floryn",
+        "tier": "S-Tier"
+      },
+      "h093": {
+        "heroId": "h093",
+        "name": "Atlas",
+        "tier": "S-Tier"
+      },
+      "h070": {
+        "heroId": "h070",
+        "name": "Belerick",
+        "tier": "S-Tier"
+      },
+      "h019": {
+        "heroId": "h019",
+        "name": "Minotaur",
+        "tier": "A-Tier"
+      },
+      "h049": {
+        "heroId": "h049",
+        "name": "Hylos",
+        "tier": "A-Tier"
+      },
+      "h035": {
+        "heroId": "h035",
+        "name": "Hilda",
+        "tier": "A-Tier"
+      }
+    },
+    "mid_lane": {
+      "h125": {
+        "heroId": "h125",
+        "name": "Zhuxin",
+        "tier": "S-Tier"
+      },
+      "h023": {
+        "heroId": "h023",
+        "name": "Gord",
+        "tier": "S-Tier"
+      },
+      "h110": {
+        "heroId": "h110",
+        "name": "Valentina",
+        "tier": "A-Tier"
+      },
+      "h071": {
+        "heroId": "h071",
+        "name": "Kimmy",
+        "tier": "A-Tier"
+      },
+      "h096": {
+        "heroId": "h096",
+        "name": "Luo Yi",
+        "tier": "A-Tier"
+      }
+    },
+    "gold_lane": {
+      "h065": {
+        "heroId": "h065",
+        "name": "Claude",
+        "tier": "S-Tier"
+      },
+      "h073": {
+        "heroId": "h073",
+        "name": "Harith",
+        "tier": "S-Tier"
+      },
+      "h040": {
+        "heroId": "h040",
+        "name": "Karrie",
+        "tier": "A-Tier"
+      }
+    },
+    "jungler": {
+      "h067": {
+        "heroId": "h067",
+        "name": "Leomord",
+        "tier": "S-Tier"
+      },
+      "h126": {
+        "heroId": "h126",
+        "name": "Suyou",
+        "tier": "S-Tier"
+      },
+      "h117": {
+        "heroId": "h117",
+        "name": "Fredrinn",
+        "tier": "S-Tier"
+      },
+      "h042": {
+        "heroId": "h042",
+        "name": "Harley",
+        "tier": "A-Tier"
+      },
+      "h080": {
+        "heroId": "h080",
+        "name": "Guinevere",
+        "tier": "A-Tier"
+      }
+    }
+  },
+  "counterPicks": {
+    "exp_lane": [
+      {
+        "heroId": "h082",
+        "name": "Terizla",
+        "tier": "S-Tier"
+      },
+      {
+        "heroId": "h106",
+        "name": "Phoveus",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h095",
+        "name": "Yu Zhong",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h097",
+        "name": "Benedetta",
+        "tier": "B-Tier"
+      }
+    ],
+    "roamer": [
+      {
+        "heroId": "h026",
+        "name": "Chou",
+        "tier": "S-Tier"
+      },
+      {
+        "heroId": "h062",
+        "name": "Kaja",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h006",
+        "name": "Tigreal",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h048",
+        "name": "Diggie",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h098",
+        "name": "Khaleed",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h102",
+        "name": "Mathilda",
+        "tier": "B-Tier"
+      },
+      {
+        "heroId": "h020",
+        "name": "Lolita",
+        "tier": "B-Tier"
+      }
+    ],
+    "mid_lane": [
+      {
+        "heroId": "h052",
+        "name": "Pharsa",
+        "tier": "S-Tier"
+      },
+      {
+        "heroId": "h101",
+        "name": "Yve",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h119",
+        "name": "Novaria",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h086",
+        "name": "Lylia",
+        "tier": "B-Tier"
+      },
+      {
+        "heroId": "h025",
+        "name": "Kagura",
+        "tier": "B-Tier"
+      }
+    ],
+    "gold_lane": [
+      {
+        "heroId": "h100",
+        "name": "Brody",
+        "tier": "S-Tier"
+      },
+      {
+        "heroId": "h114",
+        "name": "Melissa",
+        "tier": "S-Tier"
+      },
+      {
+        "heroId": "h094",
+        "name": "Popol and Kupa",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h022",
+        "name": "Freya",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h031",
+        "name": "Moskov",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h012",
+        "name": "Bruno",
+        "tier": "B-Tier"
+      }
+    ],
+    "jungler": [
+      {
+        "heroId": "h058",
+        "name": "Martis",
+        "tier": "S-Tier"
+      },
+      {
+        "heroId": "h087",
+        "name": "Baxia",
+        "tier": "S-Tier"
+      },
+      {
+        "heroId": "h017",
+        "name": "Fanny",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h002",
+        "name": "Balmond",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h028",
+        "name": "Alpha",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h099",
+        "name": "Barats",
+        "tier": "A-Tier"
+      },
+      {
+        "heroId": "h122",
+        "name": "Nolan",
+        "tier": "A-Tier"
+      }
+    ]
+  },
+  "heroTier": {
+    "h104": {
+      "exp_lane": "S-Tier"
+    },
+    "h120": {
+      "exp_lane": "S-Tier"
+    },
+    "h123": {
+      "exp_lane": "A-Tier"
+    },
+    "h004": {
+      "exp_lane": "A-Tier"
+    },
+    "h103": {
+      "exp_lane": "A-Tier"
+    },
+    "h037": {
+      "exp_lane": "A-Tier"
+    },
+    "h132": {
+      "roamer": "S-Tier"
+    },
+    "h112": {
+      "roamer": "S-Tier"
+    },
+    "h093": {
+      "roamer": "S-Tier"
+    },
+    "h070": {
+      "roamer": "S-Tier"
+    },
+    "h019": {
+      "roamer": "A-Tier"
+    },
+    "h049": {
+      "roamer": "A-Tier"
+    },
+    "h035": {
+      "roamer": "A-Tier"
+    },
+    "h125": {
+      "mid_lane": "S-Tier"
+    },
+    "h023": {
+      "mid_lane": "S-Tier"
+    },
+    "h110": {
+      "mid_lane": "A-Tier"
+    },
+    "h071": {
+      "mid_lane": "A-Tier"
+    },
+    "h096": {
+      "mid_lane": "A-Tier"
+    },
+    "h065": {
+      "gold_lane": "S-Tier"
+    },
+    "h073": {
+      "gold_lane": "S-Tier"
+    },
+    "h040": {
+      "gold_lane": "A-Tier"
+    },
+    "h067": {
+      "jungler": "S-Tier"
+    },
+    "h126": {
+      "jungler": "S-Tier"
+    },
+    "h117": {
+      "jungler": "S-Tier"
+    },
+    "h042": {
+      "jungler": "A-Tier"
+    },
+    "h080": {
+      "jungler": "A-Tier"
+    }
+  }
+}

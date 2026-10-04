@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "source": "github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "sourceUrl": "https://github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "licenseDeclared": "MIT (dinyatakan di README; file LICENSE tidak tersedia di repo)",
+    "importedAt": "2026-10-04T02:23:25.427Z"
+  },
+  "emblems": [
+    {
+      "name": "Basic Common Emblem",
+      "attributes": {
+        "Physical Attack": 12,
+        "Magic Power": 12
+      },
+      "standard_talents": [
+        {
+          "name": "Life Drain",
+          "description": "Kill a minion to restore 150 HP."
+        },
+        {
+          "name": "Rupture",
+          "description": "Gain 5 Adaptive Penetration."
+        }
+      ],
+      "core_talents": [
+        {
+          "name": "Firmness",
+          "description": "Gain 4 Physical and Magic Defense."
+        },
+        {
+          "name": "Seasoned Hunter",
+          "description": "Damage to Lord/Turtle increased by 15%."
+        },
+        {
+          "name": "Swift",
+          "description": "Gain 10% Attack Speed."
+        },
+        {
+          "name": "Weapon Master",
+          "description": "Physical Attack and Magic Power gained from equipment and emblems increased by 15%."
+        }
+      ]
+    },
+    {
+      "name": "Custom Tank Emblem",
+      "attributes": {
+        "HP": 225,
+        "Hybrid Defense": 10
+      },
+      "standard_talents": [
+        {
+          "name": "Firmness",
+          "description": "Gain 4 Physical and Magic Defense."
+        },
+        {
+          "name": "Tenacity",
+          "description": "When HP is below 50%, gain 15 extra Physical and Magic Defense."
+        }
+      ],
+      "core_talents": [
+        {
+          "name": "Concussive Blast",
+          "description": "Every 15s, your next Basic Attack deals extra Magic Damage equal to 120 + 4% of your Max HP to nearby enemies."
+        }
+      ]
+    },
+    {
+      "name": "Custom Assassin Emblem",
+      "attributes": {
+        "Adaptive Penetration": 13.5,
+        "Adaptive Attack": 12,
+        "Movement Speed": 3
+      },
+      "standard_talents": [
+        {
+          "name": "Rupture",
+          "description": "Gain 5 Adaptive Penetration."
+        },
+        {
+          "name": "Master Assassin",
+          "description": "Deal 7% extra damage to a single enemy hero."
+        }
+      ],
+      "core_talents": [
+        {
+          "name": "Fatal Snare",
+          "description": "When dealing damage to an enemy hero, deal extra 30-60 adaptive damage and slow them by 20% for 1s."
+        }
+      ]
+    },
+    {
+      "name": "Custom Mage Emblem",
+      "attributes": {
+        "Magic Power": 30,
+        "Cooldown Reduction": 5,
+        "Magic Penetration": 8
+      },
+      "standard_talents": [
+        {
+          "name": "Rupture",
+          "description": "Gain 5 Adaptive Penetration."
+        },
+        {
+          "name": "Bargain Hunter",
+          "description": "Equipment prices are reduced to 90% of their original price."
+        }
+      ],
+      "core_talents": [
+        {
+          "name": "Impure Rage",
+          "description": "Dealing damage with skills deals extra 30-100 adaptive damage and restores 2% of Max Mana."
+        }
+      ]
+    },
+    {
+      "name": "Custom Fighter Emblem",
+      "attributes": {
+        "Adaptive Attack": 14,
+        "Adaptive Defense": 12,
+        "Spell Vamp": 5
+      },
+      "standard_talents": [
+        {
+          "name": "Firmness",
+          "description": "Gain 4 Physical and Magic Defense."
+        },
+        {
+          "name": "Festival of Blood",
+          "description": "Gain 6% Spell Vamp. Each kill or assist grants 0.5% extra Spell Vamp (up to 12%)."
+        }
+      ],
+      "core_talents": [
+        {
+          "name": "Unbending Will",
+          "description": "Damage dealt increases by 0.2% for every 1% of HP lost (up to 12%)."
+        }
+      ]
+    },
+    {
+      "name": "Custom Support Emblem",
+      "attributes": {
+        "Cooldown Reduction": 10,
+        "Hybrid Regen": 10,
+        "Movement Speed": 4
+      },
+      "standard_talents": [
+        {
+          "name": "Agility",
+          "description": "Gain 5% Movement Speed."
+        },
+        {
+          "name": "Pull Yourself Together",
+          "description": "Battle spell cooldown is reduced by 15%. Equipment cooldown is reduced by 15%."
+        }
+      ],
+      "core_talents": [
+        {
+          "name": "Focus Mark",
+          "description": "When dealing damage to an enemy hero, your team deals 6% extra damage to them for 3s."
+        }
+      ]
+    },
+    {
+      "name": "Custom Marksman Emblem",
+      "attributes": {
+        "Attack Speed": 15,
+        "Adaptive Attack": 12,
+        "Life Steal": 5
+      },
+      "standard_talents": [
+        {
+          "name": "Fatal",
+          "description": "Gain 5% Critical Chance and 10% Critical Damage."
+        },
+        {
+          "name": "Doom",
+          "description": "Gain 15% Critical Damage."
+        }
+      ],
+      "core_talents": [
+        {
+          "name": "Weakness Finder",
+          "description": "Basic Attacks have a 20% chance to slow the target by 90% and reduce their attack speed by 50% for 1s."
+        }
+      ]
+    }
+  ]
+}

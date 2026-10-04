@@ -1,0 +1,370 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Design system — MLBB Draft Studio
+   Dark navy/charcoal, sisi blue vs red, aksen gold untuk fase penting.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/assets/fonts/BebasNeue-Regular.woff2') format('woff2'),
+       url('/assets/fonts/BebasNeue-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-ink-950: #05070d;
+  --color-ink-900: #0a0f1a;
+  --color-ink-850: #0d1422;
+  --color-ink-800: #111a2c;
+  --color-ink-700: #182441;
+  --color-ink-600: #233255;
+  --color-ink-500: #35456b;
+  --color-ink-400: #5a6b93;
+  --color-ink-300: #8b9ac0;
+
+  --color-side-blue: #2f80ff;
+  --color-side-blue-dim: #14406f;
+  --color-side-red: #ff2d55;
+  --color-side-red-dim: #6b1128;
+  --color-gold: #f5c451;
+  --color-gold-dim: #7a5c1c;
+  --color-mint: #35d399;
+
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-sans: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-ink-950);
+  color: #e8edf7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+/* panel berlapis */
+.panel {
+  background: linear-gradient(180deg, #101828 0%, #0b111d 100%);
+  border: 1px solid var(--color-ink-700);
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--color-ink-700);
+  background: rgba(255, 255, 255, 0.02);
+  font-family: var(--font-display);
+  letter-spacing: 0.09em;
+  font-size: 15px;
+  color: #cdd8f0;
+}
+
+.hairline {
+  border: 1px solid var(--color-ink-700);
+}
+
+/* input konsisten */
+.inp {
+  width: 100%;
+  background: var(--color-ink-900);
+  border: 1px solid var(--color-ink-600);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 13px;
+  color: #eaf0ff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.inp:focus {
+  border-color: var(--color-side-blue);
+  box-shadow: 0 0 0 2px rgba(47, 128, 255, 0.22);
+}
+.inp::placeholder {
+  color: #55628a;
+}
+
+/* tombol */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 4px;
+  border: 1px solid var(--color-ink-600);
+  background: #16203a;
+  color: #dbe4fb;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 7px 11px;
+  cursor: pointer;
+  transition: background 0.14s ease, border-color 0.14s ease, transform 0.06s ease;
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) {
+  background: #1d2a4a;
+  border-color: var(--color-ink-500);
+}
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: linear-gradient(180deg, #2f80ff 0%, #1b5fd0 100%);
+  border-color: #4b93ff;
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, #3f8cff 0%, #2268dd 100%);
+}
+.btn-gold {
+  background: linear-gradient(180deg, #f5c451 0%, #c99a2c 100%);
+  border-color: #ffda8a;
+  color: #26190a;
+}
+.btn-gold:hover:not(:disabled) {
+  background: linear-gradient(180deg, #ffd06a 0%, #d6a635 100%);
+}
+.btn-danger {
+  background: linear-gradient(180deg, #ff2d55 0%, #b81238 100%);
+  border-color: #ff6484;
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+}
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 11.5px;
+}
+
+.chip {
+  border: 1px solid var(--color-ink-600);
+  background: #121a2e;
+  color: #a9b7db;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: all 0.13s ease;
+}
+.chip:hover {
+  border-color: var(--color-ink-400);
+  color: #dce5fb;
+}
+.chip[data-active='true'] {
+  background: rgba(47, 128, 255, 0.18);
+  border-color: var(--color-side-blue);
+  color: #cfe2ff;
+}
+
+/* scrollbar */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3a61 transparent;
+}
+.thin-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #2a3a61;
+  border-radius: 6px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* slot hero */
+.slot {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-ink-600);
+  background: #0a0f1b;
+  border-radius: 4px;
+}
+.slot-blue {
+  border-color: rgba(47, 128, 255, 0.55);
+  box-shadow: 0 0 0 1px rgba(47, 128, 255, 0.12), 0 0 14px rgba(47, 128, 255, 0.16) inset;
+}
+.slot-red {
+  border-color: rgba(255, 45, 85, 0.55);
+  box-shadow: 0 0 0 1px rgba(255, 45, 85, 0.12), 0 0 14px rgba(255, 45, 85, 0.16) inset;
+}
+.slot-empty {
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 8px, transparent 8px 16px),
+    #0a0f1b;
+}
+
+/* indikator giliran aktif */
+.turn-active {
+  animation: turnPulse 1.6s ease-in-out infinite;
+}
+@keyframes turnPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 196, 81, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(245, 196, 81, 0);
+  }
+}
+
+/* peringatan countdown: berdenyut saat waktu hampir habis */
+.timer-warn {
+  animation: timerWarn 1s ease-in-out infinite;
+}
+@keyframes timerWarn {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(255, 45, 85, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 42px rgba(255, 45, 85, 0.85);
+  }
+}
+.timer-warn-text {
+  animation: timerWarnText 1s steps(2, end) infinite;
+}
+@keyframes timerWarnText {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* hero reveal */
+.hero-reveal {
+  animation: heroReveal var(--anim-ms, 600ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    transform: scale(1.28) translateY(-8px);
+    filter: brightness(2.4) saturate(0.2);
+  }
+  55% {
+    opacity: 1;
+    filter: brightness(1.15) saturate(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: brightness(1) saturate(1);
+  }
+}
+
+.ban-mark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom right, transparent calc(50% - 2px), #ff2d55 50%, transparent calc(50% + 2px)),
+    linear-gradient(to bottom left, transparent calc(50% - 2px), #ff2d55 50%, transparent calc(50% + 2px)),
+    rgba(4, 6, 12, 0.62);
+  animation: banSlash var(--anim-ms, 600ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes banSlash {
+  from {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.score-pop {
+  animation: scorePop 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes scorePop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.35);
+    color: #f5c451;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.32s ease both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* status koneksi */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-on {
+  background: var(--color-mint);
+  box-shadow: 0 0 8px rgba(53, 211, 153, 0.9);
+}
+.dot-off {
+  background: #ff4d6d;
+  box-shadow: 0 0 8px rgba(255, 77, 109, 0.8);
+}
+
+/* overlay: latar bening, hanya elemen yang diperlukan */
+.overlay-root {
+  background: transparent !important;
+  overflow: hidden;
+}
+.overlay-root::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal,
+  .ban-mark::after,
+  .score-pop,
+  .fade-in,
+  .turn-active,
+  .timer-warn,
+  .timer-warn-text {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

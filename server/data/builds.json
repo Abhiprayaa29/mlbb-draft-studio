@@ -1,0 +1,7531 @@
+{
+  "metadata": {
+    "source": "github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "sourceUrl": "https://github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "licenseDeclared": "MIT (dinyatakan di README; file LICENSE tidak tersedia di repo)",
+    "importedAt": "2026-10-04T02:23:25.427Z"
+  },
+  "builds": [
+    {
+      "heroId": "h109",
+      "name": "Aamon",
+      "role": "Assassin",
+      "speciality": [
+        "Jungle",
+        "Chase",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Magic Emblem",
+            "Thrill",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Feather of Heaven",
+            "Genius Wand",
+            "Holy Crystal",
+            "Star Shard / Concentrated Energy",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Magic Emblem",
+            "Swift",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Feather of Heaven",
+            "Genius Wand",
+            "Glowing Wand",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h009",
+      "name": "Akai",
+      "role": "Tank",
+      "speciality": [
+        "Guard",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Thrill",
+            "Wilderness Blessing",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Antique Cuirass",
+            "Guardian Helmet",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Cursed Helmet",
+            "Guardian Helmet",
+            "Blade of the Heptaseas",
+            "Endless Battle",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Focusing Mark",
+            "Tenacity",
+            "Inspire"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Guardian Helmet",
+            "Cursed Helmet",
+            "Blade Armor",
+            "Chastise Pauldron",
+            "Fleeting Time"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h064",
+      "name": "Aldous",
+      "role": "Fighter",
+      "speciality": [
+        "Burst",
+        "Support"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Tenacity",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Thunder Belt",
+            "Blade of Despair",
+            "War Axe",
+            "Rose Gold Meteor",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Endless Battle",
+            "Haas' Claws",
+            "Rose Gold Meteor",
+            "Oracle",
+            "Queen's Wings",
+            "Rapid Boots"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Master Assassin",
+            "Killing Spree"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Blade of the Heptaseas",
+            "Thunder Belt",
+            "Sky Piercer",
+            "Malefic Roar",
+            "Guardian Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h004",
+      "name": "Alice",
+      "role": "Tank, Mage",
+      "speciality": [
+        "Charge",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Oracle",
+            "Warrior Boots",
+            "Chastise Pauldron",
+            "Brute Force Breastplate",
+            "Radiant Armor",
+            "Dominance Ice"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Vitality",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Oracle",
+            "Tough Boots",
+            "Cursed Helmet",
+            "Dominance Ice",
+            "Antique Cuirass",
+            "Athena's Shield"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Brave Smite",
+            "Festival of Blood",
+            "Agility"
+          ],
+          "items": [
+            "Warrior Boots",
+            "Radiant Armor",
+            "Oracle",
+            "Chastise Pauldron",
+            "Dominance Ice",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h028",
+      "name": "Alpha",
+      "role": "Fighter",
+      "speciality": [
+        "Charge",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "Sky Piercer",
+            "War Axe",
+            "Brute Force Breastplate",
+            "Blade of Despair",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Rapid Boots",
+            "War Axe",
+            "Hunter Strike",
+            "Blade of Despair",
+            "Rose Gold Meteor",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "Sea Halberd",
+            "War Axe",
+            "Blade of Despair",
+            "Queen's Wings",
+            "Great Dragon Spear"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h007",
+      "name": "Alucard",
+      "role": "Fighter, Assassin",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Blade of Despair",
+            "Tough Boots",
+            "War Axe",
+            "Endless Battle",
+            "Queen's Wings",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Brute Force Breastplate",
+            "Queen's Wings",
+            "Blade of Despair",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Berserker's Fury",
+            "Tough Boots",
+            "Endless Battle",
+            "Blade of Despair",
+            "Queen's Wings",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h055",
+      "name": "Angela",
+      "role": "Support",
+      "speciality": [
+        "Guard",
+        "Support"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Pull Yourself Together",
+            "Impure Rage"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Fleeting Time",
+            "Sky Piercer",
+            "Lightning Truncheon",
+            "Holy Crystal",
+            "Genius Wand"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Impure Rage",
+            "Tenacity",
+            "Rupture"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Flask of the Oasis",
+            "Cursed Helmet",
+            "Clock of Destiny",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Arrival",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Flask of the Oasis",
+            "Oracle",
+            "Chastise Pauldron",
+            "Antique Cuirass",
+            "Guardian Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h045",
+      "name": "Argus",
+      "role": "Fighter",
+      "speciality": [
+        "Charge",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Weakness Finder",
+            "Master Assassin",
+            "Swift"
+          ],
+          "items": [
+            "Haas' Claws",
+            "Hunter Strike",
+            "Great Dragon Spear",
+            "Rose Gold Meteor",
+            "Sea Halberd",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Swift",
+            "Bargain Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Windtalker",
+            "Corrosion Scythe",
+            "Great Dragon Spear",
+            "Haas' Claws",
+            "Berserker's Fury",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Pull Yourself Together",
+            "War Cry"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Windtalker",
+            "Berserker's Fury",
+            "Haas' Claws",
+            "Great Dragon Spear",
+            "Demon Hunter Sword"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h120",
+      "name": "Arlott",
+      "role": "Fighter, Assassin",
+      "speciality": [
+        "Charge",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "War Cry"
+          ],
+          "items": [
+            "War Axe",
+            "Tough Boots",
+            "Brute Force Breastplate",
+            "Oracle",
+            "Dominance Ice",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Hunter Strike",
+            "Tough Boots",
+            "Oracle",
+            "Dominance Ice",
+            "Brute Force Breastplate",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Master Assassin",
+            "Brave Smite"
+          ],
+          "items": [
+            "Hunter Strike",
+            "Tough Boots",
+            "Queen's Wings",
+            "Chastise Pauldron",
+            "Oracle",
+            "Dominance Ice"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h093",
+      "name": "Atlas",
+      "role": "Tank",
+      "speciality": [
+        "Crowd Control",
+        "Initiator"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Concussive Blast",
+            "Pull Yourself Together",
+            "Firmness"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Guardian Helmet",
+            "Fleeting Time",
+            "Dominance Ice",
+            "Radiant Armor",
+            "Antique Cuirass"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Fleeting Time",
+            "Oracle",
+            "Queen's Wings",
+            "Flask of the Oasis",
+            "Cursed Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h108",
+      "name": "Aulus",
+      "role": "Fighter",
+      "speciality": [
+        "Damage",
+        "Charge"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Brave Smite",
+            "Bargain Hunter",
+            "Thrill"
+          ],
+          "items": [
+            "Magic Shoes",
+            "War Axe",
+            "Queen's Wings",
+            "Rose Gold Meteor",
+            "Malefic Roar",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Endless Battle",
+            "Queen's Wings",
+            "Great Dragon Spear",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Impure Rage"
+          ],
+          "items": [
+            "Tough Boots",
+            "Haas' Claws",
+            "War Axe",
+            "Brute Force Breastplate",
+            "Corrosion Scythe",
+            "Malefic Gun"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h036",
+      "name": "Aurora",
+      "role": "Mage",
+      "speciality": [
+        "Crowd Control",
+        "Poke"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Glowing Wand",
+            "Arcane Boots",
+            "Enchanted Talisman",
+            "Divine Glaive",
+            "Holy Crystal",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Genius Wand",
+            "Blood Wings",
+            "Holy Crystal",
+            "Glowing Wand",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h077",
+      "name": "Badang",
+      "role": "Fighter",
+      "speciality": [
+        "Charge",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Firmness",
+            "Tenacity",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Oracle",
+            "Rose Gold Meteor",
+            "Blade Armor"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Focusing Mark",
+            "Wilderness Blessing",
+            "Agility"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Oracle",
+            "Dominance Ice",
+            "Brute Force Breastplate",
+            "Athena's Shield",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Agility",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Blade of Despair",
+            "Hunter Strike",
+            "Sky Piercer",
+            "Malefic Roar",
+            "Berserker's Fury"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h002",
+      "name": "Balmond",
+      "role": "Fighter",
+      "speciality": [
+        "Damage",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Festival of Blood",
+            "Killing Spree"
+          ],
+          "items": [
+            "Warrior Boots",
+            "War Axe",
+            "Sky Piercer",
+            "Queen's Wings",
+            "Dominance Ice",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Killing Spree",
+            "Festival of Blood",
+            "Thrill"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Sky Piercer",
+            "Queen's Wings",
+            "Blade of Despair",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Firmness",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Magic Shoes",
+            "War Axe",
+            "Queen's Wings",
+            "Oracle",
+            "Guardian Helmet",
+            "Cursed Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h011",
+      "name": "Bane",
+      "role": "Fighter, Mage",
+      "speciality": [
+        "Push",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Starlium Scythe",
+            "Blood Wings",
+            "Endless Battle",
+            "Malefic Roar",
+            "Dominance Ice"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Endless Battle",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Firmness",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Holy Crystal",
+            "Sky Piercer",
+            "Fleeting Time",
+            "Enchanted Talisman",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h099",
+      "name": "Barats",
+      "role": "Tank, Fighter",
+      "speciality": [
+        "Damage",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "War Axe",
+            "Endless Battle",
+            "Oracle",
+            "Queen's Wings",
+            "Chastise Pauldron",
+            "Radiant Armor"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Impure Rage"
+          ],
+          "items": [
+            "Warrior Boots",
+            "War Axe",
+            "Endless Battle",
+            "Dominance Ice",
+            "Brute Force Breastplate",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Killing Spree",
+            "Festival of Blood",
+            "Thrill"
+          ],
+          "items": [
+            "War Axe",
+            "Tough Boots",
+            "Sky Piercer",
+            "Guardian Helmet",
+            "Antique Cuirass",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h087",
+      "name": "Baxia",
+      "role": "Tank",
+      "speciality": [
+        "Support",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Firmness",
+            "Seasoned Hunter",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Guardian Helmet",
+            "Chastise Pauldron",
+            "Glowing Wand",
+            "Antique Cuirass",
+            "Radiant Armor"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Firmness",
+            "Tenacity",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Tough Boots",
+            "Cursed Helmet",
+            "Antique Cuirass",
+            "Dominance Ice",
+            "Athena's Shield",
+            "Radiant Armor"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Tenacity",
+            "Brave Smite",
+            "Vitality"
+          ],
+          "items": [
+            "Tough Boots",
+            "Oracle",
+            "Dominance Ice",
+            "Athena's Shield",
+            "Antique Cuirass",
+            "Guardian Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h105",
+      "name": "Beatrix",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Rupture",
+            "Weapon Master",
+            "War Cry"
+          ],
+          "items": [
+            "Swift Boots",
+            "Golden Staff",
+            "Hunter Strike",
+            "Malefic Roar",
+            "Blade of Despair",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Blade of Despair",
+            "Malefic Gun",
+            "Sea Halberd",
+            "Warrior Boots",
+            "Wind of Nature",
+            "Hunter Strike"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Quantum Charge",
+            "Weapon Master",
+            "Thrill"
+          ],
+          "items": [
+            "Swift Boots",
+            "Sea Halberd",
+            "Haas' Claws",
+            "Blade of Despair",
+            "Malefic Gun",
+            "Rose Gold Meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h070",
+      "name": "Belerick",
+      "role": "Tank",
+      "speciality": [
+        "Crowd Control",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Radiant Armor",
+            "Antique Cuirass",
+            "Dominance Ice",
+            "Blade Armor",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Rupture",
+            "Pull Yourself Together",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Corrosion Scythe",
+            "Guardian Helmet",
+            "Oracle",
+            "Holy Crystal",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Thunder Belt",
+            "Blade Armor",
+            "Dominance Ice",
+            "Oracle",
+            "Immortality",
+            "Chastise Pauldron"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h097",
+      "name": "Benedetta",
+      "role": "Assassin, Fighter",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Blade of Despair",
+            "Endless Battle",
+            "Hunter Strike",
+            "Malefic Roar",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Festival of Blood",
+            "Thrill",
+            "Impure Rage"
+          ],
+          "items": [
+            "War Axe",
+            "Fury Hammer",
+            "Sea Halberd",
+            "Endless Battle",
+            "Malefic Roar",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Blade of the Heptaseas",
+            "Sky Piercer",
+            "Endless Battle",
+            "Sea Halberd",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h100",
+      "name": "Brody",
+      "role": "Marksman",
+      "speciality": [
+        "Burst",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Malefic Gun",
+            "Tough Boots",
+            "Sky Piercer",
+            "Hunter Strike",
+            "Great Dragon Spear"
+          ]
+        },
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Tough Boots",
+            "Sky Piercer",
+            "Malefic Gun",
+            "Wind of Nature",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "War Cry",
+            "Agility",
+            "Master Assassin"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Tough Boots",
+            "Malefic Gun",
+            "Sky Piercer",
+            "Blade of Despair",
+            "Rose Gold Meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h012",
+      "name": "Bruno",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Aegis",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Tenacity",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Haas' Claws",
+            "Demon Shoes",
+            "Berserker's Fury",
+            "Malefic Gun",
+            "Windtalker",
+            "Wind of Nature"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Blade of Despair",
+            "Blade of the Heptaseas",
+            "Berserker's Fury",
+            "Corrosion Scythe",
+            "Golden Staff"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Fatal",
+            "Master Assassin",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Haas' Claws",
+            "Tough Boots",
+            "Berserker's Fury",
+            "Malefic Gun",
+            "Windtalker",
+            "Wind of Nature"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h092",
+      "name": "Carmilla",
+      "role": "Support, Tank",
+      "speciality": [
+        "Crowd Control",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Cursed Helmet",
+            "Dominance Ice",
+            "Chastise Pauldron",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Support Emblem",
+            "Vitality",
+            "Wilderness Blessing",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Dominance Ice",
+            "Oracle",
+            "Athena's Shield",
+            "Guardian Helmet",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Pull Yourself Together",
+            "Impure Rage"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Brute Force Breastplate",
+            "Lightning Truncheon",
+            "Wishing Lantern"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h091",
+      "name": "Cecilion",
+      "role": "Mage",
+      "speciality": [
+        "Poke",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Impure Rage",
+            "Tenacity",
+            "Inspire"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Clock of Destiny",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Divine Glaive",
+            "Ice Queen Wand"
+          ]
+        },
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Clock of Destiny",
+            "Demon Shoes",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Blood Wings",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h061",
+      "name": "Chang'e",
+      "role": "Mage",
+      "speciality": [
+        "Poke",
+        "Burst"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h124",
+      "name": "Chip",
+      "role": "Support, Tank",
+      "speciality": [
+        "Support",
+        "Crowd Control"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h026",
+      "name": "Chou",
+      "role": "Fighter",
+      "speciality": [
+        "Chase",
+        "Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Boots",
+            "Blade of the Heptaseas",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Endless Battle",
+            "Hunter Strike"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Blade of the Heptaseas",
+            "Blade of Despair",
+            "Endless Battle",
+            "Malefic Roar",
+            "Hunter Strike"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Concussive Blast",
+            "Master Assassin",
+            "Thrill"
+          ],
+          "items": [
+            "War Axe",
+            "Endless Battle",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Sea Halberd",
+            "Antique Cuirass"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h123",
+      "name": "Cici",
+      "role": "Fighter",
+      "speciality": [
+        "Damage",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Impure Rage"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Sky Piercer",
+            "War Axe",
+            "Hunter Strike",
+            "Winter Crown",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h065",
+      "name": "Claude",
+      "role": "Marksman",
+      "speciality": [
+        "Burst",
+        "Chase"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Master Assassin",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Tough Boots",
+            "Demon Hunter Sword",
+            "Golden Staff",
+            "Corrosion Scythe",
+            "Malefic Gun",
+            "Wind of Nature"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Swift",
+            "Seasoned Hunter",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Berserker's Fury",
+            "Blade of Despair",
+            "Blade of the Heptaseas",
+            "Golden Staff",
+            "Haas' Claws",
+            "Corrosion Scythe"
+          ]
+        },
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Brave Smite",
+            "Swift",
+            "Bargain Hunter"
+          ],
+          "items": [
+            "Tough Boots",
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Windtalker",
+            "Wind of Nature"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h013",
+      "name": "Clint",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Endless Battle",
+            "Tough Boots",
+            "Blade of the Heptaseas",
+            "Berserker's Fury",
+            "Blade of Despair",
+            "Great Dragon Spear"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Agility",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Endless Battle",
+            "Magic Shoes",
+            "Sky Piercer",
+            "Blade of Despair",
+            "Hunter Strike",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Endless Battle",
+            "Malefic Roar",
+            "Rose Gold Meteor",
+            "Sky Piercer",
+            "Blade of Despair"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h033",
+      "name": "Cyclops",
+      "role": "Mage",
+      "speciality": [
+        "Damage",
+        "Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Queen's Wings",
+            "Concentrated Energy",
+            "Brute Force Breastplate",
+            "Clock of Destiny"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Festival of Blood",
+            "Impure Rage",
+            "Inspire"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Concentrated Energy",
+            "Clock of Destiny",
+            "Blood Wings",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Lightning Truncheon",
+            "Starlium Scythe",
+            "Genius Wand",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h048",
+      "name": "Diggie",
+      "role": "Support",
+      "speciality": [
+        "Guard",
+        "Poke"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Focusing Mark",
+            "Pull Yourself Together"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Glowing Wand",
+            "Genius Wand",
+            "Guardian Helmet",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Lightning Truncheon",
+            "Genius Wand",
+            "Sky Piercer",
+            "Blood Wings",
+            "Holy Crystal"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h085",
+      "name": "Dyrroth",
+      "role": "Fighter",
+      "speciality": [
+        "Charge",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Hunter Strike",
+            "Blade of the Heptaseas",
+            "Malefic Roar",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Blade of the Heptaseas",
+            "Hunter Strike",
+            "Sky Piercer",
+            "Malefic Roar",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Swift",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "War Axe",
+            "Dominance Ice",
+            "Queen's Wings",
+            "Brute Force Breastplate",
+            "Immortality",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h111",
+      "name": "Edith",
+      "role": "Tank, Marksman",
+      "speciality": [
+        "Control",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Starlium Scythe",
+            "Blade Armor",
+            "Ice Queen Wand"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Thrill",
+            "Bargain Hunter",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Swift Boots",
+            "Feather of Heaven",
+            "Starlium Scythe",
+            "Ice Queen Wand",
+            "Oracle",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Swift",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Feather of Heaven",
+            "Blade Armor",
+            "Radiant Armor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h081",
+      "name": "Esmeralda",
+      "role": "Tank, Mage",
+      "speciality": [
+        "Regen",
+        "Mixed Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Bargain Hunter",
+            "Thrill",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Clock of Destiny",
+            "Genius Wand",
+            "Winter Crown",
+            "Fleeting Time",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Aegis",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Festival of Blood",
+            "War Cry"
+          ],
+          "items": [
+            "Tough Boots",
+            "Enchanted Talisman",
+            "Glowing Wand",
+            "Concentrated Energy",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h034",
+      "name": "Estes",
+      "role": "Support",
+      "speciality": [
+        "Regen",
+        "Guard"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Quantum Charge",
+            "Inspire",
+            "Pull Yourself Together"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Thunder Belt",
+            "Flask of the Oasis",
+            "Fleeting Time",
+            "Holy Crystal",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Pull Yourself Together",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Flask of the Oasis",
+            "Enchanted Talisman",
+            "Fleeting Time",
+            "Dominance Ice",
+            "Athena's Shield"
+          ]
+        },
+        {
+          "battleSpell": "Purify",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Flask of the Oasis",
+            "Enchanted Talisman",
+            "Antique Cuirass",
+            "Athena's Shield",
+            "Holy Crystal"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h015",
+      "name": "Eudora",
+      "role": "Mage",
+      "speciality": [
+        "Control",
+        "Burst"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h017",
+      "name": "Fanny",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Blade of the Heptaseas",
+            "Hunter Strike",
+            "Malefic Roar",
+            "Blade of Despair",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Blade of the Heptaseas",
+            "War Axe",
+            "Malefic Roar",
+            "Sea Halberd",
+            "Endless Battle"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Festival of Blood",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Sky Piercer",
+            "Malefic Roar",
+            "Brute Force Breastplate",
+            "Queen's Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h076",
+      "name": "Faramis",
+      "role": "Support, Mage",
+      "speciality": [
+        "Guard",
+        "Charge"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Glowing Wand",
+            "Holy Crystal",
+            "Blood Wings",
+            "Lightning Truncheon",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Fleeting Time",
+            "Flask of the Oasis",
+            "Genius Wand",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Enchanted Talisman",
+            "Sky Piercer",
+            "Holy Crystal",
+            "Starlium Scythe",
+            "Clock of Destiny"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h112",
+      "name": "Floryn",
+      "role": "Support",
+      "speciality": [
+        "Poke",
+        "Guard"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Pull Yourself Together",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Flask of the Oasis",
+            "Oracle",
+            "Holy Crystal",
+            "Fleeting Time",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Enchanted Talisman",
+            "Fleeting Time",
+            "Flask of the Oasis",
+            "Blood Wings",
+            "Dominance Ice"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Pull Yourself Together",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Flask of the Oasis",
+            "Fleeting Time",
+            "Holy Crystal",
+            "Glowing Wand",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h010",
+      "name": "Franco",
+      "role": "Tank",
+      "speciality": [
+        "Initiator",
+        "Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "War Cry",
+            "Master Assassin",
+            "Rupture"
+          ],
+          "items": [
+            "Sky Piercer",
+            "Blade of the Heptaseas",
+            "Malefic Roar",
+            "Blade of Despair",
+            "Sea Halberd",
+            "Great Dragon Spear"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Focusing Mark",
+            "Pull Yourself Together",
+            "Inspire"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Enchanted Talisman",
+            "Fleeting Time",
+            "Dominance Ice",
+            "Antique Cuirass",
+            "Athena's Shield"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Inspire",
+            "Weapon Master",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Fleeting Time",
+            "Molten Essence",
+            "Thunder Belt",
+            "Brute Force Breastplate",
+            "Blade of Despair"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h117",
+      "name": "Fredrinn",
+      "role": "Fighter, Tank",
+      "speciality": [
+        "Damage",
+        "Chase"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Brave Smite",
+            "Seasoned Hunter",
+            "Vitality"
+          ],
+          "items": [
+            "Tough Boots",
+            "Oracle",
+            "Queen's Wings",
+            "Guardian Helmet",
+            "Brute Force Breastplate",
+            "Chastise Pauldron"
+          ]
+        },
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Firmness",
+            "Impure Rage",
+            "Festival of Blood"
+          ],
+          "items": [
+            "Tough Boots",
+            "Brute Force Breastplate",
+            "Chastise Pauldron",
+            "Oracle",
+            "Guardian Helmet",
+            "Athena's Shield"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Warrior Boots",
+            "War Axe",
+            "Queen's Wings",
+            "Brute Force Breastplate",
+            "Guardian Helmet",
+            "Antique Cuirass"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h022",
+      "name": "Freya",
+      "role": "Fighter",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Corrosion Scythe",
+            "War Axe",
+            "Queen's Wings",
+            "Oracle",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "War Cry",
+            "Festival of Blood",
+            "Thrill"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Sea Halberd",
+            "Brute Force Breastplate",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Thrill",
+            "Weapon Master",
+            "War Cry"
+          ],
+          "items": [
+            "Tough Boots",
+            "Golden Staff",
+            "Sea Halberd",
+            "Demon Hunter Sword",
+            "Blade of Despair",
+            "Endless Battle"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h041",
+      "name": "Gatotkaca",
+      "role": "Tank, Fighter",
+      "speciality": [
+        "Crowd Control",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Firmness",
+            "Tenacity",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Starlium Scythe",
+            "Concentrated Energy",
+            "Holy Crystal",
+            "Glowing Wand",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Purify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Lightning Truncheon",
+            "Clock of Destiny",
+            "Blood Wings",
+            "Dominance Ice",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Antique Cuirass",
+            "Radiant Armor",
+            "Immortality",
+            "Dominance Ice",
+            "Guardian Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h104",
+      "name": "Gloo",
+      "role": "Tank",
+      "speciality": [
+        "Regen",
+        "Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Cursed Helmet",
+            "Dominance Ice",
+            "Clock of Destiny",
+            "Radiant Armor",
+            "Antique Cuirass"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Cursed Helmet",
+            "Glowing Wand",
+            "Genius Wand",
+            "Oracle",
+            "Guardian Helmet"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Cursed Helmet",
+            "Glowing Wand",
+            "Guardian Helmet",
+            "Chastise Pauldron",
+            "Radiant Armor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h023",
+      "name": "Gord",
+      "role": "Mage",
+      "speciality": [
+        "Poke",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Glowing Wand",
+            "Lightning Truncheon",
+            "Blood Wings",
+            "Ice Queen Wand",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Inspire",
+            "Festival of Blood",
+            "Impure Rage"
+          ],
+          "items": [
+            "Concentrated Energy",
+            "Demon Shoes",
+            "Holy Crystal",
+            "Ice Queen Wand",
+            "Glowing Wand",
+            "Wishing Lantern"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Sky Piercer",
+            "Arcane Boots",
+            "Glowing Wand",
+            "Ice Queen Wand",
+            "Genius Wand",
+            "Fleeting Time"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h079",
+      "name": "Granger",
+      "role": "Marksman",
+      "speciality": [
+        "Burst",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Bargain Hunter",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Tough Boots",
+            "Sky Piercer",
+            "Hunter Strike",
+            "Blade of the Heptaseas",
+            "Endless Battle",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Hunter Strike",
+            "Sky Piercer",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Impure Rage"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Hunter Strike",
+            "War Axe",
+            "Endless Battle",
+            "Malefic Roar",
+            "Brute Force Breastplate"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h044",
+      "name": "Grock",
+      "role": "Tank, Fighter",
+      "speciality": [
+        "Crowd Control",
+        "Initiator"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Brave Smite",
+            "Wilderness Blessing",
+            "Firmness"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Antique Cuirass",
+            "Chastise Pauldron",
+            "Blade Armor"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Chastise Pauldron",
+            "Dominance Ice",
+            "Immortality",
+            "Athena's Shield",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Swift",
+            "Weapon Master",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Antique Cuirass",
+            "Brute Force Breastplate",
+            "Oracle",
+            "Guardian Helmet",
+            "Thunder Belt",
+            "Boots"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h080",
+      "name": "Guinevere",
+      "role": "Fighter",
+      "speciality": [
+        "Burst",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Temporal Reign",
+            "Festival of Blood",
+            "Inspire"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Concentrated Energy",
+            "Clock of Destiny",
+            "Brute Force Breastplate",
+            "Queen's Wings",
+            "Radiant Armor"
+          ]
+        },
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Concentrated Energy",
+            "Magic Shoes",
+            "Genius Wand",
+            "Cursed Helmet",
+            "Brute Force Breastplate",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Agility",
+            "Pull Yourself Together",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Antique Cuirass",
+            "Brute Force Breastplate",
+            "Chastise Pauldron",
+            "Radiant Armor",
+            "Dominance Ice"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h056",
+      "name": "Gusion",
+      "role": "Assassin",
+      "speciality": [
+        "Burst",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Holy Crystal",
+            "Sky Piercer",
+            "Divine Glaive",
+            "Wishing Lantern"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Sky Piercer",
+            "Blood Wings",
+            "Glowing Wand",
+            "Starlium Scythe"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Lightning Truncheon",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h060",
+      "name": "Hanabi",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Aegis",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Bargain Hunter",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Berserker's Fury",
+            "Haas' Claws",
+            "Windtalker",
+            "Malefic Gun",
+            "Blade of Despair",
+            "Wind of Nature"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Swift",
+            "Bargain Hunter",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Sky Piercer",
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Malefic Gun",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Bargain Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Warrior Boots",
+            "Windtalker",
+            "Haas' Claws",
+            "Berserker's Fury",
+            "Malefic Gun",
+            "Sea Halberd"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h069",
+      "name": "Hanzo",
+      "role": "Assassin",
+      "speciality": [
+        "Poke",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Support Emblem",
+            "Wilderness Blessing",
+            "War Cry",
+            "Agility"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Malefic Roar",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Corrosion Scythe",
+            "War Axe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Golden Staff",
+            "Endless Battle",
+            "Brute Force Breastplate",
+            "Rose Gold Meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h073",
+      "name": "Harith",
+      "role": "Mage",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Purify",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Starlium Scythe",
+            "Feather of Heaven",
+            "Blood Wings",
+            "Concentrated Energy",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Purify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Starlium Scythe",
+            "Feather of Heaven",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Wishing Lantern"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Lightning Truncheon",
+            "Concentrated Energy",
+            "Enchanted Talisman",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h042",
+      "name": "Harley",
+      "role": "Assassin, Mage",
+      "speciality": [
+        "Burst",
+        "Poke"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Lethal Ignition",
+            "Master Assassin",
+            "Inspire"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Lightning Truncheon",
+            "Sky Piercer",
+            "Genius Wand",
+            "Holy Crystal",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Seasoned Hunter",
+            "Inspire",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Sky Piercer",
+            "Lightning Truncheon",
+            "Holy Crystal",
+            "Blood Wings",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Blood Wings",
+            "Glowing Wand"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h021",
+      "name": "Hayabusa",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "Sky Piercer",
+            "Hunter Strike",
+            "Rose Gold Meteor",
+            "Blade of Despair",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Hunter Strike",
+            "Magic Shoes",
+            "War Axe",
+            "Sea Halberd",
+            "Blade of Despair",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "War Axe",
+            "Sea Halberd",
+            "Malefic Roar",
+            "Blade of Despair"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h051",
+      "name": "Helcurt",
+      "role": "Assassin",
+      "speciality": [
+        "Push",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Execute",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Blade of the Heptaseas",
+            "Demon Hunter Sword",
+            "Malefic Roar",
+            "Hunter Strike",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Pull Yourself Together",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Sky Piercer",
+            "Antique Cuirass",
+            "Blade of Despair",
+            "Blade of the Heptaseas",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Agility",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Demon Hunter Sword",
+            "Blade of the Heptaseas",
+            "Hunter Strike",
+            "Malefic Roar",
+            "Sea Halberd"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h035",
+      "name": "Hilda",
+      "role": "Fighter, Tank",
+      "speciality": [
+        "Damage",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Killing Spree"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Chastise Pauldron",
+            "Radiant Armor",
+            "Antique Cuirass",
+            "Athena's Shield",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "War Axe",
+            "Guardian Helmet",
+            "Oracle",
+            "Queen's Wings",
+            "Dominance Ice"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Blade of the Heptaseas",
+            "Hunter Strike",
+            "Sea Halberd",
+            "Immortality",
+            "Dominance Ice"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h133",
+      "name": "Hirara",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Inspire",
+            "Seasoned Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "War Axe",
+            "Queen's Wings",
+            "Blade of Despair",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Hunter Strike",
+            "Magic Shoes",
+            "Blade of the Heptaseas",
+            "Blade of Despair",
+            "War Axe",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "War Axe",
+            "Queen's Wings",
+            "Malefic Roar",
+            "Brute Force Breastplate"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h049",
+      "name": "Hylos",
+      "role": "Tank",
+      "speciality": [
+        "Guard",
+        "Initiator"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Weapon Master",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Warrior Boots",
+            "Clock of Destiny",
+            "Flask of the Oasis",
+            "Radiant Armor",
+            "Cursed Helmet",
+            "Blade Armor"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Common Emblem",
+            "Vitality",
+            "Wilderness Blessing",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Clock of Destiny",
+            "Radiant Armor",
+            "Antique Cuirass"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Tough Boots",
+            "Chastise Pauldron",
+            "Dominance Ice",
+            "Guardian Helmet",
+            "Antique Cuirass",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h043",
+      "name": "Irithel",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Bargain Hunter",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Windtalker",
+            "Haas' Claws",
+            "Warrior Boots",
+            "Berserker's Fury",
+            "Malefic Gun",
+            "Great Dragon Spear"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Wilderness Blessing",
+            "Killing Spree"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Windtalker",
+            "Haas' Claws",
+            "Berserker's Fury",
+            "Sky Piercer",
+            "Great Dragon Spear"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h121",
+      "name": "Ixia",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Swift Boots",
+            "Corrosion Scythe",
+            "Demon Hunter Sword",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Wind of Nature"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Sea Halberd",
+            "Tough Boots",
+            "Sky Piercer",
+            "Corrosion Scythe",
+            "Demon Hunter Sword",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Sky Piercer",
+            "Sea Halberd",
+            "Wind of Nature",
+            "Malefic Gun",
+            "Rose Gold Meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h054",
+      "name": "Jawhead",
+      "role": "Fighter",
+      "speciality": [
+        "Charge",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Swift",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Sky Piercer",
+            "Blade of the Heptaseas",
+            "Sea Halberd",
+            "Malefic Roar",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Firmness",
+            "Tenacity",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Dominance Ice",
+            "Brute Force Breastplate",
+            "Antique Cuirass",
+            "Chastise Pauldron",
+            "Winter Crown"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h032",
+      "name": "Johnson",
+      "role": "Tank, Support",
+      "speciality": [
+        "Support",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Brave Smite",
+            "Tenacity",
+            "Inspire"
+          ],
+          "items": [
+            "Warrior Boots",
+            "Fleeting Time",
+            "Dominance Ice",
+            "Clock of Destiny",
+            "Blade Armor",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Execute",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Master Assassin",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Glowing Wand",
+            "Ice Queen Wand",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Concussive Blast",
+            "Tenacity",
+            "Vitality"
+          ],
+          "items": [
+            "Warrior Boots",
+            "Dominance Ice",
+            "Holy Crystal",
+            "Blade Armor",
+            "Genius Wand",
+            "Antique Cuirass"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h118",
+      "name": "Joy",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Holy Crystal",
+            "Concentrated Energy",
+            "Wishing Lantern",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Concentrated Energy",
+            "Holy Crystal",
+            "Wishing Lantern",
+            "Divine Glaive",
+            "Winter Crown"
+          ]
+        },
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Concentrated Energy",
+            "Enchanted Talisman",
+            "Holy Crystal",
+            "Lightning Truncheon",
+            "Genius Wand"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h116",
+      "name": "Julian",
+      "role": "Assassin, Fighter",
+      "speciality": [
+        "Chase",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Swift",
+            "Festival of Blood",
+            "War Cry"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Feather of Heaven",
+            "Windtalker",
+            "Concentrated Energy",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Impure Rage",
+            "Seasoned Hunter"
+          ],
+          "items": [
+            "Clock of Destiny",
+            "Feather of Heaven",
+            "Genius Wand",
+            "Haas' Claws",
+            "Holy Crystal",
+            "Windtalker"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Impure Rage",
+            "Seasoned Hunter",
+            "Swift"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Holy Crystal",
+            "Feather of Heaven",
+            "Concentrated Energy",
+            "Blood Wings",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h075",
+      "name": "Kadita",
+      "role": "Mage, Assassin",
+      "speciality": [
+        "Burst",
+        "Charge"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Pull Yourself Together",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Glowing Wand",
+            "Divine Glaive",
+            "Wishing Lantern",
+            "Lightning Truncheon",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Lightning Truncheon",
+            "Glowing Wand",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Pull Yourself Together",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Lightning Truncheon",
+            "Glowing Wand",
+            "Holy Crystal",
+            "Blood Wings",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h025",
+      "name": "Kagura",
+      "role": "Mage",
+      "speciality": [
+        "Poke",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Thrill",
+            "Weapon Master",
+            "War Cry"
+          ],
+          "items": [
+            "Genius Wand",
+            "Glowing Wand",
+            "Starlium Scythe",
+            "Queen's Wings",
+            "Wishing Lantern",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Lethal Ignition",
+            "Bargain Hunter",
+            "Rupture"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Glowing Wand",
+            "Genius Wand",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Glowing Wand",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Holy Crystal",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h062",
+      "name": "Kaja",
+      "role": "Support, Fighter",
+      "speciality": [
+        "Control",
+        "Charge"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Agility",
+            "Pull Yourself Together",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Antique Cuirass",
+            "Athena's Shield",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Starlium Scythe",
+            "Holy Crystal",
+            "Blood Wings",
+            "Divine Glaive",
+            "Lightning Truncheon"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Firmness",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Thunder Belt",
+            "Clock of Destiny",
+            "Glowing Wand",
+            "Brute Force Breastplate",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h128",
+      "name": "Kalea",
+      "role": "Support, Fighter",
+      "speciality": [
+        "Control",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Wilderness Blessing",
+            "Brave Smite"
+          ],
+          "items": [
+            "Warrior Boots",
+            "War Axe",
+            "Dominance Ice",
+            "Chastise Pauldron",
+            "Oracle",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Wilderness Blessing",
+            "Vitality",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Tough Boots",
+            "Oracle",
+            "Fleeting Time",
+            "Athena's Shield",
+            "Antique Cuirass",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Pull Yourself Together",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Tough Boots",
+            "Fleeting Time",
+            "Dominance Ice",
+            "Antique Cuirass",
+            "Athena's Shield",
+            "Chastise Pauldron"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h008",
+      "name": "Karina",
+      "role": "Assassin",
+      "speciality": [
+        "Finisher",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Festival of Blood",
+            "Killing Spree"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Sky Piercer",
+            "Lightning Truncheon",
+            "Holy Crystal",
+            "Blood Wings",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Sky Piercer",
+            "Arcane Boots",
+            "Starlium Scythe",
+            "Genius Wand",
+            "Holy Crystal",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Killing Spree"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Sky Piercer",
+            "Starlium Scythe",
+            "Holy Crystal",
+            "Blood Wings",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h040",
+      "name": "Karrie",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Festival of Blood",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Swift Boots",
+            "Corrosion Scythe",
+            "Demon Hunter Sword",
+            "Golden Staff",
+            "Malefic Gun",
+            "Endless Battle"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "War Axe",
+            "Malefic Gun",
+            "Windtalker"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Swift",
+            "Master Assassin",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Tough Boots",
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Malefic Gun",
+            "Wind of Nature"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h098",
+      "name": "Khaleed",
+      "role": "Fighter",
+      "speciality": [
+        "Damage",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Concussive Blast",
+            "Wilderness Blessing",
+            "Agility"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Dominance Ice",
+            "Guardian Helmet",
+            "Athena's Shield",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Thunder Belt",
+            "Dominance Ice",
+            "Oracle",
+            "Queen's Wings",
+            "Brute Force Breastplate",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Focusing Mark",
+            "Thrill",
+            "Wilderness Blessing"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Oracle",
+            "Antique Cuirass",
+            "Athena's Shield",
+            "Dominance Ice",
+            "Queen's Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h078",
+      "name": "Khufra",
+      "role": "Tank",
+      "speciality": [
+        "Initiator",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Thunder Belt",
+            "Cursed Helmet",
+            "War Axe",
+            "Guardian Helmet",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Bargain Hunter",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Thunder Belt",
+            "Tough Boots",
+            "Dominance Ice",
+            "Molten Essence",
+            "Blade of the Heptaseas",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Focusing Mark",
+            "Tenacity",
+            "Vitality"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Cursed Helmet",
+            "Dominance Ice",
+            "Athena's Shield",
+            "Brute Force Breastplate",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h071",
+      "name": "Kimmy",
+      "role": "Marksman, Mage",
+      "speciality": [
+        "Damage",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Weapon Master",
+            "War Cry"
+          ],
+          "items": [
+            "Genius Wand",
+            "Concentrated Energy",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Wishing Lantern",
+            "Berserker's Fury"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Bargain Hunter",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Glowing Wand",
+            "Feather of Heaven",
+            "Blood Wings",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Execute",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Glowing Wand",
+            "Ice Queen Wand",
+            "Holy Crystal",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h047",
+      "name": "Lancelot",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Swift",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Brute Force Breastplate",
+            "Endless Battle",
+            "Queen's Wings",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Execute",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Killing Spree"
+          ],
+          "items": [
+            "War Axe",
+            "Demon Shoes",
+            "Brute Force Breastplate",
+            "Queen's Wings",
+            "Rose Gold Meteor",
+            "Endless Battle"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Firmness",
+            "Bargain Hunter",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Endless Battle",
+            "Brute Force Breastplate",
+            "Malefic Roar",
+            "Antique Cuirass",
+            "Fleeting Time"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h037",
+      "name": "Lapu-Lapu",
+      "role": "Fighter",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Dominance Ice",
+            "Queen's Wings",
+            "Brute Force Breastplate",
+            "Antique Cuirass"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "War Axe",
+            "Queen's Wings",
+            "Oracle",
+            "Dominance Ice",
+            "Immortality",
+            "Brute Force Breastplate"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "War Cry"
+          ],
+          "items": [
+            "War Axe",
+            "Endless Battle",
+            "Oracle",
+            "Queen's Wings",
+            "Brute Force Breastplate",
+            "Sea Halberd"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h018",
+      "name": "Layla",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Swift Boots",
+            "Berserker's Fury",
+            "Windtalker",
+            "Demon Hunter Sword",
+            "Malefic Gun",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Agility",
+            "Bargain Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Malefic Gun",
+            "Windtalker",
+            "Haas' Claws",
+            "Rose Gold Meteor",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Weapon Master",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Corrosion Scythe",
+            "Windtalker",
+            "Haas' Claws",
+            "Berserker's Fury",
+            "Blade of Despair"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h067",
+      "name": "Leomord",
+      "role": "Fighter",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Endless Battle",
+            "Brute Force Breastplate",
+            "Queen's Wings",
+            "Malefic Gun"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Boots",
+            "War Axe",
+            "Great Dragon Spear",
+            "Queen's Wings",
+            "Endless Battle",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "War Cry"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Queen's Wings",
+            "Endless Battle",
+            "Rose Gold Meteor",
+            "Sea Halberd"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h053",
+      "name": "Lesley",
+      "role": "Marksman, Assassin",
+      "speciality": [
+        "Finisher",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Fatal",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Berserker's Fury",
+            "Sky Piercer",
+            "Blade of the Heptaseas",
+            "Malefic Roar",
+            "Blade of Despair",
+            "Endless Battle"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Weapon Master",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Sky Piercer",
+            "Malefic Gun",
+            "Berserker's Fury",
+            "Blade of Despair",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Bargain Hunter",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Berserker's Fury",
+            "Malefic Gun",
+            "Blade of the Heptaseas",
+            "Demon Hunter Sword",
+            "Blade of Despair"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h084",
+      "name": "Ling",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "War Cry",
+            "Seasoned Hunter"
+          ],
+          "items": [
+            "Tough Boots",
+            "Berserker's Fury",
+            "Haas' Claws",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Berserker's Fury",
+            "Endless Battle",
+            "Blade of Despair",
+            "Great Dragon Spear",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Seasoned Hunter",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Thunder Belt",
+            "War Axe",
+            "Endless Battle",
+            "Oracle",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h020",
+      "name": "Lolita",
+      "role": "Support, Tank",
+      "speciality": [
+        "Guard",
+        "Crowd Control"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h127",
+      "name": "Lukas",
+      "role": "Fighter",
+      "speciality": [
+        "Regen",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Festival of Blood",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Hunter Strike",
+            "Tough Boots",
+            "War Axe",
+            "Queen's Wings",
+            "Oracle",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Firmness",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Warrior Boots",
+            "War Axe",
+            "Dominance Ice",
+            "Oracle",
+            "Antique Cuirass",
+            "Radiant Armor"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Rose Gold Meteor",
+            "Sea Halberd",
+            "Queen's Wings",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h068",
+      "name": "Lunox",
+      "role": "Mage",
+      "speciality": [
+        "Burst",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Sky Piercer",
+            "Glowing Wand",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Sky Piercer",
+            "Holy Crystal",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h096",
+      "name": "Luo Yi",
+      "role": "Mage",
+      "speciality": [
+        "Support",
+        "Crowd Control"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h086",
+      "name": "Lylia",
+      "role": "Mage",
+      "speciality": [
+        "Push",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Glowing Wand",
+            "Genius Wand",
+            "Lightning Truncheon",
+            "Holy Crystal",
+            "Winter Crown"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Divine Glaive",
+            "Winter Crown",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Enchanted Talisman",
+            "Magic Shoes",
+            "Glowing Wand",
+            "Ice Queen Wand",
+            "Divine Glaive",
+            "Brute Force Breastplate"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h132",
+      "name": "Marcel",
+      "role": "Support",
+      "speciality": [
+        "Crowd Control",
+        "Support"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Flask of the Oasis",
+            "Oracle",
+            "Blood Wings",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Agility",
+            "Pull Yourself Together",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Thunder Belt",
+            "Flask of the Oasis",
+            "Oracle",
+            "Dominance Ice",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Tough Boots",
+            "Thunder Belt",
+            "Oracle",
+            "Dominance Ice",
+            "Guardian Helmet",
+            "Antique Cuirass"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h058",
+      "name": "Martis",
+      "role": "Fighter",
+      "speciality": [
+        "Finisher",
+        "Charge"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "Sky Piercer",
+            "War Axe",
+            "Blade of Despair",
+            "Queen's Wings",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Sky Piercer",
+            "Tough Boots",
+            "Endless Battle",
+            "Malefic Roar",
+            "Blade of Despair",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "War Cry",
+            "Festival of Blood",
+            "Swift"
+          ],
+          "items": [
+            "Swift Boots",
+            "Blade of Despair",
+            "War Axe",
+            "Oracle",
+            "Queen's Wings",
+            "Guardian Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h088",
+      "name": "Masha",
+      "role": "Fighter, Tank",
+      "speciality": [
+        "Push",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Lethal Ignition",
+            "Master Assassin",
+            "Thrill"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Rapid Boots",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Sea Halberd",
+            "Hunter Strike"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Vitality",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Corrosion Scythe",
+            "Brute Force Breastplate",
+            "Oracle",
+            "Sea Halberd",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Blade of the Heptaseas",
+            "Sky Piercer",
+            "Malefic Roar",
+            "Sea Halberd",
+            "Blade of Despair"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h102",
+      "name": "Mathilda",
+      "role": "Support, Assassin",
+      "speciality": [
+        "Initiator",
+        "Guard"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Thunder Belt",
+            "Queen's Wings",
+            "Flask of the Oasis",
+            "Brute Force Breastplate",
+            "Ice Queen Wand"
+          ]
+        },
+        {
+          "battleSpell": "Aegis",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Bargain Hunter",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Enchanted Talisman",
+            "Arcane Boots",
+            "Holy Crystal",
+            "Blood Wings",
+            "Brute Force Breastplate",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h114",
+      "name": "Melissa",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Master Assassin",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Haas' Claws",
+            "Windtalker",
+            "Malefic Gun",
+            "Berserker's Fury",
+            "Sea Halberd",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Bargain Hunter",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Demon Hunter Sword",
+            "Golden Staff",
+            "Sky Piercer",
+            "Malefic Gun",
+            "Wind of Nature"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Master Assassin",
+            "Weakness Finder",
+            "Fatal"
+          ],
+          "items": [
+            "Windtalker",
+            "Warrior Boots",
+            "Haas' Claws",
+            "Malefic Gun",
+            "Rose Gold Meteor",
+            "Sea Halberd"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h019",
+      "name": "Minotaur",
+      "role": "Tank, Support",
+      "speciality": [
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Flask of the Oasis",
+            "Oracle",
+            "Magic Shoes",
+            "Radiant Armor",
+            "Chastise Pauldron",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Common Emblem",
+            "Vitality",
+            "Weapon Master",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Oracle",
+            "Guardian Helmet",
+            "Fleeting Time",
+            "Endless Battle",
+            "War Axe"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Wilderness Blessing",
+            "Impure Rage",
+            "Agility"
+          ],
+          "items": [
+            "Tough Boots",
+            "Flask of the Oasis",
+            "Oracle",
+            "Antique Cuirass",
+            "Chastise Pauldron",
+            "Fleeting Time"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h074",
+      "name": "Minsitthar",
+      "role": "Fighter",
+      "speciality": [
+        "Initiator",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Pull Yourself Together",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Tough Boots",
+            "Demon Hunter Sword",
+            "Golden Staff",
+            "Guardian Helmet",
+            "Dominance Ice"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Swift",
+            "Tenacity",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Swift Boots",
+            "Windtalker",
+            "Berserker's Fury",
+            "Corrosion Scythe",
+            "Rose Gold Meteor",
+            "Haas' Claws"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Weapon Master",
+            "Brave Smite"
+          ],
+          "items": [
+            "Swift Boots",
+            "Windtalker",
+            "Golden Staff",
+            "Blade of the Heptaseas",
+            "Sea Halberd",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h001",
+      "name": "Miya",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Bargain Hunter",
+            "Quantum Charge",
+            "Fatal"
+          ],
+          "items": [
+            "Windtalker",
+            "Berserker's Fury",
+            "Haas' Claws",
+            "Malefic Gun",
+            "Sea Halberd",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Berserker's Fury",
+            "Corrosion Scythe",
+            "Haas' Claws",
+            "Malefic Roar",
+            "Rose Gold Meteor",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Agility",
+            "Weapon Master",
+            "War Cry"
+          ],
+          "items": [
+            "Windtalker",
+            "Corrosion Scythe",
+            "Demon Hunter Sword",
+            "Golden Staff",
+            "Malefic Gun",
+            "Blade of Despair"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h031",
+      "name": "Moskov",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Chase"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Master Assassin",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Swift Boots",
+            "Golden Staff",
+            "Haas' Claws",
+            "Malefic Gun",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Quantum Charge",
+            "Wilderness Blessing",
+            "Swift"
+          ],
+          "items": [
+            "Windtalker",
+            "Haas' Claws",
+            "Berserker's Fury",
+            "Great Dragon Spear",
+            "Malefic Gun",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Quantum Charge",
+            "Thrill",
+            "Master Assassin"
+          ],
+          "items": [
+            "Tough Boots",
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Malefic Gun",
+            "Rose Gold Meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h005",
+      "name": "Nana",
+      "role": "Mage",
+      "speciality": [
+        "Poke",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Blood Wings",
+            "Lightning Truncheon",
+            "Genius Wand",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Lightning Truncheon",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Wilderness Blessing",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Enchanted Talisman",
+            "Blood Wings",
+            "Lightning Truncheon",
+            "Holy Crystal"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h024",
+      "name": "Natalia",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Lethal Ignition",
+            "Master Assassin"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Blade of the Heptaseas",
+            "Berserker's Fury",
+            "Great Dragon Spear",
+            "Blade of Despair",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Execute",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Blade of the Heptaseas",
+            "Berserker's Fury",
+            "Hunter Strike",
+            "Blade of Despair",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Execute",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Rapid Boots",
+            "Berserker's Fury",
+            "Endless Battle",
+            "Great Dragon Spear",
+            "Sea Halberd"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h107",
+      "name": "Natan",
+      "role": "Marksman",
+      "speciality": [
+        "Burst",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Aegis",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Swift",
+            "Bargain Hunter",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Feather of Heaven",
+            "Arcane Boots",
+            "Concentrated Energy",
+            "Windtalker",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Weakness Finder",
+            "Bargain Hunter",
+            "Inspire"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Feather of Heaven",
+            "Demon Hunter Sword",
+            "Windtalker",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Bargain Hunter",
+            "Impure Rage",
+            "Inspire"
+          ],
+          "items": [
+            "Swift Boots",
+            "Feather of Heaven",
+            "Golden Staff",
+            "Windtalker",
+            "Starlium Scythe",
+            "Concentrated Energy"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h122",
+      "name": "Nolan",
+      "role": "Assassin",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Magic Shoes",
+            "Hunter Strike",
+            "Sky Piercer",
+            "Malefic Gun",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Blade of the Heptaseas",
+            "Tough Boots",
+            "Hunter Strike",
+            "Blade of Despair",
+            "Malefic Roar",
+            "Great Dragon Spear"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h119",
+      "name": "Novaria",
+      "role": "Mage",
+      "speciality": [
+        "Burst",
+        "Poke"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Sky Piercer",
+            "Lightning Truncheon",
+            "Holy Crystal",
+            "Genius Wand",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Sky Piercer",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Genius Wand",
+            "Demon Hunter Sword"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Impure Rage",
+            "Rupture",
+            "Weapon Master"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Sky Piercer",
+            "Lightning Truncheon",
+            "Holy Crystal",
+            "Wishing Lantern",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h130",
+      "name": "Obsidia",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Weapon Master",
+            "Swift",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Windtalker",
+            "Corrosion Scythe",
+            "Haas' Claws",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Aegis",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Tenacity",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Swift Boots",
+            "Corrosion Scythe",
+            "Golden Staff",
+            "Demon Hunter Sword",
+            "Malefic Gun",
+            "Wind of Nature"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Killing Spree",
+            "Bargain Hunter"
+          ],
+          "items": [
+            "Windtalker",
+            "Haas' Claws",
+            "Sky Piercer",
+            "Berserker's Fury",
+            "Sea Halberd",
+            "Malefic Gun"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h046",
+      "name": "Odette",
+      "role": "Mage",
+      "speciality": [
+        "Burst",
+        "Poke"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Festival of Blood",
+            "Lethal Ignition",
+            "Inspire"
+          ],
+          "items": [
+            "Sky Piercer",
+            "Arcane Boots",
+            "Holy Crystal",
+            "Blood Wings",
+            "Concentrated Energy",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Sprint",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Holy Crystal",
+            "Glowing Wand"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Glowing Wand",
+            "Concentrated Energy",
+            "Holy Crystal",
+            "Sky Piercer",
+            "Winter Crown"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h103",
+      "name": "Paquito",
+      "role": "Fighter, Assassin",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Tough Boots",
+            "Hunter Strike",
+            "War Axe",
+            "Queen's Wings",
+            "Malefic Roar",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Brute Force Breastplate",
+            "Oracle",
+            "Queen's Wings",
+            "Dominance Ice"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Tough Boots",
+            "Hunter Strike",
+            "Malefic Roar",
+            "Sea Halberd",
+            "Blade of Despair",
+            "Rose Gold Meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h052",
+      "name": "Pharsa",
+      "role": "Mage",
+      "speciality": [
+        "Burst",
+        "Poke"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Wilderness Blessing",
+            "Agility",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Lightning Truncheon",
+            "Sky Piercer",
+            "Ice Queen Wand",
+            "Blood Wings",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Wilderness Blessing",
+            "Lethal Ignition",
+            "Rupture"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Glowing Wand",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Holy Crystal",
+            "Winter Crown"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Pull Yourself Together",
+            "Agility",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Enchanted Talisman",
+            "Sky Piercer",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h106",
+      "name": "Phoveus",
+      "role": "Fighter",
+      "speciality": [
+        "Regen",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Vitality",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Thunder Belt",
+            "Warrior Boots",
+            "War Axe",
+            "Chastise Pauldron",
+            "Oracle",
+            "Antique Cuirass"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Brave Smite",
+            "Festival of Blood",
+            "Firmness"
+          ],
+          "items": [
+            "Tough Boots",
+            "Thunder Belt",
+            "War Axe",
+            "Brute Force Breastplate",
+            "Oracle",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Thunder Belt",
+            "War Axe",
+            "Queen's Wings",
+            "Dominance Ice",
+            "Chastise Pauldron",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h094",
+      "name": "Popol and Kupa",
+      "role": "Marksman",
+      "speciality": [
+        "Push",
+        "Burst"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h014",
+      "name": "Rafaela",
+      "role": "Support",
+      "speciality": [
+        "Regen",
+        "Guard"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Support Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Enchanted Talisman",
+            "Flask of the Oasis",
+            "Clock of Destiny",
+            "Oracle",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Purify",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Brute Force Breastplate",
+            "Chastise Pauldron",
+            "Oracle",
+            "Enchanted Talisman",
+            "Queen's Wings",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Arrival",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Quantum Charge"
+          ],
+          "items": [
+            "Enchanted Talisman",
+            "Blood Wings",
+            "Ice Queen Wand",
+            "Magic Shoes",
+            "Oracle",
+            "Queen's Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h039",
+      "name": "Roger",
+      "role": "Fighter, Marksman",
+      "speciality": [
+        "Finisher",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Swift",
+            "Seasoned Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Tough Boots",
+            "Thunder Belt",
+            "War Axe",
+            "Windtalker",
+            "Haas' Claws",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Fatal",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Brute Force Breastplate",
+            "Haas' Claws",
+            "Rose Gold Meteor",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h029",
+      "name": "Ruby",
+      "role": "Fighter",
+      "speciality": [
+        "Crowd Control",
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Vitality",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Queen's Wings",
+            "Endless Battle",
+            "Sea Halberd",
+            "Oracle"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Brave Smite"
+          ],
+          "items": [
+            "War Axe",
+            "Tough Boots",
+            "Brute Force Breastplate",
+            "Queen's Wings",
+            "Oracle",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Brave Smite",
+            "Festival of Blood",
+            "Agility"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Dominance Ice",
+            "Queen's Wings",
+            "Chastise Pauldron",
+            "Athena's Shield"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h003",
+      "name": "Saber",
+      "role": "Assassin",
+      "speciality": [
+        "Charge",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Bargain Hunter",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "Sky Piercer",
+            "Endless Battle",
+            "Blade of Despair",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Swift",
+            "Seasoned Hunter",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Magic Shoes",
+            "War Axe",
+            "Sky Piercer",
+            "Endless Battle",
+            "Antique Cuirass",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Rupture",
+            "Wilderness Blessing",
+            "Killing Spree"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Blade of the Heptaseas",
+            "Sky Piercer",
+            "Hunter Strike",
+            "Blade of Despair",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h063",
+      "name": "Selena",
+      "role": "Assassin, Mage",
+      "speciality": [
+        "Initiator",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Enchanted Talisman",
+            "Lightning Truncheon",
+            "Wishing Lantern",
+            "Glowing Wand",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Enchanted Talisman",
+            "Clock of Destiny",
+            "Lightning Truncheon",
+            "Starlium Scythe",
+            "Wishing Lantern",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Flask of the Oasis",
+            "Starlium Scythe",
+            "Glowing Wand",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h090",
+      "name": "Silvanna",
+      "role": "Fighter",
+      "speciality": [
+        "Initiator",
+        "Magic Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Feather of Heaven",
+            "Concentrated Energy",
+            "Holy Crystal",
+            "Winter Crown"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Thrill",
+            "Pull Yourself Together",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Feather of Heaven",
+            "Chastise Pauldron",
+            "Guardian Helmet",
+            "Concentrated Energy",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Swift",
+            "Master Assassin",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Feather of Heaven",
+            "Concentrated Energy",
+            "Winter Crown",
+            "Dominance Ice",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h131",
+      "name": "Sora",
+      "role": "Fighter, Assassin",
+      "speciality": [
+        "Charge",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Firmness",
+            "Master Assassin",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "War Axe",
+            "Antique Cuirass",
+            "Dominance Ice",
+            "Oracle",
+            "Guardian Helmet"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Brave Smite",
+            "Festival of Blood",
+            "Thrill"
+          ],
+          "items": [
+            "Tough Boots",
+            "Queen's Wings",
+            "Oracle",
+            "Guardian Helmet",
+            "Brute Force Breastplate",
+            "Winter Crown"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Vitality",
+            "War Cry",
+            "Festival of Blood"
+          ],
+          "items": [
+            "Queen's Wings",
+            "Tough Boots",
+            "War Axe",
+            "Dominance Ice",
+            "Guardian Helmet",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h027",
+      "name": "Sun",
+      "role": "Fighter",
+      "speciality": [
+        "Push",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Common Emblem",
+            "Swift",
+            "Master Assassin",
+            "War Cry"
+          ],
+          "items": [
+            "Windtalker",
+            "Rapid Boots",
+            "Corrosion Scythe",
+            "Haas' Claws",
+            "Demon Hunter Sword",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Petrify",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Windtalker",
+            "Corrosion Scythe",
+            "Great Dragon Spear",
+            "Endless Battle",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Fatal",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Corrosion Scythe",
+            "Windtalker",
+            "Rose Gold Meteor",
+            "Blade of Despair",
+            "Haas' Claws"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h126",
+      "name": "Suyou",
+      "role": "Assassin, Fighter",
+      "speciality": [
+        "Chase",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Bloody Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "War Axe",
+            "Malefic Roar",
+            "Brute Force Breastplate",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "War Axe",
+            "Queen's Wings",
+            "Malefic Roar",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Killing Spree"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "War Axe",
+            "Malefic Roar",
+            "Queen's Wings",
+            "Rose Gold Meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h082",
+      "name": "Terizla",
+      "role": "Fighter, Tank",
+      "speciality": [
+        "Burst",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Brave Smite",
+            "Festival of Blood",
+            "Agility"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Queen's Wings",
+            "Oracle",
+            "Dominance Ice",
+            "Guardian Helmet"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Festival of Blood",
+            "Vitality",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Queen's Wings",
+            "Dominance Ice",
+            "Brute Force Breastplate",
+            "Oracle",
+            "Guardian Helmet"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Bargain Hunter",
+            "War Cry"
+          ],
+          "items": [
+            "Tough Boots",
+            "War Axe",
+            "Oracle",
+            "Queen's Wings",
+            "Brute Force Breastplate",
+            "Dominance Ice"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h072",
+      "name": "Thamuz",
+      "role": "Fighter",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Support Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Tough Boots",
+            "Corrosion Scythe",
+            "Demon Hunter Sword",
+            "Oracle",
+            "Golden Staff",
+            "Guardian Helmet"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Support Emblem",
+            "Agility",
+            "Festival of Blood",
+            "Temporal Reign"
+          ],
+          "items": [
+            "War Axe",
+            "Great Dragon Spear",
+            "Corrosion Scythe",
+            "Demon Hunter Sword",
+            "Chastise Pauldron",
+            "Guardian Helmet"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Tough Boots",
+            "Corrosion Scythe",
+            "War Axe",
+            "Oracle",
+            "Queen's Wings",
+            "Guardian Helmet"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h006",
+      "name": "Tigreal",
+      "role": "Tank",
+      "speciality": [
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Vitality",
+            "Wilderness Blessing",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Fleeting Time",
+            "Dominance Ice",
+            "Guardian Helmet",
+            "Oracle",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Vitality",
+            "Pull Yourself Together",
+            "Focusing Mark"
+          ],
+          "items": [
+            "Tough Boots",
+            "Dominance Ice",
+            "Fleeting Time",
+            "Antique Cuirass",
+            "Athena's Shield",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Wilderness Blessing",
+            "Agility",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Tough Boots",
+            "Antique Cuirass",
+            "Dominance Ice",
+            "Fleeting Time",
+            "Guardian Helmet",
+            "Chastise Pauldron"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h059",
+      "name": "Uranus",
+      "role": "Tank",
+      "speciality": [
+        "Regen"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Tenacity",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Oracle",
+            "Chastise Pauldron",
+            "Radiant Armor",
+            "Antique Cuirass",
+            "Guardian Helmet"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Common Emblem",
+            "Impure Rage",
+            "Tenacity",
+            "Agility"
+          ],
+          "items": [
+            "Tough Boots",
+            "Thunder Belt",
+            "Oracle",
+            "Antique Cuirass",
+            "Athena's Shield",
+            "Radiant Armor"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Common Emblem",
+            "Vitality",
+            "Tenacity",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Clock of Destiny",
+            "Lightning Truncheon",
+            "Guardian Helmet",
+            "Chastise Pauldron",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h066",
+      "name": "Vale",
+      "role": "Mage",
+      "speciality": [
+        "Burst",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Genius Wand",
+            "Lightning Truncheon",
+            "Blood Wings",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Pull Yourself Together",
+            "Concussive Blast"
+          ],
+          "items": [
+            "Lightning Truncheon",
+            "Wishing Lantern",
+            "Clock of Destiny",
+            "Guardian Helmet",
+            "Cursed Helmet",
+            "Athena's Shield"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h110",
+      "name": "Valentina",
+      "role": "Mage",
+      "speciality": [
+        "Burst",
+        "Finisher"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Queen's Wings",
+            "Oracle",
+            "Brute Force Breastplate",
+            "Antique Cuirass",
+            "Athena's Shield"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Glowing Wand",
+            "Blood Wings",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Thrill",
+            "Tenacity",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Glowing Wand",
+            "Magic Shoes",
+            "Queen's Wings",
+            "Brute Force Breastplate",
+            "Radiant Armor",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h057",
+      "name": "Valir",
+      "role": "Mage",
+      "speciality": [
+        "Damage",
+        "Guard"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Common Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Ice Queen Wand",
+            "Thunder Belt",
+            "Wishing Lantern",
+            "Brute Force Breastplate"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Pull Yourself Together",
+            "Impure Rage"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Ice Queen Wand",
+            "Glowing Wand",
+            "Dominance Ice",
+            "Athena's Shield",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Thrill",
+            "Festival of Blood",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Enchanted Talisman",
+            "Concentrated Energy",
+            "Ice Queen Wand",
+            "Holy Crystal",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h038",
+      "name": "Vexana",
+      "role": "Mage",
+      "speciality": [
+        "Poke",
+        "Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Impure Rage",
+            "Wilderness Blessing",
+            "Inspire"
+          ],
+          "items": [
+            "Tough Boots",
+            "Glowing Wand",
+            "Blood Wings",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Sky Piercer",
+            "Lightning Truncheon",
+            "Glowing Wand",
+            "Divine Glaive",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Revitalize",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Ice Queen Wand",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Enchanted Talisman",
+            "Fleeting Time",
+            "Holy Crystal"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h089",
+      "name": "Wanwan",
+      "role": "Marksman",
+      "speciality": [
+        "Finisher",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Weakness Finder",
+            "Bargain Hunter",
+            "Swift"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Windtalker",
+            "Haas' Claws",
+            "Berserker's Fury",
+            "Sea Halberd",
+            "Rose Gold Meteor"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Weakness Finder",
+            "Master Assassin",
+            "Swift"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Windtalker",
+            "Demon Hunter Sword",
+            "Malefic Gun",
+            "Berserker's Fury",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Master Assassin",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Corrosion Scythe",
+            "Swift Boots",
+            "Windtalker",
+            "Demon Hunter Sword",
+            "Berserker's Fury",
+            "Wind of Nature"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h083",
+      "name": "X.Borg",
+      "role": "Fighter",
+      "speciality": [
+        "Regen",
+        "Burst"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h115",
+      "name": "Xavier",
+      "role": "Mage",
+      "speciality": [
+        "Damage",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Bargain Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Glowing Wand",
+            "Lightning Truncheon",
+            "Wishing Lantern",
+            "Holy Crystal",
+            "Divine Glaive"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Glowing Wand",
+            "Enchanted Talisman",
+            "Sky Piercer",
+            "Brute Force Breastplate",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h030",
+      "name": "Yi Sun-shin",
+      "role": "Assassin, Marksman",
+      "speciality": [
+        "Finisher",
+        "Chase"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h113",
+      "name": "Yin",
+      "role": "Fighter, Assassin",
+      "speciality": [
+        "Burst",
+        "Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Thrill",
+            "Seasoned Hunter",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Blade of Despair",
+            "Rapid Boots",
+            "War Axe",
+            "Hunter Strike",
+            "Blade of the Heptaseas",
+            "Malefic Roar"
+          ]
+        },
+        {
+          "battleSpell": "Retribution",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Lethal Ignition"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Hunter Strike",
+            "Sky Piercer",
+            "Sea Halberd",
+            "Malefic Roar",
+            "Blade of Despair"
+          ]
+        },
+        {
+          "battleSpell": "Ice Retribution",
+          "emblems": [
+            "Custom Fighter Emblem",
+            "Killing Spree",
+            "Master Assassin",
+            "Thrill"
+          ],
+          "items": [
+            "Tough Boots",
+            "Sea Halberd",
+            "Rose Gold Meteor",
+            "Hunter Strike",
+            "Queen's Wings",
+            "Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h095",
+      "name": "Yu Zhong",
+      "role": "Fighter",
+      "speciality": [
+        "Regen",
+        "Damage"
+      ],
+      "topBuilds": []
+    },
+    {
+      "heroId": "h101",
+      "name": "Yve",
+      "role": "Mage",
+      "speciality": [
+        "Poke",
+        "Burst"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Pull Yourself Together",
+            "Impure Rage",
+            "Rupture"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Ice Queen Wand",
+            "Clock of Destiny",
+            "Divine Glaive",
+            "Blood Wings",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Ice Queen Wand",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Purify",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Tenacity",
+            "Impure Rage"
+          ],
+          "items": [
+            "Tough Boots",
+            "Glowing Wand",
+            "Lightning Truncheon",
+            "Blood Wings",
+            "Ice Queen Wand",
+            "Divine Glaive"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h129",
+      "name": "Zetian",
+      "role": "Mage",
+      "speciality": [
+        "Damage",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Lightning Truncheon",
+            "Arcane Boots",
+            "Glowing Wand",
+            "Divine Glaive",
+            "Wishing Lantern",
+            "Holy Crystal"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Inspire",
+            "Bargain Hunter",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Lightning Truncheon",
+            "Divine Glaive",
+            "Holy Crystal",
+            "Wishing Lantern",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Enchanted Talisman",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Divine Glaive",
+            "Blood Wings"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h050",
+      "name": "Zhask",
+      "role": "Mage",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Arrival",
+          "emblems": [
+            "Custom Tank Emblem",
+            "Thrill",
+            "Weapon Master",
+            "Impure Rage"
+          ],
+          "items": [
+            "Arcane Boots",
+            "Lightning Truncheon",
+            "Genius Wand",
+            "Fleeting Time",
+            "Holy Crystal",
+            "Immortality"
+          ]
+        },
+        {
+          "battleSpell": "Vengeance",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Rupture",
+            "Tenacity",
+            "Temporal Reign"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Windtalker",
+            "Glowing Wand",
+            "Divine Glaive",
+            "Cursed Helmet",
+            "Blade Armor"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Mage Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Impure Rage"
+          ],
+          "items": [
+            "Magic Shoes",
+            "Genius Wand",
+            "Glowing Wand",
+            "Blood Wings",
+            "Divine Glaive",
+            "Immortality"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h125",
+      "name": "Zhuxin",
+      "role": "Mage",
+      "speciality": [
+        "Damage",
+        "Crowd Control"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Brave Smite",
+            "Pull Yourself Together"
+          ],
+          "items": [
+            "Demon Shoes",
+            "Elegant Gem",
+            "Sky Piercer",
+            "Lightning Truncheon",
+            "Wishing Lantern",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flicker",
+          "emblems": [
+            "Custom Common Emblem",
+            "Agility",
+            "Wilderness Blessing",
+            "Brave Smite"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Clock of Destiny",
+            "Sky Piercer",
+            "Glowing Wand",
+            "Wishing Lantern",
+            "Blood Wings"
+          ]
+        },
+        {
+          "battleSpell": "Flameshot",
+          "emblems": [
+            "Custom Common Emblem",
+            "Inspire",
+            "Wilderness Blessing",
+            "Brave Smite"
+          ],
+          "items": [
+            "Tough Boots",
+            "Clock of Destiny",
+            "Wishing Lantern",
+            "Holy Crystal",
+            "Glowing Wand",
+            "Lightning Truncheon"
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "h016",
+      "name": "Zilong",
+      "role": "Fighter, Assassin",
+      "speciality": [
+        "Chase",
+        "Damage"
+      ],
+      "topBuilds": [
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Swift",
+            "Master Assassin",
+            "War Cry"
+          ],
+          "items": [
+            "Rapid Boots",
+            "Demon Hunter Sword",
+            "Golden Staff",
+            "Corrosion Scythe",
+            "Malefic Roar",
+            "Queen's Wings"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Assassin Emblem",
+            "War Cry",
+            "Master Assassin",
+            "Fatal"
+          ],
+          "items": [
+            "Tough Boots",
+            "Windtalker",
+            "Haas' Claws",
+            "Berserker's Fury",
+            "Rose Gold Meteor",
+            "Sea Halberd"
+          ]
+        },
+        {
+          "battleSpell": "Inspire",
+          "emblems": [
+            "Custom Marksman Emblem",
+            "Fatal",
+            "Master Assassin",
+            "Weakness Finder"
+          ],
+          "items": [
+            "Swift Boots",
+            "Windtalker",
+            "Berserker's Fury",
+            "Haas' Claws",
+            "Great Dragon Spear",
+            "Malefic Roar"
+          ]
+        }
+      ]
+    }
+  ]
+}

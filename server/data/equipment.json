@@ -1,0 +1,664 @@
+{
+  "metadata": {
+    "source": "github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "sourceUrl": "https://github.com/Ceplin03/database-mlbb.Mobile-Legends-Bang-Bang",
+    "licenseDeclared": "MIT (dinyatakan di README; file LICENSE tidak tersedia di repo)",
+    "importedAt": "2026-10-04T02:23:25.427Z"
+  },
+  "items": [
+    {
+      "id": 1,
+      "name": "Berserker's Fury",
+      "priceGold": 2390,
+      "icon": "/assets/items/berserkers_fury.png"
+    },
+    {
+      "id": 2,
+      "name": "Blade of Despair",
+      "priceGold": 3010,
+      "icon": "/assets/items/blade_of_despair.png"
+    },
+    {
+      "id": 3,
+      "name": "Blade of the Heptaseas",
+      "priceGold": 1950,
+      "icon": "/assets/items/blade_of_the_heptaseas.png"
+    },
+    {
+      "id": 4,
+      "name": "Corrosion Scythe",
+      "priceGold": 2050,
+      "icon": "/assets/items/corrosion_scythe.png"
+    },
+    {
+      "id": 5,
+      "name": "Demon Hunter Sword",
+      "priceGold": 2180,
+      "icon": "/assets/items/demon_hunter_sword.png"
+    },
+    {
+      "id": 6,
+      "name": "Endless Battle",
+      "priceGold": 2330,
+      "icon": "/assets/items/endless_battle.png"
+    },
+    {
+      "id": 7,
+      "name": "Fleeting Time",
+      "priceGold": 2050,
+      "icon": "/assets/items/fleeting_time.png"
+    },
+    {
+      "id": 8,
+      "name": "Golden Staff",
+      "priceGold": 2000,
+      "icon": "/assets/items/golden_staff.png"
+    },
+    {
+      "id": 9,
+      "name": "Great Dragon Spear",
+      "priceGold": 2140,
+      "icon": "/assets/items/great_dragon_spear.png"
+    },
+    {
+      "id": 10,
+      "name": "Haas's Claws",
+      "priceGold": 2020,
+      "icon": "/assets/items/haass_claws.png"
+    },
+    {
+      "id": 11,
+      "name": "Hunter Strike",
+      "priceGold": 2010,
+      "icon": "/assets/items/hunter_strike.png"
+    },
+    {
+      "id": 12,
+      "name": "Malefic Gun",
+      "priceGold": 2120,
+      "icon": "/assets/items/malefic_gun.png"
+    },
+    {
+      "id": 13,
+      "name": "Malefic Roar",
+      "priceGold": 2060,
+      "icon": "/assets/items/malefic_roar.png"
+    },
+    {
+      "id": 14,
+      "name": "Rose Gold Meteor",
+      "priceGold": 1820,
+      "icon": "/assets/items/rose_gold_meteor.png"
+    },
+    {
+      "id": 15,
+      "name": "Sea Halberd",
+      "priceGold": 2050,
+      "icon": "/assets/items/sea_halberd.png"
+    },
+    {
+      "id": 16,
+      "name": "Sky Piercer",
+      "priceGold": 1500,
+      "icon": "/assets/items/sky_piercer.png"
+    },
+    {
+      "id": 17,
+      "name": "War Axe",
+      "priceGold": 2100,
+      "icon": "/assets/items/war_axe.png"
+    },
+    {
+      "id": 18,
+      "name": "Wind of Nature",
+      "priceGold": 1910,
+      "icon": "/assets/items/wind_of_nature.png"
+    },
+    {
+      "id": 19,
+      "name": "Windtalker",
+      "priceGold": 1880,
+      "icon": "/assets/items/windtalker.png"
+    },
+    {
+      "id": 20,
+      "name": "Winter Crown",
+      "priceGold": 1910,
+      "icon": "/assets/items/winter_crown.png"
+    },
+    {
+      "id": 21,
+      "name": "Fury Hammer",
+      "priceGold": 830,
+      "icon": "/assets/items/fury_hammer.png"
+    },
+    {
+      "id": 22,
+      "name": "Legion Sword",
+      "priceGold": 910,
+      "icon": "/assets/items/legion_sword.png"
+    },
+    {
+      "id": 23,
+      "name": "Magic Blade",
+      "priceGold": 1050,
+      "icon": "/assets/items/magic_blade.png"
+    },
+    {
+      "id": 24,
+      "name": "Ogre Tomahawk",
+      "priceGold": 650,
+      "icon": "/assets/items/ogre_tomahawk.png"
+    },
+    {
+      "id": 25,
+      "name": "Regular Spear",
+      "priceGold": 600,
+      "icon": "/assets/items/regular_spear.png"
+    },
+    {
+      "id": 26,
+      "name": "Rogue Meteor",
+      "priceGold": 900,
+      "icon": "/assets/items/rogue_meteor.png"
+    },
+    {
+      "id": 27,
+      "name": "Swift Crossbow",
+      "priceGold": 1000,
+      "icon": "/assets/items/swift_crossbow.png"
+    },
+    {
+      "id": 28,
+      "name": "Dagger",
+      "priceGold": 250,
+      "icon": "/assets/items/dagger.png"
+    },
+    {
+      "id": 29,
+      "name": "Expert Gloves",
+      "priceGold": 500,
+      "icon": "/assets/items/expert_gloves.png"
+    },
+    {
+      "id": 30,
+      "name": "Iron Hunting Bow",
+      "priceGold": 450,
+      "icon": "/assets/items/iron_hunting_bow.png"
+    },
+    {
+      "id": 31,
+      "name": "Javelin",
+      "priceGold": 320,
+      "icon": "/assets/items/javelin.png"
+    },
+    {
+      "id": 32,
+      "name": "Knife",
+      "priceGold": 280,
+      "icon": "/assets/items/knife.png"
+    },
+    {
+      "id": 33,
+      "name": "Vampire Mallet",
+      "priceGold": 400,
+      "icon": "/assets/items/vampire_mallet.png"
+    },
+    {
+      "id": 34,
+      "name": "Power Potion",
+      "priceGold": 1500,
+      "icon": "/assets/items/power_potion.png"
+    },
+    {
+      "id": 35,
+      "name": "Blood Wings",
+      "priceGold": 2100,
+      "icon": "/assets/items/blood_wings.png"
+    },
+    {
+      "id": 36,
+      "name": "Clock of Destiny",
+      "priceGold": 2030,
+      "icon": "/assets/items/clock_of_destiny.png"
+    },
+    {
+      "id": 37,
+      "name": "Concentrated Energy",
+      "priceGold": 2020,
+      "icon": "/assets/items/concentrated_energy.png"
+    },
+    {
+      "id": 38,
+      "name": "Divine Glaive",
+      "priceGold": 1970,
+      "icon": "/assets/items/divine_glaive.png"
+    },
+    {
+      "id": 39,
+      "name": "Enchanted Talisman",
+      "priceGold": 1870,
+      "icon": "/assets/items/enchanted_talisman.png"
+    },
+    {
+      "id": 40,
+      "name": "Feather of Heaven",
+      "priceGold": 2030,
+      "icon": "/assets/items/feather_of_heaven.png"
+    },
+    {
+      "id": 41,
+      "name": "Flask of the Oasis",
+      "priceGold": 1850,
+      "icon": "/assets/items/flask_of_the_oasis.png"
+    },
+    {
+      "id": 42,
+      "name": "Fleeting Time",
+      "priceGold": 2050,
+      "icon": "/assets/items/fleeting_time.png"
+    },
+    {
+      "id": 43,
+      "name": "Genius Wand",
+      "priceGold": 2000,
+      "icon": "/assets/items/genius_wand.png"
+    },
+    {
+      "id": 44,
+      "name": "Glowing Wand",
+      "priceGold": 2150,
+      "icon": "/assets/items/glowing_wand.png"
+    },
+    {
+      "id": 45,
+      "name": "Holy Crystal",
+      "priceGold": 3000,
+      "icon": "/assets/items/holy_crystal.png"
+    },
+    {
+      "id": 46,
+      "name": "Ice Queen Wand",
+      "priceGold": 2040,
+      "icon": "/assets/items/ice_queen_wand.png"
+    },
+    {
+      "id": 47,
+      "name": "Lightning Truncheon",
+      "priceGold": 2250,
+      "icon": "/assets/items/lightning_truncheon.png"
+    },
+    {
+      "id": 48,
+      "name": "Sky Piercer",
+      "priceGold": 1500,
+      "icon": "/assets/items/sky_piercer.png"
+    },
+    {
+      "id": 49,
+      "name": "Starlium Scythe",
+      "priceGold": 2220,
+      "icon": "/assets/items/starlium_scythe.png"
+    },
+    {
+      "id": 50,
+      "name": "Winter Crown",
+      "priceGold": 1910,
+      "icon": "/assets/items/winter_crown.png"
+    },
+    {
+      "id": 51,
+      "name": "Wishing Lantern",
+      "priceGold": 2250,
+      "icon": "/assets/items/wishing_lantern.png"
+    },
+    {
+      "id": 52,
+      "name": "Azure Blade",
+      "priceGold": 600,
+      "icon": "/assets/items/azure_blade.png"
+    },
+    {
+      "id": 53,
+      "name": "Elegant Gem",
+      "priceGold": 700,
+      "icon": "/assets/items/elegant_gem.png"
+    },
+    {
+      "id": 54,
+      "name": "Exotic Veil",
+      "priceGold": 600,
+      "icon": "/assets/items/exotic_veil.png"
+    },
+    {
+      "id": 55,
+      "name": "Mystic Container",
+      "priceGold": 500,
+      "icon": "/assets/items/mystic_container.png"
+    },
+    {
+      "id": 56,
+      "name": "Tome of Evil",
+      "priceGold": 950,
+      "icon": "/assets/items/tome_of_evil.png"
+    },
+    {
+      "id": 57,
+      "name": "Book of Sages",
+      "priceGold": 450,
+      "icon": "/assets/items/book_of_sages.png"
+    },
+    {
+      "id": 58,
+      "name": "Expert Gloves",
+      "priceGold": 500,
+      "icon": "/assets/items/expert_gloves.png"
+    },
+    {
+      "id": 59,
+      "name": "Magic Necklace",
+      "priceGold": 120,
+      "icon": "/assets/items/magic_necklace.png"
+    },
+    {
+      "id": 60,
+      "name": "Magic Wand",
+      "priceGold": 820,
+      "icon": "/assets/items/magic_wand.png"
+    },
+    {
+      "id": 61,
+      "name": "Mystery Codex",
+      "priceGold": 300,
+      "icon": "/assets/items/mystery_codex.png"
+    },
+    {
+      "id": 62,
+      "name": "Power Crystal",
+      "priceGold": 220,
+      "icon": "/assets/items/power_crystal.png"
+    },
+    {
+      "id": 63,
+      "name": "Flower of Hope",
+      "priceGold": 0,
+      "icon": "/assets/items/flower_of_hope.png"
+    },
+    {
+      "id": 64,
+      "name": "Lantern of Hope",
+      "priceGold": 0,
+      "icon": "/assets/items/lantern_of_hope.png"
+    },
+    {
+      "id": 65,
+      "name": "Magic Potion",
+      "priceGold": 1500,
+      "icon": "/assets/items/magic_potion.png"
+    },
+    {
+      "id": 66,
+      "name": "Antique Cuirass",
+      "priceGold": 2170,
+      "icon": "/assets/items/antique_cuirass.png"
+    },
+    {
+      "id": 67,
+      "name": "Athena's Shield",
+      "priceGold": 2150,
+      "icon": "/assets/items/athenas_shield.png"
+    },
+    {
+      "id": 68,
+      "name": "Blade Armor",
+      "priceGold": 1910,
+      "icon": "/assets/items/blade_armor.png"
+    },
+    {
+      "id": 69,
+      "name": "Brute Force Breastplate",
+      "priceGold": 1870,
+      "icon": "/assets/items/brute_force_breastplate.png"
+    },
+    {
+      "id": 70,
+      "name": "Chastise Pauldron",
+      "priceGold": 2100,
+      "icon": "/assets/items/chastise_pauldron.png"
+    },
+    {
+      "id": 71,
+      "name": "Cursed Helmet",
+      "priceGold": 1910,
+      "icon": "/assets/items/cursed_helmet.png"
+    },
+    {
+      "id": 72,
+      "name": "Dominance Ice",
+      "priceGold": 2010,
+      "icon": "/assets/items/dominance_ice.png"
+    },
+    {
+      "id": 73,
+      "name": "Fleeting Time",
+      "priceGold": 2050,
+      "icon": "/assets/items/fleeting_time.png"
+    },
+    {
+      "id": 74,
+      "name": "Guardian Helmet",
+      "priceGold": 2200,
+      "icon": "/assets/items/guardian_helmet.png"
+    },
+    {
+      "id": 75,
+      "name": "Immortality",
+      "priceGold": 2120,
+      "icon": "/assets/items/immortality.png"
+    },
+    {
+      "id": 76,
+      "name": "Oracle",
+      "priceGold": 1860,
+      "icon": "/assets/items/oracle.png"
+    },
+    {
+      "id": 77,
+      "name": "Queen's Wings",
+      "priceGold": 2250,
+      "icon": "/assets/items/queens_wings.png"
+    },
+    {
+      "id": 78,
+      "name": "Radiant Armor",
+      "priceGold": 1880,
+      "icon": "/assets/items/radiant_armor.png"
+    },
+    {
+      "id": 79,
+      "name": "Thunder Belt",
+      "priceGold": 1820,
+      "icon": "/assets/items/thunder_belt.png"
+    },
+    {
+      "id": 80,
+      "name": "Ares Belt",
+      "priceGold": 900,
+      "icon": "/assets/items/ares_belt.png"
+    },
+    {
+      "id": 81,
+      "name": "Black Ice Shield",
+      "priceGold": 880,
+      "icon": "/assets/items/black_ice_shield.png"
+    },
+    {
+      "id": 82,
+      "name": "Dreadnaught Armor",
+      "priceGold": 730,
+      "icon": "/assets/items/dreadnaught_armor.png"
+    },
+    {
+      "id": 83,
+      "name": "Molten Essence",
+      "priceGold": 800,
+      "icon": "/assets/items/molten_essence.png"
+    },
+    {
+      "id": 84,
+      "name": "Silence Robe",
+      "priceGold": 1020,
+      "icon": "/assets/items/silence_robe.png"
+    },
+    {
+      "id": 85,
+      "name": "Steel Legplates",
+      "priceGold": 630,
+      "icon": "/assets/items/steel_legplates.png"
+    },
+    {
+      "id": 86,
+      "name": "Healing Necklace",
+      "priceGold": 140,
+      "icon": "/assets/items/healing_necklace.png"
+    },
+    {
+      "id": 87,
+      "name": "Hero's Ring",
+      "priceGold": 450,
+      "icon": "/assets/items/heros_ring.png"
+    },
+    {
+      "id": 88,
+      "name": "Leather Jerkin",
+      "priceGold": 220,
+      "icon": "/assets/items/leather_jerkin.png"
+    },
+    {
+      "id": 89,
+      "name": "Magic Resist Cloak",
+      "priceGold": 220,
+      "icon": "/assets/items/magic_resist_cloak.png"
+    },
+    {
+      "id": 90,
+      "name": "Vitality Crystal",
+      "priceGold": 300,
+      "icon": "/assets/items/vitality_crystal.png"
+    },
+    {
+      "id": 91,
+      "name": "Rock Potion",
+      "priceGold": 1500,
+      "icon": "/assets/items/rock_potion.png"
+    },
+    {
+      "id": 92,
+      "name": "Arcane Boots",
+      "priceGold": 690,
+      "icon": "/assets/items/arcane_boots.png"
+    },
+    {
+      "id": 93,
+      "name": "Demon Boots",
+      "priceGold": 720,
+      "icon": "/assets/items/demon_boots.png"
+    },
+    {
+      "id": 94,
+      "name": "Magic Boots",
+      "priceGold": 710,
+      "icon": "/assets/items/magic_boots.png"
+    },
+    {
+      "id": 95,
+      "name": "Rapid Boots",
+      "priceGold": 750,
+      "icon": "/assets/items/rapid_boots.png"
+    },
+    {
+      "id": 96,
+      "name": "Swift Boots",
+      "priceGold": 710,
+      "icon": "/assets/items/swift_boots.png"
+    },
+    {
+      "id": 97,
+      "name": "Tough Boots",
+      "priceGold": 700,
+      "icon": "/assets/items/tough_boots.png"
+    },
+    {
+      "id": 98,
+      "name": "Warrior Boots",
+      "priceGold": 720,
+      "icon": "/assets/items/warrior_boots.png"
+    },
+    {
+      "id": 99,
+      "name": "Boots",
+      "priceGold": 250,
+      "icon": "/assets/items/boots.png"
+    },
+    {
+      "id": 100,
+      "name": "Allow Throw",
+      "priceGold": 0,
+      "icon": "/assets/items/allow_throw.png"
+    },
+    {
+      "id": 101,
+      "name": "Broken Heart",
+      "priceGold": 0,
+      "icon": "/assets/items/broken_heart.png"
+    },
+    {
+      "id": 102,
+      "name": "Throw Forbidden",
+      "priceGold": 0,
+      "icon": "/assets/items/throw_forbidden.png"
+    },
+    {
+      "id": 103,
+      "name": "Bloody Retribution",
+      "priceGold": 0,
+      "icon": "/assets/items/bloody_retribution.png"
+    },
+    {
+      "id": 104,
+      "name": "Flame Retribution",
+      "priceGold": 0,
+      "icon": "/assets/items/flame_retribution.png"
+    },
+    {
+      "id": 105,
+      "name": "Ice Retribution",
+      "priceGold": 0,
+      "icon": "/assets/items/ice_retribution.png"
+    },
+    {
+      "id": 106,
+      "name": "Conceal",
+      "priceGold": 0,
+      "icon": "/assets/items/conceal.png"
+    },
+    {
+      "id": 107,
+      "name": "Dire Hit",
+      "priceGold": 0,
+      "icon": "/assets/items/dire_hit.png"
+    },
+    {
+      "id": 108,
+      "name": "Encourage",
+      "priceGold": 0,
+      "icon": "/assets/items/encourage.png"
+    },
+    {
+      "id": 109,
+      "name": "Favor",
+      "priceGold": 0,
+      "icon": "/assets/items/favor.png"
+    }
+  ]
+}
