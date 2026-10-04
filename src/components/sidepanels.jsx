@@ -5,6 +5,7 @@ import { request } from '../lib/socket.js';
 import { store, getOperatorToken } from '../lib/store.js';
 import { loadPresets } from '../lib/data.js';
 import TeamLogo from './TeamLogo.jsx';
+import { uploadLogo, assertLogoFile, readAsDataUrl } from '../lib/assets.js';
 
 async function send(event, payload, okMsg) {
   const res = await request(event, payload);
@@ -13,18 +14,6 @@ async function send(event, payload, okMsg) {
   return res;
 }
 
-/** Unggah gambar (data URL) ke penyimpanan lokal server, kembalikan URL publik. */
-async function uploadLogo(dataUrl) {
-  const token = getOperatorToken();
-  const res = await fetch('/api/logos', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json', ...(token ? { 'x-operator-token': token } : {}) },
-    body: JSON.stringify({ dataUrl })
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok || !data.ok) throw new Error(data.error || `Server menolak gambar (HTTP ${res.status}).`);
-  return data.url;
-}
 
 /* ------------------------------------------------------------- meta match */
 

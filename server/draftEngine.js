@@ -6,6 +6,7 @@
  * ---------------------------------------------------------------------------
  */
 import { getPreset, validatePreset, MAX_PICKS_PER_TEAM } from './presets.js';
+import { defaultTheme } from '../shared/theme.js';
 
 export const DEFAULT_TIMER_MS = 30 * 1000;
 
@@ -81,7 +82,13 @@ export function createInitialState() {
       brandText: '',
       brandLogo: null,
       /** emergency stop: membekukan animasi & countdown tanpa menghapus data */
-      emergency: false
+      emergency: false,
+      /**
+       * Konfigurasi desain scoreboard (warna, preset, frame, logo, sponsor,
+       * visibilitas). Terpisah dari data pertandingan — mengubah tema tidak
+       * pernah menyentuh skor/draft, dan sebaliknya.
+       */
+      theme: defaultTheme()
     },
     revision: 0,
     updatedAt: nowIso()

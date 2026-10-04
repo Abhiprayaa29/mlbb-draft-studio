@@ -40,6 +40,7 @@ import {
   currentAction
 } from './draftEngine.js';
 import { PRESETS, validatePreset, MAX_PICKS_PER_TEAM } from './presets.js';
+import { validateThemePatch, sanitizeTheme } from '../shared/theme.js';
 import * as store from './store.js';
 import * as storage from './storage.js';
 
@@ -325,6 +326,8 @@ function normalizeLoaded(doc) {
   st.teams = { blue: { ...base.teams.blue, ...doc.teams?.blue }, red: { ...base.teams.red, ...doc.teams?.red } };
   st.score = { ...base.score, ...doc.score };
   st.overlay = { ...base.overlay, ...doc.overlay };
+  // konfigurasi tema dari match lama (bisa belum punya tema) disaring ulang
+  st.overlay.theme = sanitizeTheme(doc.overlay?.theme, base.overlay.theme);
   st.meta = { ...base.meta, ...doc.meta };
   st.draft = { ...base.draft, ...(doc.draft || {}) };
   st.draft.timer = { ...base.draft.timer, ...(doc.draft?.timer || {}), running: false, deadlineAt: null };
@@ -573,6 +576,7 @@ io.on('connection', (socket) => {
       ack?.(
         mutate((s) => {
           const p = payload?.patch || {};
+          let themeError = null;
           Object.entries(p).forEach(([k, v]) => {
             if (!(k in s.overlay)) return;
             if (k === 'animMs') s.overlay[k] = Math.max(0, Math.min(3000, Number(v) || 0));
@@ -582,9 +586,18 @@ io.on('connection', (socket) => {
             else if (k === 'brandText') s.overlay[k] = String(v || '').slice(0, 60);
             else if (k === 'brandLogo') s.overlay[k] = v ? (isUsableLogoUrl(v) ? v : s.overlay[k]) : null;
             else if (k === 'emergency') setEmergency(s, !!v);
-            else if (typeof s.overlay[k] === 'boolean') s.overlay[k] = !!v;
+            else if (k === 'theme') {
+              // konfigurasi desain: validasi penuh, ditolak utuh bila ada nilai tak sah
+              const checked = validateThemePatch(v, s.overlay.theme);
+              if (checked.errors.length) {
+                themeError = checked.errors.slice(0, 3).join(' ');
+              } else {
+                s.overlay.theme = checked.theme;
+              }
+            } else if (typeof s.overlay[k] === 'boolean') s.overlay[k] = !!v;
             else s.overlay[k] = v;
           });
+          if (themeError) return { state: s, error: themeError };
           s.revision += 1;
           s.updatedAt = new Date().toISOString();
           return { state: s };
@@ -629,6 +642,8 @@ io.on('connection', (socket) => {
           const fresh = createInitialState();
           fresh.meta = { ...s.meta };
           fresh.matchName = 'Pertandingan Baru';
+          // konfigurasi siaran dipertahankan (tema, logo, layout, branding)
+          fresh.overlay = { ...fresh.overlay, ...s.overlay, announce: null, emergency: false };
           return { state: fresh };
         })
       ),

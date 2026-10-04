@@ -353,6 +353,69 @@ async function main() {
   const logoPatchBad = await ack(control, 'team:update', { side: 'red', patch: { logo: '//evil.example/x.png' } });
   assert(logoPatchBad.ok === false, 'logo protocol-relative ditolak');
 
+  /* --- 6b. tema scoreboard (konfigurasi desain terpisah dari data match) -- */
+  const th0 = brandLogoUrl.state.overlay.theme;
+  assert(
+    th0 && typeof th0.colors === 'object' && typeof th0.presetId === 'string',
+    'state punya tema scoreboard default',
+    `preset=${th0?.presetId || '-'}`
+  );
+  const oTheme = await ack(overlay, 'overlay:update', { patch: { theme: { ...th0, caster: 'penyusup' } } });
+  assert(oTheme.ok === false, 'overlay ditolak mengubah tema');
+
+  const thSet = await ack(control, 'overlay:update', {
+    patch: { theme: { ...th0, presetId: 'modern-teal', colors: { ...th0.colors, accent: '#4FA4A5' }, caster: 'Snowbee' } }
+  });
+  assert(thSet.ok === true && thSet.state.overlay.theme.colors.accent === '#4FA4A5', 'tema scoreboard dapat diubah operator', `err=${thSet.error || '-'}`);
+  assert(thSet.state.overlay.theme.presetId === 'modern-teal', 'preset tema tersimpan', `preset=${thSet.state.overlay.theme.presetId}`);
+
+  const thColorBad = await ack(control, 'overlay:update', {
+    patch: { theme: { ...thSet.state.overlay.theme, colors: { ...thSet.state.overlay.theme.colors, accent: 'merah' } } }
+  });
+  assert(thColorBad.ok === false && /tidak valid/i.test(thColorBad.error || ''), 'warna tak valid ditolak dengan pesan jelas', `err=${thColorBad.error || '-'}`);
+  assert(
+    thColorBad.state?.overlay?.theme?.colors?.accent === '#4FA4A5',
+    'patch tema yang gagal tidak mengubah tema yang tersimpan'
+  );
+
+  const thSponsorBad = await ack(control, 'overlay:update', {
+    patch: { theme: { ...thSet.state.overlay.theme, sponsors: ['javascript:alert(1)'] } }
+  });
+  assert(thSponsorBad.ok === false, 'sponsor javascript: ditolak utuh');
+  assert((thSponsorBad.state?.overlay?.theme?.sponsors?.length || 0) === 0, 'sponsor tidak valid tidak menyisakan data');
+
+  const thSponsors7 = await ack(control, 'overlay:update', {
+    patch: { theme: { ...thSet.state.overlay.theme, sponsors: Array(7).fill('https://cdn.example/s.png') } }
+  });
+  assert(thSponsors7.ok === false && /sponsor/i.test(thSponsors7.error || ''), 'sponsor melebihi batas ditolak', `err=${thSponsors7.error || '-'}`);
+
+  const thLong = await ack(control, 'overlay:update', {
+    patch: { theme: { ...thSet.state.overlay.theme, caster: 'X'.repeat(120) } }
+  });
+  assert(thLong.ok === true && thLong.state.overlay.theme.caster.length === 48, 'caster dipotong maks 48 karakter', `panjang=${thLong.state?.overlay?.theme?.caster?.length}`);
+
+  const thVis = await ack(control, 'overlay:update', {
+    patch: { theme: { ...thSet.state.overlay.theme, visible: { ...thSet.state.overlay.theme.visible, sponsors: false } } }
+  });
+  assert(thVis.ok === true && thVis.state.overlay.theme.visible.sponsors === false, 'visibilitas elemen dapat diubah');
+
+  const thScoreBefore = JSON.parse(JSON.stringify(thVis.state.score));
+  const thScoreUpd = await ack(control, 'score:update', { patch: { blue: { kills: 3 } } });
+  assert(thScoreUpd.ok === true && thScoreUpd.state.score.blue.kills === 3, 'skor dapat diubah setelah tema');
+  assert(
+    JSON.stringify(thScoreUpd.state.overlay.theme) === JSON.stringify(thVis.state.overlay.theme),
+    'perubahan skor tidak menyentuh konfigurasi tema'
+  );
+  const thAfterScore = await ack(control, 'overlay:update', {
+    patch: { theme: { ...thScoreUpd.state.overlay.theme, info: 'Grand Final · Best of 3' } }
+  });
+  assert(thAfterScore.ok === true, 'tema dapat diubah setelah skor berubah');
+  assert(
+    thAfterScore.state.score.blue.kills === thScoreUpd.state.score.blue.kills,
+    'perubahan tema tidak menyentuh skor',
+    `kills=${thAfterScore.state.score.blue.kills}`
+  );
+
   /* --- 7. skor → nextGame ------------------------------------------------ */
   const sc = await ack(control, 'score:update', { patch: { blue: { kills: 7, gold: 12000 } } });
   assert(sc.ok && sc.state.score.blue.kills === 7, 'skor dapat diubah operator');
@@ -364,6 +427,7 @@ async function main() {
     ng.state.draft.log.some((l) => l.kind === 'game'),
     'riwayat mencatat transisi game (terstruktur)'
   );
+  assert(ng.state.overlay.theme.colors.accent === '#4FA4A5', 'tema bertahan saat match:nextGame');
 
   /* --- 8. emergency ------------------------------------------------------ */
   await ack(control, 'timer', { cmd: 'start' });
@@ -386,6 +450,7 @@ async function main() {
   await sleep(600);
   const saved = readStateFile();
   assert(!saved.__error, 'state.json valid setelah autosave', saved.__error || '');
+  assert(saved.overlay?.theme?.colors?.accent === '#4FA4A5', 'tema tersimpan di state.json (autosave)');
   assert(saved.revision === lastRev, 'revisi tersimpan sama dengan di memori', `file=${saved.revision} memori=${lastRev}`);
   assert(tmpLeftovers().length === 0, 'tidak ada file .tmp tersisa (penulisan atomik)', tmpLeftovers().join(','));
 
@@ -403,6 +468,8 @@ async function main() {
   const st2 = await ack(s2, 'state:request');
   assert(st2.ok && st2.state.revision === before.revision, 'state pulih persis setelah restart', `rev=${st2.state.revision}`);
   assert(st2.state.meta.gameNumber === before.meta.gameNumber, 'data pertandingan tidak hilang saat restart');
+  assert(st2.state.overlay.theme.colors.accent === '#4FA4A5', 'tema scoreboard bertahan setelah restart', `accent=${st2.state.overlay.theme.colors.accent}`);
+  assert(typeof st2.state.overlay.theme.presetId === 'string' && typeof st2.state.overlay.theme.visible === 'object', 'struktur tema valid setelah restart');
   // satu perubahan agar backup berisi keadaan terakhir sebelum state.json dirusak
   const b2 = await ack(s2, 'meta:update', { patch: { round: 'simpan-untuk-uji' } });
   assert(b2.ok === true, 'perubahan pasca-restart diterima');

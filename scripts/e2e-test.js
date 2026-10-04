@@ -815,6 +815,18 @@ async function main() {
 
     // --- transisi game berikutnya ---
     await clickTab(control, 'Skor');
+    // nomor game di-clamp 1..9; bila hasil uji sebelumnya sudah mentok di 9,
+    // kembalikan dulu lewat input panel agar nextGame tetap bisa diuji.
+    await control.evaluate(() => {
+      const lab = [...document.querySelectorAll('label')].find((l) => /game ke/i.test(l.textContent));
+      const inp = lab && lab.querySelector('input');
+      if (!inp || Number(inp.value) < 9) return false;
+      const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+      setter.call(inp, '1');
+      inp.dispatchEvent(new Event('input', { bubbles: true }));
+      return true;
+    });
+    await sleep(700);
     const gameBefore = (await apiGet('/state')).state.meta.gameNumber;
     const nextArmed = await clickArmed(control, '[data-testid="next-game"]', /^mulai game \d+\?$/i);
     await sleep(900);
@@ -863,8 +875,148 @@ async function main() {
     );
     check('Timer dilanjutkan setelah undo dari status selesai', st.draft.timer.running === true, `running=${st.draft.timer.running}`);
 
-    /* ------------------------------------------------- 12. laporan console */
-    console.log('\n[12] Console & error browser');
+    /* ---------------------------------------- 12. tema scoreboard (live) */
+    console.log('\n[12] Tema scoreboard');
+
+    const readPreviewAccent = (page) =>
+      page.evaluate(() => {
+        const root = document.querySelector('[data-testid="score-preview"]');
+        if (!root) return null;
+        const el = [...root.querySelectorAll('*')].find((d) => (d.getAttribute('style') || '').includes('--sc-accent'));
+        return el ? getComputedStyle(el).getPropertyValue('--sc-accent').trim().toUpperCase() : null;
+      });
+    const readPageAccent = (page) =>
+      page.evaluate(() => {
+        const el = [...document.querySelectorAll('div')].find((d) => (d.getAttribute('style') || '').includes('--sc-accent'));
+        return el ? getComputedStyle(el).getPropertyValue('--sc-accent').trim().toUpperCase() : null;
+      });
+    const setHex = (page, label, value) =>
+      page.evaluate(
+        (lab, v) => {
+          const el = document.querySelector(`input[aria-label="${lab}"]`);
+          if (!el) return false;
+          const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          setter.call(el, v);
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+          return true;
+        },
+        label,
+        value
+      );
+
+    const themeOrig = (await apiGet('/state')).state.overlay.theme;
+    await clickTab(control, 'Tema');
+    await sleep(500);
+
+    const panelInfo = await control.evaluate(() => ({
+      preview: !!document.querySelector('[data-testid="score-preview"]'),
+      previewText: document.querySelector('[data-testid="score-preview"]')?.innerText || '',
+      save: !!document.querySelector('[data-testid="theme-save"]'),
+      saveDisabled: document.querySelector('[data-testid="theme-save"]')?.disabled === true,
+      status: document.querySelector('[data-testid="theme-save-status"]')?.textContent || '',
+      presets: [...(document.querySelector('[data-testid="theme-preset-select"]')?.options || [])].map((o) => o.value),
+      controls: !!document.querySelector('[aria-label="Accent color hex"]')
+    }));
+    check('Tab Tema menampilkan preview scoreboard', panelInfo.preview === true);
+    check('Preview memakai data pertandingan asli', /tim biru fc/i.test(panelInfo.previewText), panelInfo.previewText.slice(0, 60).replace(/\s+/g, ' '));
+    check('Panel tema punya kontrol warna & tombol Simpan', panelInfo.controls === true && panelInfo.save === true);
+    check('Simpan nonaktif selama belum ada perubahan', panelInfo.saveDisabled === true);
+    check('Status awal konfigurasi tersimpan', /tersimpan/i.test(panelInfo.status) && !/belum disimpan/i.test(panelInfo.status), panelInfo.status);
+    check('Preset bawaan tersedia', ['rrq-gold', 'navy-tournament', 'modern-teal'].every((id) => panelInfo.presets.includes(id)), panelInfo.presets.join(','));
+    const previewScroll = await control.evaluate(() => {
+      const p = document.querySelector('[data-testid="score-preview"]');
+      return p ? p.scrollWidth - p.clientWidth : -1;
+    });
+    check('Preview scoreboard tanpa scrollbar', previewScroll <= 0, `lebar lebih ${previewScroll}px`);
+
+    // --- ubah warna: preview langsung berubah, server belum ---
+    const accentOrig = (themeOrig.colors.accent || '').toUpperCase();
+    const accentBefore = await readPreviewAccent(control);
+    const typed = await setHex(control, 'Accent color hex', '#00FF66');
+    await sleep(500);
+    const accentAfter = await readPreviewAccent(control);
+    const stDraft = (await apiGet('/state')).state.overlay.theme;
+    check('Perubahan warna langsung terlihat di preview', typed && accentAfter === '#00FF66', `${accentBefore} → ${accentAfter}`);
+    check('Perubahan warna belum mengirim apa pun ke server', stDraft.colors.accent === accentOrig, stDraft.colors.accent);
+    const statusDirty = await control.evaluate(() => document.querySelector('[data-testid="theme-save-status"]')?.textContent || '');
+    check('Status menandai perubahan belum disimpan', /belum disimpan/i.test(statusDirty), statusDirty);
+    check('Simpan aktif setelah ada perubahan', (await control.evaluate(() => document.querySelector('[data-testid="theme-save"]')?.disabled)) === false);
+
+    // --- batal membatalkan draft ---
+    await clickEl(control, '[data-testid="theme-cancel"]');
+    await sleep(400);
+    const accentCancelled = await readPreviewAccent(control);
+    check('Batal mengembalikan preview ke konfigurasi tersimpan', accentCancelled === accentOrig, accentCancelled);
+
+    // --- terapkan preset: masih lokal sampai disimpan ---
+    await setSelectValue(control, 'Pilih preset', 'rrq-gold');
+    await sleep(400);
+    const presetPick = await control.evaluate(() => document.querySelector('[data-testid="theme-preset-select"]')?.value || '');
+    const stPreset = (await apiGet('/state')).state.overlay.theme;
+    check('Preset diterapkan ke draft preview', presetPick === 'rrq-gold', presetPick);
+    check('Preset belum mengubah server (menunggu Simpan)', stPreset.presetId === themeOrig.presetId, stPreset.presetId);
+
+    // --- simpan: diterima server & sinkron ke overlay OBS ---
+    const scoreBeforeThemeSave = JSON.stringify((await apiGet('/state')).state.score);
+    const clickedSave = await clickEl(control, '[data-testid="theme-save"]');
+    await sleep(1100);
+    const stSaved = (await apiGet('/state')).state.overlay.theme;
+    check('Simpan mengirim konfigurasi tema ke server', clickedSave && stSaved.presetId === 'rrq-gold', `${stSaved.presetId}`);
+    const statusSaved = await control.evaluate(() => document.querySelector('[data-testid="theme-save-status"]')?.textContent || '');
+    check('Status kembali ke konfigurasi tersimpan', /tersimpan/i.test(statusSaved) && !/belum disimpan/i.test(statusSaved), statusSaved);
+    const scoreAfterThemeSave = JSON.stringify((await apiGet('/state')).state.score);
+    check('Skor tidak berubah karena penyimpanan tema', scoreAfterThemeSave === scoreBeforeThemeSave, scoreAfterThemeSave === scoreBeforeThemeSave ? 'identik' : 'berubah');
+
+    const ovTheme = patchPage(await browser.newPage());
+    hookConsole(ovTheme, 'overlay-theme');
+    await ovTheme.setViewport({ width: 1920, height: 1080 });
+    await gotoSettle(ovTheme, `${BASE}/overlay/score`);
+    await sleep(900);
+    const ovAccent = await readPageAccent(ovTheme);
+    check('Tema tersimpan tampil di overlay OBS (tanpa reload ulang)', ovAccent === (stSaved.colors.accent || '').toUpperCase(), `${ovAccent} vs ${stSaved.colors.accent}`);
+    const ovThemeInfo = await ovTheme.evaluate(() => ({
+      text: document.body.innerText,
+      hasControls: !!document.querySelector('[data-testid="theme-save"], [data-testid="theme-cancel"]'),
+      bodyBg: getComputedStyle(document.body).backgroundColor
+    }));
+    check('Overlay siaran tidak menampilkan kontrol panel', ovThemeInfo.hasControls === false && !/Tema Scoreboard|Simpan konfigurasi/i.test(ovThemeInfo.text));
+    check('Latar overlay tetap transparan setelah tema diganti', ovThemeInfo.bodyBg === 'rgba(0, 0, 0, 0)', ovThemeInfo.bodyBg);
+    await shot(ovTheme, 'overlay-score-themed');
+
+    await ovTheme.setViewport({ width: 1280, height: 720 });
+    await sleep(700);
+    const scrollInfo = await ovTheme.evaluate(() => ({
+      x: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      y: document.documentElement.scrollHeight - document.documentElement.clientHeight
+    }));
+    check('Overlay tanpa scrollbar pada 1280×720', scrollInfo.x <= 0 && scrollInfo.y <= 0, JSON.stringify(scrollInfo));
+    await shot(control, 'control-panel-tema');
+    await ovTheme.close();
+
+    // --- pulihkan konfigurasi tema seperti sebelum uji ---
+    await clickTab(control, 'Tema');
+    if (themeOrig.presetId !== stSaved.presetId) {
+      await setSelectValue(control, 'Pilih preset', themeOrig.presetId);
+      await sleep(400);
+    }
+    if (accentOrig !== ((await apiGet('/state')).state.overlay.theme.colors.accent || '').toUpperCase()) {
+      await setHex(control, 'Accent color hex', accentOrig);
+      await sleep(400);
+    }
+    const needSave = (await control.evaluate(() => document.querySelector('[data-testid="theme-save"]')?.disabled)) === false;
+    if (needSave) {
+      await clickEl(control, '[data-testid="theme-save"]');
+      await sleep(900);
+    }
+    const stRestored = (await apiGet('/state')).state.overlay.theme;
+    check(
+      'Konfigurasi tema dipulihkan setelah uji',
+      stRestored.presetId === themeOrig.presetId && (stRestored.colors.accent || '').toUpperCase() === accentOrig,
+      `${stRestored.presetId} accent=${stRestored.colors.accent}`
+    );
+
+    /* ------------------------------------------------- 13. laporan console */
+    console.log('\n[13] Console & error browser');
     const ignore = /Download the React DevTools|SockJS|ResizeObserver loop|Failed to load resource/i;
     const realErrors = consoleErrors.filter((e) => !ignore.test(e));
     const realHttp = httpErrors.filter((e) => !/favicon/i.test(e));

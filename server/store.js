@@ -11,6 +11,7 @@
  */
 import path from 'node:path';
 import { createInitialState } from './draftEngine.js';
+import { sanitizeTheme } from '../shared/theme.js';
 import * as storage from './storage.js';
 
 let state = null;
@@ -21,10 +22,41 @@ function safeClone(v) {
   return JSON.parse(JSON.stringify(v));
 }
 
+/**
+ * Normalisasi state hasil baca file: field overlay lama (sebelum ada tema)
+ * dilengkapi default, dan konfigurasi tema selalu lewat penyaringan sehingga
+ * file hasil edit tangan pun tidak bisa memasukkan nilai tidak valid.
+ */
+function normalizeLoadedState(doc) {
+  const base = createInitialState();
+  const st = { ...base, ...doc };
+  st.teams = {
+    blue: { ...base.teams.blue, ...(doc.teams?.blue || {}) },
+    red: { ...base.teams.red, ...(doc.teams?.red || {}) }
+  };
+  st.score = { ...base.score, ...(doc.score || {}) };
+  st.score.blue = { ...base.score.blue, ...(doc.score?.blue || {}) };
+  st.score.red = { ...base.score.red, ...(doc.score?.red || {}) };
+  st.meta = { ...base.meta, ...(doc.meta || {}) };
+  st.overlay = { ...base.overlay, ...(doc.overlay || {}) };
+  st.overlay.theme = sanitizeTheme(doc.overlay?.theme, base.overlay.theme);
+  st.draft = { ...base.draft, ...(doc.draft || {}) };
+  st.draft.timer = { ...base.draft.timer, ...(doc.draft?.timer || {}) };
+  if (!Array.isArray(st.draft.actions) || st.draft.actions.length === 0) {
+    st.draft.actions = base.draft.actions;
+    st.draft.presetId = base.draft.presetId;
+    st.draft.presetName = base.draft.presetName;
+  }
+  st.draft.entries = Array.isArray(doc.draft?.entries) ? doc.draft.entries : [];
+  st.draft.log = Array.isArray(doc.draft?.log) ? doc.draft.log : [];
+  st.draft.used = doc.draft?.used && typeof doc.draft.used === 'object' ? doc.draft.used : {};
+  return st;
+}
+
 export function loadState() {
   const doc = storage.loadStateFile();
   if (doc) {
-    state = doc;
+    state = normalizeLoadedState(doc);
     // jangan lanjutkan timer mati dari sesi sebelumnya
     state.draft.timer.running = false;
     state.draft.timer.deadlineAt = null;

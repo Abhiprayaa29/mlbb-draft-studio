@@ -77,6 +77,21 @@ bawaan; `DATA_DIR` hanya untuk data yang berubah (state, match, backup, logo).
 - **Panel overlay**: layout draft (`full / compact / lineup`), layout scoreboard
   (`full / compact`), durasi animasi, opsi tampil nama pemain/timer/tier/logo,
   dan **branding turnamen** (teks + logo, bisa diunggah).
+- **Tab Tema (scoreboard)**: pilih preset (`rrq-gold`, `navy-tournament`,
+  `modern-teal`, atau preset kustom buatan sendiri) lalu bebas menyunting —
+  **live preview 16:9** di panel yang sama. Yang bisa diatur:
+  - **Warna**: primary, secondary, accent, border, background, text, team A/B,
+    highlight, timer (picker hex + palet cepat).
+  - **Kerangka**: tebal garis (`borderPx`), skala hiasan (pita & sudut `deco`),
+    skala teks, kapitalisasi label.
+  - **Logo & sponsor**: logo turnamen (unggah/URL), posisi geser, skala,
+    hingga 6 sponsor (unggah/URL) + nama sponsor, caster, teks info.
+  - **Visibilitas** (13 sakelar): header, kerangka, logo turnamen, logo tim,
+    sponsor, caster, info, skor, statistik, lineup, timer, MVP, pemenang.
+  - Tombol **Simpan** mengirim sekaligus ke server (`overlay:update` → `theme`),
+    **Batal** mengembalikan draft ke konfigurasi tersimpan, plus
+    "Reset ke preset" & "Kembalikan default". Perubahan tema **tidak** memengaruhi
+    skor/draft, dan skor tidak mengubah tema (diuji otomatis).
 - **Panel match**: simpan, muat ulang, dan hapus pertandingan (riwayat tersimpan di
   `server/data/matches/*.json`).
 - **Panel riwayat**: log aksi dengan **label terstruktur** (`PICK`, `BAN`, `UNDO`,
@@ -114,12 +129,24 @@ bawaan; `DATA_DIR` hanya untuk data yang berubah (state, match, backup, logo).
 
 - Kill besar, gold, turret, lord, turtle, seri (best-of), MVP, pemenang game,
   baris lineup hero + nickname.
+- **Tampilan mengikuti tema aktif**: pita header berwarna + pelat geometris
+  kiri/kanan, sudut tajam, logo turnamen, sponsor, pill caster, dan teks info
+  — semuanya diatur dari **tab Tema** (preset `rrq-gold`, `navy-tournament`,
+  `modern-teal`, atau kustom) dan langsung tersinkron ke overlay tanpa reload.
+- **Data jujur**: statistik yang belum diisi tampil `–`, dan ketika belum ada
+  data pertandingan panel menampilkan "MENUNGGU DATA PERTANDINGAN" — tidak ada
+  angka/placeholder palsu.
 - **Angka statistik bergerak naik/turun** saat nilai berubah, banner `VICTORY`
   + nama pemenang saat game selesai, dan header berganti mulus saat nomor game
   bertambah.
-- Layout **compact** berupa lower-bar.
+- Layout **compact** berupa lower-bar; lebar/tinggi aman di 1920×1080 maupun
+  1280×720 **tanpa scrollbar** (diuji otomatis).
 
 Kedua overlay menerima perubahan dari control panel **tanpa reload**.
+
+Tema tersimpan di `state.json` → `overlay.theme` (ikut autosave, backup, dan
+restart); logo yang diunggah (turnamen/tim/sponsor) berada di
+`server/data/logos/` dengan nama file buatan server.
 
 ---
 
@@ -173,24 +200,32 @@ npm run test:all      # keduanya berurutan
 ```
 
 **Uji server** (`scripts/server-test.js`) meng-spawn proses server terpisah pada
-port & `DATA_DIR` khusus (aman dijalankan bersamaan sesi dev) dan memeriksa 70
-asersi: health/status autosave, skema battle spell, validasi & penyimpanan logo
+port & `DATA_DIR` khusus (aman dijalankan bersamaan sesi dev) dan memeriksa **89
+asersi**: health/status autosave, skema battle spell, validasi & penyimpanan logo
 (nama file dibuat server), penolakan Origin asing, token operator untuk REST &
 socket, peran overlay **baca-saja**, field overlay baru (branding/emergency),
-**draft dijalankan sampai aksi terakhir tanpa galat** (pick ke-20 → status `done`,
-timer berhenti, undo kembali berjalan), `match:nextGame`, autosave → restart →
+**validasi tema** (preset tersimpan, warna `#RRGGBB` tidak valid ditolak utuh
+dengan pesan jelas, sponsor `javascript:`/lebih dari 6 ditolak, caster dipotong,
+visibilitas bisa diubah, tema ↔ skor saling independen, tema bertahan lewat
+`match:nextGame`, autosave → restart → tema masih ada), **draft dijalankan
+sampai aksi terakhir tanpa galat** (pick ke-20 → status `done`, timer berhenti,
+undo kembali berjalan), `match:nextGame`, autosave → restart →
 state pulih persis, `state.json` rusak → pulih dari backup, retensi backup
 (`BACKUP_KEEP`), dan penulisan atomik (tanpa sisa `.tmp`).
 
-**E2E** (`scripts/e2e-test.js`) membuka halaman nyata dan memeriksa **74 asersi**:
+**E2E** (`scripts/e2e-test.js`) membuka halaman nyata dan memeriksa **96 asersi**:
 kesiapan control panel, input turnamen/tim/roster, pick/undo/lock/reset, countdown
 (jalan, jeda, durasi, `deadlineAt`), transparansi overlay, sinkronisasi real-time
 tanpa reload, perubahan layout, simpan/muat pertandingan, route 404, indikator
 autosave/backup, emergency stop (aktif + banner + log terstruktur), branding yang
 benar-benar tampil di overlay, pintasan `Ctrl+Shift+N`, kejujuran data battle spell,
 unggah logo, label riwayat, transisi game berikutnya, **pick terakhir hingga draft
-selesai tanpa pesan galat** (termasuk undo dari status selesai), serta memastikan
-tidak ada error console maupun request 4xx/5xx.
+selesai tanpa pesan galat** (termasuk undo dari status selesai), **tab Tema**
+(preview live, Simpan/Batal, preset, warna berubah di preview tanpa menyentuh
+server hingga disimpan, tema terlihat di `/overlay/score` lewat CSS variable,
+overlay tetap transparan + tanpa kontrol, bebas scrollbar di 1280×720, konfigurasi
+dipulihkan setelah uji), serta memastikan tidak ada error console maupun request
+4xx/5xx.
 
 ```bash
 npm test                                  # terhadap dev server (5173)
@@ -209,6 +244,9 @@ screenshot tiap layout di `scripts/report/*.png`.
 mlbb-draft-studio/
 ├── index.html
 ├── vite.config.js            # port 5173, proxy /api & /socket.io → PORT (5174)
+├── shared/
+│   └── theme.js              # tema scoreboard: preset bawaan, validasi warna/sponsor,
+│                             #   sanitizer, CSS variable --sc-* (dipakai client + server)
 ├── public/assets/            # hero, skill, item, font, manifest, logos/
 ├── server/
 │   ├── index.js              # Express + Socket.IO + REST + keamanan + static + ticker
@@ -217,19 +255,22 @@ mlbb-draft-studio/
 │   ├── store.js              # state aktif + jadwal autosave (wajah penyimpanan)
 │   ├── storage.js            # lapisan file: tulis atomik, backup, pemulihan, DATA_DIR
 │   └── data/                 # heroes, meta, equipment, emblems, builds,
-│                             # battle-spells(.schema).json, state.json, matches/, backups/, logos/
+│                             # battle-spells(.schema).json, state.json (overlay.theme),
+│                             # matches/, backups/, logos/
 ├── scripts/
 │   ├── fetch-hero-data.js
 │   ├── import-database.js
 │   ├── validate-data.js
 │   ├── import-battle-spells.js   # impor manual battle spell + validasi skema
-│   ├── server-test.js            # 70 asersi backend/multi-PC (tanpa browser)
-│   └── e2e-test.js               # 74 asersi alur nyata via browser
+│   ├── server-test.js            # 89 asersi backend/multi-PC (tanpa browser)
+│   └── e2e-test.js               # 96 asersi alur nyata via browser
 └── src/
     ├── App.jsx  main.jsx  styles.css
-    ├── lib/       store, socket, utils, data, overlay, anim
+    ├── lib/       store, socket, utils, data, overlay, anim,
+    │              assets (unggah/validasi logo dipakai bersama)
     ├── components/ ui, HeroImage, slots, HeroPicker, DraftBoard,
-    │               TimerBar, sidepanels, Stage, TeamLogo, Branding
+    │               TimerBar, sidepanels, Stage, TeamLogo, Branding,
+    │               ScorePreview (preview 16:9), ScoreThemePanel (tab Tema)
     └── pages/     Control, OverlayDraft, OverlayScore
 ```
 
@@ -274,6 +315,10 @@ mlbb-draft-studio/
 - Semua input divalidasi server: ID hero harus ada di dataset, logo harus
   `http/https`, `data:image/*`, atau path `/assets/…` milik aplikasi (tanpa `..`),
   teks dipotong pada panjang maksimum, angka dibatasi rentangnya.
+- Tema scoreboard divalidasi server (`shared/theme.js`): warna wajib `#RRGGBB`,
+  maksimal 6 sponsor dengan URL aman (protocol `javascript:` ditolak utuh),
+  caster maksimal 48 karakter, dan patch yang gagal **tidak** menerapkan
+  sebagian — state lama tetap utuh.
 - Unggah logo memverifikasi sihir byte gambar dan **nama file dibuat server**
   (`crypto.randomBytes`) sehingga path traversal tidak mungkin terjadi.
 
