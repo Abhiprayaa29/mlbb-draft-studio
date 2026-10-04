@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------
  */
 import path from 'node:path';
-import { createInitialState } from './draftEngine.js';
+import { createInitialState, sanitizeIntegration } from './draftEngine.js';
 import { sanitizeTheme } from '../shared/theme.js';
 import * as storage from './storage.js';
 
@@ -38,6 +38,7 @@ function normalizeLoadedState(doc) {
   st.score.blue = { ...base.score.blue, ...(doc.score?.blue || {}) };
   st.score.red = { ...base.score.red, ...(doc.score?.red || {}) };
   st.meta = { ...base.meta, ...(doc.meta || {}) };
+  st.integration = sanitizeIntegration(doc.integration);
   st.overlay = { ...base.overlay, ...(doc.overlay || {}) };
   st.overlay.theme = sanitizeTheme(doc.overlay?.theme, base.overlay.theme);
   st.draft = { ...base.draft, ...(doc.draft || {}) };

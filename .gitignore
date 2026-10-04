@@ -1,6 +1,11 @@
 node_modules/
 dist/
 
+# secret & konfigurasi lokal (contoh: .env.example tetap di-commit)
+.env
+.env.local
+.env.*.local
+
 # log proses lokal
 .server-*.log
 .server-*.err.log

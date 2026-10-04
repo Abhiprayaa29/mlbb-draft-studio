@@ -1,0 +1,11 @@
+{
+  "fixture": "live",
+  "description": "Skenario in-game: update skor/objetektif berurutan. Sebagian event SENGaja tidak memuat seluruh field — field yang tidak dikirim harus tetap null/bukan nol.",
+  "events": [
+    { "eventId": "fx-live-0001", "seq": 1, "at": 1710000100000, "type": "series.state", "data": { "competitionId": "comp-local", "seriesId": "series-local", "gameId": "game-1", "status": "live", "teams": { "blue": { "id": "t-blue", "name": "Tim Biru FC" }, "red": { "id": "t-red", "name": "Tim Merah SC" } } } },
+    { "eventId": "fx-live-0002", "seq": 2, "at": 1710000105000, "type": "score.update", "data": { "blue": { "kills": 2, "gold": 12000 }, "red": { "kills": 1, "gold": 11000 }, "durationMs": 300000 } },
+    { "eventId": "fx-live-0003", "seq": 3, "at": 1710000110000, "type": "score.update", "data": { "blue": { "kills": 5, "gold": 26500, "turrets": 1 }, "red": { "kills": 3, "gold": 24000, "turrets": 0 } } },
+    { "eventId": "fx-live-0004", "seq": 4, "at": 1710000115000, "type": "score.update", "data": { "blue": { "turtles": null } } },
+    { "eventId": "fx-live-0005", "seq": 5, "at": 1710000120000, "type": "score.update", "data": { "blue": { "kills": 9, "gold": 41000, "turrets": 2, "lord": 1, "turtle": 2 }, "red": { "kills": 6, "gold": 38000, "turrets": 1, "turtle": 1 }, "durationMs": 600000 } }
+  ]
+}

@@ -37,12 +37,17 @@ import {
   nextGame,
   setEmergency,
   phase,
-  currentAction
+  currentAction,
+  sanitizeIntegration
 } from './draftEngine.js';
 import { PRESETS, validatePreset, MAX_PICKS_PER_TEAM } from './presets.js';
 import { validateThemePatch, sanitizeTheme } from '../shared/theme.js';
 import * as store from './store.js';
 import * as storage from './storage.js';
+import { createGridController } from './grid/index.js';
+import { createBroadcastController } from './grid/broadcast-controller.js';
+import { readConfig, redacted, DATA_SOURCES, AUTOMATION_MODES } from './grid/config.js';
+import * as gridAudit from './grid/audit.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -188,7 +193,15 @@ app.get('/api/health', (_req, res) => {
     autosave: store.status(),
     authRequired: !!APP_AUTH_TOKEN,
     host: HOST,
-    port: PORT
+    port: PORT,
+    // status integrasi (tanpa secret; CONNECTED hanya bila tervalidasi)
+    integration: (() => {
+      try {
+        return { status: gridStatusPublic().status, enabled: !!store.getState().integration?.enabled };
+      } catch {
+        return { status: 'disabled', enabled: false };
+      }
+    })()
   });
 });
 
@@ -329,6 +342,7 @@ function normalizeLoaded(doc) {
   // konfigurasi tema dari match lama (bisa belum punya tema) disaring ulang
   st.overlay.theme = sanitizeTheme(doc.overlay?.theme, base.overlay.theme);
   st.meta = { ...base.meta, ...doc.meta };
+  st.integration = sanitizeIntegration(doc.integration);
   st.draft = { ...base.draft, ...(doc.draft || {}) };
   st.draft.timer = { ...base.draft.timer, ...(doc.draft?.timer || {}), running: false, deadlineAt: null };
   st.draft.log = Array.isArray(doc.draft?.log) ? doc.draft.log : [];
@@ -463,6 +477,27 @@ function requireHero(heroId) {
   return null;
 }
 
+/**
+ * Terapkan patch skor (dipakai operator `score:update` DAN pipeline GRID
+ * secara identik — satu jalur validasi, tanpa duplikasi aturan).
+ * Hanya field yang ada di patch yang disentuh (unknown != zero).
+ */
+function applyScorePatch(s, p) {
+  ['blue', 'red'].forEach((side) => {
+    if (p[side] && typeof p[side] === 'object') {
+      Object.entries(p[side]).forEach(([k, v]) => {
+        if (k in s.score[side]) s.score[side][k] = Math.max(0, Number(v) || 0);
+      });
+    }
+  });
+  ['durationMs', 'mvpPlayer', 'mvpHeroId', 'winner', 'status', 'notes'].forEach((k) => {
+    if (k in p) s.score[k] = p[k];
+  });
+  if ('durationMs' in p) s.score.durationMs = Math.max(0, Number(p.durationMs) || 0);
+  if ('winner' in p && p.winner && !['blue', 'red'].includes(p.winner)) s.score.winner = null;
+  return { ok: true };
+}
+
 io.on('connection', (socket) => {
   const role = socket.handshake.query?.role === 'control' ? 'control' : 'overlay';
   presence[role] += 1;
@@ -475,7 +510,8 @@ io.on('connection', (socket) => {
     presence,
     authRequired: !!APP_AUTH_TOKEN,
     operator: socketIsOperator(socket),
-    autosave: autosaveStatus()
+    autosave: autosaveStatus(),
+    integrationStatus: gridStatusPublic()
   });
   broadcastPresence();
 
@@ -554,19 +590,8 @@ io.on('connection', (socket) => {
     'score:update': (payload, ack) =>
       ack?.(
         mutate((s) => {
-          const p = payload?.patch || {};
-          ['blue', 'red'].forEach((side) => {
-            if (p[side] && typeof p[side] === 'object') {
-              Object.entries(p[side]).forEach(([k, v]) => {
-                if (k in s.score[side]) s.score[side][k] = Math.max(0, Number(v) || 0);
-              });
-            }
-          });
-          ['durationMs', 'mvpPlayer', 'mvpHeroId', 'winner', 'status', 'notes'].forEach((k) => {
-            if (k in p) s.score[k] = p[k];
-          });
-          if ('durationMs' in p) s.score.durationMs = Math.max(0, Number(p.durationMs) || 0);
-          if ('winner' in p && p.winner && !['blue', 'red'].includes(p.winner)) s.score.winner = null;
+          const applied = applyScorePatch(s, payload?.patch || {});
+          if (applied.error) return { state: s, error: applied.error };
           s.revision += 1;
           s.updatedAt = new Date().toISOString();
           return { state: s };
@@ -644,6 +669,8 @@ io.on('connection', (socket) => {
           fresh.matchName = 'Pertandingan Baru';
           // konfigurasi siaran dipertahankan (tema, logo, layout, branding)
           fresh.overlay = { ...fresh.overlay, ...s.overlay, announce: null, emergency: false };
+          // konfigurasi integrasi data juga tidak hilang saat ganti pertandingan
+          fresh.integration = sanitizeIntegration(s.integration);
           return { state: fresh };
         })
       ),
@@ -664,7 +691,66 @@ io.on('connection', (socket) => {
         })
       ),
     'state:request': (_payload, ack) =>
-      ack?.({ ok: true, state: store.getState(), serverNow: Date.now() })
+      ack?.({ ok: true, state: store.getState(), serverNow: Date.now() }),
+
+    /**
+     * Konfigurasi & kontrol integrasi data eksternal (operator only).
+     * payload: { patch: {...}, action?: 'start'|'stop'|'approve'|'reject', id? }
+     * Selalu lewat state (persisten) → controller disinkronkan dari state.
+     */
+    'integration:update': (payload, ack) => {
+      const p = payload?.patch || {};
+      const errors = [];
+      if ('enabled' in p && typeof p.enabled !== 'boolean') errors.push('enabled harus boolean.');
+      if ('dataSource' in p && !DATA_SOURCES.includes(p.dataSource)) errors.push('Sumber data tidak valid (manual|grid|fixture).');
+      if ('mode' in p && !AUTOMATION_MODES.includes(p.mode)) errors.push('Mode otomasi tidak valid (monitor|semi|auto).');
+      if ('autoEnabled' in p && typeof p.autoEnabled !== 'boolean') errors.push('autoEnabled harus boolean.');
+      if ('fixture' in p && (typeof p.fixture !== 'string' || !/^[a-z0-9-]{1,40}$/.test(p.fixture))) {
+        errors.push('Nama fixture tidak valid.');
+      }
+      for (const k of ['competitionId', 'seriesId', 'gameId']) {
+        if (k in p && p[k] !== null && (typeof p[k] !== 'string' || p[k].length > 64)) {
+          errors.push(`${k} tidak valid.`);
+        }
+      }
+      if (errors.length) return ack?.({ ok: false, error: errors.slice(0, 3).join(' ') });
+
+      const r = mutate((s) => {
+        if (!s.integration) s.integration = sanitizeIntegration(null);
+        if ('enabled' in p) s.integration.enabled = p.enabled;
+        if ('dataSource' in p) s.integration.dataSource = p.dataSource;
+        if ('mode' in p) s.integration.mode = p.mode;
+        if ('autoEnabled' in p) s.integration.autoEnabled = p.autoEnabled;
+        if ('fixture' in p) s.integration.fixture = p.fixture;
+        for (const k of ['competitionId', 'seriesId', 'gameId']) {
+          if (k in p) s.integration[k] = p[k] ? String(p[k]).slice(0, 64) : null;
+        }
+        s.revision += 1;
+        s.updatedAt = new Date().toISOString();
+        return { state: s };
+      });
+      if (!r.ok) return ack?.(r);
+
+      syncGridFromState();
+      const action = payload?.action;
+      const finish = async () => {
+        let extra = null;
+        try {
+          if (action === 'start') extra = await grid.start();
+          else if (action === 'stop') extra = await grid.stop('operator');
+          else if (action === 'approve') extra = grid.approve(payload?.id);
+          else if (action === 'reject') extra = grid.reject(payload?.id);
+        } catch (e) {
+          console.error('[grid] aksi gagal:', e.message);
+          emitGridStatus();
+          return ack?.({ ok: false, error: `Aksi integrasi gagal: ${e.message}`, state: store.getState() });
+        }
+        emitGridStatus();
+        ack?.({ ok: true, state: store.getState(), status: gridStatusPublic(), extra, serverNow: Date.now() });
+      };
+      finish();
+      return undefined;
+    }
   };
 
   /** event yang boleh dikirim klien mana pun (termasuk overlay) */
@@ -724,6 +810,139 @@ process.on('SIGTERM', () => {
 
 store.loadState();
 storage.ensureDirs();
+
+/* ------------------------------------------------- integrasi GRID (eksternal) */
+
+/** Konfigurasi dari environment — secret TIDAK PERNAH keluar dari server. */
+const gridConfig = readConfig();
+
+/** Titik abstraksi event siaran (OBS scene controller — masa depan, §27). */
+const broadcastCtrl = createBroadcastController({
+  audit: gridAudit,
+  emit: () => {
+    /* fase ini tidak menghubungkan OBS WebSocket; kontrak event sudah tersedia */
+  }
+});
+
+const heroIdSet = new Set(heroes.map((h) => h.id));
+
+/**
+ * Penerapan patch tervalidasi → Draft Engine / state.
+ * Satu-satunya jembatan GRID → state; tetap lewat mutator resmi (pickHero,
+ * applyScorePatch, dsb.) sehingga cursor, used, revision, dan undo tetap benar.
+ */
+function applyGridPatch(patch) {
+  const source = grid.cfg.dataSource;
+  return mutate((s) => {
+    if (!s.integration) s.integration = sanitizeIntegration(null);
+    switch (patch.kind) {
+      case 'draft': {
+        const r = pickHero(s, patch.heroId, { by: source });
+        if (r.error) return { state: s, error: r.error };
+        s.integration.draftSource = source;
+        return { state: s };
+      }
+      case 'score': {
+        const r = applyScorePatch(s, patch.score || {});
+        if (r.error) return { state: s, error: r.error };
+        s.integration.scoreSource = source;
+        s.revision += 1;
+        s.updatedAt = new Date().toISOString();
+        return { state: s };
+      }
+      case 'series': {
+        if (patch.teams) {
+          for (const side of ['blue', 'red']) {
+            const t = patch.teams[side];
+            if (!t) continue;
+            if (t.name) s.teams[side].name = String(t.name).slice(0, 32);
+            if (Number.isInteger(t.seriesScore)) s.teams[side].score = Math.max(0, Math.min(99, t.seriesScore));
+          }
+        }
+        if (patch.tournament) s.meta.tournament = String(patch.tournament).slice(0, 60);
+        if (patch.ids) {
+          for (const k of ['competitionId', 'seriesId', 'gameId']) {
+            if (patch.ids[k]) s.integration[k] = String(patch.ids[k]).slice(0, 64);
+          }
+        }
+        s.revision += 1;
+        s.updatedAt = new Date().toISOString();
+        return { state: s };
+      }
+      case 'finished': {
+        if ('winner' in patch) s.score.winner = ['blue', 'red'].includes(patch.winner) ? patch.winner : null;
+        if (patch.durationMs !== undefined) s.score.durationMs = Math.max(0, Number(patch.durationMs) || 0);
+        s.score.status = 'selesai';
+        if (patch.seriesScore) {
+          for (const side of ['blue', 'red']) {
+            if (Number.isInteger(patch.seriesScore[side])) {
+              s.teams[side].score = Math.max(0, Math.min(99, patch.seriesScore[side]));
+            }
+          }
+        }
+        s.integration.scoreSource = source;
+        s.revision += 1;
+        s.updatedAt = new Date().toISOString();
+        return { state: s };
+      }
+      default:
+        return { state: s, error: `Jenis patch tidak dikenal: ${patch.kind}` };
+    }
+  });
+}
+
+function gridStatusPublic() {
+  return { ...grid.status(), configured: gridConfig.configured, competitionId: gridConfig.competitionId, seriesId: gridConfig.seriesId };
+}
+
+function emitGridStatus() {
+  io.emit('integration:status', { ...gridStatusPublic(), serverNow: Date.now() });
+}
+
+const grid = createGridController({
+  getSnapshot: () => store.getState(),
+  heroIds: heroIdSet,
+  resolveHero: (ref) => (heroIdSet.has(ref) ? ref : null),
+  apply: (patch) => applyGridPatch(patch),
+  emitStatus: () => emitGridStatus(),
+  audit: gridAudit,
+  broadcast: broadcastCtrl
+});
+
+/** Sinkronkan konfigurasi controller dari state (state = sumber kebenaran). */
+function syncGridFromState() {
+  const it = store.getState().integration || sanitizeIntegration(null);
+  grid.configure({
+    enabled: it.enabled,
+    dataSource: it.dataSource,
+    mode: it.mode,
+    autoEnabled: it.autoEnabled,
+    fixture: it.fixture,
+    fixtureIntervalMs: gridConfig.fixtureIntervalMs,
+    competitionId: it.competitionId,
+    seriesId: it.seriesId,
+    gameId: it.gameId
+  });
+}
+
+app.get('/api/integration', requireOperator, (_req, res) => {
+  res.json({
+    status: gridStatusPublic(),
+    state: store.getState().integration,
+    audit: gridAudit.list(20)
+  });
+});
+
+// start otomatis hanya bila operator menyetelnya lewat env (bukan default)
+{
+  const it = store.getState().integration;
+  if (it?.enabled && it.dataSource && it.dataSource !== 'manual') {
+    syncGridFromState();
+    setTimeout(() => {
+      grid.start().catch((e) => console.error('[grid] start gagal:', e.message));
+    }, 0);
+  }
+}
 
 server.listen(PORT, HOST, () => {
   const shown = HOST === '0.0.0.0' || HOST === '::' ? 'localhost' : HOST;

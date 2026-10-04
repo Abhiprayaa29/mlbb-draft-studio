@@ -1,0 +1,27 @@
+{
+  "fixture": "draft",
+  "description": "Skenario draft penuh (20 aksi) untuk provider fixture. Format event adalah KONTRAK INPUT adapter — bukan klaim schema GRID live.",
+  "events": [
+    { "eventId": "fx-draft-0001", "seq": 1, "at": 1710000000000, "type": "series.state", "data": { "competitionId": "comp-local", "seriesId": "series-local", "gameId": "game-1", "status": "draft", "tournament": "Grid Fixture Cup", "teams": { "blue": { "id": "t-blue", "name": "Tim Biru FC" }, "red": { "id": "t-red", "name": "Tim Merah SC" } } } },
+    { "eventId": "fx-draft-0002", "seq": 2, "at": 1710000001000, "type": "draft.action", "data": { "team": "blue", "type": "ban", "heroRef": "h001" } },
+    { "eventId": "fx-draft-0003", "seq": 3, "at": 1710000002000, "type": "draft.action", "data": { "team": "red", "type": "ban", "heroRef": "h002" } },
+    { "eventId": "fx-draft-0004", "seq": 4, "at": 1710000003000, "type": "draft.action", "data": { "team": "blue", "type": "ban", "heroRef": "h003" } },
+    { "eventId": "fx-draft-0005", "seq": 5, "at": 1710000004000, "type": "draft.action", "data": { "team": "red", "type": "ban", "heroRef": "h004" } },
+    { "eventId": "fx-draft-0006", "seq": 6, "at": 1710000005000, "type": "draft.action", "data": { "team": "blue", "type": "ban", "heroRef": "h005" } },
+    { "eventId": "fx-draft-0007", "seq": 7, "at": 1710000006000, "type": "draft.action", "data": { "team": "red", "type": "ban", "heroRef": "h006" } },
+    { "eventId": "fx-draft-0008", "seq": 8, "at": 1710000007000, "type": "draft.action", "data": { "team": "blue", "type": "ban", "heroRef": "h007" } },
+    { "eventId": "fx-draft-0009", "seq": 9, "at": 1710000008000, "type": "draft.action", "data": { "team": "red", "type": "ban", "heroRef": "h008" } },
+    { "eventId": "fx-draft-0010", "seq": 10, "at": 1710000009000, "type": "draft.action", "data": { "team": "blue", "type": "ban", "heroRef": "h009" } },
+    { "eventId": "fx-draft-0011", "seq": 11, "at": 1710000010000, "type": "draft.action", "data": { "team": "red", "type": "ban", "heroRef": "h010" } },
+    { "eventId": "fx-draft-0012", "seq": 12, "at": 1710000011000, "type": "draft.action", "data": { "team": "blue", "type": "pick", "heroRef": "h011" } },
+    { "eventId": "fx-draft-0013", "seq": 13, "at": 1710000012000, "type": "draft.action", "data": { "team": "red", "type": "pick", "heroRef": "h012" } },
+    { "eventId": "fx-draft-0014", "seq": 14, "at": 1710000013000, "type": "draft.action", "data": { "team": "red", "type": "pick", "heroRef": "h013" } },
+    { "eventId": "fx-draft-0015", "seq": 15, "at": 1710000014000, "type": "draft.action", "data": { "team": "blue", "type": "pick", "heroRef": "h014" } },
+    { "eventId": "fx-draft-0016", "seq": 16, "at": 1710000015000, "type": "draft.action", "data": { "team": "blue", "type": "pick", "heroRef": "h015" } },
+    { "eventId": "fx-draft-0017", "seq": 17, "at": 1710000016000, "type": "draft.action", "data": { "team": "red", "type": "pick", "heroRef": "h016" } },
+    { "eventId": "fx-draft-0018", "seq": 18, "at": 1710000017000, "type": "draft.action", "data": { "team": "red", "type": "pick", "heroRef": "h017" } },
+    { "eventId": "fx-draft-0019", "seq": 19, "at": 1710000018000, "type": "draft.action", "data": { "team": "blue", "type": "pick", "heroRef": "h018" } },
+    { "eventId": "fx-draft-0020", "seq": 20, "at": 1710000019000, "type": "draft.action", "data": { "team": "blue", "type": "pick", "heroRef": "h019" } },
+    { "eventId": "fx-draft-0021", "seq": 21, "at": 1710000020000, "type": "draft.action", "data": { "team": "red", "type": "pick", "heroRef": "h020" } }
+  ]
+}

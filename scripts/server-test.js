@@ -15,6 +15,13 @@
  *   6. Event match:nextGame & emergency
  *   7. Autosave → restart → state pulih; state.json rusak → pulih dari backup
  *   8. Retensi backup (BACKUP_KEEP) dan penulisan atomik (tidak ada file .tmp)
+ *   9. Integrasi GRID: konfigurasi via operator, gerbang mode, fixture provider
+ *      (monitor tidak menulis state, auto menulis lewat Draft Engine, semi
+ *      menunggu persetujuan), penolakan event invalid, dan jejak audit.
+ *
+ * Catatan kejujuran: tidak ada kredensial GRID di repo/CI — koneksi live TIDAK
+ * diuji di sini; pengujian live memerlukan credentials asli (GRID LIVE
+ * CONNECTION NOT VERIFIED).
  *
  * Skrip ini sengaja meng-spawn proses server terpisah (port & DATA_DIR khusus)
  * sehingga aman dijalankan bersamaan dengan sesi dev.
@@ -32,7 +39,7 @@ const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(os.tmpdir(), `mlbb-studio-server-test-${process.pid}`);
 const TOKEN = 'rahasia-uji-123';
 
-const PORTS = { main: 5192, restart: 5193, corrupt: 5194, retention: 5195 };
+const PORTS = { main: 5192, restart: 5193, corrupt: 5194, retention: 5195, grid: 5196 };
 
 let pass = 0;
 const failures = [];
@@ -508,6 +515,203 @@ async function main() {
   assert(tmpLeftovers().length === 0, 'tidak ada .tmp setelah banyak perubahan');
   bk.close();
   await stopServer(C);
+
+  /* --- 13. integrasi GRID (fixture provider — tanpa kredensial) ----------- */
+  const G = await startServer({
+    port: PORTS.grid,
+    label: 'server grid',
+    env: { CLIENT_ORIGIN: '', GRID_FIXTURE_INTERVAL_MS: '50' }
+  });
+
+  const gIntNoTok = await http(`http://127.0.0.1:${PORTS.grid}/api/integration`);
+  assert(gIntNoTok.status === 401, 'GET /api/integration tanpa token ditolak 401', `status=${gIntNoTok.status}`);
+
+  const gInt = await http(`http://127.0.0.1:${PORTS.grid}/api/integration`, { headers: LH });
+  assert(gInt.status === 200 && gInt.data?.status?.status === 'disabled', 'GET /api/integration OK (default nonaktif)', gInt.data?.status?.status || '');
+  assert(gInt.data?.state?.dataSource === 'manual', 'sumber data default manual', gInt.data?.state?.dataSource || '');
+  assert(gInt.data?.status?.configured === false, 'tanpa credentials → configured=false', String(gInt.data?.status?.configured));
+  assert(!JSON.stringify(gInt.data).includes(TOKEN), 'respons integrasi tidak membocorkan secret');
+
+  const hG = await http(`http://127.0.0.1:${PORTS.grid}/api/health`);
+  assert(
+    hG.data?.integration?.status === 'disabled' && hG.data?.integration?.enabled === false,
+    'health melaporkan ringkasan integrasi'
+  );
+
+  // hello memuat status integrasi (didengar sejak koneksi dibuat)
+  const helloGrid = await new Promise((resolve) => {
+    const s = connectSocket(`http://127.0.0.1:${PORTS.grid}`, {
+      transports: ['websocket'],
+      reconnection: false,
+      timeout: 5000,
+      query: { role: 'overlay' },
+      auth: {}
+    });
+    s.once('hello', (p) => {
+      resolve(p);
+      s.close();
+    });
+    setTimeout(() => resolve(null), 6000);
+  });
+  assert(helloGrid?.integrationStatus?.status === 'disabled', 'hello menyertakan status integrasi', helloGrid?.integrationStatus?.status || 'tidak ada');
+
+  const gOverlay = await connect(PORTS.grid, { role: 'overlay' });
+  const gOvDeny = await ack(gOverlay, 'integration:update', { patch: { mode: 'auto' } });
+  assert(gOvDeny.ok === false && /baca-saja/i.test(gOvDeny.error || ''), 'overlay ditolak mengubah integrasi', gOvDeny.error || '');
+
+  const gCtl = await connect(PORTS.grid, { role: 'control', token: TOKEN });
+  const gBadSrc = await ack(gCtl, 'integration:update', { patch: { dataSource: 'sinyal-angkasa' } });
+  assert(gBadSrc.ok === false, 'sumber data tidak valid ditolak');
+  const gBadMode = await ack(gCtl, 'integration:update', { patch: { mode: 'autopilot' } });
+  assert(gBadMode.ok === false, 'mode otomasi tidak valid ditolak');
+  const gBadFix = await ack(gCtl, 'integration:update', { patch: { fixture: '../../etc/passwd' } });
+  assert(gBadFix.ok === false, 'nama fixture berbahaya ditolak');
+
+  const poll = async (fn, ms = 9000, step = 200) => {
+    const t0 = Date.now();
+    while (Date.now() - t0 < ms) {
+      if (await fn()) return true;
+      await sleep(step);
+    }
+    return false;
+  };
+  const statusOf = async () => (await http(`http://127.0.0.1:${PORTS.grid}/api/integration`, { headers: LH })).data;
+
+  /* --- 13a. monitor: feed berjalan tanpa menyentuh state ------------------ */
+  const monBase = (await statusOf())?.status?.counts || {};
+  const gMon = await ack(gCtl, 'integration:update', {
+    patch: { enabled: true, dataSource: 'fixture', fixture: 'draft', mode: 'monitor' },
+    action: 'start'
+  });
+  assert(gMon.ok, 'konfigurasi fixture monitor diterima', gMon.error || '');
+  const gRevMon = gMon.state.revision;
+  const gEntriesMon = gMon.state.draft.entries.length;
+
+  const monFed = await poll(async () => {
+    const st = await statusOf();
+    const c = st?.status?.counts || {};
+    return (c.observed || 0) - (monBase.observed || 0) >= 10;
+  });
+  const gMonSt = await statusOf();
+  assert(monFed, 'fixture provider mengalirkan event ke pipeline', JSON.stringify(gMonSt?.status?.counts || {}));
+  assert(gMonSt?.status?.counts?.applied === 0, 'monitor tidak menerapkan event', String(gMonSt?.status?.counts?.applied));
+  const gStMon2 = await ack(gCtl, 'state:request');
+  assert(gStMon2.state.draft.entries.length === gEntriesMon, 'monitor tidak menulis draft state');
+  assert(gStMon2.state.revision === gRevMon, 'revision tidak naik saat feed monitor berjalan', `${gRevMon} → ${gStMon2.state.revision}`);
+  await ack(gCtl, 'integration:update', { patch: {}, action: 'stop' });
+
+  /* --- 13b. auto + gerbang ganda ----------------------------------------- */
+  const gRst1 = await ack(gCtl, 'draft:reset');
+  assert(gRst1.ok, 'draft direset sebelum uji auto');
+  const gAuto = await ack(gCtl, 'integration:update', {
+    patch: { enabled: true, dataSource: 'fixture', fixture: 'draft', mode: 'auto', autoEnabled: true },
+    action: 'start'
+  });
+  assert(gAuto.ok, 'mode auto + AUTOMATION_ENABLED diterima', gAuto.error || '');
+
+  const autoFed = await poll(async () => {
+    const st = (await ack(gCtl, 'state:request')).state;
+    return (st?.draft?.entries?.length || 0) >= 20;
+  });
+  const gStAuto = (await ack(gCtl, 'state:request')).state;
+  assert(gStAuto.draft.entries.length === 20, 'auto mengisi draft penuh dari fixture', `entri=${gStAuto.draft.entries.length}`);
+  const heroIdSetTest = new Set(heroList.map((h) => h.id));
+  const allValid = gStAuto.draft.entries.every((e) => heroIdSetTest.has(e.heroId));
+  assert(allValid, 'semua hero hasil pemetaan ada di dataset');
+  assert(gStAuto.integration.draftSource === 'fixture', 'draftSource tercatat sebagai fixture', gStAuto.integration.draftSource);
+  assert(gStAuto.integration.competitionId === 'comp-local', 'identifier dari series.state tersimpan', gStAuto.integration.competitionId);
+  assert(gStAuto.teams.blue.name === 'Tim Biru FC', 'nama tim dari feed diterapkan', gStAuto.teams.blue.name);
+  await ack(gCtl, 'integration:update', { patch: {}, action: 'stop' });
+
+  // gerbang kedua: mode auto TAPI autoEnabled=false → tidak ada tulisan
+  const gRst2 = await ack(gCtl, 'draft:reset');
+  assert(gRst2.ok, 'draft direset sebelum uji gerbang auto');
+  const gateBase = (await statusOf())?.status?.counts || {};
+  const gGate = await ack(gCtl, 'integration:update', {
+    patch: { enabled: true, dataSource: 'fixture', fixture: 'draft', mode: 'auto', autoEnabled: false },
+    action: 'start'
+  });
+  assert(gGate.ok, 'mode auto tanpa AUTOMATION_ENABLED diterima');
+  await poll(async () => {
+    const st = await statusOf();
+    const c = st?.status?.counts || {};
+    return (c.observed || 0) - (gateBase.observed || 0) >= 10;
+  });
+  const gStGate = (await ack(gCtl, 'state:request')).state;
+  assert(gStGate.draft.entries.length === 0, 'gerbang auto kedua menahan tulisan state', `entri=${gStGate.draft.entries.length}`);
+  await ack(gCtl, 'integration:update', { patch: {}, action: 'stop' });
+
+  /* --- 13c. semi: menunggu persetujuan operator --------------------------- */
+  const gRst3 = await ack(gCtl, 'draft:reset');
+  assert(gRst3.ok, 'draft direset sebelum uji semi');
+  const semiBase = (await statusOf())?.status?.counts || {};
+  const gSemi = await ack(gCtl, 'integration:update', {
+    patch: { enabled: true, dataSource: 'fixture', fixture: 'draft', mode: 'semi' },
+    action: 'start'
+  });
+  assert(gSemi.ok, 'mode semi diterima');
+  const semiFed = await poll(async () => {
+    const st = await statusOf();
+    const c = st?.status?.counts || {};
+    return (c.proposed || 0) - (semiBase.proposed || 0) >= 5;
+  });
+  const gSemiSt = await statusOf();
+  assert(semiFed, 'mode semi mengantre pengajuan', JSON.stringify(gSemiSt?.status?.counts || {}));
+  const gStSemi = (await ack(gCtl, 'state:request')).state;
+  assert(gStSemi.draft.entries.length === 0, 'semi tidak menulis state tanpa persetujuan', `entri=${gStSemi.draft.entries.length}`);
+
+  const firstDraftPend = (gSemiSt?.status?.pending || []).find((p) => p.kind === 'draft');
+  assert(!!firstDraftPend, 'ada pengajuan draft yang menunggu', `pending=${gSemiSt?.status?.pending?.length || 0}`);
+  if (firstDraftPend) {
+    const gApp = await ack(gCtl, 'integration:update', { action: 'approve', id: firstDraftPend.id });
+    assert(gApp.ok && gApp.extra?.ok === true, 'persetujuan operator menerapkan pengajuan', JSON.stringify(gApp.extra || gApp.error || ''));
+    const gStApp = (await ack(gCtl, 'state:request')).state;
+    assert(gStApp.draft.entries.length >= 1, 'pengajuan yang disetujui masuk ke draft', `entri=${gStApp.draft.entries.length}`);
+    const secondPend = ((await statusOf())?.status?.pending || [])[0];
+    if (secondPend) {
+      const gRej = await ack(gCtl, 'integration:update', { action: 'reject', id: secondPend.id });
+      const gAfterRej = await statusOf();
+      assert(gRej.ok && gRej.extra?.ok === true, 'penolakan operator diterima', JSON.stringify(gRej.extra || ''));
+      assert(
+        !(gAfterRej?.status?.pending || []).some((p) => p.id === secondPend.id),
+        'pengajuan yang ditolak hilang dari antrean'
+      );
+    } else {
+      bad('pengajuan lain tersedia untuk diuji ditolak');
+    }
+  }
+  await ack(gCtl, 'integration:update', { patch: {}, action: 'stop' });
+
+  /* --- 13d. fixture invalid: seluruh event ditolak, state utuh ------------ */
+  const gRst4 = await ack(gCtl, 'draft:reset');
+  assert(gRst4.ok, 'draft direset sebelum uji fixture invalid');
+  const invBase = (await statusOf())?.status?.counts || {};
+  const gInv = await ack(gCtl, 'integration:update', {
+    patch: { enabled: true, dataSource: 'fixture', fixture: 'invalid', mode: 'auto', autoEnabled: true },
+    action: 'start'
+  });
+  assert(gInv.ok, 'fixture invalid dimuat untuk pengujian penolakan');
+  const invDone = await poll(async () => {
+    const st = await statusOf();
+    const c = st?.status?.counts || {};
+    const rej = (c.rejected || 0) - (invBase.rejected || 0);
+    const uns = (c.unsupported || 0) - (invBase.unsupported || 0);
+    return rej + uns >= 7;
+  }, 6000);
+  const gInvSt = await statusOf();
+  assert(invDone, 'event invalid tercatat ditolak/tak didukung', JSON.stringify(gInvSt?.status?.counts || {}));
+  const gStInv = (await ack(gCtl, 'state:request')).state;
+  assert(gStInv.draft.entries.length === 0, 'event invalid tidak mengubah draft', `entri=${gStInv.draft.entries.length}`);
+  assert(!JSON.stringify(gStInv).includes('apiKey'), 'state tidak pernah memuat field secret');
+
+  await ack(gCtl, 'integration:update', { patch: { enabled: false, dataSource: 'manual', mode: 'monitor', autoEnabled: false } });
+  const gOff = await statusOf();
+  assert(gOff?.state?.dataSource === 'manual', 'kembali ke sumber data manual', gOff?.state?.dataSource || '');
+
+  gOverlay.close();
+  gCtl.close();
+  await stopServer(G);
+  ok('server grid dihentikan');
 
   /* --- ringkasan --------------------------------------------------------- */
   console.log('');

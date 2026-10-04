@@ -10,6 +10,7 @@ import DraftBoard, { ActionStrip } from '../components/DraftBoard.jsx';
 import TimerBar from '../components/TimerBar.jsx';
 import HeroImage from '../components/HeroImage.jsx';
 import ScoreThemePanel from '../components/ScoreThemePanel.jsx';
+import IntegrationPanel from '../components/IntegrationPanel.jsx';
 import {
   MatchMetaPanel,
   TeamPanel,
@@ -163,6 +164,7 @@ export default function Control() {
     { id: 'tim', label: 'Tim' },
     { id: 'skor', label: 'Skor' },
     { id: 'tema', label: 'Tema' },
+    { id: 'grid', label: 'GRID' },
     { id: 'overlay', label: 'Overlay' },
     { id: 'match', label: 'Match' },
     { id: 'preset', label: 'Preset' },
@@ -371,6 +373,7 @@ export default function Control() {
                 )}
                 {tab === 'skor' && <ScorePanel state={state} />}
                 {tab === 'tema' && <ScoreThemePanel state={state} heroesById={heroesById} meta={meta} />}
+                {tab === 'grid' && <IntegrationPanel state={state} />}
                 {tab === 'overlay' && <OverlayPanel state={state} />}
                 {tab === 'match' && <MatchManagerPanel state={state} />}
                 {tab === 'preset' && (

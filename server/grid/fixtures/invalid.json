@@ -1,0 +1,14 @@
+{
+  "fixture": "invalid",
+  "description": "Payload rusak/tidak dikenal: SEMUA event di bawah harus ditolak validator tanpa menyentuh state (unknown != zero, hero/ tim tidak dikenal ditolak).",
+  "events": [
+    { "eventId": "fx-bad-0001", "seq": 1, "at": 1710000300000, "type": "score.update", "data": { "blue": { "kills": "banyak" }, "red": { "kills": 1 } } },
+    { "eventId": "fx-bad-0002", "seq": 2, "at": 1710000301000, "type": "score.update", "data": { "blue": { "kills": -5, "gold": -100 }, "red": {} } },
+    { "eventId": "fx-bad-0003", "seq": 3, "at": 1710000302000, "type": "draft.action", "data": { "team": "blue", "type": "pick", "heroRef": "hero-tidak-ada" } },
+    { "eventId": "fx-bad-0004", "seq": 4, "at": 1710000303000, "type": "draft.action", "data": { "team": "hijau", "type": "pick", "heroRef": "h018" } },
+    { "eventId": "fx-bad-0005", "seq": 5, "at": 1710000304000, "type": "series.state", "data": { "teams": { "blue": { "id": "t-blue", "name": "" }, "red": { "id": "t-red", "name": "Tim Merah SC" } } } },
+    { "seq": 6, "at": 1710000305000, "type": "score.update", "data": { "blue": { "kills": 1 } } },
+    { "eventId": "fx-bad-0007", "seq": 7, "at": 1710000306000, "type": "unknown.event.type", "data": { "anything": true } },
+    { "eventId": "fx-bad-0008", "seq": 8, "at": "bukan-angka", "type": "score.update", "data": { "blue": { "kills": 3 } } }
+  ]
+}

@@ -58,6 +58,7 @@ export function startSocket(role = 'overlay') {
       needAuth: role === 'control' && !!p?.authRequired && !p?.operator
     });
     if (p?.autosave) store.patch({ autosave: p.autosave });
+    if (p?.integrationStatus) store.patch({ integrationStatus: p.integrationStatus });
   });
 
   socket.on('state', (p) => {
@@ -84,6 +85,11 @@ export function startSocket(role = 'overlay') {
 
   socket.on('draft:timeout', () => {
     store.notice('Waktu habis untuk aksi draft saat ini.', 'warn');
+  });
+
+  /** status koneksi integrasi (transien — tidak menyentuh state/revision) */
+  socket.on('integration:status', (p) => {
+    if (p) store.patch({ integrationStatus: p });
   });
 
   return socket;

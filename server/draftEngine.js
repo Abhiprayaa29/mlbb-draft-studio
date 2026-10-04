@@ -41,6 +41,66 @@ export function createDraftState(presetId = 'standard-5ban-5pick') {
   };
 }
 
+/**
+ * Konfigurasi integrasi data eksternal (GRID) pada state.
+ *
+ * YANG DISIMPAN DI SINI hanya konfigurasi & identitas (persisten, ikut
+ * autosave/backup). Status koneksi transien (CONNECTING/CONNECTED/DEGRADED/
+ * ERROR, lastEventAt, lastSyncAt) disiarkan lewat event `integration:status`
+ * agar setiap perubahan status tidak membump revision dan memicu tulisan
+ * state.json (lihat Phase 13 §32 — performa).
+ *
+ * Secret TIDAK PERNAH masuk state.
+ */
+export const DATA_SOURCES = ['manual', 'grid', 'fixture'];
+export const AUTOMATION_MODES = ['monitor', 'semi', 'auto'];
+
+export function createIntegrationState(env = process.env) {
+  const bool = (v) => String(v || '').toLowerCase() === 'true';
+  return {
+    provider: 'grid',
+    enabled: bool(env.GRID_ENABLED),
+    /** sumber data aktif: manual (default) | grid | fixture */
+    dataSource: DATA_SOURCES.includes(String(env.GRID_DATA_SOURCE || '').toLowerCase())
+      ? String(env.GRID_DATA_SOURCE).toLowerCase()
+      : 'manual',
+    /** mode otomasi: monitor (default) | semi | auto */
+    mode: AUTOMATION_MODES.includes(String(env.AUTOMATION_MODE || '').toLowerCase())
+      ? String(env.AUTOMATION_MODE).toLowerCase()
+      : 'monitor',
+    /** gerbang kedua mode auto — off kecuali diaktifkan eksplisit */
+    autoEnabled: bool(env.AUTOMATION_ENABLED),
+    fixture: String(env.GRID_FIXTURE || 'draft').slice(0, 40) || 'draft',
+    competitionId: null,
+    seriesId: null,
+    gameId: null,
+    /** asal data terakhir yang diterapkan (jejak untuk operator) */
+    draftSource: 'manual',
+    scoreSource: 'manual'
+  };
+}
+
+export function sanitizeIntegration(doc) {
+  const base = createIntegrationState();
+  if (!doc || typeof doc !== 'object') return base;
+  const out = { ...base };
+  if (typeof doc.enabled === 'boolean') out.enabled = doc.enabled;
+  if (DATA_SOURCES.includes(doc.dataSource)) out.dataSource = doc.dataSource;
+  if (AUTOMATION_MODES.includes(doc.mode)) out.mode = doc.mode;
+  if (typeof doc.autoEnabled === 'boolean') out.autoEnabled = doc.autoEnabled;
+  if (typeof doc.fixture === 'string' && doc.fixture) out.fixture = doc.fixture.slice(0, 40);
+  for (const k of ['competitionId', 'seriesId', 'gameId']) {
+    if (typeof doc[k] === 'string' && doc[k]) out[k] = doc[k].slice(0, 64);
+  }
+  if (doc.draftSource === 'manual' || doc.draftSource === 'grid' || doc.draftSource === 'fixture') {
+    out.draftSource = doc.draftSource;
+  }
+  if (doc.scoreSource === 'manual' || doc.scoreSource === 'grid' || doc.scoreSource === 'fixture') {
+    out.scoreSource = doc.scoreSource;
+  }
+  return out;
+}
+
 export function createInitialState() {
   return {
     version: 1,
@@ -91,6 +151,8 @@ export function createInitialState() {
       theme: defaultTheme()
     },
     revision: 0,
+    /** konfigurasi integrasi data eksternal (GRID) — tanpa secret */
+    integration: createIntegrationState(),
     updatedAt: nowIso()
   };
 }

@@ -1,0 +1,81 @@
+{
+  "fixture": "reconnect",
+  "description": "Replay setelah reconnect: event A dikirim dua kali (duplikat), lalu B, lalu A muncul lagi — state hanya boleh berubah sekali per event.",
+  "events": [
+    {
+      "eventId": "fx-re-0001",
+      "seq": 1,
+      "at": 1710000400000,
+      "type": "score.update",
+      "data": {
+        "blue": {
+          "kills": 1,
+          "gold": 5000
+        },
+        "red": {
+          "kills": 0
+        },
+        "durationMs": 60000
+      }
+    },
+    {
+      "eventId": "fx-re-0001",
+      "seq": 1,
+      "at": 1710000400000,
+      "type": "score.update",
+      "data": {
+        "blue": {
+          "kills": 1,
+          "gold": 5000
+        },
+        "red": {
+          "kills": 0
+        },
+        "durationMs": 60000
+      }
+    },
+    {
+      "eventId": "fx-re-0002",
+      "seq": 2,
+      "at": 1710000410000,
+      "type": "score.update",
+      "data": {
+        "blue": {
+          "kills": 3,
+          "gold": 9000
+        },
+        "red": {
+          "kills": 2
+        },
+        "durationMs": 120000
+      }
+    },
+    {
+      "eventId": "fx-re-0001",
+      "seq": 1,
+      "at": 1710000400000,
+      "type": "score.update",
+      "data": {
+        "blue": {
+          "kills": 1,
+          "gold": 5000
+        },
+        "red": {
+          "kills": 0
+        },
+        "durationMs": 60000
+      }
+    },
+    {
+      "eventId": "fx-re-0003",
+      "seq": 3,
+      "at": 1710000401000,
+      "type": "draft.action",
+      "data": {
+        "team": "blue",
+        "type": "ban",
+        "heroRef": "h001"
+      }
+    }
+  ]
+}

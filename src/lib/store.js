@@ -25,7 +25,9 @@ const initial = {
   /** ada aksi yang ditolak karena token tidak valid */
   needAuth: false,
   /** status autosave/backup dari server */
-  autosave: null
+  autosave: null,
+  /** status integrasi data eksternal (GRID) — event transien, bukan state */
+  integrationStatus: null
 };
 
 let snapshot = { ...initial };

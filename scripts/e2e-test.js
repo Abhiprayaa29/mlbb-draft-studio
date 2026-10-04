@@ -9,6 +9,9 @@
  *   5. Overlay draft & scoreboard terhubung + sinkron real-time tanpa reload
  *   6. Skor berubah dari control panel terlihat di overlay
  *   7. Simpan / muat pertandingan
+ *   8. Tema scoreboard: preview live, simpan/batal, sinkron ke overlay
+ *   9. Panel integrasi GRID: sumber data, mode otomasi, pengajuan semi,
+ *      status koneksi — TANPA input credential di browser
  *
  * Jalankan:  node scripts/e2e-test.js
  * ---------------------------------------------------------------------------
@@ -1015,8 +1018,127 @@ async function main() {
       `${stRestored.presetId} accent=${stRestored.colors.accent}`
     );
 
-    /* ------------------------------------------------- 13. laporan console */
-    console.log('\n[13] Console & error browser');
+    /* ------------------------------------ 13. panel integrasi GRID (UI) --- */
+    console.log('\n[13] Panel integrasi GRID');
+
+    // draft dikosongkan dulu agar pengujian persetujuan semi dimulai dari cursor 0;
+    // preset disamakan dengan urutan feed fixture (ban dahulu, lalu pick)
+    await control.evaluate(() => (window.confirm = () => true));
+    await clickConfirm(control, '[data-testid="reset-draft"]');
+    await clickTab(control, 'Preset');
+    await clickEl(control, '[data-preset="standard-5ban-5pick"]');
+    await sleep(500);
+    const gPreset = (await apiGet('/state')).state.draft.presetId;
+    check('Preset standar dipakai untuk pengujian feed fixture', gPreset === 'standard-5ban-5pick', gPreset);
+    await clickTab(control, 'GRID');
+    await sleep(500);
+
+    const gInfo = await control.evaluate(() => ({
+      panel: !!document.querySelector('[data-testid="integration-panel"]'),
+      status: document.querySelector('[data-testid="grid-status"]')?.textContent || '',
+      radios: ['manual', 'grid', 'fixture'].every((v) => !!document.querySelector(`[data-testid="data-source-${v}"]`)),
+      mode: document.querySelector('[data-testid="automation-mode"]')?.value || '',
+      keyInputs: document.querySelectorAll(
+        '[data-testid="integration-panel"] input[type="password"], [data-testid="integration-panel"] input[name*="key" i]'
+      ).length,
+      start: !!document.querySelector('[data-testid="grid-start"]'),
+      stop: !!document.querySelector('[data-testid="grid-stop"]'),
+      text: document.querySelector('[data-testid="integration-panel"]')?.innerText || ''
+    }));
+    check('Tab GRID menampilkan panel integrasi', gInfo.panel === true);
+    check('Status koneksi integrasi terlihat operator', gInfo.status.length > 0, gInfo.status);
+    check('Tiga pilihan sumber data tersedia', gInfo.radios === true);
+    check('Mode otomasi default monitor', gInfo.mode === 'monitor', gInfo.mode);
+    check('Tidak ada input credential/API key di panel browser', gInfo.keyInputs === 0, `input=${gInfo.keyInputs}`);
+    check('Panel menyatakan status live belum terverifikasi', /NOT VERIFIED/i.test(gInfo.text));
+
+    // normalisasi: sumber data manual dulu
+    await clickEl(control, '[data-testid="data-source-manual"]');
+    await sleep(600);
+    const stManual = (await apiGet('/state')).state.integration;
+    check('Sumber data manual dapat dipilih', stManual.dataSource === 'manual' && stManual.enabled === false, `${stManual.dataSource}/${stManual.enabled}`);
+
+    // pilih GRID → jujur soal credentials
+    await clickEl(control, '[data-testid="data-source-grid"]');
+    await sleep(700);
+    const gGridInfo = await control.evaluate(() => ({
+      notice: document.querySelector('[data-testid="grid-unconfigured"]')?.innerText || '',
+      status: document.querySelector('[data-testid="grid-status"]')?.textContent || ''
+    }));
+    const stGrid = (await apiGet('/state')).state.integration;
+    check('Pilihan sumber data GRID tersimpan di state', stGrid.dataSource === 'grid' && stGrid.enabled === true, `${stGrid.dataSource}/${stGrid.enabled}`);
+    check(
+      'Tanpa credentials server menampilkan pesan jujur',
+      /GRID belum dikonfigurasi/i.test(gGridInfo.notice),
+      gGridInfo.notice.slice(0, 70)
+    );
+
+    // fixture + mode semi + sambungkan
+    await clickEl(control, '[data-testid="data-source-fixture"]');
+    await sleep(700);
+    const gModeOk = await setSelectValue(control, 'Mode otomasi', 'semi');
+    await sleep(400);
+    const stSemi = (await apiGet('/state')).state.integration;
+    check('Mode otomasi dapat diubah ke semi dari panel', gModeOk === true && stSemi.mode === 'semi', `${gModeOk}/${stSemi.mode}`);
+
+    const gClickedStart = await clickEl(control, '[data-testid="grid-start"]');
+    let gStatusTxt = '';
+    for (let i = 0; i < 25; i += 1) {
+      gStatusTxt = await control.evaluate(() => document.querySelector('[data-testid="grid-status"]')?.textContent || '');
+      if (/Tersambung/i.test(gStatusTxt)) break;
+      await sleep(400);
+    }
+    check('Tombol Sambungkan menghubungkan fixture provider', gClickedStart && /Tersambung/i.test(gStatusTxt), gStatusTxt);
+
+    let gPending = 0;
+    for (let i = 0; i < 25; i += 1) {
+      gPending = await control.evaluate(() => document.querySelectorAll('[data-testid="grid-pending"]').length);
+      if (gPending > 0) break;
+      await sleep(400);
+    }
+    check('Mode semi menampilkan pengajuan menunggu persetujuan', gPending > 0, `jumlah=${gPending}`);
+
+    const gEntriesBefore = (await apiGet('/state')).state.draft.entries.length;
+    await clickEl(control, '[data-testid="grid-approve"]');
+    await sleep(1400);
+    const gEntriesAfter = (await apiGet('/state')).state.draft.entries.length;
+    check('Tombol Aktifkan menerapkan pengajuan ke draft', gEntriesAfter > gEntriesBefore, `${gEntriesBefore} → ${gEntriesAfter}`);
+
+    const gBadges = await control.evaluate(() => ({
+      draft: document.querySelector('[data-testid="draft-source"]')?.innerText || '',
+      sync: document.querySelector('[data-testid="grid-last-sync"]')?.innerText || ''
+    }));
+    check('Badge sumber draft menandai fixture setelah penerapan', /fixture/i.test(gBadges.draft), gBadges.draft);
+    check('Waktu sinkron terakhir ditampilkan', /sinkron/i.test(gBadges.sync) && !/Sinkron: —/i.test(gBadges.sync), gBadges.sync);
+    await shot(control, 'control-panel-grid');
+
+    // hentikan feed & pulihkan ke manual
+    await clickEl(control, '[data-testid="grid-stop"]');
+    let gStopped = '';
+    for (let i = 0; i < 20; i += 1) {
+      gStopped = await control.evaluate(() => document.querySelector('[data-testid="grid-status"]')?.textContent || '');
+      if (/Terputus|Nonaktif/i.test(gStopped)) break;
+      await sleep(400);
+    }
+    check('Feed dapat dihentikan dari panel', /Terputus|Nonaktif/i.test(gStopped), gStopped);
+
+    await clickEl(control, '[data-testid="data-source-manual"]');
+    await sleep(500);
+    await setSelectValue(control, 'Mode otomasi', 'monitor');
+    await sleep(500);
+    const gRestored = (await apiGet('/state')).state.integration;
+    check(
+      'Sumber data dipulihkan ke manual setelah uji',
+      gRestored.dataSource === 'manual' && gRestored.enabled === false && gRestored.mode === 'monitor',
+      `${gRestored.dataSource}/${gRestored.enabled}/${gRestored.mode}`
+    );
+
+    await clickConfirm(control, '[data-testid="reset-draft"]');
+    const gFinalDraft = (await apiGet('/state')).state.draft.entries.length;
+    check('Draft dikosongkan kembali setelah uji integrasi', gFinalDraft === 0, `${gFinalDraft} entri`);
+
+    /* ------------------------------------------------- 14. laporan console */
+    console.log('\n[14] Console & error browser');
     const ignore = /Download the React DevTools|SockJS|ResizeObserver loop|Failed to load resource/i;
     const realErrors = consoleErrors.filter((e) => !ignore.test(e));
     const realHttp = httpErrors.filter((e) => !/favicon/i.test(e));

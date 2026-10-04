@@ -1,0 +1,11 @@
+{
+  "fixture": "out-of-order",
+  "description": "Event tiba tidak berurutan (seq 4 sebelum 3): pipeline harus menyangga lalu menerapkan dalam urutan benar tanpa mengulang event.",
+  "events": [
+    { "eventId": "fx-oo-0001", "seq": 1, "at": 1710000500000, "type": "score.update", "data": { "blue": { "kills": 1 }, "red": { "kills": 0 }, "durationMs": 30000 } },
+    { "eventId": "fx-oo-0002", "seq": 2, "at": 1710000501000, "type": "score.update", "data": { "blue": { "kills": 2 }, "red": { "kills": 0 }, "durationMs": 60000 } },
+    { "eventId": "fx-oo-0004", "seq": 4, "at": 1710000503000, "type": "score.update", "data": { "blue": { "kills": 4 }, "red": { "kills": 1 }, "durationMs": 120000 } },
+    { "eventId": "fx-oo-0003", "seq": 3, "at": 1710000502000, "type": "score.update", "data": { "blue": { "kills": 3 }, "red": { "kills": 1 }, "durationMs": 90000 } },
+    { "eventId": "fx-oo-0005", "seq": 5, "at": 1710000504000, "type": "score.update", "data": { "blue": { "kills": 5 }, "red": { "kills": 1 }, "durationMs": 150000 } }
+  ]
+}

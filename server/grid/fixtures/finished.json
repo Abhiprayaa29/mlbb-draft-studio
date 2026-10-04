@@ -1,0 +1,9 @@
+{
+  "fixture": "finished",
+  "description": "Skenario selesai game: skor akhir, pemenang, dan skor seri.",
+  "events": [
+    { "eventId": "fx-fin-0001", "seq": 1, "at": 1710000200000, "type": "score.update", "data": { "blue": { "kills": 14, "gold": 68000, "turrets": 8, "lord": 2, "turtle": 3 }, "red": { "kills": 9, "gold": 61000, "turrets": 3, "lord": 1, "turtle": 2 }, "durationMs": 1200000 } },
+    { "eventId": "fx-fin-0002", "seq": 2, "at": 1710000205000, "type": "match.finished", "data": { "winner": "blue", "durationMs": 1205000, "seriesScore": { "blue": 1, "red": 0 } } },
+    { "eventId": "fx-fin-0003", "seq": 3, "at": 1710000206000, "type": "series.state", "data": { "competitionId": "comp-local", "seriesId": "series-local", "gameId": "game-1", "status": "finished", "teams": { "blue": { "id": "t-blue", "name": "Tim Biru FC", "seriesScore": 1 }, "red": { "id": "t-red", "name": "Tim Merah SC", "seriesScore": 0 } } } }
+  ]
+}

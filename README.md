@@ -50,6 +50,14 @@ panduan di atas (hanya bisa diakses dari mesin yang sama).
 | `BACKUP_INTERVAL_MS` | `30000` | Jarak minimum antar backup otomatis. |
 | `VITE_HOST` | `127.0.0.1` | Host dev Vite (`0.0.0.0` bila control panel dibuka dari PC lain). |
 | `VITE_PORT` | `5173` | Port dev Vite. |
+| `GRID_ENABLED` | `false` | Aktifkan integrasi data eksternal GRID (lihat bagian 10). |
+| `GRID_API_KEY` / `GRID_GRAPHQL_URL` / `GRID_WS_URL` | *(kosong)* | Kredensial GRID — **hanya dibaca server**, tidak pernah ke browser/OBS/state. |
+| `GRID_DATA_SOURCE` | `manual` | Sumber saat start: `manual` \| `grid` \| `fixture`. |
+| `AUTOMATION_MODE` / `AUTOMATION_ENABLED` | `monitor` / `false` | Mode otomasi + gerbang kedua mode auto. |
+
+Salin `.env.example` → `.env` lalu isi (`.env` tidak boleh masuk git — sudah
+ditangani `.gitignore`). Tanpa kredensial, integrasi GRID live tidak tersedia
+dan status jujur: **GRID LIVE CONNECTION NOT VERIFIED**.
 
 Datasets statis (hero, skill, build, emblem, spell) selalu dibaca dari paket data
 bawaan; `DATA_DIR` hanya untuk data yang berubah (state, match, backup, logo).
@@ -94,6 +102,12 @@ bawaan; `DATA_DIR` hanya untuk data yang berubah (state, match, backup, logo).
     skor/draft, dan skor tidak mengubah tema (diuji otomatis).
 - **Panel match**: simpan, muat ulang, dan hapus pertandingan (riwayat tersimpan di
   `server/data/matches/*.json`).
+- **Tab GRID (integrasi data)**: pilih sumber data `manual / grid / fixture`,
+  mode otomasi `monitor / semi / auto`, sambungkan/putuskan feed, daftar pengajuan
+  mode semi dengan tombol **Aktifkan/Tolak**, badge sumber draft & skor, waktu
+  sinkron terakhir, ringkasan status koneksi + audit singkat. Panel **tidak pernah
+  meminta API key** (credential hanya via environment server) dan selalu
+  menyertakan catatan jujur `GRID LIVE CONNECTION NOT VERIFIED` (bagian 10).
 - **Panel riwayat**: log aksi dengan **label terstruktur** (`PICK`, `BAN`, `UNDO`,
   `RESET`, `PRESET`, `KUNCI`, `GAME`, `EMERGENCY`) + waktu + hero + sisi.
 - **Indikator status di header**: stempel waktu autosave terakhir, jumlah backup
@@ -200,7 +214,7 @@ npm run test:all      # keduanya berurutan
 ```
 
 **Uji server** (`scripts/server-test.js`) meng-spawn proses server terpisah pada
-port & `DATA_DIR` khusus (aman dijalankan bersamaan sesi dev) dan memeriksa **89
+port & `DATA_DIR` khusus (aman dijalankan bersamaan sesi dev) dan memeriksa **131
 asersi**: health/status autosave, skema battle spell, validasi & penyimpanan logo
 (nama file dibuat server), penolakan Origin asing, token operator untuk REST &
 socket, peran overlay **baca-saja**, field overlay baru (branding/emergency),
@@ -211,9 +225,16 @@ visibilitas bisa diubah, tema ↔ skor saling independen, tema bertahan lewat
 sampai aksi terakhir tanpa galat** (pick ke-20 → status `done`, timer berhenti,
 undo kembali berjalan), `match:nextGame`, autosave → restart →
 state pulih persis, `state.json` rusak → pulih dari backup, retensi backup
-(`BACKUP_KEEP`), dan penulisan atomik (tanpa sisa `.tmp`).
+(`BACKUP_KEEP`), penulisan atomik (tanpa sisa `.tmp`), serta **integrasi GRID
+(42 asersi)**: endpoint `/api/integration` butuh token, default `manual` nonaktif,
+`configured=false` tanpa credential, overlay ditolak mengubah integrasi, patch
+invalid (sumber/mode/fixture) ditolak, **monitor mengalirkan feed tanpa menyentuh
+state/revision**, **auto (gerbang ganda) mengisi draft penuh lewat Draft Engine**
+dengan hero yang seluruhnya ada di dataset, **auto tanpa `AUTOMATION_ENABLED`
+menahan tulisan state**, **semi mengantre + Aktifkan/Tolak berfungsi**, dan
+**fixture invalid seluruhnya ditolak tanpa mengubah state**.
 
-**E2E** (`scripts/e2e-test.js`) membuka halaman nyata dan memeriksa **96 asersi**:
+**E2E** (`scripts/e2e-test.js`) membuka halaman nyata dan memeriksa **115 asersi**:
 kesiapan control panel, input turnamen/tim/roster, pick/undo/lock/reset, countdown
 (jalan, jeda, durasi, `deadlineAt`), transparansi overlay, sinkronisasi real-time
 tanpa reload, perubahan layout, simpan/muat pertandingan, route 404, indikator
@@ -224,7 +245,10 @@ selesai tanpa pesan galat** (termasuk undo dari status selesai), **tab Tema**
 (preview live, Simpan/Batal, preset, warna berubah di preview tanpa menyentuh
 server hingga disimpan, tema terlihat di `/overlay/score` lewat CSS variable,
 overlay tetap transparan + tanpa kontrol, bebas scrollbar di 1280×720, konfigurasi
-dipulihkan setelah uji), serta memastikan tidak ada error console maupun request
+dipulihkan setelah uji), **tab GRID** (pilihan sumber data, pesan jujur tanpa
+credentials, mode semi + Aktifkan menerapkan pengajuan ke draft, badge sumber &
+sinkron, feed bisa dihentikan, **tanpa input credential di browser**, state
+dipulihkan ke manual), serta memastikan tidak ada error console maupun request
 4xx/5xx.
 
 ```bash
@@ -254,23 +278,42 @@ mlbb-draft-studio/
 │   ├── presets.js            # preset urutan draft + validator
 │   ├── store.js              # state aktif + jadwal autosave (wajah penyimpanan)
 │   ├── storage.js            # lapisan file: tulis atomik, backup, pemulihan, DATA_DIR
+│   ├── grid/                 # adapter data eksternal (isolasi total dari draft engine)
+│   │   ├── index.js          # controller: provider → reconciler → mapper → validator
+│   │   │                     #   → normalizer → mode gate → apply (mutate)
+│   │   ├── config.js         # baca .env/env vars + redacted() (tanpa secret)
+│   │   ├── client.js         # provider fixture & grid (discovery → degraded jujur)
+│   │   ├── reconciler.js     # dedup · urutan · idempotensi · last-known-good
+│   │   ├── mapper.js         # raw → canonical; tipe tak dikenal → unsupported
+│   │   ├── validator.js      # hero di dataset 133 · angka wajar · urutan draft
+│   │   ├── normalizer.js     # canonical → patch (unknown ≠ zero)
+│   │   ├── lifecycle.js      # status & transisi lifecycle yang diizinkan
+│   │   ├── graphql.js        # request GraphQL generik (timeout/backoff/retry)
+│   │   ├── websocket.js      # WS generik (heartbeat, reconnect) untuk feed live
+│   │   ├── discovery.js      # introspection standar → laporan discovery
+│   │   ├── broadcast-controller.js  # kontrak event siaran (DRAFT_STARTED, dst.)
+│   │   ├── audit.js          # ring audit di memori (200 entri, tanpa secret)
+│   │   └── fixtures/         # draft · live · finished · invalid · reconnect
+│   │                         #   · out-of-order (pengujian tanpa kredensial)
 │   └── data/                 # heroes, meta, equipment, emblems, builds,
 │                             # battle-spells(.schema).json, state.json (overlay.theme),
 │                             # matches/, backups/, logos/
+├── .env.example              # templat konfigurasi GRID (tanpa nilai rahasia)
 ├── scripts/
 │   ├── fetch-hero-data.js
 │   ├── import-database.js
 │   ├── validate-data.js
 │   ├── import-battle-spells.js   # impor manual battle spell + validasi skema
-│   ├── server-test.js            # 89 asersi backend/multi-PC (tanpa browser)
-│   └── e2e-test.js               # 96 asersi alur nyata via browser
+│   ├── server-test.js            # 131 asersi backend/multi-PC (tanpa browser)
+│   └── e2e-test.js               # 115 asersi alur nyata via browser
 └── src/
     ├── App.jsx  main.jsx  styles.css
     ├── lib/       store, socket, utils, data, overlay, anim,
     │              assets (unggah/validasi logo dipakai bersama)
     ├── components/ ui, HeroImage, slots, HeroPicker, DraftBoard,
     │               TimerBar, sidepanels, Stage, TeamLogo, Branding,
-    │               ScorePreview (preview 16:9), ScoreThemePanel (tab Tema)
+    │               ScorePreview (preview 16:9), ScoreThemePanel (tab Tema),
+    │               IntegrationPanel (tab GRID)
     └── pages/     Control, OverlayDraft, OverlayScore
 ```
 
@@ -283,7 +326,8 @@ mlbb-draft-studio/
 `GET /api/health` · `GET /api/state` · `GET /api/heroes` (`?q=&role=&lane=`) ·
 `GET /api/heroes/:id` · `GET /api/meta` · `GET /api/equipment` · `GET /api/emblems` ·
 `GET /api/builds` · `GET /api/presets` · `GET /api/manifest` ·
-`GET /api/battle-spells` ·
+`GET /api/battle-spells` · `GET /api/integration` (status + audit, butuh token
+operator bila `APP_AUTH_TOKEN` di-set) ·
 `GET|POST /api/matches` · `GET /api/matches/:id` · `POST /api/matches/:id/load` ·
 `DELETE /api/matches/:id` ·
 `POST /api/logos` (butuh token operator bila `APP_AUTH_TOKEN` di-set)
@@ -296,12 +340,16 @@ mlbb-draft-studio/
 `draft:pick` · `draft:undo` · `draft:reset` · `draft:preset` · `draft:lock` ·
 `draft:allowDuplicates` · `timer` · `team:update` · `meta:update` · `score:update` ·
 `overlay:update` · `announce` · `match:save` · `match:load` · `match:delete` ·
-`match:new` · **`match:nextGame`** · **`emergency`** · `state:request`
+`match:new` · **`match:nextGame`** · **`emergency`** · `state:request` ·
+**`integration:update`** (operator: konfigurasi sumber/mode + aksi
+`start|stop|approve|reject`; ditolak untuk overlay)
 
 ### Server → klien
 
-`hello` (state + `serverNow` + presence + `authRequired` + `autosave`) ·
-`state` (+ `autosave`) · `presence` · `clock` · `draft:timeout`
+`hello` (state + `serverNow` + presence + `authRequired` + `autosave` +
+`integrationStatus`) · `state` (+ `autosave`) · `presence` · `clock` ·
+`draft:timeout` · **`integration:status`** (status koneksi transien — sengaja
+bukan bagian dari `state` agar setiap perubahan status tidak memicu autosave)
 
 ### Peran, token, dan validasi
 
@@ -398,13 +446,87 @@ dipakai untuk keperluan siaran/pribadi.
 
 ---
 
-## 10. Keterbatasan
+## 10. Integrasi data eksternal (GRID)
+
+> **Status kejujuran: FIXTURE TESTED — GRID LIVE CONNECTION NOT VERIFIED.**
+> Integrasi live memerlukan kredensial GRID Official Esports Data yang
+> **tidak tersedia** bagi proyek ini; tanpa kredensial, endpoint/query/schema GRID
+> tidak pernah diverifikasi dan tidak pernah dikarang. Yang sudah teruji adalah
+> **arsitektur + pipeline lengkap** lewat fixture provider.
+
+### Arsitektur
+
+Pipeline (semua di `server/grid/`, terisolasi dari draft engine):
+
+```
+provider (fixture | grid)  →  reconciler  →  mapper  →  validator
+   →  normalizer  →  gerbang mode  →  apply (mutate)  →  state  →  Socket.IO
+```
+
+- **reconciler** — deduplikasi, urutan (`seq` bolak-balik disangga), idempotensi
+  (reconnect `A,A,B,A,C → A,B,C`), dan event rusak tidak membuat feed macet.
+- **mapper** — raw → canonical; tipe event tak dikenal → `unsupported` (diaudit,
+  bukan ditebak); hero harus resolusi ke dataset 133 (tanpa fuzzy-match).
+- **validator** — angka wajar & bilangan bulat, sisi `blue/red`, lifecycle
+  transisi diizinkan, urutan draft vs cursor internal (hanya saat event **akan
+  diterapkan** — mode monitor tidak memaksakan urutan pada state yang sengaja
+  tidak bergerak). Satu field rusak → **seluruh event ditolak** (tanpa tulis
+  sebagian).
+- **normalizer** — canonical → patch; **unknown ≠ zero**: field yang tidak
+  dikirim tidak pernah dijadikan 0.
+
+### Mode & gerbang
+
+| Mode | Perilaku |
+|---|---|
+| `monitor` (default) | Hanya memantau: event dicatat ke daftar observasi, **state & revision tidak disentuh**. |
+| `semi` | Event diantre sebagai pengajuan; operator menekan **Aktifkan/Tolak** (approve divalidasi ulang terhadap state terkini). |
+| `auto` | Diterapkan otomatis **hanya bila dua gerbang terbuka**: `mode=auto` **dan** `AUTOMATION_ENABLED=true`. |
+
+Semua perubahan tetap melewati Draft Engine (`pickHero`, `applyScorePatch`, dsb.)
+dalam `mutate()` — cursor, used, revision, undo, dan autosave berperilaku persis
+seperti input manual. Overlay hanya membaca `state` internal — **tidak pernah**
+membaca payload provider.
+
+### Konfigurasi
+
+- `.env` (salin dari `.env.example`): `GRID_ENABLED`, `GRID_API_KEY`,
+  `GRID_GRAPHQL_URL`, `GRID_WS_URL`, `GRID_COMPETITION_ID`, `GRID_SERIES_ID`,
+  `GRID_DATA_SOURCE`, `GRID_FIXTURE`, `AUTOMATION_MODE`, `AUTOMATION_ENABLED`.
+- Control panel → **tab GRID**: sumber data, mode, tombol sambung/putus,
+  pengajuan semi, audit — **tanpa input credential di browser**.
+- Status koneksi (`connecting/connected/degraded/error/…`) disiarkan lewat event
+  `integration:status` (transien), bukan bagian `state` — perubahan status tidak
+  memicu autosave/backup.
+- `connected` hanya diberikan setelah permintaan data tervalidasi; discovery yang
+  belum pernah berjalan dengan kredensial asli tetap dilaporkan **degraded** dengan
+  catatan "mapping field live belum diverifikasi".
+
+### Fixture (pengujian tanpa kredensial)
+
+`server/grid/fixtures/`: `draft.json` (21 event: series + 10 ban + 10 pick),
+`live.json` (skor + field tak dikenal), `finished.json`, `invalid.json`
+(8 event rusak — seluruhnya ditolak), `reconnect.json` (replay/duplikat),
+`out-of-order.json` (seq bolak-balik). Dijalankan otomatis oleh
+`npm run test:server` (bagian 13) dan `npm test` (bagian 13, via UI).
+
+Untuk pengujian lokal: pilih sumber **Fixture** + mode, lalu **Sambungkan** di
+tab GRID.
+
+---
+
+## 11. Keterbatasan
 
 - **Battle spell tidak tersedia** di sumber data mana pun; tidak ada yang direka-reka.
   Impor sendiri bila dibutuhkan lewat `npm run data:battle-spells -- <file.json>`
   (wajib menyertakan file ikon; tanpa ikon, UI tidak menampilkan apa pun).
 - Urutan draft adalah **preset turnamen**, bukan aturan resmi MPL/contained esports.
-- Skor (kill/gold/dst) diinput manual oleh operator, bukan ditarik dari game client.
+- Skor (kill/gold/dst) diinput manual oleh operator, atau lewat integrasi
+  `monitor/semi/auto` (bagian 10) — bukan ditarik dari game client.
+- **Koneksi GRID live belum pernah diverifikasi** (tidak ada kredensial): schema,
+  nama query, dan mapping field asli GRID harus dipetakan ulang lewat discovery
+  dengan kredensial nyata sebelum klaim "terhubung live" boleh dibuat. Pemetaan
+  fixture saat ini adalah **kontrak input adapter internal**, bukan klaim schema GRID.
 - State aktif disimpan di file JSON: **satu proses server per `DATA_DIR`**.
   Banyak PC boleh mengendalikan/menonton lewat LAN, tetapi dua instance server tidak
   boleh menulis `state.json` yang sama secara bersamaan (jangan dijalankan dua kali
@@ -414,7 +536,7 @@ dipakai untuk keperluan siaran/pribadi.
 
 ---
 
-## 11. Troubleshooting
+## 12. Troubleshooting
 
 - **"Backend tidak merespons"** → jalankan `npm run dev` (atau `npm run build && npm run start`).
 - **Aset 404 di produksi** → pastikan `npm run build` dijalankan sebelum `npm run start`.
