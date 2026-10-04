@@ -173,22 +173,24 @@ npm run test:all      # keduanya berurutan
 ```
 
 **Uji server** (`scripts/server-test.js`) meng-spawn proses server terpisah pada
-port & `DATA_DIR` khusus (aman dijalankan bersamaan sesi dev) dan memeriksa 66
+port & `DATA_DIR` khusus (aman dijalankan bersamaan sesi dev) dan memeriksa 70
 asersi: health/status autosave, skema battle spell, validasi & penyimpanan logo
 (nama file dibuat server), penolakan Origin asing, token operator untuk REST &
 socket, peran overlay **baca-saja**, field overlay baru (branding/emergency),
-`match:nextGame`, autosave → restart → state pulih persis, `state.json` rusak →
-pulih dari backup, retensi backup (`BACKUP_KEEP`), dan penulisan atomik (tanpa
-sisa `.tmp`).
+**draft dijalankan sampai aksi terakhir tanpa galat** (pick ke-20 → status `done`,
+timer berhenti, undo kembali berjalan), `match:nextGame`, autosave → restart →
+state pulih persis, `state.json` rusak → pulih dari backup, retensi backup
+(`BACKUP_KEEP`), dan penulisan atomik (tanpa sisa `.tmp`).
 
-**E2E** (`scripts/e2e-test.js`) membuka halaman nyata dan memeriksa **70 asersi**:
+**E2E** (`scripts/e2e-test.js`) membuka halaman nyata dan memeriksa **74 asersi**:
 kesiapan control panel, input turnamen/tim/roster, pick/undo/lock/reset, countdown
 (jalan, jeda, durasi, `deadlineAt`), transparansi overlay, sinkronisasi real-time
 tanpa reload, perubahan layout, simpan/muat pertandingan, route 404, indikator
 autosave/backup, emergency stop (aktif + banner + log terstruktur), branding yang
 benar-benar tampil di overlay, pintasan `Ctrl+Shift+N`, kejujuran data battle spell,
-unggah logo, label riwayat, transisi game berikutnya, serta memastikan tidak ada
-error console maupun request 4xx/5xx.
+unggah logo, label riwayat, transisi game berikutnya, **pick terakhir hingga draft
+selesai tanpa pesan galat** (termasuk undo dari status selesai), serta memastikan
+tidak ada error console maupun request 4xx/5xx.
 
 ```bash
 npm test                                  # terhadap dev server (5173)
@@ -221,8 +223,8 @@ mlbb-draft-studio/
 │   ├── import-database.js
 │   ├── validate-data.js
 │   ├── import-battle-spells.js   # impor manual battle spell + validasi skema
-│   ├── server-test.js            # 66 asersi backend/multi-PC (tanpa browser)
-│   └── e2e-test.js               # 70 asersi alur nyata via browser
+│   ├── server-test.js            # 70 asersi backend/multi-PC (tanpa browser)
+│   └── e2e-test.js               # 74 asersi alur nyata via browser
 └── src/
     ├── App.jsx  main.jsx  styles.css
     ├── lib/       store, socket, utils, data, overlay, anim
