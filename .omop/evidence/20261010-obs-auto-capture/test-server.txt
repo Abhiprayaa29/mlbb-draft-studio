@@ -1,0 +1,139 @@
+
+> mlbb-draft-studio@1.0.0 test:server
+> node scripts/server-test.js
+
+
+=== SERVER / MULTI-PC TEST ===
+  PASS  server utama hidup — port 5192
+  PASS  GET /api/health OK
+  PASS  health melaporkan jumlah hero — hero=133
+  PASS  health melaporkan authRequired=true
+  PASS  health melaporkan status autosave
+  PASS  health melaporkan presence
+  PASS  GET /api/battle-spells OK
+  PASS  semua spell valid berawalan /assets/ — jumlah=0
+  PASS  flag available konsisten
+  PASS  database hero dapat dibaca untuk uji pick — hero=h001
+  PASS  Origin tidak terdaftar ditolak 403 — status=403
+  PASS  Origin terdaftar diizinkan
+  PASS  logo bukan data URL ditolak — status=400
+  PASS  logo bukan gambar ditolak — status=400
+  PASS  logo dengan isi non-gambar ditolak — status=400
+  PASS  unggah logo PNG valid diterima — /assets/logos/logo-mv23ov29-59903d33.png
+  PASS  nama file logo dibuat server (tanpa traversal)
+  PASS  logo bisa disajikan via HTTP
+  PASS  unggah logo tanpa token operator ditolak 401
+  PASS  simpan match tanpa token ditolak 401
+  PASS  simpan match dengan token diterima — grand-final-mv23ov2u
+  PASS  daftar match bisa dibaca — jumlah=1
+  PASS  load match diterima
+  PASS  overlay dapat membaca state (baca-saja)
+  PASS  overlay ditolak mengubah draft
+  PASS  overlay ditolak mengubah skor
+  PASS  overlay ditolak mengubah pengaturan overlay
+  PASS  overlay ditolak mengubah timer
+  PASS  control tanpa token ditolak (butuh auth)
+  PASS  control dengan token bisa pick — 1 entri
+  PASS  hero tidak dikenal ditolak server
+  PASS  hero ganda ditolak saat allowDuplicates mati
+  PASS  pick terakhir menyelesaikan draft tanpa galat — entri=20/20 status=done err=-
+  PASS  timer berhenti saat draft selesai
+  PASS  undo setelah selesai mengembalikan status berjalan — status=running err=-
+  PASS  timer dilanjutkan setelah undo dari status selesai — running=true
+  PASS  branding dapat diaktifkan
+  PASS  brandText dipotong maks 60 karakter — panjang=60
+  PASS  brandLogo berbahaya ditolak
+  PASS  brandLogo http/https diterima
+  PASS  logo URL lokal diterima untuk tim
+  PASS  logo protocol-relative ditolak
+  PASS  state punya tema scoreboard default — preset=navy-tournament
+  PASS  overlay ditolak mengubah tema
+  PASS  tema scoreboard dapat diubah operator — err=-
+  PASS  preset tema tersimpan — preset=modern-teal
+  PASS  warna tak valid ditolak dengan pesan jelas — err=Warna accent tidak valid (pakai #RRGGBB).
+  PASS  patch tema yang gagal tidak mengubah tema yang tersimpan
+  PASS  sponsor javascript: ditolak utuh
+  PASS  sponsor tidak valid tidak menyisakan data
+  PASS  sponsor melebihi batas ditolak — err=sponsor maksimal 6.
+  PASS  caster dipotong maks 48 karakter — panjang=48
+  PASS  visibilitas elemen dapat diubah
+  PASS  skor dapat diubah setelah tema
+  PASS  perubahan skor tidak menyentuh konfigurasi tema
+  PASS  tema dapat diubah setelah skor berubah
+  PASS  perubahan tema tidak menyentuh skor — kills=3
+  PASS  skor dapat diubah operator
+  PASS  match:nextGame menaikkan nomor game — game=2
+  PASS  skor per-game direset
+  PASS  draft game baru kosong
+  PASS  riwayat mencatat transisi game (terstruktur)
+  PASS  tema bertahan saat match:nextGame
+  PASS  emergency ON diaktifkan
+  PASS  emergency menghentikan timer
+  PASS  riwayat mencatat emergency
+  PASS  emergency dapat dilepas via overlay:update
+  PASS  emergency ON kembali
+  PASS  emergency dapat dilepas
+  PASS  state.json valid setelah autosave
+  PASS  tema tersimpan di state.json (autosave)
+  PASS  revisi tersimpan sama dengan di memori — file=40 memori=40
+  PASS  tidak ada file .tmp tersisa (penulisan atomik)
+  PASS  server utama dihentikan
+  PASS  state pulih persis setelah restart — rev=40
+  PASS  data pertandingan tidak hilang saat restart
+  PASS  tema scoreboard bertahan setelah restart — accent=#4FA4A5
+  PASS  struktur tema valid setelah restart
+  PASS  perubahan pasca-restart diterima
+  PASS  server restart dihentikan
+  PASS  backup tersedia — backup=2
+  PASS  server tetap hidup walau state.json rusak
+  PASS  state dipulihkan dari backup — backup
+  PASS  state hasil pemulihan valid
+  PASS  revisi hasil pemulihan identik dengan sebelum dirusak — pulih=40 asli=40
+  PASS  riwayat lama masih ada di backup
+  PASS  retensi backup sesuai BACKUP_KEEP=3 — jumlah=3
+  PASS  backup tetap dibuat saat ada perubahan — jumlah=3
+  PASS  tidak ada .tmp setelah banyak perubahan
+  PASS  GET /api/integration tanpa token ditolak 401 — status=401
+  PASS  GET /api/integration OK (default nonaktif) — disabled
+  PASS  sumber data default manual — manual
+  PASS  tanpa credentials → configured=false — false
+  PASS  respons integrasi tidak membocorkan secret
+  PASS  health melaporkan ringkasan integrasi
+  PASS  hello menyertakan status integrasi — disabled
+  PASS  overlay ditolak mengubah integrasi — Koneksi overlay bersifat baca-saja.
+  PASS  sumber data tidak valid ditolak
+  PASS  mode otomasi tidak valid ditolak
+  PASS  nama fixture berbahaya ditolak
+  PASS  konfigurasi fixture monitor diterima
+  PASS  fixture provider mengalirkan event ke pipeline — {"applied":0,"rejected":0,"unsupported":0,"observed":21,"proposed":0,"noop":0,"duplicates":0,"stale":0,"skipped":0}
+  PASS  monitor tidak menerapkan event — 0
+  PASS  monitor tidak menulis draft state
+  PASS  revision tidak naik saat feed monitor berjalan — 46 → 46
+  PASS  draft direset sebelum uji auto
+  PASS  mode auto + AUTOMATION_ENABLED diterima
+  PASS  auto mengisi draft penuh dari fixture — entri=20
+  PASS  semua hero hasil pemetaan ada di dataset
+  PASS  draftSource tercatat sebagai fixture — fixture
+  PASS  identifier dari series.state tersimpan — comp-local
+  PASS  nama tim dari feed diterapkan — Tim Biru FC
+  PASS  draft direset sebelum uji gerbang auto
+  PASS  mode auto tanpa AUTOMATION_ENABLED diterima
+  PASS  gerbang auto kedua menahan tulisan state — entri=0
+  PASS  draft direset sebelum uji semi
+  PASS  mode semi diterima
+  PASS  mode semi mengantre pengajuan — {"applied":21,"rejected":0,"unsupported":0,"observed":42,"proposed":21,"noop":0,"duplicates":0,"stale":0,"skipped":0}
+  PASS  semi tidak menulis state tanpa persetujuan — entri=0
+  PASS  ada pengajuan draft yang menunggu — pending=20
+  PASS  persetujuan operator menerapkan pengajuan — {"ok":true,"outcome":"applied","id":"p-2"}
+  PASS  pengajuan yang disetujui masuk ke draft — entri=1
+  PASS  penolakan operator diterima — {"ok":true,"id":"p-3"}
+  PASS  pengajuan yang ditolak hilang dari antrean
+  PASS  draft direset sebelum uji fixture invalid
+  PASS  fixture invalid dimuat untuk pengujian penolakan
+  PASS  event invalid tercatat ditolak/tak didukung — {"applied":22,"rejected":7,"unsupported":1,"observed":42,"proposed":21,"noop":0,"duplicates":0,"stale":0,"skipped":0}
+  PASS  event invalid tidak mengubah draft — entri=0
+  PASS  state tidak pernah memuat field secret
+  PASS  kembali ke sumber data manual — manual
+  PASS  server grid dihentikan
+
+Hasil server-test: 131 PASS / 0 FAIL

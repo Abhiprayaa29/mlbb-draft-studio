@@ -18,16 +18,20 @@
     "test": "node scripts/e2e-test.js",
     "test:e2e": "node scripts/e2e-test.js",
     "test:server": "node scripts/server-test.js",
-    "test:all": "npm run test:server && npm run test:e2e"
+    "test:ocr": "node scripts/ocr-test.js",
+    "test:all": "npm run test:server && npm run test:ocr && npm run test:e2e"
   },
   "dependencies": {
     "express": "^4.21.2",
     "framer-motion": "^11.18.2",
+    "obs-websocket-js": "^5.0.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.0",
+    "sharp": "^0.35.5",
     "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "socket.io-client": "^4.8.1",
+    "tesseract.js": "^7.0.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",

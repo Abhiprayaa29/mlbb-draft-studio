@@ -1,0 +1,6 @@
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.45 kB │ gzip:   0.28 kB
+dist/assets/index-BMTT1kae.css   41.15 kB │ gzip:   8.55 kB
+dist/assets/index-BkAv8cAF.js   456.15 kB │ gzip: 139.65 kB
+✓ built in 10.76s

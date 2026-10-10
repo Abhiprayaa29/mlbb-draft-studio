@@ -1,0 +1,587 @@
+{
+  "generatedAt": "2026-10-10T07:53:29.734Z",
+  "results": [
+    {
+      "name": "Backend /api/health merespons",
+      "ok": true,
+      "detail": "133 hero"
+    },
+    {
+      "name": "Control panel membuka dan siap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Database hero dirender",
+      "ok": true,
+      "detail": "133 kartu hero"
+    },
+    {
+      "name": "Reset awal mengosongkan draft",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "Nama turnamen tersimpan",
+      "ok": true,
+      "detail": "MLBB Draft Studio Selftest"
+    },
+    {
+      "name": "Nama tim tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Roster tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Preset \"Tanpa Ban\" diterapkan",
+      "ok": true,
+      "detail": "pick-only"
+    },
+    {
+      "name": "Empat pick tercatat",
+      "ok": true,
+      "detail": "4 entri"
+    },
+    {
+      "name": "Giliran bergantian benar",
+      "ok": true,
+      "detail": "blue,red,red,blue"
+    },
+    {
+      "name": "Hero terpakai ditandai",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Hero terpakai dinonaktifkan di UI",
+      "ok": true,
+      "detail": "4/4"
+    },
+    {
+      "name": "Hero yang sama tidak bisa dipick ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Undo mengurangi entri",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "Kunci aksi bekerja",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Undo entri terkunci ditolak tanpa konfirmasi",
+      "ok": true,
+      "detail": "4"
+    },
+    {
+      "name": "Countdown bisa dijeda",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Countdown berjalan",
+      "ok": true,
+      "detail": "sisa 23184ms"
+    },
+    {
+      "name": "deadlineAt terisi (sinkronisasi antar klien)",
+      "ok": true,
+      "detail": "1791618742345"
+    },
+    {
+      "name": "Sisa waktu tidak negatif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Countdown berhenti saat dijeda",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Durasi countdown dapat diubah",
+      "ok": true,
+      "detail": "10000ms"
+    },
+    {
+      "name": "Sisa waktu mengikuti durasi baru",
+      "ok": true,
+      "detail": "10000ms"
+    },
+    {
+      "name": "Overlay draft punya root overlay",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Latar overlay transparan (OBS)",
+      "ok": true,
+      "detail": "body=rgba(0, 0, 0, 0) html=rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "Overlay menampilkan nama tim",
+      "ok": true,
+      "detail": "Tim Biru FC"
+    },
+    {
+      "name": "Overlay tanpa kontrol admin",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Server menghitung koneksi overlay",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Overlay draft menerima update tanpa reload",
+      "ok": true,
+      "detail": "hero=Nana before=false after=true"
+    },
+    {
+      "name": "Layout draft compact diterapkan & dirender",
+      "ok": true,
+      "detail": "compact, html 14686 -> 6639"
+    },
+    {
+      "name": "Layout final lineup diterapkan & dirender",
+      "ok": true,
+      "detail": "lineup, html 6572"
+    },
+    {
+      "name": "Latar scoreboard transparan",
+      "ok": true,
+      "detail": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "Tombol + skor ditemukan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Skor kill bertambah dari control panel",
+      "ok": true,
+      "detail": "0 → 1"
+    },
+    {
+      "name": "Scoreboard menampilkan skor terbaru tanpa reload",
+      "ok": true,
+      "detail": "tampilan berubah"
+    },
+    {
+      "name": "Layout scoreboard compact diterapkan & dirender",
+      "ok": true,
+      "detail": "compact, html 16127 -> 11544"
+    },
+    {
+      "name": "Pertandingan tersimpan",
+      "ok": true,
+      "detail": "selftest-match-mv23jicy"
+    },
+    {
+      "name": "Tombol simpan bereaksi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Perubahan tim tercatat sebelum muat ulang",
+      "ok": true,
+      "detail": "Diubah Sesudah Simpan"
+    },
+    {
+      "name": "Pertandingan dimuat ulang",
+      "ok": true,
+      "detail": "Tim Biru FC"
+    },
+    {
+      "name": "Reset draft mengosongkan entri",
+      "ok": true,
+      "detail": "0 Draft direset"
+    },
+    {
+      "name": "Reset draft mengembalikan kursor",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Reset draft mengosongkan hero terpakai",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Route tak dikenal menampilkan halaman 404",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Indikator autosave tampil di panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Indikator jumlah backup tampil",
+      "ok": true,
+      "detail": "Backup 3"
+    },
+    {
+      "name": "Server melaporkan status autosave",
+      "ok": true,
+      "detail": "rev=38 backup=3"
+    },
+    {
+      "name": "Mode terbuka tidak meminta token operator",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Emergency stop dapat diaktifkan",
+      "ok": true,
+      "detail": "emg=true"
+    },
+    {
+      "name": "Banner emergency tampil di panel operator",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Riwayat mencatat aksi emergency (terstruktur)",
+      "ok": true,
+      "detail": "reset,emergency"
+    },
+    {
+      "name": "Emergency stop dapat dilepas",
+      "ok": true,
+      "detail": "emg=false"
+    },
+    {
+      "name": "Sakelar branding dapat diaktifkan",
+      "ok": true,
+      "detail": "sebelum=false sesudah=true"
+    },
+    {
+      "name": "Teks branding tersimpan di server",
+      "ok": true,
+      "detail": "SELFTEST BRANDING"
+    },
+    {
+      "name": "Branding tampil pada overlay draft",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Pintasan Ctrl+Shift+N mengubah sakelar nickname",
+      "ok": true,
+      "detail": "true → false"
+    },
+    {
+      "name": "Endpoint battle-spells merespons",
+      "ok": true,
+      "detail": "jumlah=0 available=false"
+    },
+    {
+      "name": "Battle spell disembunyikan saat data tidak ada (tanpa data palsu)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Unggah logo melalui API diterima",
+      "ok": true,
+      "detail": "/assets/logos/logo-mv23jxpk-93b538a3.png"
+    },
+    {
+      "name": "Unggah logo tidak valid ditolak",
+      "ok": true,
+      "detail": "status=400"
+    },
+    {
+      "name": "Panel riwayat menampilkan label aksi terstruktur",
+      "ok": true,
+      "detail": "emergency,emergency,reset"
+    },
+    {
+      "name": "Label emergency terlihat di riwayat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tombol game berikutnya berfungsi",
+      "ok": true,
+      "detail": "game 1 → 2"
+    },
+    {
+      "name": "Nomor game bertambah",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "Skor per-game direset",
+      "ok": true,
+      "detail": "0/0"
+    },
+    {
+      "name": "Draft game baru kosong",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "Riwayat game baru tercatat",
+      "ok": true,
+      "detail": "game"
+    },
+    {
+      "name": "Nama tim & turnamen bertahan setelah transisi game",
+      "ok": true,
+      "detail": "Tim Biru FC"
+    },
+    {
+      "name": "Draft dapat dijalankan sampai aksi terakhir tanpa galat",
+      "ok": true,
+      "detail": "10/10 status=done proses=10 terakhir=h010"
+    },
+    {
+      "name": "Tidak ada pesan kesalahan internal di panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Undo setelah draft selesai berfungsi",
+      "ok": true,
+      "detail": "entri=9 status=running"
+    },
+    {
+      "name": "Timer dilanjutkan setelah undo dari status selesai",
+      "ok": true,
+      "detail": "running=true"
+    },
+    {
+      "name": "Tab Tema menampilkan preview scoreboard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Preview memakai data pertandingan asli",
+      "ok": true,
+      "detail": "TIM Tim Biru FC BLUE · SERI 0 VS TIM Tim Merah SC RED · SERI"
+    },
+    {
+      "name": "Panel tema punya kontrol warna & tombol Simpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Simpan nonaktif selama belum ada perubahan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Status awal konfigurasi tersimpan",
+      "ok": true,
+      "detail": "Konfigurasi tersimpan"
+    },
+    {
+      "name": "Preset bawaan tersedia",
+      "ok": true,
+      "detail": "rrq-gold,navy-tournament,modern-teal"
+    },
+    {
+      "name": "Preview scoreboard tanpa scrollbar",
+      "ok": true,
+      "detail": "lebar lebih 0px"
+    },
+    {
+      "name": "Perubahan warna langsung terlihat di preview",
+      "ok": true,
+      "detail": "#E5A823 → #00FF66"
+    },
+    {
+      "name": "Perubahan warna belum mengirim apa pun ke server",
+      "ok": true,
+      "detail": "#E5A823"
+    },
+    {
+      "name": "Status menandai perubahan belum disimpan",
+      "ok": true,
+      "detail": "Perubahan belum disimpan"
+    },
+    {
+      "name": "Simpan aktif setelah ada perubahan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Batal mengembalikan preview ke konfigurasi tersimpan",
+      "ok": true,
+      "detail": "#E5A823"
+    },
+    {
+      "name": "Preset diterapkan ke draft preview",
+      "ok": true,
+      "detail": "rrq-gold"
+    },
+    {
+      "name": "Preset belum mengubah server (menunggu Simpan)",
+      "ok": true,
+      "detail": "navy-tournament"
+    },
+    {
+      "name": "Simpan mengirim konfigurasi tema ke server",
+      "ok": true,
+      "detail": "rrq-gold"
+    },
+    {
+      "name": "Status kembali ke konfigurasi tersimpan",
+      "ok": true,
+      "detail": "Konfigurasi tersimpan"
+    },
+    {
+      "name": "Skor tidak berubah karena penyimpanan tema",
+      "ok": true,
+      "detail": "identik"
+    },
+    {
+      "name": "Tema tersimpan tampil di overlay OBS (tanpa reload ulang)",
+      "ok": true,
+      "detail": "#420217 vs #420217"
+    },
+    {
+      "name": "Overlay siaran tidak menampilkan kontrol panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Latar overlay tetap transparan setelah tema diganti",
+      "ok": true,
+      "detail": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "Overlay tanpa scrollbar pada 1280×720",
+      "ok": true,
+      "detail": "{\"x\":0,\"y\":0}"
+    },
+    {
+      "name": "Konfigurasi tema dipulihkan setelah uji",
+      "ok": true,
+      "detail": "navy-tournament accent=#E5A823"
+    },
+    {
+      "name": "Preset standar dipakai untuk pengujian feed fixture",
+      "ok": true,
+      "detail": "standard-5ban-5pick"
+    },
+    {
+      "name": "Tab GRID menampilkan panel integrasi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Status koneksi integrasi terlihat operator",
+      "ok": true,
+      "detail": "Nonaktif"
+    },
+    {
+      "name": "Tiga pilihan sumber data tersedia",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Mode otomasi default monitor",
+      "ok": true,
+      "detail": "monitor"
+    },
+    {
+      "name": "Tidak ada input credential/API key di panel browser",
+      "ok": true,
+      "detail": "input=0"
+    },
+    {
+      "name": "Panel menyatakan status live belum terverifikasi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Sumber data manual dapat dipilih",
+      "ok": true,
+      "detail": "manual/false"
+    },
+    {
+      "name": "Pilihan sumber data GRID tersimpan di state",
+      "ok": true,
+      "detail": "grid/true"
+    },
+    {
+      "name": "Tanpa credentials server menampilkan pesan jujur",
+      "ok": true,
+      "detail": "GRID belum dikonfigurasi. Tambahkan credentials melalui environment se"
+    },
+    {
+      "name": "Mode otomasi dapat diubah ke semi dari panel",
+      "ok": true,
+      "detail": "true/semi"
+    },
+    {
+      "name": "Tombol Sambungkan menghubungkan fixture provider",
+      "ok": true,
+      "detail": "Tersambung"
+    },
+    {
+      "name": "Mode semi menampilkan pengajuan menunggu persetujuan",
+      "ok": true,
+      "detail": "jumlah=20"
+    },
+    {
+      "name": "Tombol Aktifkan menerapkan pengajuan ke draft",
+      "ok": true,
+      "detail": "0 → 1"
+    },
+    {
+      "name": "Badge sumber draft menandai fixture setelah penerapan",
+      "ok": true,
+      "detail": "Draft: fixture"
+    },
+    {
+      "name": "Waktu sinkron terakhir ditampilkan",
+      "ok": true,
+      "detail": "Sinkron: 14.53.24"
+    },
+    {
+      "name": "Feed dapat dihentikan dari panel",
+      "ok": true,
+      "detail": "Terputus"
+    },
+    {
+      "name": "Sumber data dipulihkan ke manual setelah uji",
+      "ok": true,
+      "detail": "manual/false/monitor"
+    },
+    {
+      "name": "Draft dikosongkan kembali setelah uji integrasi",
+      "ok": true,
+      "detail": "0 entri"
+    },
+    {
+      "name": "Tidak ada error console",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Tidak ada request gagal (4xx/5xx)",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "consoleErrors": [
+    "[control] Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "httpErrors": [
+    "[control] 404 http://127.0.0.1:5173/favicon.ico"
+  ],
+  "dialogs": []
+}

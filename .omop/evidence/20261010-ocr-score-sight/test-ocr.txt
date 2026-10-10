@@ -1,0 +1,45 @@
+
+> mlbb-draft-studio@1.0.0 test:ocr
+> node scripts/ocr-test.js
+
+OCR test: frame Gameplayforscoreboard.png (1310645 bytes) → port 5197
+
+1. Keamanan route
+  PASS  POST tanpa token ditolak 401 — status=401
+  PASS  Body non-gambar ditolak (400/500) — status=500 error=OCR gagal memproses frame.
+
+2. POST frame kalibrasi (OCR penuh — bisa ±10–30 detik)
+  PASS  POST /api/ocr/frame → 200 — status=200 234ms
+  PASS  Response ok:true
+  PASS  frameSize 1384×706 — {"width":1384,"height":706}
+
+3. Pembacaan field (jujur — termasuk keterbatasan terdokumentasi)
+  PASS  timer text "04:39" — got "04:39"
+  PASS  timer value 279000 ms — got 279000
+  PASS  scoreBlue text "10" — got "10"
+  PASS  scoreBlue value 10 — got 10
+  PASS  goldRed value 12800 (12.8k) — got 12800
+  PASS  scoreRed lolos format gate
+  PASS  scoreRed menghasilkan teks (keterbatasan: "3" bukan "9") — text="3" value=3
+  PASS  goldBlue menghasilkan teks (keterbatasan: "11k" bukan "11.5k") — text="11k" value=11000
+
+4. Patch & integrasi
+  PASS  patch.durationMs 279000 — 279000
+  PASS  patch.blue.kills 10 — {"kills":10,"gold":11000}
+  PASS  patch.red.gold 12800 — {"kills":3,"gold":12800}
+  PASS  Patch diterapkan ke state (applied:true)
+  PASS  state.score.durationMs 279000 — got 279000
+  PASS  state.score.blue.kills 10 — got 10
+  PASS  state.score.red.gold 12800 — got 12800
+  PASS  integration.scoreSource === "ocr" — got ocr
+
+5. Kejujuran event (tanpa klaim Lord/Turtle palsu)
+  PASS  Tidak ada event Lord/Turtle dari scoreboard statis — []
+
+6. Frame kedua (reuse tracker — deterministik)
+  PASS  Frame kedua → 200 ok
+  PASS  Frame kedua: timer tetap 279000
+  PASS  Frame kedua: goldRed tetap 12800
+
+============================================================
+OCR test selesai: 25 PASS, 0 FAIL

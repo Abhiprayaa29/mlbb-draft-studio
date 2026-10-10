@@ -800,10 +800,12 @@ setInterval(() => {
 }, 5000);
 
 process.on('SIGINT', () => {
+  cleanupObsCapture();
   store.flushSync();
   process.exit(0);
 });
 process.on('SIGTERM', () => {
+  cleanupObsCapture();
   store.flushSync();
   process.exit(0);
 });
@@ -932,6 +934,177 @@ app.get('/api/integration', requireOperator, (_req, res) => {
     audit: gridAudit.list(20)
   });
 });
+
+// Shared apply handler: dipakai manual POST /api/ocr/frame + OBS loop.
+// Default policy OBSERVE-ONLY (semua disabled); scoreRed/goldBlue terkunci review.
+import {
+  DEFAULT_FIELD_POLICY,
+  filterPatchByPolicy,
+  publicFieldPolicy,
+  sanitizeFieldPolicy
+} from './ocr/fieldPolicy.js';
+
+let ocrFieldPolicy = { ...DEFAULT_FIELD_POLICY };
+
+/**
+ * Terapkan hasil processFrame: mutate state, emit ocr:reading.
+ * source: 'manual' (operator — apply langsung tanpa policy) | 'obs' (auto-loop — filter by policy).
+ */
+function applyFrameResult(result, source = 'manual') {
+  let filtered = result.patch;
+  let skipped = [];
+  if (source === 'obs') {
+    ({ filtered, skipped } = filterPatchByPolicy(result.patch, result.readings, ocrFieldPolicy));
+  }
+  let applied = null;
+  if (Object.keys(filtered).length > 0) {
+    applied = mutate((s) => {
+      const r = applyScorePatch(s, filtered);
+      if (r.error) return { state: s, error: r.error };
+      s.integration.scoreSource = source === 'obs' ? 'ocr-obs' : 'ocr';
+      s.revision += 1;
+      s.updatedAt = new Date().toISOString();
+      return { state: s };
+    });
+  }
+  io.emit('ocr:reading', {
+    readings: result.readings,
+    events: result.events,
+    skipped,
+    serverNow: Date.now()
+  });
+  return { applied: applied ? applied.ok : null, skipped, filtered };
+}
+
+let obsCaptureInstance = null;
+async function getObsCapture() {
+  if (obsCaptureInstance) return obsCaptureInstance;
+  const { createObsCapture } = await import('./ocr/obsCapture.js');
+  const { processFrame } = await import('./ocr/index.js');
+  obsCaptureInstance = createObsCapture({
+    processFrame,
+    applyFrameResult: (result) => applyFrameResult(result, 'obs'),
+    emitStatus: (event, payload) => {
+      io.emit('ocr:obs:status', { event, status: payload, serverNow: Date.now() });
+    }
+  });
+  return obsCaptureInstance;
+}
+
+// OCR: screenshot gameplay → readings + patch skor.
+// Body = PNG/JPEG/WebP mentah (bukan JSON) — makanya raw parser terpisah.
+app.post(
+  '/api/ocr/frame',
+  requireOperator,
+  express.raw({ type: ['image/png', 'image/jpeg', 'image/webp'], limit: '8mb' }),
+  async (req, res) => {
+    try {
+      if (!Buffer.isBuffer(req.body) || req.body.length === 0) {
+        return res.status(400).json({ error: 'Body harus buffer gambar (PNG/JPEG/WebP).' });
+      }
+      // Lazy import: worker tesseract hanya dimuat saat endpoint dipakai.
+      const { processFrame } = await import('./ocr/index.js');
+      const result = await processFrame(req.body);
+      const applyResult = applyFrameResult(result, 'manual');
+      res.json({
+        ok: true,
+        frameSize: result.frameSize,
+        readings: result.readings,
+        events: result.events,
+        patch: result.patch,
+        applied: applyResult.applied,
+        skipped: applyResult.skipped
+      });
+    } catch (e) {
+      console.error('[ocr] frame gagal:', e);
+      res.status(500).json({ error: 'OCR gagal memproses frame.' });
+    }
+  }
+);
+
+app.get('/api/ocr/obs/status', requireOperator, async (req, res) => {
+  try {
+    const obs = await getObsCapture();
+    res.json({ ok: true, status: obs.publicStatus(), policy: publicFieldPolicy(ocrFieldPolicy) });
+  } catch (e) {
+    res.status(500).json({ error: e.message || 'Gagal membaca status OBS.' });
+  }
+});
+
+app.get('/api/ocr/obs/sources', requireOperator, async (req, res) => {
+  try {
+    const obs = await getObsCapture();
+    const sources = await obs.getSources();
+    res.json({ ok: true, sources });
+  } catch (e) {
+    res.status(500).json({ error: e.message || 'Gagal mengambil daftar source OBS.' });
+  }
+});
+
+app.post('/api/ocr/obs/connect', requireOperator, async (req, res) => {
+  try {
+    const obs = await getObsCapture();
+    const { wsUrl, password, sourceName, intervalMs } = req.body || {};
+    obs.configure({ wsUrl, password, sourceName, intervalMs });
+    const status = await obs.connect();
+    if (password) {
+      res.json({ ok: true, status, passwordSet: true });
+    } else {
+      res.json({ ok: true, status });
+    }
+  } catch (e) {
+    res.status(500).json({ error: e.message || 'Gagal konfigurasi OBS.' });
+  }
+});
+
+app.post('/api/ocr/obs/start', requireOperator, async (req, res) => {
+  try {
+    const obs = await getObsCapture();
+    const { sourceName, intervalMs } = req.body || {};
+    if (sourceName) obs.setSourceName(sourceName);
+    if (intervalMs) obs.setIntervalMs(intervalMs);
+    const status = await obs.start();
+    res.json({ ok: true, status });
+  } catch (e) {
+    res.status(500).json({ error: e.message || 'Gagal start capture OBS.' });
+  }
+});
+
+app.post('/api/ocr/obs/stop', requireOperator, async (req, res) => {
+  try {
+    const obs = await getObsCapture();
+    const status = await obs.stop();
+    res.json({ ok: true, status });
+  } catch (e) {
+    res.status(500).json({ error: e.message || 'Gagal stop capture OBS.' });
+  }
+});
+
+app.post('/api/ocr/obs/disconnect', requireOperator, async (req, res) => {
+  try {
+    const obs = await getObsCapture();
+    const status = await obs.disconnect();
+    res.json({ ok: true, status });
+  } catch (e) {
+    res.status(500).json({ error: e.message || 'Gagal disconnect dari OBS.' });
+  }
+});
+
+app.post('/api/ocr/obs/policy', requireOperator, (req, res) => {
+  const { policy } = req.body || {};
+  const result = sanitizeFieldPolicy(policy, ocrFieldPolicy);
+  if (!result.ok) {
+    return res.status(400).json({ error: result.error });
+  }
+  ocrFieldPolicy = result.policy;
+  res.json({ ok: true, policy: publicFieldPolicy(ocrFieldPolicy) });
+});
+
+function cleanupObsCapture() {
+  if (obsCaptureInstance) {
+    try { obsCaptureInstance.dispose(); } catch (e) { console.warn('[obs] dispose:', e?.message); }
+  }
+}
 
 // start otomatis hanya bila operator menyetelnya lewat env (bukan default)
 {

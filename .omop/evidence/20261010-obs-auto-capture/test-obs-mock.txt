@@ -1,0 +1,72 @@
+
+--- 1. Koneksi sukses ---
+  PASS  connected=true setelah start
+  PASS  publicStatus.connected=true
+  PASS  wsUrl di publicStatus
+
+--- 2. Auth gagal (password salah) ---
+  PASS  auth gagal → error — Autentikasi OBS gagal: Authentication failed.
+
+--- 3. Source tidak ditemukan ---
+  PASS  lastError = Source not found — Source not found.
+  PASS  processedFrames=0
+
+--- 4. Screenshot valid base64 → Buffer ---
+  PASS  processFrame menerima Buffer
+  PASS  Buffer tidak kosong
+  PASS  processFrame menerima Buffer
+  PASS  Buffer tidak kosong
+  PASS  processedFrames >= 1 — got 2
+
+--- 5. Screenshot invalid base64 ---
+  PASS  frame di-capture atau error dicatat
+
+--- 6. Capture sukses → processFrame dipanggil ---
+  PASS  processFrame dipanggil >= 2x — got 3
+  PASS  applyFrameResult dipanggil >= 2x — got 3
+
+--- 7. Loop tidak overlap ---
+  PASS  tidak pernah > 1 concurrent processFrame — max=1
+  PASS  loop tetap jalan meski processFrame lambat — processed=2
+
+--- 8. Stop cegah frame baru ---
+  PASS  processedFrames tidak bertambah setelah stop — 2 → 2
+
+--- 9. Reconnect setelah putus ---
+  PASS  reconnect berhasil setelah 2 gagal — attempts=3
+
+--- 10. OBSERVE-ONLY default (field policy) ---
+  PASS  default policy → semua field difilter (OBSERVE-ONLY)
+  PASS  scoreRed default disabled
+  PASS  goldBlue default disabled
+  PASS  scoreRed di LOCKED_REVIEW_FIELDS
+  PASS  goldBlue di LOCKED_REVIEW_FIELDS
+
+--- 11. Field disabled/review tidak diterapkan ---
+  PASS  timer auto-apply → diterapkan
+  PASS  scoreRed review → TIDAK diterapkan
+  PASS  scoreBlue disabled → TIDAK diterapkan
+  PASS  scoreRed masuk skipped:needs_review
+
+--- 12. Auto-apply hanya field diizinkan ---
+  PASS  timer auto-apply → durationMs ada
+  PASS  scoreBlue auto-apply → blue.kills ada
+  PASS  goldBlue disabled → blue.gold TIDAK ada
+  PASS  goldRed auto-apply → red.gold ada
+  PASS  scoreRed disabled → red.kills TIDAK ada
+
+--- 13. Error OCR tidak hentikan loop ---
+  PASS  loop tetap jalan setelah error OCR — calls=4
+  PASS  lastError tercatat — OCR engine crash
+
+--- 14. Status tidak mengandung password ---
+  PASS  password tidak ada di publicStatus JSON
+  PASS  field password tidak ada di publicStatus
+
+--- 15. getSources ---
+  PASS  3 sources — got 3
+  PASS  Gameplay → isGameCapture=true
+  PASS  Browser → isGameCapture=false
+
+============================================================
+SEMUA LULUS — 39 asersi PASS, 0 FAIL

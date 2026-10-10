@@ -95,7 +95,7 @@ export function sanitizeIntegration(doc) {
   if (doc.draftSource === 'manual' || doc.draftSource === 'grid' || doc.draftSource === 'fixture') {
     out.draftSource = doc.draftSource;
   }
-  if (doc.scoreSource === 'manual' || doc.scoreSource === 'grid' || doc.scoreSource === 'fixture') {
+  if (doc.scoreSource === 'manual' || doc.scoreSource === 'grid' || doc.scoreSource === 'fixture' || doc.scoreSource === 'ocr') {
     out.scoreSource = doc.scoreSource;
   }
   return out;

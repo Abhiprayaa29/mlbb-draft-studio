@@ -11,6 +11,7 @@ import TimerBar from '../components/TimerBar.jsx';
 import HeroImage from '../components/HeroImage.jsx';
 import ScoreThemePanel from '../components/ScoreThemePanel.jsx';
 import IntegrationPanel from '../components/IntegrationPanel.jsx';
+import ObsOcrPanel from '../components/ObsOcrPanel.jsx';
 import {
   MatchMetaPanel,
   TeamPanel,
@@ -133,7 +134,7 @@ export default function Control() {
     return () => window.removeEventListener('keydown', onKey);
   }, [undo, pickSelected]);
 
-  if (boot.loading) return <LoadingScreen text="Memuat database hero…" />;
+  if (boot.loading) return <LoadingScreen text="Memuat database heroï¿½" />;
   if (boot.error)
     return (
       <div className="flex min-h-screen items-center justify-center bg-ink-950 p-6">
@@ -149,7 +150,7 @@ export default function Control() {
         </div>
       </div>
     );
-  if (!state) return <LoadingScreen text="Menyambungkan ke server…" />;
+  if (!state) return <LoadingScreen text="Menyambungkan ke serverï¿½" />;
 
   const draft = state.draft;
   const overlayCount = snap.presence.overlay || 0;
@@ -158,13 +159,14 @@ export default function Control() {
   const saveOk = av?.lastSaveOk !== false;
   const saveTime = av?.lastSaveAt
     ? new Date(av.lastSaveAt).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    : '—';
+    : 'ï¿½';
 
   const tabs = [
     { id: 'tim', label: 'Tim' },
     { id: 'skor', label: 'Skor' },
     { id: 'tema', label: 'Tema' },
     { id: 'grid', label: 'GRID' },
+    { id: 'obs', label: 'OBS OCR' },
     { id: 'overlay', label: 'Overlay' },
     { id: 'match', label: 'Match' },
     { id: 'preset', label: 'Preset' },
@@ -193,7 +195,7 @@ export default function Control() {
             {state.meta.tournament || 'Turnamen belum diatur'}
           </span>
           <span className="truncate text-[11.5px] text-ink-300">
-            {state.matchName} · {state.meta.round || '—'} · BO{state.meta.bestOf} · Game {state.meta.gameNumber}
+            {state.matchName} ï¿½ {state.meta.round || 'ï¿½'} ï¿½ BO{state.meta.bestOf} ï¿½ Game {state.meta.gameNumber}
           </span>
         </div>
 
@@ -203,7 +205,7 @@ export default function Control() {
               'rounded border px-2 py-1 text-[11px]',
               saveOk ? 'border-ink-600 bg-ink-900 text-ink-300' : 'border-side-red/60 bg-side-red/15 text-[#ff8fa5]'
             )}
-            title={`Autosave otomatis ke file state.json · backup tersimpan: ${av?.backupCount ?? 0}`}
+            title={`Autosave otomatis ke file state.json ï¿½ backup tersimpan: ${av?.backupCount ?? 0}`}
           >
             Autosave {saveOk ? saveTime : 'GAGAL'}
           </span>
@@ -243,7 +245,7 @@ export default function Control() {
       {state.overlay.emergency ? (
         <div className="flex shrink-0 items-center gap-2 bg-side-red px-3 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-white">
           <span className="dot dot-on" style={{ background: '#fff' }} />
-          Emergency stop aktif — animasi overlay dibekukan & countdown berhenti. Data pertandingan tidak dihapus.
+          Emergency stop aktif ï¿½ animasi overlay dibekukan & countdown berhenti. Data pertandingan tidak dihapus.
         </div>
       ) : null}
 
@@ -270,14 +272,14 @@ export default function Control() {
                   </span>
                   {act && (
                     <span className="font-sans text-[11px] tracking-normal text-ink-300">
-                      {sideLabel(act.team)} Side · aksi {draft.cursor + 1}/{draft.actions.length}
+                      {sideLabel(act.team)} Side ï¿½ aksi {draft.cursor + 1}/{draft.actions.length}
                     </span>
                   )}
                 </span>
               }
               right={
                 <span className="font-sans text-[10.5px] tracking-normal text-ink-400">
-                  preset: {draft.presetName} · {draft.entries.length} aksi tercatat
+                  preset: {draft.presetName} ï¿½ {draft.entries.length} aksi tercatat
                 </span>
               }
               bodyClass="p-2.5 space-y-2"
@@ -329,7 +331,7 @@ export default function Control() {
                       {selected.name}
                     </div>
                     <div className="text-[10.5px] text-ink-300">
-                      {selected.roles.join(' · ')} — {selected.lanes.join(' · ')}
+                      {selected.roles.join(' ï¿½ ')} ï¿½ {selected.lanes.join(' ï¿½ ')}
                     </div>
                   </div>
                   <Btn size="sm" className="ml-auto" variant="ghost" onClick={() => setSelected(null)}>
@@ -374,6 +376,7 @@ export default function Control() {
                 {tab === 'skor' && <ScorePanel state={state} />}
                 {tab === 'tema' && <ScoreThemePanel state={state} heroesById={heroesById} meta={meta} />}
                 {tab === 'grid' && <IntegrationPanel state={state} />}
+                {tab === 'obs' && <ObsOcrPanel state={state} />}
                 {tab === 'overlay' && <OverlayPanel state={state} />}
                 {tab === 'match' && <MatchManagerPanel state={state} />}
                 {tab === 'preset' && (
@@ -396,9 +399,9 @@ export default function Control() {
         </span>
         <span>Diubah: {fmtDate(state.updatedAt)}</span>
         <span className="ml-auto">
-          Pintasan: <span className="text-ink-300">Ctrl+Z</span> undo · <span className="text-ink-300">Ctrl+Enter</span>{' '}
-          konfirmasi pick · <span className="text-ink-300">Ctrl+Shift+N</span> nickname ·{' '}
-          <span className="text-ink-300">Ctrl+Shift+T</span> countdown ·{' '}
+          Pintasan: <span className="text-ink-300">Ctrl+Z</span> undo ï¿½ <span className="text-ink-300">Ctrl+Enter</span>{' '}
+          konfirmasi pick ï¿½ <span className="text-ink-300">Ctrl+Shift+N</span> nickname ï¿½{' '}
+          <span className="text-ink-300">Ctrl+Shift+T</span> countdown ï¿½{' '}
           <span className="text-ink-300">Ctrl+Shift+L</span> logo
         </span>
       </footer>
@@ -445,7 +448,7 @@ function ConnectHint({ visible }) {
 }
 
 /**
- * Gerbang token operator — muncul saat server berjalan dengan APP_AUTH_TOKEN
+ * Gerbang token operator ï¿½ muncul saat server berjalan dengan APP_AUTH_TOKEN
  * dan koneksi ini belum diakui sebagai operator. Token disimpan di localStorage
  * dan dikirim lewat handshake Socket.IO (tidak pernah lewat URL).
  */
@@ -494,7 +497,7 @@ function TokenGate({ open }) {
           </Field>
           <div className="flex gap-2">
             <Btn variant="primary" onClick={submit} disabled={!val.trim() || checking}>
-              {checking ? 'Memeriksa…' : 'Sambungkan ulang'}
+              {checking ? 'Memeriksaï¿½' : 'Sambungkan ulang'}
             </Btn>
             <Btn variant="ghost" onClick={() => store.patch({ needAuth: false })}>
               Nanti
@@ -555,7 +558,7 @@ function HeroDetailModal({ hero, onClose, meta, spells }) {
   const spellByName = (name) => (name ? spellCatalog.get(String(name).toLowerCase()) : null);
 
   return (
-    <Modal open={!!hero} onClose={onClose} title={`Detail — ${hero.name}`} width="max-w-3xl">
+    <Modal open={!!hero} onClose={onClose} title={`Detail ï¿½ ${hero.name}`} width="max-w-3xl">
       <div className="flex flex-col gap-4 md:flex-row">
         <div className="w-full max-w-[260px] shrink-0">
           <div className="overflow-hidden rounded border border-ink-600">
@@ -580,7 +583,7 @@ function HeroDetailModal({ hero, onClose, meta, spells }) {
               <div>Speciality: {hero.speciality.join(', ')}</div>
             ) : null}
             <div className="mt-1 text-ink-400">
-              Sumber: {hero.metadata?.source} · diperbarui {hero.metadata?.lastUpdated}
+              Sumber: {hero.metadata?.source} ï¿½ diperbarui {hero.metadata?.lastUpdated}
             </div>
           </div>
         </div>
@@ -604,7 +607,7 @@ function HeroDetailModal({ hero, onClose, meta, spells }) {
           <div>
             <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.16em] text-ink-400">Skill</div>
             {loading ? (
-              <span className="text-[11.5px] text-ink-400">Memuat…</span>
+              <span className="text-[11.5px] text-ink-400">Memuatï¿½</span>
             ) : (data?.skills || []).length === 0 ? (
               <span className="text-[11.5px] text-ink-400">Data skill tidak tersedia.</span>
             ) : (
@@ -656,7 +659,7 @@ function HeroDetailModal({ hero, onClose, meta, spells }) {
               <span className="text-[11.5px] text-ink-400">Tidak ada rekomendasi battle spell untuk hero ini.</span>
             ) : (
               <span className="text-[11.5px] text-ink-400">
-                Data battle spell &amp; ikon belum tersedia — sengaja tidak ditampilkan agar tidak menyesatkan.
+                Data battle spell &amp; ikon belum tersedia ï¿½ sengaja tidak ditampilkan agar tidak menyesatkan.
               </span>
             )}
           </div>
@@ -676,7 +679,7 @@ function HeroDetailModal({ hero, onClose, meta, spells }) {
                         Spell: {sp.name}
                       </div>
                     ) : null}
-                    <div className="text-ink-300">Emblem: {(b.emblems || []).join(' · ') || '-'}</div>
+                    <div className="text-ink-300">Emblem: {(b.emblems || []).join(' ï¿½ ') || '-'}</div>
                     <div className="text-ink-400">{(b.items || []).join(' ? ')}</div>
                   </div>
                 );
