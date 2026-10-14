@@ -22,6 +22,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import express from 'express';
+import multer from 'multer';
+import sharp from 'sharp';
 import { Server as SocketServer } from 'socket.io';
 
 import {
@@ -33,21 +35,25 @@ import {
   toggleLock,
   setAllowDuplicates,
   timerCommand,
-  tickTimer,
+  matchTimerCommand,
+  syncMatchTimerFromScoreSight,
   nextGame,
   setEmergency,
   phase,
   currentAction,
-  sanitizeIntegration
+  sanitizeIntegration,
+  sanitizeSponsors
 } from './draftEngine.js';
 import { PRESETS, validatePreset, MAX_PICKS_PER_TEAM } from './presets.js';
-import { validateThemePatch, sanitizeTheme } from '../shared/theme.js';
+import { validateThemePatch, sanitizeTheme, LIMITS } from '../shared/theme.js';
 import * as store from './store.js';
 import * as storage from './storage.js';
 import { createGridController } from './grid/index.js';
 import { createBroadcastController } from './grid/broadcast-controller.js';
 import { readConfig, redacted, DATA_SOURCES, AUTOMATION_MODES } from './grid/config.js';
 import * as gridAudit from './grid/audit.js';
+import { createScoreSightBridge } from './scoresight/fileBridge.js';
+import { readScoreSightConfig, redactedScoreSight } from './scoresight/config.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -89,6 +95,31 @@ const equipment = readJsonFile(path.join(STATIC_DATA_DIR, 'equipment.json'), { i
 const emblems = readJsonFile(path.join(STATIC_DATA_DIR, 'emblems.json'), { emblems: [] });
 const builds = readJsonFile(path.join(STATIC_DATA_DIR, 'builds.json'), { builds: [] });
 const manifest = readJsonFile(path.join(PUBLIC_DIR, 'assets', 'manifest.json'), null);
+/**
+ * Katalog tim turnamen dari Markdown (ML FTI Cup).
+ * Dibangun ulang dengan `node scripts/build-teams-catalog.mjs`.
+ * Skapa: { tournament, teams:[{ id, name, players:[{ nickname }], sourceFiles }] }
+ */
+const teamsCatalogRaw = readJsonFile(path.join(STATIC_DATA_DIR, 'teams-catalog.json'), { teams: [] });
+const teamsCatalog = (() => {
+  const list = Array.isArray(teamsCatalogRaw.teams) ? teamsCatalogRaw.teams : [];
+  const byId = new Map();
+  list.forEach((t) => {
+    if (!t || typeof t.id !== 'string' || !t.id) return;
+    if (!/^[a-z0-9-]{1,48}$/.test(t.id)) return;
+    if (typeof t.name !== 'string' || !t.name.trim()) return;
+    const players = (Array.isArray(t.players) ? t.players : [])
+      .map((p) => String((p && p.nickname) || '').trim().slice(0, 24))
+      .filter(Boolean)
+      .slice(0, 10);
+    byId.set(t.id, { id: t.id, name: t.name.trim().slice(0, 32), players });
+  });
+  return {
+    tournament: String(teamsCatalogRaw.tournament || '').slice(0, 60),
+    teams: [...byId.values()]
+  };
+})();
+const teamsCatalogById = new Map(teamsCatalog.teams.map((t) => [t.id, t]));
 
 const heroById = new Map(heroes.map((h) => [h.id, h]));
 
@@ -162,7 +193,7 @@ app.use('/api', (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
     res.setHeader('Access-Control-Allow-Headers', 'content-type, x-operator-token, authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
     if (req.method === 'OPTIONS') return res.status(204).end();
   }
   next();
@@ -245,6 +276,11 @@ app.get('/api/builds', (_req, res) => res.json(builds));
 app.get('/api/presets', (_req, res) =>
   res.json({ presets: PRESETS, maxPicksPerTeam: MAX_PICKS_PER_TEAM })
 );
+
+/** Katalog tim turnamen (dari Markdown) — untuk dropdown Blue/Red Side. */
+app.get('/api/teams-catalog', (_req, res) =>
+  res.json({ tournament: teamsCatalog.tournament, teams: teamsCatalog.teams })
+);
 app.get('/api/manifest', (_req, res) => res.json(manifest));
 
 app.get('/api/battle-spells', (_req, res) =>
@@ -302,6 +338,150 @@ app.post('/api/logos', requireOperator, (req, res) => {
   }
 });
 
+/* --------------------------------------------------------------- sponsor --
+ * Unggah logo sponsor lokal (multipart/form-data). File disalin ke
+ * DATA_DIR/sponsors dengan nama aman hasil server (sp-<hex>.<ext>), metadata
+ * (id, nama asli, file, url, urutan) persisten di state.sponsors, dan
+ * disiarkan lewat socket — overlay OBS Browser Source ikut terupdate tanpa
+ * reload. Gambar TIDAK pernah disimpan sebagai base64 di state.
+ */
+const SPONSOR_MIME = new Set(['image/png', 'image/jpeg', 'image/webp']);
+const SPONSOR_EXT = { jpeg: '.jpg', png: '.png', webp: '.webp' };
+const SPONSOR_MAX_BYTES = 5 * 1024 * 1024;
+const SPONSOR_MAX_FILES = 5;
+
+const sponsorUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: SPONSOR_MAX_BYTES, files: SPONSOR_MAX_FILES },
+  fileFilter: (_req, file, cb) => {
+    if (!SPONSOR_MIME.has(file.mimetype)) return cb(new Error('Format file harus PNG, JPG, atau WebP.'));
+    cb(null, true);
+  }
+});
+
+/** Nama file asli hanya untuk metadata — dibersihkan & dipotong. */
+function safeSponsorName(original) {
+  const base = path
+    .basename(String(original || ''))
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\x00-\x1f\x7f]/g, '')
+    .trim()
+    .slice(0, 80);
+  return base || 'sponsor';
+}
+
+app.post('/api/sponsors', requireOperator, (req, res) => {
+  sponsorUpload.array('files', SPONSOR_MAX_FILES)(req, res, async (err) => {
+    if (err) {
+      const msg =
+        err.code === 'LIMIT_FILE_SIZE'
+          ? `File terlalu besar (maks ${SPONSOR_MAX_BYTES / 1024 / 1024} MB per file).`
+          : err.code === 'LIMIT_FILE_COUNT'
+            ? `Maksimal ${SPONSOR_MAX_FILES} file per unggahan.`
+            : err.message || 'Upload gagal.';
+      return res.status(400).json({ error: msg });
+    }
+    const files = req.files || [];
+    if (!files.length) return res.status(400).json({ error: 'Tidak ada file yang diunggah.' });
+
+    const cur = store.getState().sponsors || [];
+    if (cur.length + files.length > LIMITS.maxSponsors) {
+      return res.status(400).json({ error: `Sponsor maksimal ${LIMITS.maxSponsors} (saat ini ${cur.length}).` });
+    }
+
+    const added = [];
+    const errors = [];
+    fs.mkdirSync(storage.SPONSOR_DIR, { recursive: true });
+    for (const f of files) {
+      try {
+        const img = sharp(f.buffer);
+        const meta = await img.metadata();
+        const ext = SPONSOR_EXT[String(meta.format || '')];
+        if (!ext) {
+          errors.push(`${safeSponsorName(f.originalname)}: format tidak didukung (hanya PNG/JPG/WebP).`);
+          continue;
+        }
+        const id = `sp-${crypto.randomBytes(8).toString('hex')}`;
+        const file = `${id}${ext}`;
+        // re-encode: memastikan file valid & membuang metadata EXIF; rotate
+        // membakar orientasi sehingga preview konsisten di semua browser.
+        await img.rotate().toFile(path.join(storage.SPONSOR_DIR, file));
+        added.push({
+          id,
+          name: safeSponsorName(f.originalname),
+          file,
+          url: `/assets/sponsors/${file}`,
+          at: new Date().toISOString()
+        });
+      } catch (e) {
+        errors.push(`${safeSponsorName(f.originalname)}: ${e.message || 'gagal diproses'}`);
+      }
+    }
+    if (!added.length) return res.status(400).json({ error: errors[0] || 'Semua file gagal diproses.', errors });
+
+    const result = mutate((st) => {
+      st.sponsors = sanitizeSponsors([...(st.sponsors || []), ...added]);
+      st.revision = (st.revision || 0) + 1;
+      st.updatedAt = new Date().toISOString();
+      return { state: st };
+    });
+    if (!result.ok) {
+      // rollback file bila mutasi state gagal
+      for (const a of added) {
+        try {
+          fs.unlinkSync(path.join(storage.SPONSOR_DIR, a.file));
+        } catch { /* abaikan */ }
+      }
+      return res.status(500).json({ error: result.error || 'Gagal menyimpan metadata sponsor.' });
+    }
+    res.json({ ok: true, sponsors: result.state.sponsors, added: added.length, errors });
+  });
+});
+
+app.delete('/api/sponsors/:id', requireOperator, (req, res) => {
+  const id = String(req.params.id || '');
+  if (!/^sp-[a-f0-9]{16}$/.test(id)) return res.status(400).json({ error: 'ID sponsor tidak valid.' });
+  const rec = (store.getState().sponsors || []).find((s) => s.id === id);
+  if (!rec) return res.status(404).json({ error: 'Sponsor tidak ditemukan.' });
+  const result = mutate((st) => {
+    st.sponsors = (st.sponsors || []).filter((s) => s.id !== id);
+    st.revision = (st.revision || 0) + 1;
+    st.updatedAt = new Date().toISOString();
+    return { state: st };
+  });
+  if (!result.ok) return res.status(500).json({ error: result.error || 'Gagal menghapus sponsor.' });
+  // hapus file fisik setelah metadata aman; path di-resolve & wajib berada
+  // di dalam direktori sponsor (tidak mungkin keluar direktori).
+  try {
+    const dir = path.resolve(storage.SPONSOR_DIR);
+    const target = path.resolve(dir, rec.file);
+    if (target.startsWith(dir + path.sep) && fs.existsSync(target)) fs.unlinkSync(target);
+  } catch (e) {
+    console.error('[sponsors] gagal menghapus file:', e.message);
+  }
+  res.json({ ok: true, sponsors: result.state.sponsors });
+});
+
+app.patch('/api/sponsors/order', requireOperator, (req, res) => {
+  const ids = req.body?.ids;
+  const result = mutate((st) => {
+    const cur = st.sponsors || [];
+    if (!Array.isArray(ids) || ids.some((x) => typeof x !== 'string')) {
+      return { error: 'Daftar ID sponsor tidak valid.' };
+    }
+    const map = new Map(cur.map((s) => [s.id, s]));
+    if (ids.length !== cur.length || new Set(ids).size !== ids.length || !ids.every((x) => map.has(x))) {
+      return { error: 'Urutan sponsor tidak sesuai daftar saat ini.' };
+    }
+    st.sponsors = ids.map((x) => map.get(x));
+    st.revision = (st.revision || 0) + 1;
+    st.updatedAt = new Date().toISOString();
+    return { state: st };
+  });
+  if (!result.ok) return res.status(400).json({ error: result.error || 'Gagal mengubah urutan sponsor.' });
+  res.json({ ok: true, sponsors: result.state.sponsors });
+});
+
 /* ------------------------------------------------------------- match routes */
 
 app.get('/api/matches', (_req, res) => res.json({ matches: store.listMatches() }));
@@ -337,12 +517,23 @@ function normalizeLoaded(doc) {
   const base = createInitialState();
   const st = { ...base, ...doc };
   st.teams = { blue: { ...base.teams.blue, ...doc.teams?.blue }, red: { ...base.teams.red, ...doc.teams?.red } };
+  ['blue', 'red'].forEach((side) => {
+    const cid = st.teams[side].catalogId;
+    st.teams[side].catalogId = typeof cid === 'string' && cid ? cid : null;
+  });
   st.score = { ...base.score, ...doc.score };
+  st.score.matchTimer = { ...base.score.matchTimer, ...(doc.score?.matchTimer || {}) };
+  // sanitize timeSource
+  if (st.score.matchTimer.timeSource !== 'scoresight') st.score.matchTimer.timeSource = 'manual';
   st.overlay = { ...base.overlay, ...doc.overlay };
+  st.overlay.template = ['draft', 'score', 'sponsor-edition'].includes(st.overlay.template)
+    ? st.overlay.template
+    : base.overlay.template;
   // konfigurasi tema dari match lama (bisa belum punya tema) disaring ulang
   st.overlay.theme = sanitizeTheme(doc.overlay?.theme, base.overlay.theme);
   st.meta = { ...base.meta, ...doc.meta };
   st.integration = sanitizeIntegration(doc.integration);
+  st.sponsors = sanitizeSponsors(doc.sponsors);
   st.draft = { ...base.draft, ...(doc.draft || {}) };
   st.draft.timer = { ...base.draft.timer, ...(doc.draft?.timer || {}), running: false, deadlineAt: null };
   st.draft.log = Array.isArray(doc.draft?.log) ? doc.draft.log : [];
@@ -364,6 +555,8 @@ function normalizeLoaded(doc) {
 app.use('/assets', express.static(path.join(PUBLIC_DIR, 'assets'), { maxAge: IS_PROD ? '7d' : 0, fallthrough: true }));
 // logo tim yang diunggah operator (nama file dibuat server)
 app.use('/assets/logos', express.static(storage.LOGO_DIR, { maxAge: IS_PROD ? '30d' : 0, fallthrough: true }));
+// logo sponsor unggahan operator (nama file dibuat server)
+app.use('/assets/sponsors', express.static(storage.SPONSOR_DIR, { maxAge: IS_PROD ? '30d' : 0, fallthrough: true }));
 app.use(express.static(PUBLIC_DIR, { index: false }));
 
 if (IS_PROD) {
@@ -546,12 +739,37 @@ io.on('connection', (socket) => {
     'draft:allowDuplicates': (payload, ack) =>
       ack?.(mutate((s) => setAllowDuplicates(s, payload?.value))),
     'timer': (payload, ack) => ack?.(mutate((s) => timerCommand(s, payload?.cmd, payload?.value))),
+    'matchTimer': (payload, ack) => {
+      const cmd = payload?.cmd;
+      if (!['start', 'pause', 'reset', 'set'].includes(cmd)) {
+        return ack?.({ ok: false, error: 'Perintah match timer tidak dikenal.' });
+      }
+      return ack?.(mutate((s) => matchTimerCommand(s, cmd, payload?.value)));
+    },
     'team:update': (payload, ack) => {
       const side = payload?.side;
       if (!['blue', 'red'].includes(side)) return ack?.({ ok: false, error: 'Sisi tim tidak valid.' });
       return ack?.(
         mutate((s) => {
           const p = { ...(payload.patch || {}) };
+          /**
+           * Pemilihan tim dari katalog Markdown (/api/teams-catalog).
+           * `catalogId` divalidasi; bila valid, nama & roster diisi dari katalog
+           * (5 pemain pertama). Pilihan manual (name/players) tetap diizinkan
+           * setelahnya tanpa menghapus referensi katalog.
+           */
+          if ('catalogId' in p) {
+            const cid = p.catalogId == null || p.catalogId === '' ? null : String(p.catalogId);
+            if (cid !== null) {
+              const cat = teamsCatalogById.get(cid);
+              if (!cat) return { state: s, error: `Tim katalog tidak dikenal: ${cid}` };
+              p.catalogId = cid;
+              p.name = cat.name;
+              p.players = cat.players.slice(0, 5).map((x) => x.nickname || String(x).slice(0, 24));
+            } else {
+              p.catalogId = null;
+            }
+          }
           if ('logo' in p) {
             if (p.logo && !isUsableLogoUrl(p.logo)) {
               return { state: s, error: 'Logo harus URL gambar (http/https), path /assets/..., atau data:image.' };
@@ -608,6 +826,7 @@ io.on('connection', (socket) => {
             else if (k === 'announce') s.overlay[k] = v;
             else if (k === 'draftLayout') s.overlay[k] = ['full', 'compact', 'lineup'].includes(v) ? v : s.overlay[k];
             else if (k === 'scoreLayout') s.overlay[k] = ['full', 'compact'].includes(v) ? v : s.overlay[k];
+            else if (k === 'template') s.overlay[k] = ['draft', 'score', 'sponsor-edition'].includes(v) ? v : s.overlay[k];
             else if (k === 'brandText') s.overlay[k] = String(v || '').slice(0, 60);
             else if (k === 'brandLogo') s.overlay[k] = v ? (isUsableLogoUrl(v) ? v : s.overlay[k]) : null;
             else if (k === 'emergency') setEmergency(s, !!v);
@@ -708,6 +927,9 @@ io.on('connection', (socket) => {
       if ('fixture' in p && (typeof p.fixture !== 'string' || !/^[a-z0-9-]{1,40}$/.test(p.fixture))) {
         errors.push('Nama fixture tidak valid.');
       }
+      if ('scoreInput' in p && p.scoreInput !== 'manual-only' && p.scoreInput !== 'external') {
+        errors.push('scoreInput tidak valid (manual-only|external).');
+      }
       for (const k of ['competitionId', 'seriesId', 'gameId']) {
         if (k in p && p[k] !== null && (typeof p[k] !== 'string' || p[k].length > 64)) {
           errors.push(`${k} tidak valid.`);
@@ -722,6 +944,7 @@ io.on('connection', (socket) => {
         if ('mode' in p) s.integration.mode = p.mode;
         if ('autoEnabled' in p) s.integration.autoEnabled = p.autoEnabled;
         if ('fixture' in p) s.integration.fixture = p.fixture;
+        if ('scoreInput' in p) s.integration.scoreInput = p.scoreInput;
         for (const k of ['competitionId', 'seriesId', 'gameId']) {
           if (k in p) s.integration[k] = p[k] ? String(p[k]).slice(0, 64) : null;
         }
@@ -749,6 +972,63 @@ io.on('connection', (socket) => {
         ack?.({ ok: true, state: store.getState(), status: gridStatusPublic(), extra, serverNow: Date.now() });
       };
       finish();
+      return undefined;
+    },
+
+    /**
+     * Kontrol ScoreSight file bridge (operator only).
+     * payload: { patch: { enabled?, homeSide? }, action?: 'start'|'stop'|'refresh' }
+     * enabled/homeSide disimpan di integration.scoresight (persisten).
+     * action start/stop mengontrol polling runtime.
+     */
+    'scoresight:update': (payload, ack) => {
+      const p = payload?.patch || {};
+      const errors = [];
+      if ('enabled' in p && typeof p.enabled !== 'boolean') errors.push('enabled harus boolean.');
+      if ('homeSide' in p && p.homeSide !== 'blue' && p.homeSide !== 'red' && p.homeSide !== null) {
+        errors.push('homeSide tidak valid (blue|red|null).');
+      }
+      if (errors.length) return ack?.({ ok: false, error: errors.slice(0, 3).join(' ') });
+
+      const r = mutate((s) => {
+        if (!s.integration) s.integration = sanitizeIntegration(null);
+        if (!s.integration.scoresight) s.integration.scoresight = { enabled: false, homeSide: 'blue' };
+        if ('enabled' in p) s.integration.scoresight.enabled = p.enabled;
+        if ('homeSide' in p) s.integration.scoresight.homeSide = p.homeSide;
+        // niat eksplisit start → otomatis buka gerbang tulis skor
+        if (payload?.action === 'start') {
+          s.integration.scoreInput = 'external';
+          s.integration.dataSource = 'scoresight-files';
+        }
+        s.revision += 1;
+        s.updatedAt = new Date().toISOString();
+        return { state: s };
+      });
+      if (!r.ok) return ack?.(r);
+
+      // sinkronkan bridge runtime dari state
+      const it = store.getState().integration;
+      scoresightBridge.configure({
+        enabled: it.scoresight?.enabled ?? false,
+        homeSide: it.scoresight?.homeSide ?? null,
+        goldMode: ssConfig.goldMode || 'raw'
+      });
+
+      const action = payload?.action;
+      let extra = null;
+      if (action === 'start') {
+        extra = scoresightBridge.start();
+        if (!extra.ok) {
+          emitScoreSightStatus();
+          return ack?.({ ok: false, error: extra.error, state: store.getState(), status: scoresightBridge.status() });
+        }
+      } else if (action === 'stop') {
+        extra = scoresightBridge.stop();
+      } else if (action === 'refresh') {
+        extra = { status: scoresightBridge.refresh() };
+      }
+      emitScoreSightStatus();
+      ack?.({ ok: true, state: store.getState(), status: scoresightBridge.status(), extra, serverNow: Date.now() });
       return undefined;
     }
   };
@@ -781,18 +1061,7 @@ io.on('connection', (socket) => {
   });
 });
 
-/* -------------------------------------------------------------- ticker timer */
-
-setInterval(() => {
-  const st = store.getState();
-  if (tickTimer(st)) {
-    // waktu habis: perbarui status & siarkan
-    if (st.draft.status === 'running') st.draft.status = 'paused';
-    store.setState(st);
-    broadcast();
-    io.emit('draft:timeout', { serverNow: Date.now(), cursor: st.draft.cursor });
-  }
-}, 200);
+/* --------------------------------------------------------- heartbeat jam */
 
 setInterval(() => {
   // heartbeat ringan untuk sinkronisasi jam antar client
@@ -800,11 +1069,13 @@ setInterval(() => {
 }, 5000);
 
 process.on('SIGINT', () => {
+  scoresightBridge.stop();
   cleanupObsCapture();
   store.flushSync();
   process.exit(0);
 });
 process.on('SIGTERM', () => {
+  scoresightBridge.stop();
   cleanupObsCapture();
   store.flushSync();
   process.exit(0);
@@ -817,6 +1088,60 @@ storage.ensureDirs();
 
 /** Konfigurasi dari environment — secret TIDAK PERNAH keluar dari server. */
 const gridConfig = readConfig();
+
+/* ---------------------------------------------- ScoreSight file bridge */
+
+const ssConfig = readScoreSightConfig();
+
+/**
+ * Patch dari ScoreSight file → state.
+ * ScoreSight hanya menulis field skor in-game (kills/gold/turret/lord).
+ * Series score (teams[side].score) TIDAK disentuh.
+ * timeMs (dari Time.txt) → sinkronkan matchTimer internal.
+ */
+function applyScoreSightPatch(patch) {
+  return mutate((s) => {
+    if (!s.integration) s.integration = sanitizeIntegration(null);
+    // scoreInput=external adalah gerbang wajib — manual-only menolak semua tulis eksternal
+    if ((s.integration.scoreInput || 'manual-only') === 'manual-only') {
+      return { state: s, error: 'scoreInput=manual-only — ScoreSight tidak boleh menulis skor.' };
+    }
+    // Sumber aktif harus scoresight-files — GRID/OCR tidak boleh menimpa
+    if (s.integration.dataSource !== 'scoresight-files') {
+      return { state: s, error: 'Sumber aktif bukan scoresight-files.' };
+    }
+    // timeMs → sync timer internal (terpisah dari applyScorePatch)
+    const timeMs = patch.timeMs;
+    const statPatch = { ...patch };
+    delete statPatch.timeMs;
+    if (Object.keys(statPatch).length > 0 || statPatch.blue || statPatch.red) {
+      const r = applyScorePatch(s, statPatch);
+      if (r.error) return { state: s, error: r.error };
+    }
+    if (timeMs != null) {
+      syncMatchTimerFromScoreSight(s, timeMs);
+    }
+    s.integration.scoreSource = 'scoresight-files';
+    s.revision += 1;
+    s.updatedAt = new Date().toISOString();
+    return { state: s };
+  });
+}
+
+/** Emit status ScoreSight ke semua klien (termasuk control panel). */
+function emitScoreSightStatus() {
+  io.emit('scoresight:status', { ...scoresightBridge.status(), serverNow: Date.now() });
+}
+
+const scoresightBridge = createScoreSightBridge({
+  dir: ssConfig.dir,
+  enabled: ssConfig.enabled,
+  homeSide: ssConfig.homeSide,
+  pollIntervalMs: ssConfig.pollIntervalMs,
+  goldMode: ssConfig.goldMode || 'raw',
+  apply: (patch) => applyScoreSightPatch(patch),
+  onStatus: () => emitScoreSightStatus()
+});
 
 /** Titik abstraksi event siaran (OBS scene controller — masa depan, §27). */
 const broadcastCtrl = createBroadcastController({
@@ -845,6 +1170,13 @@ function applyGridPatch(patch) {
         return { state: s };
       }
       case 'score': {
+        if ((s.integration.scoreInput || 'manual-only') === 'manual-only') {
+          return { state: s, error: 'Skor hanya bisa diubah manual oleh operator (scoreInput=manual-only).' };
+        }
+        // Sumber aktif scoresight-files → GRID tidak boleh menimpa
+        if (s.integration.dataSource === 'scoresight-files') {
+          return { state: s, error: 'Sumber aktif scoresight-files — tulis skor dari GRID ditolak.' };
+        }
         const r = applyScorePatch(s, patch.score || {});
         if (r.error) return { state: s, error: r.error };
         s.integration.scoreSource = source;
@@ -872,6 +1204,9 @@ function applyGridPatch(patch) {
         return { state: s };
       }
       case 'finished': {
+        if ((s.integration.scoreInput || 'manual-only') === 'manual-only') {
+          return { state: s, error: 'Hasil game hanya bisa diubah manual oleh operator (scoreInput=manual-only).' };
+        }
         if ('winner' in patch) s.score.winner = ['blue', 'red'].includes(patch.winner) ? patch.winner : null;
         if (patch.durationMs !== undefined) s.score.durationMs = Math.max(0, Number(patch.durationMs) || 0);
         s.score.status = 'selesai';
@@ -935,6 +1270,23 @@ app.get('/api/integration', requireOperator, (_req, res) => {
   });
 });
 
+/** Status ScoreSight file bridge (operator only). */
+app.get('/api/scoresight', requireOperator, (_req, res) => {
+  res.json({
+    status: scoresightBridge.status(),
+    config: redactedScoreSight(readScoreSightConfig()),
+    scoreInput: store.getState().integration?.scoreInput || 'manual-only',
+    dataSource: store.getState().integration?.dataSource || 'manual',
+    scoreSource: store.getState().integration?.scoreSource || 'manual'
+  });
+});
+
+/** Refresh paksa baca file ScoreSight (operator only). */
+app.post('/api/scoresight/refresh', requireOperator, (_req, res) => {
+  const r = scoresightBridge.refresh();
+  res.json({ ok: true, status: r });
+});
+
 // Shared apply handler: dipakai manual POST /api/ocr/frame + OBS loop.
 // Default policy OBSERVE-ONLY (semua disabled); scoreRed/goldBlue terkunci review.
 import {
@@ -949,12 +1301,27 @@ let ocrFieldPolicy = { ...DEFAULT_FIELD_POLICY };
 /**
  * Terapkan hasil processFrame: mutate state, emit ocr:reading.
  * source: 'manual' (operator — apply langsung tanpa policy) | 'obs' (auto-loop — filter by policy).
+ *
+ * Kebijakan scoreInput=manual-only (default): OCR tidak pernah menulis skor
+ * apa pun — readings/patch tetap dikirim untuk monitoring, tetapi state
+ * hanya bisa diubah operator (score:update). Bukan sekadar disembunyikan di UI.
  */
 function applyFrameResult(result, source = 'manual') {
+  const integration = store.getState().integration || sanitizeIntegration(null);
   let filtered = result.patch;
   let skipped = [];
+  let reason = null;
   if (source === 'obs') {
     ({ filtered, skipped } = filterPatchByPolicy(result.patch, result.readings, ocrFieldPolicy));
+  }
+  if ((integration.scoreInput || 'manual-only') === 'manual-only' && Object.keys(filtered).length > 0) {
+    reason = 'manual_only';
+    filtered = {};
+  }
+  // Sumber aktif scoresight-files → OCR internal tidak boleh menimpa skor
+  if (integration.dataSource === 'scoresight-files' && Object.keys(filtered).length > 0) {
+    reason = 'scoresight_active';
+    filtered = {};
   }
   let applied = null;
   if (Object.keys(filtered).length > 0) {
@@ -973,7 +1340,7 @@ function applyFrameResult(result, source = 'manual') {
     skipped,
     serverNow: Date.now()
   });
-  return { applied: applied ? applied.ok : null, skipped, filtered };
+  return { applied: applied ? applied.ok : reason ? false : null, skipped, filtered, reason };
 }
 
 let obsCaptureInstance = null;
@@ -1013,7 +1380,8 @@ app.post(
         events: result.events,
         patch: result.patch,
         applied: applyResult.applied,
-        skipped: applyResult.skipped
+        skipped: applyResult.skipped,
+        reason: applyResult.reason || undefined
       });
     } catch (e) {
       console.error('[ocr] frame gagal:', e);
@@ -1117,6 +1485,30 @@ function cleanupObsCapture() {
   }
 }
 
+// ScoreSight file bridge: start otomatis HANYA bila SCORESIGHT_ENABLED=true (env)
+// DAN state.scoresight.enabled=true AND dir valid. Env adalah gerbang eksplisit.
+{
+  const it = store.getState().integration;
+  const ss = it?.scoresight;
+  if (ssConfig.enabled && ss?.enabled) {
+    scoresightBridge.configure({
+      enabled: true,
+      homeSide: ss.homeSide || null,
+      goldMode: ssConfig.goldMode || 'raw'
+    });
+    setTimeout(() => {
+      const r = scoresightBridge.start();
+      if (!r.ok) {
+        console.warn('[scoresight] start gagal:', r.error);
+      } else {
+        console.log('[scoresight] file bridge aktif —', scoresightBridge.status().status);
+      }
+    }, 0);
+  } else if (ss?.enabled && !ssConfig.enabled) {
+    console.log('[scoresight] SCORESIGHT_ENABLED=false — auto-start dilewati meski state enabled=true');
+  }
+}
+
 server.listen(PORT, HOST, () => {
   const shown = HOST === '0.0.0.0' || HOST === '::' ? 'localhost' : HOST;
   const base = `http://${shown}:${PORT}`;
@@ -1127,6 +1519,7 @@ server.listen(PORT, HOST, () => {
     `Control panel   : ${base}/control`,
     `Draft overlay   : ${base}/overlay/draft`,
     `Score overlay   : ${base}/overlay/score`,
+    `Sponsor overlay : ${base}/overlay/templates/sponsor-edition`,
     `Database hero   : ${heroes.length} hero`,
     `Battle spell    : ${battleSpells.spells.length} spell (dengan ikon)`,
     `Autosave        : ${s.lastSaveAt || 'belum tersimpan'} (${DATA_DIR})`,

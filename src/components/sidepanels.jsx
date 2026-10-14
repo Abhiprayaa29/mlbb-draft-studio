@@ -3,7 +3,7 @@ import { Panel, Btn, Field, TextInput, Toggle, ConfirmBtn } from './ui.jsx';
 import { cx, fmtDate, fmtDuration, fmtGold, sideLabel, sideColor } from '../lib/utils.js';
 import { request } from '../lib/socket.js';
 import { store, getOperatorToken } from '../lib/store.js';
-import { loadPresets } from '../lib/data.js';
+import { loadPresets, loadTeamsCatalog } from '../lib/data.js';
 import TeamLogo from './TeamLogo.jsx';
 import { uploadLogo, assertLogoFile, readAsDataUrl } from '../lib/assets.js';
 
@@ -72,17 +72,31 @@ export function TeamPanel({ side, team }) {
   const [logoName, setLogoName] = useState('');
   const [logoUrl, setLogoUrl] = useState(team.logo || '');
   const [busy, setBusy] = useState(false);
+  const [catalog, setCatalog] = useState(null);
   const players = team.players || [];
 
   useEffect(() => {
     setLogoUrl(team.logo || '');
   }, [team.logo]);
 
+  useEffect(() => {
+    loadTeamsCatalog().then(setCatalog).catch(() => setCatalog({ teams: [] }));
+  }, []);
+
   const update = (patch) => send('team:update', { side, patch });
   const setPlayer = (i, val) => {
     const next = [...players];
     next[i] = val;
     update({ players: next });
+  };
+  /** Pilih tim dari katalog Markdown — server mengisi nama + roster. */
+  const onCatalogPick = (e) => {
+    const id = e.target.value;
+    if (!id) {
+      update({ catalogId: null });
+      return;
+    }
+    update({ catalogId: id });
   };
 
   /**
@@ -139,6 +153,18 @@ export function TeamPanel({ side, team }) {
       <div className="flex items-start gap-2.5">
         <TeamLogo src={team.logo} side={side} label={team.name} className="h-16 w-16 shrink-0" />
         <div className="min-w-0 flex-1 space-y-2">
+          {catalog && catalog.teams && catalog.teams.length > 0 ? (
+            <Field label="Pilih tim (katalog ML FTI Cup)">
+              <select className="inp" value={team.catalogId || ''} onChange={onCatalogPick}>
+                <option value="">— Manual —</option>
+                {catalog.teams.map((t) => (
+                  <option key={t.id} value={t.id}>
+                    {t.name} ({t.players.length} pemain)
+                  </option>
+                ))}
+              </select>
+            </Field>
+          ) : null}
           <TextInput value={team.name} onChange={(e) => update({ name: e.target.value })} placeholder="Nama tim" />
           <div className="flex items-center gap-1.5">
             <label className={cx('btn btn-sm flex-1 cursor-pointer', busy && 'opacity-60')}>
@@ -213,6 +239,17 @@ export function ScorePanel({ state }) {
   const s = state.score;
   const patch = (p) => send('score:update', { patch: p });
   const patchSide = (side, key, val) => patch({ [side]: { [key]: val } });
+  const mt = s.matchTimer || { elapsedMs: 0, runningAt: null, timeSource: 'manual' };
+  const mtRunning = !!mt.runningAt;
+  const mtSource = mt.timeSource || 'manual';
+  const mtElapsed = (mt.elapsedMs || 0) + (mtRunning && mt.runningAt ? Date.now() - mt.runningAt : 0);
+  const [, tick] = React.useReducer((n) => n + 1, 0);
+  useEffect(() => {
+    if (!mtRunning) return undefined;
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [mtRunning]);
+  const mtCmd = (cmd, value) => send('matchTimer', { cmd, value });
 
   return (
     <Panel title="Statistik Game (input manual)" bodyClass="p-2.5 space-y-2">
@@ -282,6 +319,44 @@ export function ScorePanel({ state }) {
       </div>
 
       <div className="space-y-1.5 border-t border-ink-700 pt-2">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-ink-400">Timer pertandingan</span>
+          <span
+            className="text-[9px] font-bold uppercase tracking-[0.1em]"
+            data-testid="match-timer-source"
+            style={{ color: mtSource === 'scoresight' ? '#5ab8b7' : '#8a9ab0' }}
+          >
+            TIMER SOURCE: {mtSource === 'scoresight' ? 'SCORESIGHT' : 'MANUAL'}
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span
+            className="min-w-[64px] text-center font-display text-[19px] tabular-nums"
+            data-testid="match-timer-value"
+            style={{ color: mtRunning ? '#5ab8b7' : '#8a9ab0' }}
+          >
+            {fmtDuration(mtElapsed)}
+          </span>
+          <Btn size="sm" variant={mtRunning ? '' : 'primary'} data-testid="match-timer-toggle" onClick={() => mtCmd(mtRunning ? 'pause' : 'start')}>
+            {mtRunning ? 'Jeda' : 'Mulai'}
+          </Btn>
+          <Btn size="sm" data-testid="match-timer-reset" onClick={() => mtCmd('reset')}>
+            Reset
+          </Btn>
+        </div>
+        <Field label="Atur waktu (mm:ss)">
+          <TextInput
+            value={fmtDuration(mt.elapsedMs || 0)}
+            onChange={(e) => {
+              const [m, sec] = String(e.target.value).split(':');
+              const ms = (Number(m || 0) * 60 + Number(sec || 0)) * 1000;
+              mtCmd('set', ms);
+            }}
+          />
+        </Field>
+      </div>
+
+      <div className="space-y-1.5 border-t border-ink-700 pt-2">
         <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-ink-400">Pemenang game</span>
         <div className="flex gap-1.5">
           <Btn
@@ -345,6 +420,23 @@ function winnerText(state) {
 
 /* --------------------------------------------------------- panel overlay */
 
+/**
+ * Desain scoreboard untuk URL `/overlay/score` — dipilih operator, disimpan di
+ * `state.overlay.template`, dan diterapkan live tanpa refresh Browser Source.
+ * Draft pick selalu di `/overlay/draft` (route terpisah, bukan template ini).
+ */
+const SCOREBOARD_TEMPLATES = [
+  { id: 'score', label: 'Scoreboard Klasik' },
+  { id: 'sponsor-edition', label: 'Sponsor Edition' }
+];
+
+/** Nilai template → href untuk tombol "buka" (draft tetap route sendiri). */
+const TEMPLATE_HREF = {
+  draft: '/overlay/draft',
+  score: '/overlay/score',
+  'sponsor-edition': '/overlay/score'
+};
+
 export function OverlayPanel({ state }) {
   const o = state.overlay;
   const patch = (p) => send('overlay:update', { patch: p });
@@ -387,8 +479,24 @@ export function OverlayPanel({ state }) {
     }
   };
 
+  // Nilai lama 'draft' dianggap 'score' untuk selector desain scoreboard
+  // (draft pick sendiri tidak pernah lewat selector ini).
+  const scoreTpl = SCOREBOARD_TEMPLATES.some((t) => t.id === o.template) ? o.template : 'score';
+
   return (
     <Panel title="Pengaturan Overlay" bodyClass="p-2.5 space-y-2">
+      <Field
+        label="Desain scoreboard (URL /overlay/score)"
+        hint="Berlaku live di Browser Source yang sudah terbuka — tanpa ganti URL."
+      >
+        <select className="inp" value={scoreTpl} onChange={(e) => patch({ template: e.target.value })}>
+          {SCOREBOARD_TEMPLATES.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.label}
+            </option>
+          ))}
+        </select>
+      </Field>
       <Field label="Layout draft overlay">
         <select className="inp" value={o.draftLayout} onChange={(e) => patch({ draftLayout: e.target.value })}>
           <option value="full">Full (1920×1080)</option>
@@ -416,7 +524,6 @@ export function OverlayPanel({ state }) {
 
       <div className="space-y-1.5 border-t border-ink-700 pt-2">
         <Toggle checked={o.showPlayerNames} onChange={(v) => patch({ showPlayerNames: v })} label="Tampilkan nickname" />
-        <Toggle checked={o.showTimer} onChange={(v) => patch({ showTimer: v })} label="Tampilkan countdown" />
         <Toggle checked={o.showTier} onChange={(v) => patch({ showTier: v })} label="Tampilkan lencana tier meta" />
         <Toggle checked={o.showLogos} onChange={(v) => patch({ showLogos: v })} label="Tampilkan logo & nama tim" />
         <Toggle
@@ -487,7 +594,9 @@ export function OverlayPanel({ state }) {
         </a>
       </div>
       <p className="text-[10.5px] leading-snug text-ink-400">
-        Untuk OBS: tambahkan Browser Source 1920×1080 dengan URL di atas, background transparan.
+        Untuk OBS: Browser Source 1920×1080, background transparan. URL <code>/overlay/score</code> otomatis
+        menampilkan desain sesuai pilihan di atas — pergantian desain live tanpa refresh. Draft pick selalu di{' '}
+        <code>/overlay/draft</code>.
       </p>
     </Panel>
   );

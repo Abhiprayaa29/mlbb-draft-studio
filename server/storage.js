@@ -30,6 +30,7 @@ export const DATA_DIR = process.env.DATA_DIR
 export const MATCH_DIR = path.join(DATA_DIR, 'matches');
 export const BACKUP_DIR = path.join(DATA_DIR, 'backups');
 export const LOGO_DIR = path.join(DATA_DIR, 'logos');
+export const SPONSOR_DIR = path.join(DATA_DIR, 'sponsors');
 export const STATE_FILE = path.join(DATA_DIR, 'state.json');
 
 export const BACKUP_KEEP = clampInt(process.env.BACKUP_KEEP, 1, 100, 20);
@@ -59,6 +60,8 @@ export function storageStatus() {
 export function ensureDirs() {
   fs.mkdirSync(MATCH_DIR, { recursive: true });
   fs.mkdirSync(BACKUP_DIR, { recursive: true });
+  fs.mkdirSync(LOGO_DIR, { recursive: true });
+  fs.mkdirSync(SPONSOR_DIR, { recursive: true });
 }
 
 export function readJsonFile(file, fallback = null) {

@@ -15,6 +15,10 @@
  *   - goldBlue  "11k"   → 11000       ⚠️ keterbatasan (seharusnya 11500 — desimal .5 gugur)
  *   - notifikasi        → tanpa klaim Lord/Turtle palsu
  * Pipeline, endpoint, patch, gerbang format, dan keamanan tetap diuji penuh.
+ * Patch TIDAK lagi menulis state secara default — scoreInput=manual-only
+ * (kebijakan backend): readings/patch dikirim untuk monitoring, tetapi skor
+ * hanya bisa diubah operator. Jalur external diuji dengan membuka gerbang
+ * scoreInput lewat socket operator.
  * ---------------------------------------------------------------------------
  */
 import { spawn } from 'node:child_process';
@@ -22,6 +26,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { io as connectSocket } from 'socket.io-client';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -126,6 +131,40 @@ function stopServers() {
   }
 }
 
+function connectOperator() {
+  return new Promise((resolve, reject) => {
+    const s = connectSocket(`http://127.0.0.1:${PORT}`, {
+      transports: ['websocket'],
+      reconnection: false,
+      timeout: 5000,
+      query: { role: 'control' },
+      auth: { token: TOKEN }
+    });
+    const timer = setTimeout(() => {
+      s.close();
+      reject(new Error('konek socket timeout'));
+    }, 8000);
+    s.once('connect', () => {
+      clearTimeout(timer);
+      resolve(s);
+    });
+    s.once('connect_error', (e) => {
+      clearTimeout(timer);
+      reject(e);
+    });
+  });
+}
+
+function sockAck(socket, event, payload = {}) {
+  return new Promise((resolve) => {
+    const timer = setTimeout(() => resolve({ ok: false, error: `timeout ack ${event}` }), 5000);
+    socket.emit(event, payload, (res) => {
+      clearTimeout(timer);
+      resolve(res ?? { ok: false, error: 'ack kosong' });
+    });
+  });
+}
+
 /* --------------------------------------------------------------- uji utama */
 
 async function main() {
@@ -196,18 +235,20 @@ async function main() {
       `text="${r.goldBlue?.text}" value=${r.goldBlue?.value}`
     );
 
-    console.log('\n4. Patch & integrasi');
+    console.log('\n4. Patch & kebijakan scoreInput manual-only');
     assert(body?.patch?.durationMs === 279000, 'patch.durationMs 279000', JSON.stringify(body?.patch?.durationMs));
     assert(body?.patch?.blue?.kills === 10, 'patch.blue.kills 10', JSON.stringify(body?.patch?.blue));
     assert(body?.patch?.red?.gold === 12800, 'patch.red.gold 12800', JSON.stringify(body?.patch?.red));
-    assert(body?.applied === true, 'Patch diterapkan ke state (applied:true)');
+    assert(body?.applied === false, 'applied:false — skor tidak ditulis OCR (manual-only)');
+    assert(body?.reason === 'manual_only', 'reason manual_only dikirim ke operator', String(body?.reason));
 
     const stateRes = await http(`${base}/api/state`, { headers: { 'x-operator-token': TOKEN } });
     const st = stateRes.data?.state;
-    assert(st?.score?.durationMs === 279000, 'state.score.durationMs 279000', `got ${st?.score?.durationMs}`);
-    assert(st?.score?.blue?.kills === 10, 'state.score.blue.kills 10', `got ${st?.score?.blue?.kills}`);
-    assert(st?.score?.red?.gold === 12800, 'state.score.red.gold 12800', `got ${st?.score?.red?.gold}`);
-    assert(st?.integration?.scoreSource === 'ocr', 'integration.scoreSource === "ocr"', `got ${st?.integration?.scoreSource}`);
+    assert(st?.score?.durationMs === 0, 'state.score.durationMs tetap 0 (OCR tidak menulis)', `got ${st?.score?.durationMs}`);
+    assert(st?.score?.blue?.kills === 0, 'state.score.blue.kills tetap 0 (OCR tidak menulis)', `got ${st?.score?.blue?.kills}`);
+    assert(st?.score?.red?.gold === 0, 'state.score.red.gold tetap 0 (OCR tidak menulis)', `got ${st?.score?.red?.gold}`);
+    assert(st?.integration?.scoreSource === 'manual', 'integration.scoreSource tetap "manual"', `got ${st?.integration?.scoreSource}`);
+    assert(st?.integration?.scoreInput === 'manual-only', 'integration.scoreInput default manual-only', `got ${st?.integration?.scoreInput}`);
 
     console.log('\n5. Kejujuran event (tanpa klaim Lord/Turtle palsu)');
     const events = Array.isArray(body?.events) ? body.events : [];
@@ -227,6 +268,29 @@ async function main() {
     assert(post2.status === 200 && body2?.ok === true, 'Frame kedua → 200 ok');
     assert(body2?.readings?.timer?.value === 279000, 'Frame kedua: timer tetap 279000');
     assert(body2?.readings?.goldRed?.value === 12800, 'Frame kedua: goldRed tetap 12800');
+    assert(body2?.applied === false, 'Frame kedua masih diblokir manual-only', String(body2?.applied));
+
+    console.log('\n7. Gerbang scoreInput external (jalur opt-in operator)');
+    const op = await connectOperator();
+    try {
+      const open = await sockAck(op, 'integration:update', { patch: { scoreInput: 'external' } });
+      assert(open.ok === true && open.state?.integration?.scoreInput === 'external', 'scoreInput dibuka ke external via socket', open.error || '');
+      const post3 = await fetch(`${base}/api/ocr/frame`, {
+        method: 'POST',
+        headers: auth,
+        body: frameBuf
+      });
+      const body3 = await post3.json();
+      assert(post3.status === 200 && body3?.ok === true, 'Frame ketiga → 200 ok');
+      assert(body3?.applied === true, 'Setelah external: applied:true', String(body3?.applied));
+      const stateRes3 = await http(`${base}/api/state`, { headers: { 'x-operator-token': TOKEN } });
+      const st3 = stateRes3.data?.state;
+      assert(st3?.score?.blue?.kills === 10, 'state.score.blue.kills 10 (external)', `got ${st3?.score?.blue?.kills}`);
+      assert(st3?.score?.durationMs === 279000, 'state.score.durationMs 279000 (external)', `got ${st3?.score?.durationMs}`);
+      assert(st3?.integration?.scoreSource === 'ocr', 'scoreSource "ocr" setelah external', `got ${st3?.integration?.scoreSource}`);
+    } finally {
+      op.close();
+    }
   } finally {
     stopServers();
   }

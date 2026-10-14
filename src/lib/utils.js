@@ -1,20 +1,8 @@
 import { useEffect, useState } from 'react';
-import { serverTime, store } from './store.js';
+import { store } from './store.js';
 
 export function cx(...parts) {
   return parts.filter(Boolean).join(' ');
-}
-
-export function fmtClock(ms, withTenths = false) {
-  const v = Math.max(0, Math.floor(ms));
-  const totalSec = Math.floor(v / 1000);
-  const m = Math.floor(totalSec / 60);
-  const s = totalSec % 60;
-  if (withTenths) {
-    const tenth = Math.floor((v % 1000) / 100);
-    return `${m}:${String(s).padStart(2, '0')}.${tenth}`;
-  }
-  return `${m}:${String(s).padStart(2, '0')}`;
 }
 
 export function fmtDuration(ms) {
@@ -27,9 +15,22 @@ export function fmtDuration(ms) {
     : `${m}:${String(s).padStart(2, '0')}`;
 }
 
+/**
+ * Format gold mentah (integer) → tampilan Indonesia: `k` + koma desimal.
+ *   9579 → "9,6k"    10000 → "10k"    10500 → "10,5k"
+ *   19000 → "19k"    19500 → "19,5k"   31400 → "31,4k"
+ * Nilai < 1000 ditampilkan apa adanya. Null/invalid → "–".
+ * Tidak memutasi input.
+ */
 export function fmtGold(n) {
-  const v = Number(n) || 0;
-  return v >= 1000 ? `${(v / 1000).toFixed(1)}k` : String(v);
+  if (n == null || n === '') return '–';
+  const v = Number(n);
+  if (!Number.isFinite(v) || v < 0) return '–';
+  if (v < 1000) return String(Math.round(v));
+  const k = v / 1000;
+  // satu digit desimal, koma sebagai pemisah; .0 → tanpa desimal
+  const s = k.toFixed(1).replace(/\.0$/, '').replace('.', ',');
+  return `${s}k`;
 }
 
 export function fmtDate(iso) {
@@ -44,30 +45,6 @@ export function fmtDate(iso) {
   } catch {
     return '-';
   }
-}
-
-/** Hitung mundur berbasis jam server agar tidak drift antar client. */
-export function useCountdown(timer) {
-  const [remaining, setRemaining] = useState(() =>
-    timer ? (timer.running ? Math.max(0, timer.deadlineAt - serverTime()) : timer.remainingMs) : 0
-  );
-
-  useEffect(() => {
-    if (!timer) return undefined;
-    if (!timer.running) {
-      setRemaining(timer.remainingMs);
-      return undefined;
-    }
-    let raf = 0;
-    const loop = () => {
-      setRemaining(Math.max(0, timer.deadlineAt - serverTime()));
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [timer?.running, timer?.deadlineAt, timer?.remainingMs]);
-
-  return remaining;
 }
 
 /** Hook ringan untuk membaca store. */

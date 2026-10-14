@@ -6,7 +6,7 @@
  * ---------------------------------------------------------------------------
  */
 import { getPreset, validatePreset, MAX_PICKS_PER_TEAM } from './presets.js';
-import { defaultTheme } from '../shared/theme.js';
+import { defaultTheme, LIMITS } from '../shared/theme.js';
 
 export const DEFAULT_TIMER_MS = 30 * 1000;
 
@@ -30,6 +30,11 @@ export function createDraftState(presetId = 'standard-5ban-5pick') {
     /** apakah hero yang sama boleh muncul lebih dari sekali (mode latihan) */
     allowDuplicates: false,
     status: 'idle', // idle | running | paused | done
+    /**
+     * Sisa waktu aksi (warisan countdown). UI countdown sudah dihapus —
+     * giliran sepenuhnya digerakkan operator. Field dipertahankan agar
+     * struktur state/API lama tetap sah (running flag dipakai beberapa uji).
+     */
     timer: {
       durationMs: DEFAULT_TIMER_MS,
       remainingMs: DEFAULT_TIMER_MS,
@@ -52,7 +57,7 @@ export function createDraftState(presetId = 'standard-5ban-5pick') {
  *
  * Secret TIDAK PERNAH masuk state.
  */
-export const DATA_SOURCES = ['manual', 'grid', 'fixture'];
+export const DATA_SOURCES = ['manual', 'grid', 'fixture', 'scoresight-files'];
 export const AUTOMATION_MODES = ['monitor', 'semi', 'auto'];
 
 export function createIntegrationState(env = process.env) {
@@ -60,7 +65,7 @@ export function createIntegrationState(env = process.env) {
   return {
     provider: 'grid',
     enabled: bool(env.GRID_ENABLED),
-    /** sumber data aktif: manual (default) | grid | fixture */
+    /** sumber data aktif: manual (default) | grid | fixture | scoresight-files */
     dataSource: DATA_SOURCES.includes(String(env.GRID_DATA_SOURCE || '').toLowerCase())
       ? String(env.GRID_DATA_SOURCE).toLowerCase()
       : 'manual',
@@ -76,7 +81,24 @@ export function createIntegrationState(env = process.env) {
     gameId: null,
     /** asal data terakhir yang diterapkan (jejak untuk operator) */
     draftSource: 'manual',
-    scoreSource: 'manual'
+    scoreSource: 'manual',
+    /**
+     * Kebijakan tulis skor: 'manual-only' (default — hanya operator via
+     * score:update) | 'external' (OCR/GRID/ScoreSight file boleh menulis skor).
+     * Sengaja TIDAK dibaca dari env: pergantian ke mode external harus
+     * keputusan eksplisit operator.
+     */
+    scoreInput: 'manual-only',
+    /**
+     * Konfigurasi ScoreSight file bridge (persisten — diubah operator).
+     * `enabled` berbeda dari env SCORESIGHT_ENABLED: env hanya default awal;
+     * toggle operator di Control Panel menimpa via integration:update.
+     */
+    scoresight: {
+      enabled: bool(env.SCORESIGHT_ENABLED),
+      /** Home → Blue atau Red. null = MAPPING_REQUIRED (jangan apply). */
+      homeSide: String(env.SCORESIGHT_HOME_SIDE || '').toLowerCase() === 'red' ? 'red' : 'blue'
+    }
   };
 }
 
@@ -98,6 +120,49 @@ export function sanitizeIntegration(doc) {
   if (doc.scoreSource === 'manual' || doc.scoreSource === 'grid' || doc.scoreSource === 'fixture' || doc.scoreSource === 'ocr') {
     out.scoreSource = doc.scoreSource;
   }
+  if (doc.scoreInput === 'manual-only' || doc.scoreInput === 'external') {
+    out.scoreInput = doc.scoreInput;
+  }
+  // ScoreSight config — sanitize ketat
+  const ss = doc.scoresight;
+  if (ss && typeof ss === 'object') {
+    if (typeof ss.enabled === 'boolean') out.scoresight.enabled = ss.enabled;
+    if (ss.homeSide === 'blue' || ss.homeSide === 'red') out.scoresight.homeSide = ss.homeSide;
+  }
+  return out;
+}
+
+/** Pola ID sponsor yang dihasilkan server: sp-<16 hex>. */
+const SPONSOR_ID_RE = /^sp-[a-f0-9]{16}$/;
+const SPONSOR_FILE_RE = /^sp-[a-f0-9]{16}\.(?:jpg|png|webp)$/;
+
+/**
+ * Normalisasi daftar sponsor hasil upload (metadata persisten — file gambarnya
+ * ada di disk, bukan base64). Entri rusak/duplikat/berlebih dibuang; URL selalu
+ * merujuk ke /assets/sponsors/ sehingga path traversal tidak mungkin lolos.
+ */
+export function sanitizeSponsors(doc) {
+  if (!Array.isArray(doc)) return [];
+  const out = [];
+  const seen = new Set();
+  for (const s of doc) {
+    if (!s || typeof s !== 'object') continue;
+    const id = String(s.id || '');
+    const file = String(s.file || '');
+    if (!SPONSOR_ID_RE.test(id) || !SPONSOR_FILE_RE.test(file) || !file.startsWith(id)) continue;
+    if (seen.has(id)) continue;
+    const url = String(s.url || '');
+    if (url !== `/assets/sponsors/${file}`) continue;
+    out.push({
+      id,
+      name: typeof s.name === 'string' && s.name ? s.name.slice(0, 80) : file,
+      file,
+      url,
+      at: typeof s.at === 'string' ? s.at.slice(0, 40) : ''
+    });
+    seen.add(id);
+    if (out.length >= LIMITS.maxSponsors) break;
+  }
   return out;
 }
 
@@ -114,8 +179,8 @@ export function createInitialState() {
       round: ''
     },
     teams: {
-      blue: { name: 'Blue Side', logo: null, players: [], score: 0 },
-      red: { name: 'Red Side', logo: null, players: [], score: 0 }
+      blue: { name: 'Blue Side', logo: null, players: [], score: 0, catalogId: null },
+      red: { name: 'Red Side', logo: null, players: [], score: 0, catalogId: null }
     },
     draft: createDraftState(),
     score: {
@@ -126,7 +191,15 @@ export function createInitialState() {
       mvpHeroId: null,
       winner: null, // 'blue' | 'red' | null
       status: 'belum', // belum | berlangsung | selesai
-      notes: ''
+      notes: '',
+      /**
+       * Timer pertandingan internal (bukan countdown draft, bukan timer HUD
+       * MLBB, bukan Time.txt ScoreSight). Operator kontrol start/pause/reset.
+       * `elapsedMs` akumulasi; `runningAt` timestamp saat running (epoch ms).
+       * Sisa = elapsedMs + (now - runningAt) bila running.
+       * `timeSource`: 'manual' | 'scoresight' — sumber waktu aktif.
+       */
+      matchTimer: { elapsedMs: 0, runningAt: null, timeSource: 'manual' }
     },
     overlay: {
       showPlayerNames: true,
@@ -135,13 +208,19 @@ export function createInitialState() {
       showLogos: true,
       draftLayout: 'full', // full | compact | lineup
       scoreLayout: 'full', // full | compact
+      /**
+       * Template overlay pilihan operator di control panel:
+       * draft | score | sponsor-edition. Hanya penanda pilihan — tiap template
+       * tetap memakai URL sendiri (OBS memakai Browser Source terpisah).
+       */
+      template: 'draft',
       animMs: 600,
       announce: null, // { type:'mvp'|'winner'|'game', text, at }
       /* slot branding turnamen/sponsor (bisa dimatikan) */
       showBranding: false,
       brandText: '',
       brandLogo: null,
-      /** emergency stop: membekukan animasi & countdown tanpa menghapus data */
+      /** emergency stop: membekukan animasi overlay tanpa menghapus data */
       emergency: false,
       /**
        * Konfigurasi desain scoreboard (warna, preset, frame, logo, sponsor,
@@ -153,6 +232,12 @@ export function createInitialState() {
     revision: 0,
     /** konfigurasi integrasi data eksternal (GRID) — tanpa secret */
     integration: createIntegrationState(),
+    /**
+     * Sponsor unggahan operator — metadata persisten (id, nama file asli,
+     * file tersimpan, url relatif /assets/sponsors/…, urutan = indeks array).
+     * Gambar disimpan sebagai file di DATA_DIR/sponsors, bukan base64.
+     */
+    sponsors: [],
     updatedAt: nowIso()
   };
 }
@@ -410,24 +495,102 @@ export function timerCommand(state, cmd, value) {
   return { state: bump(state) };
 }
 
-/** Dipanggil ticker server. Mengembalikan true bila timer baru saja habis. */
-export function tickTimer(state) {
-  const t = state.draft.timer;
-  if (!t.running) return false;
-  if (Date.now() >= t.deadlineAt) {
-    t.remainingMs = 0;
-    t.running = false;
-    t.deadlineAt = null;
-    bump(state);
-    return true;
-  }
-  return false;
-}
-
 export function remainingMs(draft) {
   const t = draft.timer;
   if (t.running) return Math.max(0, t.deadlineAt - Date.now());
   return Math.max(0, t.remainingMs);
+}
+
+/* ------------------------------------------------------- match timer */
+
+/**
+ * Timer pertandingan internal (terpisah dari countdown draft & timer HUD MLBB).
+ * cmd: 'start' | 'pause' | 'reset' | 'set'
+ * 'set' = set elapsedMs langsung (value = ms).
+ * Saat running: elapsedMs = akumulasi, runningAt = epoch ms mulai berjalan.
+ * Saat paused:  runningAt = null, elapsedMs = akumulasi terakhir.
+ */
+export function matchTimerCommand(state, cmd, value) {
+  if (!state.score.matchTimer) state.score.matchTimer = { elapsedMs: 0, runningAt: null, timeSource: 'manual' };
+  const t = state.score.matchTimer;
+  if (!t.timeSource) t.timeSource = 'manual';
+  const now = Date.now();
+  switch (cmd) {
+    case 'start':
+      // Saat sumber scoresight aktif, ScoreSight yang mengendalikan running.
+      // Operator hanya boleh start manual bila timeSource manual.
+      if (t.timeSource === 'scoresight') {
+        return { state, error: 'Timer dikendalikan ScoreSight — gunakan pause/manual set untuk override.' };
+      }
+      if (t.runningAt) break; // sudah jalan
+      t.runningAt = now;
+      if (state.score.status === 'belum') state.score.status = 'berlangsung';
+      break;
+    case 'pause':
+      if (t.runningAt) {
+        t.elapsedMs += now - t.runningAt;
+        t.runningAt = null;
+      }
+      break;
+    case 'reset':
+      t.elapsedMs = 0;
+      t.runningAt = null;
+      break;
+    case 'set': {
+      const ms = Math.max(0, Number(value) || 0);
+      t.elapsedMs = ms;
+      t.runningAt = t.runningAt ? now : null;
+      break;
+    }
+    default:
+      return { state, error: `Perintah match timer tidak dikenal: ${cmd}` };
+  }
+  state.revision += 1;
+  state.updatedAt = nowIso();
+  return { state };
+}
+
+/**
+ * Sinkronkan timer internal dari Time.txt ScoreSight (milidetik).
+ * Jadikan ScoreSight authoritative: elapsedMs = timeMs, runningAt = now.
+ * Tidak emit revision bila nilai tidak berubah (anti lonjakan).
+ * @param {object} state
+ * @param {number|null} timeMs durasi milidetik dari Time.txt
+ * @param {object} [opts]
+ * @param {boolean} [opts.stale] true bila file tidak diperbarui/gagal baca
+ */
+export function syncMatchTimerFromScoreSight(state, timeMs, opts = {}) {
+  if (!state.score.matchTimer) state.score.matchTimer = { elapsedMs: 0, runningAt: null, timeSource: 'manual' };
+  const t = state.score.matchTimer;
+  // tandai sumber
+  if (t.timeSource !== 'scoresight') {
+    t.timeSource = 'scoresight';
+  }
+  // file stale / tidak valid → pertahankan waktu terakhir, jangan reset
+  if (opts.stale || timeMs == null || !Number.isFinite(timeMs) || timeMs < 0) {
+    return { state, changed: false, stale: true };
+  }
+  const ms = Math.max(0, Math.round(timeMs));
+  // deteksi perubahan: bandingkan dengan elapsed yang sedang berjalan
+  const current = (t.elapsedMs || 0) + (t.runningAt ? Date.now() - t.runningAt : 0);
+  // toleransi 500ms agar detik-tick tidak memicu revision berulang
+  if (Math.abs(current - ms) < 500 && t.runningAt) {
+    return { state, changed: false };
+  }
+  // sinkronkan: set elapsedMs = timeMs, runningAt = now (timer dianggap jalan)
+  t.elapsedMs = ms;
+  t.runningAt = Date.now();
+  if (state.score.status === 'belum') state.score.status = 'berlangsung';
+  state.revision += 1;
+  state.updatedAt = nowIso();
+  return { state, changed: true };
+}
+
+/** Elapsed ms match timer (akumulasi saat ini bila running). */
+export function matchElapsedMs(score) {
+  const t = score?.matchTimer;
+  if (!t) return 0;
+  return Math.max(0, (t.elapsedMs || 0) + (t.runningAt ? Date.now() - t.runningAt : 0));
 }
 
 /* ------------------------------------------------------- transisi game */
@@ -461,7 +624,8 @@ export function nextGame(state) {
     mvpHeroId: null,
     winner: null,
     status: 'belum',
-    notes: ''
+    notes: '',
+    matchTimer: { elapsedMs: 0, runningAt: null, timeSource: 'manual' }
   };
   state.overlay.announce = null;
   pushLog(state.draft, { kind: 'game', text: `Game ${state.meta.gameNumber} dimulai` });
@@ -469,7 +633,7 @@ export function nextGame(state) {
 }
 
 /**
- * Emergency stop: membekukan animasi overlay & menghentikan countdown
+ * Emergency stop: membekukan animasi overlay & menahan timer
  * TANPA menghapus data pertandingan apa pun.
  */
 export function setEmergency(state, on) {

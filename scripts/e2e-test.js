@@ -5,9 +5,12 @@
  *   1. Control panel siap + tidak ada error console
  *   2. Pengaturan turnamen, tim, roster
  *   3. Pick hero, undo, lock, reset
- *   4. Countdown start/pause
+ *   4. Tanpa countdown — giliran digerakkan operator, cursor tidak bergerak sendiri
  *   5. Overlay draft & scoreboard terhubung + sinkron real-time tanpa reload
- *   6. Skor berubah dari control panel terlihat di overlay
+ *   6. Skor berubah dari control panel terlihat di overlay; slot placeholder '–';
+ *      pita atas/header bebas timer HUD & minimap MLBB
+ *   6b. Sponsor management: empty state, unggah multipart (lokal), tampil di
+ *      overlay via socket, urutan naik, hapus via UI/API, cleanup
  *   7. Simpan / muat pertandingan
  *   8. Tema scoreboard: preview live, simpan/batal, sinkron ke overlay
  *   9. Panel integrasi GRID: sumber data, mode otomasi, pengajuan semi,
@@ -20,6 +23,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
+import { io as connectSocket } from 'socket.io-client';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -432,39 +436,30 @@ async function main() {
     st = (await apiGet('/state')).state;
     check('Undo entri terkunci ditolak tanpa konfirmasi', st.draft.entries.length === 4, `${st.draft.entries.length}`);
 
-    /* --------------------------------------------------------- 5. timer */
-    console.log('\n[5] Countdown');
-    // pick terakhir otomatis menyalakan timer → paksa ke kondisi diketahui dulu
-    let timer = (await apiGet('/state')).state.draft.timer;
-    if (timer.running) {
-      await clickEl(control, '[data-testid="timer-toggle"]');
-      await sleep(500);
-    }
-    timer = (await apiGet('/state')).state.draft.timer;
-    check('Countdown bisa dijeda', timer.running === false && timer.deadlineAt === null);
+    /* ------------------------------------------------- 5. tanpa countdown */
+    console.log('\n[5] Tanpa countdown (giliran operator)');
+    // UI countdown sudah dihapus dari panel & overlay — draft maju hanya saat
+    // operator pick/undo. Status server tidak pernah berubah sendiri (paused
+    // via timeout sudah tidak ada).
+    const timerUi = await control.evaluate(() => ({
+      toggle: !!document.querySelector('[data-testid="timer-toggle"]'),
+      duration: !!document.querySelector('[data-testid="timer-duration"]'),
+      warnClass: document.querySelectorAll('.timer-warn, .timer-warn-text').length,
+      text: document.body.innerText
+    }));
+    check('Tidak ada kontrol countdown di panel', timerUi.toggle === false && timerUi.duration === false);
+    check('Tidak ada teks countdown di panel', !/countdown|WAKTU HABIS|sisa waktu/i.test(timerUi.text));
 
-    await clickEl(control, '[data-testid="timer-toggle"]');
-    await sleep(800);
-    timer = (await apiGet('/state')).state.draft.timer;
-    check('Countdown berjalan', timer.running === true && timer.remainingMs > 0, `sisa ${Math.round(timer.remainingMs)}ms`);
-    check('deadlineAt terisi (sinkronisasi antar klien)', typeof timer.deadlineAt === 'number', String(timer.deadlineAt));
-    check('Sisa waktu tidak negatif', timer.remainingMs >= 0);
-
-    await clickEl(control, '[data-testid="timer-toggle"]');
-    await sleep(500);
-    timer = (await apiGet('/state')).state.draft.timer;
-    check('Countdown berhenti saat dijeda', timer.running === false && timer.deadlineAt === null);
-
-    // set durasi 10 detik lalu pastikan tidak pernah negatif
-    await control.evaluate(() => {
-      const chips = [...document.querySelectorAll('button.chip')];
-      const b = chips.find((c) => c.textContent.trim() === '10s');
-      if (b) b.click();
-    });
-    await sleep(500);
-    timer = (await apiGet('/state')).state.draft.timer;
-    check('Durasi countdown dapat diubah', timer.durationMs === 10000, `${timer.durationMs}ms`);
-    check('Sisa waktu mengikuti durasi baru', timer.remainingMs >= 0 && timer.remainingMs <= 10000, `${timer.remainingMs}ms`);
+    const beforeIdle = (await apiGet('/state')).state.draft;
+    check('Draft berjalan setelah pick', beforeIdle.status === 'running', `status=${beforeIdle.status}`);
+    await sleep(1600);
+    const afterIdle = (await apiGet('/state')).state.draft;
+    check(
+      'Cursor tidak bergerak sendiri tanpa operator',
+      afterIdle.cursor === beforeIdle.cursor && afterIdle.entries.length === beforeIdle.entries.length,
+      `cursor ${beforeIdle.cursor} → ${afterIdle.cursor}, entri ${beforeIdle.entries.length} → ${afterIdle.entries.length}`
+    );
+    check('Status draft tidak berubah sendiri (tidak ada timeout)', afterIdle.status === 'running', `status=${afterIdle.status}`);
 
     /* ------------------------------------------- 6. overlay real-time */
     console.log('\n[6] Overlay & sinkronisasi real-time');
@@ -488,6 +483,11 @@ async function main() {
     );
     check('Overlay menampilkan nama tim', overlayInfo.text.includes('Tim Biru FC'), 'Tim Biru FC');
     check('Overlay tanpa kontrol admin', !/Reset draft|Pilih Hero|Undo/i.test(overlayInfo.text));
+    const draftTimerUi = await overlayDraft.evaluate(() => ({
+      warn: document.querySelectorAll('.timer-warn, .timer-warn-text').length,
+      habis: document.body.innerText.includes('WAKTU HABIS')
+    }));
+    check('Overlay draft tanpa countdown', draftTimerUi.warn === 0 && draftTimerUi.habis === false);
 
     await sleep(600);
     const presence = await apiGet('/health');
@@ -536,6 +536,24 @@ async function main() {
 
     /* ------------------------------------------ 7. scoreboard real-time */
     console.log('\n[7] Scoreboard');
+    // reset skor + template antar-run: run sebelumnya bisa meninggalkan kills > 0
+    // atau template sponsor-edition, sehingga pemeriksaan placeholder '–' tidak
+    // bergantung pada sisa state lama.
+    {
+      const sc0 = connectSocket(BASE, { transports: ['websocket'], auth: { token: '' }, query: { role: 'control' } });
+      await new Promise((r) => sc0.on('connect', r));
+      // paksa template score (state sebelumnya bisa sponsor-edition)
+      await new Promise((r) => sc0.emit('overlay:update', { patch: { template: 'score' } }, r));
+      await new Promise((r) =>
+        sc0.emit(
+          'score:update',
+          { patch: { blue: { kills: 0, gold: 0, turrets: 0, lord: 0 }, red: { kills: 0, gold: 0, turrets: 0, lord: 0 }, status: 'belum', durationMs: 0, mvpPlayer: '', winner: null } },
+          r
+        )
+      );
+      await sleep(500);
+      sc0.close();
+    }
     const overlayScore = patchPage(await browser.newPage());
     hookConsole(overlayScore, 'overlay-score');
     await overlayScore.setViewport({ width: 1920, height: 1080 });
@@ -547,6 +565,57 @@ async function main() {
       text: document.body.innerText
     }));
     check('Latar scoreboard transparan', scoreInfo.bodyBg === 'rgba(0, 0, 0, 0)', scoreInfo.bodyBg);
+
+    // slot placeholder ScoreSight ('–' bila belum ada data) + bebas HUD MLBB
+    const slotText = (id) =>
+      overlayScore.evaluate((i) => {
+        const el = document.querySelector(`[data-testid="${i}"]`);
+        return el ? el.textContent.trim() : null;
+      }, id);
+    const slotIds = [
+      'score-kills-blue',
+      'score-kills-red',
+      'stat-gold-blue',
+      'stat-gold-red',
+      'stat-turret-blue',
+      'stat-turret-red',
+      'stat-lord-blue',
+      'stat-lord-red',
+      'stat-mvp'
+    ];
+    const slotVals = {};
+    for (const id of slotIds) slotVals[id] = await slotText(id);
+    check(
+      'Semua slot skor menampilkan placeholder –',
+      slotIds.every((id) => (id === 'stat-mvp' ? String(slotVals[id] || '').includes('–') : slotVals[id] === '–')),
+      JSON.stringify(slotVals)
+    );
+
+    const geo = await overlayScore.evaluate(() => {
+      const box = (sel) => {
+        const el = document.querySelector(sel);
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return { left: Math.round(r.left), right: Math.round(r.right), top: Math.round(r.top), bottom: Math.round(r.bottom) };
+      };
+      return {
+        bl: box('[data-testid="deco-band-left"]'),
+        br: box('[data-testid="deco-band-right"]'),
+        hl: box('[data-testid="header-left"]'),
+        hc: box('[data-testid="header-center"]'),
+        hr: box('[data-testid="header-right"]')
+      };
+    });
+    check(
+      'Pita atas kiri bebas minimap & celah tengah untuk HUD timer',
+      !!geo.bl && geo.bl.left >= 270 && geo.bl.right <= 575 && !!geo.br && geo.br.left >= 1330,
+      `bandL=${JSON.stringify(geo.bl)} bandR=${JSON.stringify(geo.br)}`
+    );
+    check(
+      'Header turnamen di bawah bar HUD & di kanan minimap',
+      !!geo.hl && geo.hl.left >= 270 && geo.hl.top >= 58 && !!geo.hc && geo.hc.top >= 58 && !!geo.hr && geo.hr.top >= 58,
+      `L=${JSON.stringify(geo.hl)} C=${JSON.stringify(geo.hc)} R=${JSON.stringify(geo.hr)}`
+    );
 
     await clickTab(control, 'Skor');
     await sleep(400);
@@ -593,6 +662,152 @@ async function main() {
     await shot(overlayScore, 'overlay-score-compact');
     await setOverlaySelect(control, 'Layout scoreboard', 'full');
     await waitHtmlChange(overlayScore, scoreCompactHtml);
+
+    /* ------------------------------------- 7b. sponsor management & overlay */
+    console.log('\n[7b] Sponsor management (unggah lokal)');
+    await clickTab(control, 'Tema');
+    // Bila operator sudah punya sponsor tersimpan, alur unggah otomatis dilewati
+    // (slot penuh & data operator tidak boleh dihapus uji) — overlay tetap
+    // diverifikasi dengan data nyata. State kosong = alur unggah lengkap.
+    const spPreList = ((await apiGet('/state')).state.sponsors || []);
+    const spFlowEmpty = spPreList.length === 0;
+    if (!spFlowEmpty) console.log(`    [info] ${spPreList.length} sponsor operator tersimpan — alur unggah otomatis dilewati.`);
+
+    const PNG_1x1 = Buffer.from(
+      'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
+      'base64'
+    );
+    async function uploadSponsorE2e(name) {
+      const fd = new FormData();
+      fd.append('files', new Blob([PNG_1x1], { type: 'image/png' }), name);
+      const res = await fetch(`${BASE}/api/sponsors`, { method: 'POST', body: fd });
+      const data = await res.json().catch(() => ({}));
+      return { status: res.status, data };
+    }
+    const e2eUpBad = await (async () => {
+      const fd = new FormData();
+      fd.append('files', new Blob(['bukan gambar'], { type: 'text/plain' }), 'e2e.txt');
+      const res = await fetch(`${BASE}/api/sponsors`, { method: 'POST', body: fd });
+      return { status: res.status };
+    })();
+    check('Unggah file non-gambar ditolak', e2eUpBad.status === 400, `status=${e2eUpBad.status}`);
+    if (spFlowEmpty) {
+      const spEmptyBefore = await control.$('[data-testid="sponsor-empty"]');
+      check('Empty state Sponsor Management tampil saat belum ada sponsor', spEmptyBefore !== null);
+    } else {
+      const spItemPre = await control.$('[data-testid="sponsor-item"]');
+      check('Daftar sponsor operator tampil di Control Panel', spItemPre !== null, `n=${spPreList.length}`);
+    }
+
+    const spImgSel = 'img[data-testid="sponsor-img"]';
+    // Halaman overlay SEGAR dibuka sebelum unggahan (meniru OBS Browser Source
+    // yang terbuka saat operator bekerja) — update live diverifikasi di sini.
+    const overlaySponsor = patchPage(await browser.newPage());
+    hookConsole(overlaySponsor, 'overlay-sponsor');
+    // rekam respons jaringan untuk aset sponsor (bukti server menyajikan file) —
+    // dipasang SEBELUM goto agar aset yang sudah tampil saat muat awal ikut terekam
+    const sponsorNetStatus = new Promise((resolve) => {
+      const timer = setTimeout(() => resolve(0), 12000);
+      overlaySponsor.on('response', (res) => {
+        try {
+          if (new URL(res.url()).pathname.startsWith('/assets/sponsors/')) {
+            clearTimeout(timer);
+            resolve(res.status());
+          }
+        } catch {
+          /* url tidak valid — abaikan */
+        }
+      });
+    });
+    await overlaySponsor.bringToFront(); // halaman visible = beban browser seperti OBS
+    await overlaySponsor.setViewport({ width: 1920, height: 1080 });
+    await gotoSettle(overlaySponsor, `${BASE}/overlay/score`);
+    await sleep(800);
+
+    let e2eUp1 = null;
+    if (spFlowEmpty) {
+      e2eUp1 = await uploadSponsorE2e('e2e-sponsor-a.png');
+      check('Unggah sponsor multipart diterima server', e2eUp1.status === 200 && e2eUp1.data.ok === true, e2eUp1.data.error || `status=${e2eUp1.status}`);
+    }
+
+    const spWantN = spFlowEmpty ? 1 : Math.min(2, spPreList.length);
+    const spAppeared = await overlaySponsor
+      .waitForFunction((n) => document.querySelectorAll('img[data-testid="sponsor-img"]').length >= n, { timeout: 10000, polling: 300 }, spWantN)
+      .then(() => true)
+      .catch(() => false);
+    const spSrc = await overlaySponsor.evaluate((s) => document.querySelector(s)?.getAttribute('src') || '', spImgSel);
+    check('Overlay menampilkan sponsor via Socket.IO (tanpa reload)', spAppeared && spSrc.startsWith('/assets/sponsors/'), spSrc || 'tidak ada');
+    const spLoaded = await overlaySponsor
+      .waitForFunction(
+        (sel) => {
+          const img = document.querySelector(sel);
+          return !!img && img.complete && img.naturalWidth > 0;
+        },
+        { timeout: 8000, polling: 250 },
+        spImgSel
+      )
+      .then(() => true)
+      .catch(() => false);
+    const spNet = await sponsorNetStatus;
+    check('Permintaan gambar sponsor dibalas 200/304 & terdekode', (spNet === 200 || spNet === 304) && spLoaded === true, `http=${spNet} px=${spLoaded}`);
+    // halaman overlay lama (section 7, jarang difokuskan) bila tidak ikut
+    // menampilkan dicatat sebagai info; halaman segar adalah rujukan utama.
+    const spLongLived = await overlayScore.evaluate((s) => !!document.querySelector(s), spImgSel).catch(() => false);
+    if (!spLongLived) console.log('    [info] halaman overlay lama tidak menampilkan sponsor (transport halaman latar) — halaman segar terverifikasi.');
+    await shot(overlaySponsor, 'overlay-score-sponsor');
+
+    if (spFlowEmpty) {
+      await clickTab(control, 'Tema');
+      const spItem1 = await control.$('[data-testid="sponsor-item"]');
+      check('Daftar sponsor tampil di Control Panel setelah unggah', spItem1 !== null);
+      const e2eUp2 = await uploadSponsorE2e('e2e-sponsor-b.png');
+      check('Unggahan kedua menambah daftar', e2eUp2.data?.sponsors?.length === 2, `n=${e2eUp2.data?.sponsors?.length}`);
+      const spSecondLive = await overlaySponsor
+        .waitForFunction((sel) => document.querySelectorAll(sel).length >= 2, { timeout: 8000, polling: 300 }, spImgSel)
+        .then(() => true)
+        .catch(() => false);
+      check('Overlay menerima sponsor kedua secara live', spSecondLive === true);
+      await sleep(400);
+      const spMoved = await control.evaluate(() => {
+        const items = [...document.querySelectorAll('[data-testid="sponsor-item"]')];
+        if (items.length < 2) return false;
+        const btn = items[1].querySelector('button[title="Naik"]');
+        if (!btn) return false;
+        btn.click();
+        return true;
+      });
+      await sleep(800);
+      const spOrderNames = ((await apiGet('/state')).state.sponsors || []).map((s) => s.name);
+      check('Urutan sponsor dapat diubah lewat tombol naik', spMoved && String(spOrderNames[0]).includes('e2e-sponsor-b'), spOrderNames.join(','));
+
+      // bersihkan: satu sponsor dihapus lewat UI (ConfirmBtn dua tahap)
+      const spDelUi = await control.evaluate(() => {
+        const item = document.querySelector('[data-testid="sponsor-item"]');
+        const btn = item && [...item.querySelectorAll('button')].find((b) => /^Hapus/i.test(b.textContent.trim()));
+        if (!btn) return false;
+        btn.click();
+        return true;
+      });
+      await sleep(400);
+      await control.evaluate(() => {
+        const item = document.querySelector('[data-testid="sponsor-item"]');
+        const btn = item && [...item.querySelectorAll('button')].find((b) => /Yakin|Hapus/i.test(b.textContent.trim()));
+        if (btn) btn.click();
+      });
+      await sleep(900);
+      check('Hapus sponsor dari UI (ConfirmBtn) mengurangi daftar', spDelUi === true && ((await apiGet('/state')).state.sponsors || []).length === 1, `sisa=${((await apiGet('/state')).state.sponsors || []).length}`);
+      // bersihkan HANYA sponsor buatan uji ini — sponsor milik operator ikut tersimpan
+      const spCreatedIds = [e2eUp1.data?.sponsors?.[0]?.id, e2eUp2.data?.sponsors?.find((s) => s.id !== e2eUp1.data?.sponsors?.[0]?.id)?.id].filter(Boolean);
+      for (const id of spCreatedIds) await fetch(`${BASE}/api/sponsors/${id}`, { method: 'DELETE' });
+      await sleep(700);
+      const spGone = await overlaySponsor.evaluate((sel) => !document.querySelector(sel), spImgSel);
+      check('Sponsor terhapus habis → gambar hilang dari overlay otomatis', spGone === true);
+      await clickTab(control, 'Tema');
+      const spEmptyAfter = await control.$('[data-testid="sponsor-empty"]');
+      check('Empty state kembali setelah semua sponsor dihapus', spEmptyAfter !== null);
+    }
+    await overlaySponsor.close();
+
     await overlayScore.close();
 
     /* --------------------------------------- 8. simpan & muat pertandingan */

@@ -7,10 +7,10 @@ import { loadHeroes, loadMeta, loadPresets, loadHeroDetail } from '../lib/data.j
 import { Btn, Panel, Tabs, Modal, ConfirmBtn, Notice, Field, TextInput } from '../components/ui.jsx';
 import HeroPicker from '../components/HeroPicker.jsx';
 import DraftBoard, { ActionStrip } from '../components/DraftBoard.jsx';
-import TimerBar from '../components/TimerBar.jsx';
 import HeroImage from '../components/HeroImage.jsx';
 import ScoreThemePanel from '../components/ScoreThemePanel.jsx';
 import IntegrationPanel from '../components/IntegrationPanel.jsx';
+import ScoreSightPanel from '../components/ScoreSightPanel.jsx';
 import ObsOcrPanel from '../components/ObsOcrPanel.jsx';
 import {
   MatchMetaPanel,
@@ -122,7 +122,7 @@ export default function Control() {
       }
       // pintasan sakelar overlay (tanpa membuka panel)
       if (mod && e.shiftKey && !typing) {
-        const map = { KeyN: 'showPlayerNames', KeyT: 'showTimer', KeyL: 'showLogos' };
+        const map = { KeyN: 'showPlayerNames', KeyL: 'showLogos' };
         const key = map[e.code];
         if (key) {
           e.preventDefault();
@@ -166,6 +166,7 @@ export default function Control() {
     { id: 'skor', label: 'Skor' },
     { id: 'tema', label: 'Tema' },
     { id: 'grid', label: 'GRID' },
+    { id: 'scoresight', label: 'ScoreSight' },
     { id: 'obs', label: 'OBS OCR' },
     { id: 'overlay', label: 'Overlay' },
     { id: 'match', label: 'Match' },
@@ -245,7 +246,7 @@ export default function Control() {
       {state.overlay.emergency ? (
         <div className="flex shrink-0 items-center gap-2 bg-side-red px-3 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-white">
           <span className="dot dot-on" style={{ background: '#fff' }} />
-          Emergency stop aktif � animasi overlay dibekukan & countdown berhenti. Data pertandingan tidak dihapus.
+          Emergency stop aktif: animasi overlay dibekukan. Data pertandingan tidak dihapus.
         </div>
       ) : null}
 
@@ -287,7 +288,6 @@ export default function Control() {
               <ActionStrip draft={draft} />
 
               <div className="flex flex-wrap items-center gap-2">
-                <TimerBar draft={draft} onCmd={(cmd, value) => send('timer', { cmd, value })} />
                 <div className="ml-auto flex flex-wrap gap-1.5">
                   <Btn
                     variant="primary"
@@ -376,6 +376,7 @@ export default function Control() {
                 {tab === 'skor' && <ScorePanel state={state} />}
                 {tab === 'tema' && <ScoreThemePanel state={state} heroesById={heroesById} meta={meta} />}
                 {tab === 'grid' && <IntegrationPanel state={state} />}
+                {tab === 'scoresight' && <ScoreSightPanel state={state} />}
                 {tab === 'obs' && <ObsOcrPanel state={state} />}
                 {tab === 'overlay' && <OverlayPanel state={state} />}
                 {tab === 'match' && <MatchManagerPanel state={state} />}
@@ -399,9 +400,8 @@ export default function Control() {
         </span>
         <span>Diubah: {fmtDate(state.updatedAt)}</span>
         <span className="ml-auto">
-          Pintasan: <span className="text-ink-300">Ctrl+Z</span> undo � <span className="text-ink-300">Ctrl+Enter</span>{' '}
-          konfirmasi pick � <span className="text-ink-300">Ctrl+Shift+N</span> nickname �{' '}
-          <span className="text-ink-300">Ctrl+Shift+T</span> countdown �{' '}
+          Pintasan: <span className="text-ink-300">Ctrl+Z</span> undo — <span className="text-ink-300">Ctrl+Enter</span>{' '}
+          konfirmasi pick — <span className="text-ink-300">Ctrl+Shift+N</span> nickname —{' '}
           <span className="text-ink-300">Ctrl+Shift+L</span> logo
         </span>
       </footer>
@@ -432,7 +432,7 @@ function toggleOverlayFlag(key) {
   const next = !s.overlay[key];
   request('overlay:update', { patch: { [key]: next } }).then((res) => {
     if (!res.ok) return store.notice(res.error, 'error');
-    const label = { showPlayerNames: 'Nickname', showTimer: 'Countdown', showLogos: 'Logo & nama tim' }[key] || key;
+    const label = { showPlayerNames: 'Nickname', showLogos: 'Logo & nama tim' }[key] || key;
     store.notice(`${label}: ${next ? 'aktif' : 'nonaktif'}`, 'info');
   });
 }

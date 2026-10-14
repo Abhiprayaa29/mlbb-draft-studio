@@ -19,11 +19,13 @@
     "test:e2e": "node scripts/e2e-test.js",
     "test:server": "node scripts/server-test.js",
     "test:ocr": "node scripts/ocr-test.js",
-    "test:all": "npm run test:server && npm run test:ocr && npm run test:e2e"
+    "test:scoresight": "node scripts/scoresight-test.js",
+    "test:all": "npm run test:server && npm run test:ocr && npm run test:scoresight && npm run test:e2e"
   },
   "dependencies": {
     "express": "^4.21.2",
     "framer-motion": "^11.18.2",
+    "multer": "^2.4.0",
     "obs-websocket-js": "^5.0.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

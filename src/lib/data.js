@@ -10,7 +10,8 @@ const cache = {
   heroes: null,
   meta: null,
   presets: null,
-  equipment: null
+  equipment: null,
+  teamsCatalog: null
 };
 
 async function getJson(url) {
@@ -52,6 +53,17 @@ export async function loadEquipment() {
   return cache.equipment;
 }
 
+/** Katalog tim turnamen (Markdown) — { tournament, teams:[{id,name,players}] }. */
+export async function loadTeamsCatalog() {
+  if (cache.teamsCatalog) return cache.teamsCatalog;
+  try {
+    cache.teamsCatalog = await getJson('/api/teams-catalog');
+  } catch {
+    cache.teamsCatalog = { tournament: '', teams: [] };
+  }
+  return cache.teamsCatalog;
+}
+
 export async function loadHeroDetail(id) {
   return getJson(`/api/heroes/${encodeURIComponent(id)}`);
 }
@@ -73,6 +85,7 @@ export function invalidateDataCache() {
   cache.meta = null;
   cache.presets = null;
   cache.equipment = null;
+  cache.teamsCatalog = null;
 }
 
 export async function apiHealth() {

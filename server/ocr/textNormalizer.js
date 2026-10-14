@@ -16,8 +16,8 @@ export const FORMAT_REGEX = {
   time: /^(?:[0-5]?\d:[0-5]?\d)$/,
   // ScoreSight NUMBER (score): ^\d{1,3}$
   score: /^\d{1,3}$/,
-  // gold MLBB: angka + opsional desimal + opsional suffix k/K
-  gold: /^\d{1,4}(?:\.\d+)?[kKmM]?$/
+  // gold MLBB: angka + opsional desimal (titik ATAU koma) + opsional suffix k/K/m/M
+  gold: /^\d{1,4}(?:[.,]\d+)?[kKmM]?$/
 };
 
 /** Buang ordinal indicator º/ª yang menempel (ScoreSight ordinal_indicator). */
@@ -41,11 +41,12 @@ export function parseScore(text) {
 }
 
 /**
- * "11.5k" → 11500, "12.8K" → 12800, "743" → 743, "1.2m" → 1200000.
+ * "11.5k" → 11500, "12,8K" → 12800, "743" → 743, "1.2m" → 1200000.
  * Suffix k/K = ×1000, m/M = ×1000000 (konvensi gold MLBB).
+ * Pemisah desimal koma (`,`) setara titik (`.`) — HUD locale bisa keduanya.
  */
 export function parseGold(text) {
-  const t = stripOrdinal(text);
+  const t = stripOrdinal(text).replace(',', '.');
   if (!FORMAT_REGEX.gold.test(t)) return null;
   const suffix = t.slice(-1).toLowerCase();
   const num = Number(suffix === 'k' || suffix === 'm' ? t.slice(0, -1) : t);

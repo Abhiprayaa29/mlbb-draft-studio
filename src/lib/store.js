@@ -27,7 +27,9 @@ const initial = {
   /** status autosave/backup dari server */
   autosave: null,
   /** status integrasi data eksternal (GRID) — event transien, bukan state */
-  integrationStatus: null
+  integrationStatus: null,
+  /** status ScoreSight file bridge — event transien, bukan state */
+  scoresightStatus: null
 };
 
 let snapshot = { ...initial };

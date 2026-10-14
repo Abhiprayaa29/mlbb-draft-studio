@@ -116,7 +116,8 @@ export default function IntegrationPanel({ state }) {
           {[
             ['manual', 'Manual (operator)'],
             ['grid', 'GRID live'],
-            ['fixture', 'Fixture (uji)']
+            ['fixture', 'Fixture (uji)'],
+            ['scoresight-files', 'ScoreSight files']
           ].map(([v, label]) => (
             <label key={v} className="flex cursor-pointer items-center gap-1.5 text-[12px] text-ink-200">
               <input
@@ -211,6 +212,9 @@ export default function IntegrationPanel({ state }) {
         </span>
         <span className="rounded border border-ink-600 bg-ink-900 px-2 py-1 text-ink-300" data-testid="score-source">
           Skor: <span className="text-gold">{it.scoreSource || 'manual'}</span>
+        </span>
+        <span className="rounded border border-ink-600 bg-ink-900 px-2 py-1 text-ink-300" data-testid="score-input">
+          Tulis skor: <span className="text-gold">{it.scoreInput || 'manual-only'}</span>
         </span>
         <span className="rounded border border-ink-600 bg-ink-900 px-2 py-1 text-ink-300" data-testid="grid-last-sync">
           Sinkron: <span className="text-ink-200">{timeLabel(st?.lastSyncAt)}</span>

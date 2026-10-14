@@ -5,10 +5,11 @@ import HeroImage from '../components/HeroImage.jsx';
 import TeamLogo from '../components/TeamLogo.jsx';
 import { isUsableLogo } from '../components/TeamLogo.jsx';
 import { useOverlayMode } from '../lib/overlay.js';
-import { useStore, cx, fmtClock, fmtGold, sideLabel } from '../lib/utils.js';
+import { useStore, fmtGold, sideLabel } from '../lib/utils.js';
 import { loadHeroes, loadMeta } from '../lib/data.js';
 import { AnimGate, enter, useAnimReady } from '../lib/anim.jsx';
 import { themeStyle, withAlpha, defaultTheme } from '../../shared/theme.js';
+import OverlaySponsorEdition from './OverlaySponsorEdition.jsx';
 
 /**
  * src/pages/OverlayScore.jsx
@@ -17,11 +18,13 @@ import { themeStyle, withAlpha, defaultTheme } from '../../shared/theme.js';
  *
  * Tata letak:
  *   A. Header   : identitas tim (kiri) · logo turnamen (tengah) · sponsor &
- *                 caster (kanan)
- *   B. Frame    : garis/bidang geometris emas di atas + sudut bawah kiri/kanan,
- *                 area tengah tetap lapang untuk gameplay
- *   C. Scoreboard (bawah): identitas tim, kill, gold, turret, lord, turtle,
- *                 durasi, seri, status & pemenang
+ *                 caster (kanan) — diturunkan & digeser agar tidak menutupi
+ *                 timer HUD MLBB (tengah atas) & minimap (kiri atas)
+ *   B. Frame    : pita atas kiri/kanan dengan celah tengah (HUD timer) +
+ *                 sudut bawah kiri/kanan, area tengah tetap lapang untuk gameplay
+ *   C. Scoreboard (bawah): identitas tim, kill, gold, turret, lord,
+ *                 seri, status & pemenang — slot tanpa data menampilkan '–'
+ *                 (placeholder netral untuk data ScoreSight / input manual)
  *
  * Semua warna/ukuran datang dari `state.overlay.theme` lewat CSS variable
  * (shared/theme.js) — tidak ada warna yang di-hardcode di sini, dan perubahan
@@ -52,10 +55,10 @@ function statValue(value, started, fmt = (v) => v) {
 }
 
 /** Angka besar (kills) dengan transisi nilai. */
-function ScoreNumber({ value, color, size = 76 }) {
+function ScoreNumber({ value, color, size = 76, tid }) {
   const ready = useAnimReady();
   return (
-    <div className="relative flex items-center justify-center" style={{ minWidth: size * 0.8, height: size }}>
+    <div className="relative flex items-center justify-center" style={{ minWidth: size * 0.8, height: size }} data-testid={tid}>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={value}
@@ -100,6 +103,11 @@ function PopValue({ value, fmt = (v) => v }) {
  * Bidang geometris bersudut tajam: pita atas + sudut bawah kiri/kanan.
  * Ketebalan mengikuti `--sc-border-px`, ukuran hiasan mengikuti `--sc-deco`.
  * `pointer-events:none` agar tidak pernah menangkap klik OBS/operator.
+ *
+ * Pita atas DAN garis aksen pecah kiri–kanan dengan celah tengah (~560–1360)
+ * agar timer/skor HUD MLBB di tengah atas game tetap terlihat; segmen kiri
+ * dimulai setelah area minimap (kiri atas, ~0–280) sehingga peta game tidak
+ * tertutup overlay.
  */
 function DecoFrame({ colors }) {
   // Pita atas menampung header (tim, turnamen, sponsor, caster) sehingga teks
@@ -107,23 +115,30 @@ function DecoFrame({ colors }) {
   const bandH = 'max(calc(var(--sc-deco) * 1.7px), calc(var(--sc-border-px) * 12))';
   const corner = 'calc(var(--sc-deco) * 1.7px)';
   const plate = 'calc(var(--sc-deco) * 0.35px)';
+  const bandBg = `linear-gradient(90deg, ${colors.border} 0%, ${colors.primary} 28%, ${colors.primary} 72%, ${colors.border} 100%)`;
+  const plateBg = withAlpha(colors.primary, 0.9);
   return (
     <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-      {/* pita atas */}
+      {/* pita atas kiri (di kanan minimap, di kiri celah HUD) */}
       <div
-        className="absolute left-0 top-0 w-full"
-        style={{
-          height: bandH,
-          background: `linear-gradient(90deg, ${colors.border} 0%, ${colors.primary} 28%, ${colors.primary} 72%, ${colors.border} 100%)`
-        }}
+        data-testid="deco-band-left"
+        className="absolute top-0"
+        style={{ left: 300, width: 260, height: bandH, background: bandBg }}
+      />
+      {/* pita atas kanan (di kanan celah HUD) */}
+      <div
+        data-testid="deco-band-right"
+        className="absolute right-0 top-0"
+        style={{ width: 560, height: bandH, background: bandBg }}
       />
       {/* pelat geometris kiri/kanan di bawah pita */}
       <div
-        className="absolute left-0 top-0"
+        className="absolute top-0"
         style={{
-          width: 420,
+          left: 300,
+          width: 260,
           height: `calc(${bandH} + ${plate})`,
-          background: withAlpha(colors.primary, 0.9),
+          background: plateBg,
           clipPath: 'polygon(0 0, 100% 0, 84% 100%, 0 100%)'
         }}
       />
@@ -132,12 +147,13 @@ function DecoFrame({ colors }) {
         style={{
           width: 420,
           height: `calc(${bandH} + ${plate})`,
-          background: withAlpha(colors.primary, 0.9),
+          background: plateBg,
           clipPath: 'polygon(0 0, 100% 0, 100% 100%, 16% 100%)'
         }}
       />
-      {/* garis aksen di bawah pita */}
-      <div className="absolute left-0 top-0 w-full" style={{ height: 'var(--sc-border-px)', background: 'var(--sc-border)' }} />
+      {/* garis aksen di bawah pita — ikut celah yang sama */}
+      <div className="absolute top-0" style={{ left: 300, width: 260, height: 'var(--sc-border-px)', background: 'var(--sc-border)' }} />
+      <div className="absolute right-0 top-0" style={{ width: 560, height: 'var(--sc-border-px)', background: 'var(--sc-border)' }} />
       {/* sudut bawah kiri */}
       <div
         className="absolute bottom-0 left-0"
@@ -210,10 +226,13 @@ function TeamPlate({ state, side, theme, colors, size = 74 }) {
   );
 }
 
-function Sponsors({ theme }) {
-  const list = theme.sponsors || [];
-  if (!theme.visible.sponsors || list.length === 0) return null;
+function Sponsors({ theme, sponsors }) {
   const [broken, setBroken] = React.useState({});
+  // sponsor unggahan operator (state.sponsors — file lokal server) lebih dulu;
+  // fallback ke URL tema lama bila belum ada unggahan.
+  const uploaded = Array.isArray(sponsors) && sponsors.length ? sponsors.map((s) => s.url) : null;
+  const list = uploaded || theme.sponsors || [];
+  if (!theme.visible.sponsors || list.length === 0) return null;
   return (
     <div className="flex items-center justify-end gap-3">
       {list.map((url, i) => (
@@ -221,6 +240,7 @@ function Sponsors({ theme }) {
           key={`${url}-${i}`}
           src={url}
           alt=""
+          data-testid="sponsor-img"
           referrerPolicy="no-referrer"
           onError={() => setBroken((b) => ({ ...b, [i]: true }))}
           style={{
@@ -249,10 +269,6 @@ function CasterLine({ theme, colors }) {
         paddingRight: 26
       }}
     >
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--sc-accent)" strokeWidth="2">
-        <rect x="9" y="3" width="6" height="11" rx="3" />
-        <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
-      </svg>
       <span
         className="font-display leading-none"
         style={{ color: 'var(--sc-text)', fontSize: Math.round(20 * (theme.text.scale || 1)), letterSpacing: '0.14em' }}
@@ -274,22 +290,20 @@ function HeaderBar({ state, theme, colors }) {
   const crop = (s) => (theme.text.uppercase ? String(s).toUpperCase() : String(s));
 
   return (
-    <div className="pointer-events-none absolute left-0 top-0 z-10 flex w-full items-start justify-between px-10" style={{ paddingTop: 'calc(var(--sc-border-px) * 6 + 14px)' }}>
-      {/* kiri: identitas tim */}
-      <div className="flex items-center gap-6">
+    <div
+      className="pointer-events-none absolute left-0 top-0 z-10 flex w-full items-start justify-between"
+      style={{ paddingTop: 74, paddingLeft: 310, paddingRight: 40 }}
+    >
+      {/* kiri: identitas tim — di kanan minimap & di bawah bar HUD */}
+      <div className="flex items-center gap-6" data-testid="header-left">
         <TeamPlate state={state} side="blue" theme={theme} colors={colors} />
-        <span
-          className="font-display"
-          style={{ color: withAlpha(colors.text, 0.5), fontSize: Math.round(22 * scale), letterSpacing: '0.2em' }}
-        >
-          VS
-        </span>
         <TeamPlate state={state} side="red" theme={theme} colors={colors} />
       </div>
 
-      {/* tengah: logo + nama turnamen */}
+      {/* tengah: logo + nama turnamen — di bawah timer HUD MLBB */}
       <div
         className="flex flex-col items-center"
+        data-testid="header-center"
         style={{
           transform: `translate(${theme.logo.tournamentX || 0}px, ${theme.logo.tournamentY || 0}px)`,
           maxWidth: 760
@@ -343,8 +357,8 @@ function HeaderBar({ state, theme, colors }) {
       </div>
 
       {/* kanan: sponsor + caster */}
-      <div className="flex max-w-[520px] flex-col items-end gap-2">
-        <Sponsors theme={theme} />
+      <div className="flex max-w-[520px] flex-col items-end gap-2" data-testid="header-right">
+        <Sponsors theme={theme} sponsors={state.sponsors} />
         <CasterLine theme={theme} colors={colors} />
       </div>
     </div>
@@ -353,8 +367,8 @@ function HeaderBar({ state, theme, colors }) {
 
 /* ------------------------------------------------------------ scoreboard */
 
-/** Chip statistik satu sisi (label + nilai, tanpa angka palsu). */
-function StatChip({ label, value, started, fmt, color, colors, scale = 1 }) {
+/** Chip statistik satu sisi (label + nilai). Slot tanpa data menampilkan '–'. */
+function StatChip({ label, value, started, fmt, color, colors, scale = 1, tid }) {
   return (
     <div className="flex min-w-[92px] flex-col items-center">
       <span
@@ -363,7 +377,11 @@ function StatChip({ label, value, started, fmt, color, colors, scale = 1 }) {
       >
         {label}
       </span>
-      <span className="font-display leading-none tabular-nums" style={{ color, fontSize: Math.round(28 * scale) }}>
+      <span
+        className="font-display leading-none tabular-nums"
+        style={{ color, fontSize: Math.round(28 * scale) }}
+        data-testid={tid}
+      >
         <PopValue value={statValue(value, started, fmt)} />
       </span>
     </div>
@@ -429,7 +447,9 @@ function LineupRow({ state, side, heroesById, theme, colors, size = 'md' }) {
   );
 }
 
-/** Blok tengah: game, durasi, seri, status, pemenang. */
+/** Blok tengah: game, seri, status, pemenang. Waktu pertandingan tidak
+ *  ditampilkan di sini — HUD timer asli MLBB (tengah atas, via gameplay) yang
+ *  menjadi rujukan waktu siaran. */
 function CenterBlock({ state, theme, colors, compact = false }) {
   const s = state.score;
   const started = s.status !== 'belum';
@@ -450,12 +470,6 @@ function CenterBlock({ state, theme, colors, compact = false }) {
           {meta}
         </div>
       ) : null}
-      <div
-        className="font-display leading-none tabular-nums"
-        style={{ color: 'var(--sc-text)', fontSize: Math.round((compact ? 34 : 46) * scale) }}
-      >
-        {theme.visible.timer ? (started || s.durationMs > 0 ? fmtClock(s.durationMs) : '–:–') : ''}
-      </div>
       <div className="mt-1 flex items-center gap-2">
         <span
           className="px-2.5 py-0.5 font-display uppercase"
@@ -557,14 +571,12 @@ function TeamSide({ state, side, theme, colors }) {
 function StatsRow({ state, side, theme, colors }) {
   const s = state.score[side];
   const started = state.score.status !== 'belum';
-  const color = side === 'blue' ? colors.teamA : colors.teamB;
   const scale = theme.text.scale || 1;
   return (
     <div className="flex items-start justify-center gap-5">
-      <StatChip label="Gold" value={s.gold} started={started} fmt={fmtGold} color="var(--sc-text)" colors={colors} scale={scale} />
-      <StatChip label="Turret" value={s.turrets} started={started} color="var(--sc-text)" colors={colors} scale={scale} />
-      <StatChip label="Lord" value={s.lord} started={started} color="var(--sc-highlight)" colors={colors} scale={scale} />
-      <StatChip label="Turtle" value={s.turtle} started={started} color={color} colors={colors} scale={scale} />
+      <StatChip label="Gold" value={s.gold} started={started} fmt={fmtGold} color="var(--sc-text)" colors={colors} scale={scale} tid={`stat-gold-${side}`} />
+      <StatChip label="Turret" value={s.turrets} started={started} color="var(--sc-text)" colors={colors} scale={scale} tid={`stat-turret-${side}`} />
+      <StatChip label="Lord" value={s.lord} started={started} color="var(--sc-highlight)" colors={colors} scale={scale} tid={`stat-lord-${side}`} />
     </div>
   );
 }
@@ -677,6 +689,7 @@ function FullScoreboard({ state, theme, colors, heroesById, meta }) {
               value={started || s.blue.kills > 0 ? s.blue.kills : '–'}
               color={colors.teamA}
               size={Math.round(72 * scale)}
+              tid="score-kills-blue"
             />
             <span
               className="font-display uppercase"
@@ -691,6 +704,7 @@ function FullScoreboard({ state, theme, colors, heroesById, meta }) {
               value={started || s.red.kills > 0 ? s.red.kills : '–'}
               color={colors.teamB}
               size={Math.round(72 * scale)}
+              tid="score-kills-red"
             />
             <span
               className="font-display uppercase"
@@ -711,10 +725,10 @@ function FullScoreboard({ state, theme, colors, heroesById, meta }) {
               style={{ color: withAlpha(colors.text, 0.55), fontSize: Math.round(12 * scale), letterSpacing: '0.2em' }}
             >
               {theme.visible.mvp ? (
-                <span>
+                <span data-testid="stat-mvp">
                   MVP:{' '}
                   <b className="font-display" style={{ color: 'var(--sc-timer)', fontSize: Math.round(17 * scale) }}>
-                    {s.mvpPlayer || '—'}
+                    {s.mvpPlayer || '–'}
                   </b>
                 </span>
               ) : null}
@@ -750,9 +764,9 @@ function CompactScoreboard({ state, theme, colors, heroesById }) {
         <div className="flex items-center gap-3">
           <TeamSide state={state} side="blue" theme={theme} colors={colors} />
           <div className="flex items-center gap-4">
-            <StatChip label="Kills" value={s.blue.kills} started={started} color={colors.teamA} colors={colors} scale={scale} />
+            <StatChip label="Kills" value={s.blue.kills} started={started} color={colors.teamA} colors={colors} scale={scale} tid="stat-kills-blue" />
             {theme.visible.stats ? (
-              <StatChip label="Gold" value={s.blue.gold} started={started} fmt={fmtGold} color="var(--sc-text)" colors={colors} scale={scale} />
+              <StatChip label="Gold" value={s.blue.gold} started={started} fmt={fmtGold} color="var(--sc-text)" colors={colors} scale={scale} tid="stat-gold-blue" />
             ) : null}
             <span className="font-display leading-none" style={{ color: 'var(--sc-highlight)', fontSize: Math.round(40 * scale) }}>
               {state.teams.blue.score}
@@ -789,9 +803,9 @@ function CompactScoreboard({ state, theme, colors, heroesById }) {
         <div className="flex items-center gap-3" style={{ flexDirection: 'row-reverse' }}>
           <TeamSide state={state} side="red" theme={theme} colors={colors} />
           <div className="flex items-center gap-4">
-            <StatChip label="Kills" value={s.red.kills} started={started} color={colors.teamB} colors={colors} scale={scale} />
+            <StatChip label="Kills" value={s.red.kills} started={started} color={colors.teamB} colors={colors} scale={scale} tid="stat-kills-red" />
             {theme.visible.stats ? (
-              <StatChip label="Gold" value={s.red.gold} started={started} fmt={fmtGold} color="var(--sc-text)" colors={colors} scale={scale} />
+              <StatChip label="Gold" value={s.red.gold} started={started} fmt={fmtGold} color="var(--sc-text)" colors={colors} scale={scale} tid="stat-gold-red" />
             ) : null}
             <span className="font-display leading-none" style={{ color: 'var(--sc-highlight)', fontSize: Math.round(40 * scale) }}>
               {state.teams.red.score}
@@ -853,6 +867,22 @@ export function ScoreboardView({ state, heroesById = {}, meta = null }) {
 }
 
 /* ------------------------------------------------------------------ halaman */
+
+/**
+ * Rute `/overlay/score` — memilih desain scoreboard berdasarkan
+ * `state.overlay.template` (server → Socket.IO → store, tanpa refresh URL):
+ *   - `sponsor-edition` → desain Sponsor Edition (SVG frame + data live)
+ *   - selain itu         → scoreboard klasik (desain lama)
+ * `/overlay/draft` tidak terpengaruh — tetap draft pick.
+ */
+export function OverlayScoreRoute() {
+  useOverlayMode();
+  const snap = useStore();
+  const state = snap.state;
+  const template = state?.overlay?.template;
+  if (template === 'sponsor-edition') return <OverlaySponsorEdition />;
+  return <OverlayScore />;
+}
 
 export default function OverlayScore() {
   useOverlayMode();

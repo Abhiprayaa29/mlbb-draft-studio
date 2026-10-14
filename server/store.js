@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------
  */
 import path from 'node:path';
-import { createInitialState, sanitizeIntegration } from './draftEngine.js';
+import { createInitialState, sanitizeIntegration, sanitizeSponsors } from './draftEngine.js';
 import { sanitizeTheme } from '../shared/theme.js';
 import * as storage from './storage.js';
 
@@ -34,12 +34,21 @@ function normalizeLoadedState(doc) {
     blue: { ...base.teams.blue, ...(doc.teams?.blue || {}) },
     red: { ...base.teams.red, ...(doc.teams?.red || {}) }
   };
+  // catalogId boleh null (manual) atau string — bukan tipe lain
+  ['blue', 'red'].forEach((side) => {
+    const cid = st.teams[side].catalogId;
+    st.teams[side].catalogId = typeof cid === 'string' && cid ? cid : null;
+  });
   st.score = { ...base.score, ...(doc.score || {}) };
   st.score.blue = { ...base.score.blue, ...(doc.score?.blue || {}) };
   st.score.red = { ...base.score.red, ...(doc.score?.red || {}) };
   st.meta = { ...base.meta, ...(doc.meta || {}) };
   st.integration = sanitizeIntegration(doc.integration);
+  st.sponsors = sanitizeSponsors(doc.sponsors);
   st.overlay = { ...base.overlay, ...(doc.overlay || {}) };
+  st.overlay.template = ['draft', 'score', 'sponsor-edition'].includes(st.overlay.template)
+    ? st.overlay.template
+    : base.overlay.template;
   st.overlay.theme = sanitizeTheme(doc.overlay?.theme, base.overlay.theme);
   st.draft = { ...base.draft, ...(doc.draft || {}) };
   st.draft.timer = { ...base.draft.timer, ...(doc.draft?.timer || {}) };

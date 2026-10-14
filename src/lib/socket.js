@@ -83,13 +83,14 @@ export function startSocket(role = 'overlay') {
     store.patch({ skew: prev === 0 ? nextSkew : prev * 0.7 + nextSkew * 0.3, serverNow: p.serverNow });
   });
 
-  socket.on('draft:timeout', () => {
-    store.notice('Waktu habis untuk aksi draft saat ini.', 'warn');
-  });
-
   /** status koneksi integrasi (transien — tidak menyentuh state/revision) */
   socket.on('integration:status', (p) => {
     if (p) store.patch({ integrationStatus: p });
+  });
+
+  /** status ScoreSight file bridge (transien) */
+  socket.on('scoresight:status', (p) => {
+    if (p) store.patch({ scoresightStatus: p });
   });
 
   return socket;

@@ -9,6 +9,10 @@ dist/
 # log proses lokal
 .server-*.log
 .server-*.err.log
+.backend-dev.log
+.backend-dev.err
+.vite-dev.log
+.vite-dev.err
 
 # data runtime (berubah tiap sesi; dibuat ulang otomatis oleh server)
 server/data/state.json
@@ -16,6 +20,7 @@ server/data/matches-index.json
 server/data/backups/
 server/data/matches/
 server/data/logos/
+server/data/sponsors/
 
 # hasil uji (dihasilkan ulang oleh `npm test` / `npm run test:server`)
 scripts/report/

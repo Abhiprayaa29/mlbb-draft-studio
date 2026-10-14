@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..');
 
-export const DATA_SOURCES = ['manual', 'grid', 'fixture'];
+export const DATA_SOURCES = ['manual', 'grid', 'fixture', 'scoresight-files'];
 export const AUTOMATION_MODES = ['monitor', 'semi', 'auto'];
 /** Status koneksi provider — CONNECTED hanya setelah probe/data tervalidasi. */
 export const GRID_STATUS = [

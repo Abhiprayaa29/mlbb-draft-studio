@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Control from './pages/Control.jsx';
 import OverlayDraft from './pages/OverlayDraft.jsx';
-import OverlayScore from './pages/OverlayScore.jsx';
+import { OverlayScoreRoute } from './pages/OverlayScore.jsx';
+import OverlaySponsorEdition from './pages/OverlaySponsorEdition.jsx';
 
 function NotFound() {
   return (
@@ -33,7 +34,8 @@ export default function App() {
         <Route path="/" element={<Navigate to="/control" replace />} />
         <Route path="/control" element={<Control />} />
         <Route path="/overlay/draft" element={<OverlayDraft />} />
-        <Route path="/overlay/score" element={<OverlayScore />} />
+        <Route path="/overlay/score" element={<OverlayScoreRoute />} />
+        <Route path="/overlay/templates/sponsor-edition" element={<OverlaySponsorEdition />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

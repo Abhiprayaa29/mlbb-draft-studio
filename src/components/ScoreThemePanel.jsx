@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Panel, Btn, Field, TextInput, Toggle } from './ui.jsx';
 import ScorePreview, { SaveBadge } from './ScorePreview.jsx';
+import SponsorManagement from './SponsorManagement.jsx';
 import TeamLogo from './TeamLogo.jsx';
 import { request } from '../lib/socket.js';
 import { store } from '../lib/store.js';
@@ -139,7 +140,6 @@ export default function ScoreThemePanel({ state, heroesById = {}, meta = null })
   const [saving, setSaving] = useState(false);
   const [errored, setErrored] = useState(false);
   const [presetName, setPresetName] = useState('');
-  const [sponsorUrl, setSponsorUrl] = useState('');
   const [logoUrl, setLogoUrl] = useState(serverLogo || '');
 
   const serverKey = JSON.stringify(serverTheme);
@@ -238,28 +238,6 @@ export default function ScoreThemePanel({ state, heroesById = {}, meta = null })
     } catch (err) {
       store.notice(err.message, 'error');
     }
-  }
-
-  async function onSponsorFile(e) {
-    const file = e.target.files?.[0];
-    e.target.value = '';
-    if (!file) return;
-    try {
-      assertLogoFile(file);
-      const dataUrl = await readAsDataUrl(file);
-      const url = await uploadLogo(dataUrl);
-      patchDraft({ sponsors: [...draft.sponsors, url] });
-      store.notice('Logo sponsor ditambahkan (tekan Simpan).', 'info');
-    } catch (err) {
-      store.notice(err.message, 'error');
-    }
-  }
-
-  function addSponsor() {
-    const url = sponsorUrl.trim();
-    if (!isSponsorUrl(url)) return store.notice('URL sponsor tidak valid (http/https, data:image, atau /assets/...).', 'error');
-    patchDraft({ sponsors: [...draft.sponsors, url] });
-    setSponsorUrl('');
   }
 
   function setMetaField(key, value) {
@@ -413,34 +391,7 @@ export default function ScoreThemePanel({ state, heroesById = {}, meta = null })
       </div>
 
       {/* ----------------------------------------------------------- sponsor */}
-      <div className="space-y-1.5 border-t border-ink-700 pt-2">
-        <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-ink-400">Sponsor (maks 6)</span>
-        <div className="flex gap-1.5">
-          <TextInput value={sponsorUrl} placeholder="https://cdn.example/logo.png" onChange={(e) => setSponsorUrl(e.target.value)} />
-          <Btn size="sm" onClick={addSponsor}>
-            Tambah
-          </Btn>
-        </div>
-        <label className="btn btn-sm w-full cursor-pointer justify-center">
-          Unggah logo sponsor
-          <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="hidden" onChange={onSponsorFile} />
-        </label>
-        {draft.sponsors.length ? (
-          <div className="space-y-1">
-            {draft.sponsors.map((url, i) => (
-              <div key={`${url}-${i}`} className="flex items-center gap-1.5 rounded border border-ink-700 bg-ink-900/60 px-1.5 py-1">
-                <LogoThumb src={url} label={`Sponsor ${i + 1}`} size={34} />
-                <span className="min-w-0 flex-1 truncate text-[10px] text-ink-400">{url}</span>
-                <Btn size="sm" variant="ghost" onClick={() => patchDraft({ sponsors: draft.sponsors.filter((_, x) => x !== i) })}>
-                  Hapus
-                </Btn>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-[10.5px] text-ink-400">Belum ada sponsor — slot kanan atas dibiarkan kosong.</p>
-        )}
-      </div>
+      <SponsorManagement sponsors={state.sponsors || []} />
 
       {/* -------------------------------------------------------- visibilitas */}
       <div className="space-y-1.5 border-t border-ink-700 pt-2">
@@ -515,7 +466,6 @@ const VIS_LABEL = {
   score: 'Scoreboard',
   stats: 'Statistik',
   lineup: 'Lineup hero',
-  timer: 'Waktu & status',
   mvp: 'MVP',
   winner: 'Pemenang'
 };

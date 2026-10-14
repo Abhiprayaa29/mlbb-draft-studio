@@ -1,0 +1,435 @@
+{
+  "tournament": "ML FTI Cup",
+  "generatedAt": "2026-10-14T00:33:58.949Z",
+  "source": "Markdown (Index Data Pemain.md + Data Pemain - *.md)",
+  "teamCount": 17,
+  "teams": [
+    {
+      "id": "arsuges",
+      "name": "Arsuges",
+      "players": [
+        {
+          "nickname": "AR¹."
+        },
+        {
+          "nickname": "BIG"
+        },
+        {
+          "nickname": "the amazing"
+        },
+        {
+          "nickname": "EKFC.Akmal"
+        },
+        {
+          "nickname": "Testarossa."
+        }
+      ],
+      "sourceFiles": [
+        "Arsuges/Data Pemain - Arsuges.md"
+      ]
+    },
+    {
+      "id": "ayam-jago",
+      "name": "Ayam Jago",
+      "players": [
+        {
+          "nickname": "Asboy"
+        },
+        {
+          "nickname": "Xlycerinn."
+        },
+        {
+          "nickname": "Nanskuyyy"
+        },
+        {
+          "nickname": "Justt Jekk"
+        },
+        {
+          "nickname": "Zoxyd."
+        }
+      ],
+      "sourceFiles": [
+        "Ayam Jago/Data Pemain - Ayam Jago.md"
+      ]
+    },
+    {
+      "id": "chemen",
+      "name": "Chemen",
+      "players": [],
+      "sourceFiles": [
+        "Chemen/Data Pemain - Chemen.md"
+      ]
+    },
+    {
+      "id": "chernobyl",
+      "name": "Chernobyl",
+      "players": [
+        {
+          "nickname": "☘ ᴴᶦʳᵃ ❀"
+        },
+        {
+          "nickname": "HQII"
+        },
+        {
+          "nickname": "ZalNir."
+        },
+        {
+          "nickname": "Taqzogox"
+        },
+        {
+          "nickname": "Nact"
+        }
+      ],
+      "sourceFiles": [
+        "Chernobyl/Data Pemain - Chernobyl.md"
+      ]
+    },
+    {
+      "id": "dancop",
+      "name": "DANCOP",
+      "players": [
+        {
+          "nickname": "Azerite"
+        },
+        {
+          "nickname": "lady forlorn"
+        },
+        {
+          "nickname": "jexvra"
+        },
+        {
+          "nickname": "Vert"
+        },
+        {
+          "nickname": "Adoration"
+        }
+      ],
+      "sourceFiles": [
+        "DANCOP/Data Pemain - DANCOP.md"
+      ]
+    },
+    {
+      "id": "ememsi",
+      "name": "EmEmSi",
+      "players": [
+        {
+          "nickname": "About You"
+        },
+        {
+          "nickname": "Aponzz."
+        },
+        {
+          "nickname": "Cesper"
+        },
+        {
+          "nickname": "Pisss CEMAZ"
+        },
+        {
+          "nickname": "Pak kambing"
+        },
+        {
+          "nickname": "Rhaegar Targaryen"
+        }
+      ],
+      "sourceFiles": [
+        "EmEmSi/Data Pemain - EmEmSi.md"
+      ]
+    },
+    {
+      "id": "error-505",
+      "name": "ERROR 505",
+      "players": [
+        {
+          "nickname": "RaiDen Izin Kompe"
+        },
+        {
+          "nickname": "G ."
+        },
+        {
+          "nickname": "Caleum Nova"
+        },
+        {
+          "nickname": "Gnt ft ZoyToy"
+        },
+        {
+          "nickname": "CASTORIA"
+        }
+      ],
+      "sourceFiles": [
+        "ERROR 505/Data Pemain - ERROR 505.md"
+      ]
+    },
+    {
+      "id": "if-24-x-25",
+      "name": "IF 24 x 25",
+      "players": [
+        {
+          "nickname": "Callson"
+        },
+        {
+          "nickname": "Juaanoturavgboy."
+        },
+        {
+          "nickname": "Cafuné_"
+        },
+        {
+          "nickname": "Kanataaa"
+        },
+        {
+          "nickname": "FUSHI."
+        }
+      ],
+      "sourceFiles": [
+        "IF 24 x 25/Data Pemain - IF 24 x 25.md"
+      ]
+    },
+    {
+      "id": "kepencet-party",
+      "name": "Kepencet Party",
+      "players": [
+        {
+          "nickname": "sokakadi"
+        },
+        {
+          "nickname": "luxxyy"
+        },
+        {
+          "nickname": "~ K A N E K I ~"
+        },
+        {
+          "nickname": "Kyuremm"
+        },
+        {
+          "nickname": "SuperElgard4N"
+        }
+      ],
+      "sourceFiles": [
+        "Kepencet Party/Data Pemain - Kepencet Party.md"
+      ]
+    },
+    {
+      "id": "last-dance",
+      "name": "LAST DANCE",
+      "players": [
+        {
+          "nickname": "BLCKHOLE KUDA"
+        },
+        {
+          "nickname": "aeeaaeea"
+        },
+        {
+          "nickname": "M I Y O S H I"
+        },
+        {
+          "nickname": "Sesame Syrup"
+        },
+        {
+          "nickname": "Halyconn."
+        }
+      ],
+      "sourceFiles": [
+        "LAST DANCE/Data Pemain - LAST DANCE.md"
+      ]
+    },
+    {
+      "id": "mode-on-aktif",
+      "name": "Mode On AktIF",
+      "players": [
+        {
+          "nickname": "Yoshiimitsu."
+        },
+        {
+          "nickname": "Nevil GGMU."
+        },
+        {
+          "nickname": "°ΛЯ\\"
+        },
+        {
+          "nickname": "Im Han-Rim"
+        },
+        {
+          "nickname": "Vessel"
+        }
+      ],
+      "sourceFiles": [
+        "Mode On AktIF/Data Pemain - Mode On AktIF.md"
+      ]
+    },
+    {
+      "id": "pedhooth",
+      "name": "Pedhooth",
+      "players": [
+        {
+          "nickname": "xamira"
+        },
+        {
+          "nickname": "NipNip"
+        },
+        {
+          "nickname": "Wanglin"
+        },
+        {
+          "nickname": "Ress Crawford"
+        },
+        {
+          "nickname": "Iya. x KG"
+        },
+        {
+          "nickname": "SVIAN600"
+        }
+      ],
+      "sourceFiles": [
+        "Pedhooth/Data Pemain - Pedhooth.md"
+      ]
+    },
+    {
+      "id": "robotic",
+      "name": "Robotic",
+      "players": [
+        {
+          "nickname": "Dinow Ashcroft"
+        },
+        {
+          "nickname": "Franch Bongiovi"
+        },
+        {
+          "nickname": "Jujuu."
+        },
+        {
+          "nickname": "Firmentation"
+        },
+        {
+          "nickname": "Starlight."
+        },
+        {
+          "nickname": "Dinow Ashcroft"
+        },
+        {
+          "nickname": "Franch Bongiovi"
+        },
+        {
+          "nickname": "rrq*EVOS_arul*pro"
+        },
+        {
+          "nickname": "Firmentation"
+        },
+        {
+          "nickname": "Starlight."
+        }
+      ],
+      "sourceFiles": [
+        "Robotic/Data Pemain - Robotic (2).md",
+        "Robotic/Data Pemain - Robotic.md"
+      ]
+    },
+    {
+      "id": "tanpa-rafidd",
+      "name": "Tanpa Rafidd",
+      "players": [
+        {
+          "nickname": "Esriach."
+        },
+        {
+          "nickname": "Marzept."
+        },
+        {
+          "nickname": "Ziiziy"
+        },
+        {
+          "nickname": "SaIsaa"
+        },
+        {
+          "nickname": "zack__"
+        }
+      ],
+      "sourceFiles": [
+        "Tanpa Rafidd/Data Pemain - Tanpa Rafidd.md"
+      ]
+    },
+    {
+      "id": "teambangan",
+      "name": "Teambangan",
+      "players": [
+        {
+          "nickname": "ISLAM ALA PRABOWO"
+        },
+        {
+          "nickname": "Cilok Barokah"
+        },
+        {
+          "nickname": "Sommers"
+        },
+        {
+          "nickname": "Mazn Kane"
+        },
+        {
+          "nickname": "Levi"
+        },
+        {
+          "nickname": "Rizky Kurniawan Prasojo"
+        }
+      ],
+      "sourceFiles": [
+        "Teambangan/Data Pemain - Teambangan.md"
+      ]
+    },
+    {
+      "id": "terrarosa",
+      "name": "Terrarosa",
+      "players": [
+        {
+          "nickname": "Fell."
+        },
+        {
+          "nickname": "SUDARMO"
+        },
+        {
+          "nickname": "R O C K L Y"
+        },
+        {
+          "nickname": "Ichang"
+        },
+        {
+          "nickname": "P o n g z y."
+        },
+        {
+          "nickname": "KUON"
+        }
+      ],
+      "sourceFiles": [
+        "Terrarosa/Data Pemain - Terrarosa.md"
+      ]
+    },
+    {
+      "id": "yessir",
+      "name": "yessir",
+      "players": [
+        {
+          "nickname": "•黒Jinsai"
+        },
+        {
+          "nickname": "Akaze."
+        },
+        {
+          "nickname": "thaa disiniii :p"
+        },
+        {
+          "nickname": "Akrom 969"
+        },
+        {
+          "nickname": "TRICO"
+        }
+      ],
+      "sourceFiles": [
+        "yessir/Data Pemain - yessir.md"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "folder": "Chemen",
+      "problem": "Tidak ada pemain terbaca dari Markdown (data kosong — tidak ditebak).",
+      "team": "Chemen"
+    }
+  ]
+}

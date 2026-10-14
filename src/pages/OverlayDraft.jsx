@@ -5,15 +5,26 @@ import HeroImage from '../components/HeroImage.jsx';
 import TeamLogo from '../components/TeamLogo.jsx';
 import Branding from '../components/Branding.jsx';
 import { useOverlayMode } from '../lib/overlay.js';
-import { useStore, cx, fmtClock, useCountdown, sideLabel } from '../lib/utils.js';
+import { useStore, cx, sideLabel } from '../lib/utils.js';
 import { loadHeroes, loadMeta } from '../lib/data.js';
 import { AnimGate, enter, useAnimReady } from '../lib/anim.jsx';
-import { getSocket } from '../lib/socket.js';
+import { BC } from '../lib/broadcast.js';
 
-const BLUE = '#2f80ff';
-const RED = '#ff2d55';
-const GOLD = '#f5c451';
-const PANEL = 'rgba(7,11,20,0.86)';
+/**
+ * Identitas visual draft diselaraskan dengan scoreboard existing
+ * (navy panel · aksen teal · emas terbatas · teks cream · sudut geometris).
+ * Sisi tim tetap biru/merah sebagai pembeda fungsional, tetapi nada warnanya
+ * mengikuti design system broadcast — bukan neon terang.
+ */
+const BLUE = BC.blue;
+const RED = BC.red;
+const GOLD = BC.gold;
+const PANEL = BC.panel;
+const TEAL = BC.teal;
+const CREAM = BC.cream;
+const SLOT = BC.slot;
+const SLOT_STRONG = BC.slotStrong;
+const OK = BC.ok;
 
 const entriesOf = (draft, team, type) => (draft.entries || []).filter((e) => e.team === team && e.type === type);
 
@@ -30,8 +41,13 @@ function TeamBadge({ state, side, align = 'left', active = false }) {
       src={state.overlay.showLogos ? t.logo : null}
       side={side}
       label={t.name || (side === 'blue' ? 'BLU' : 'RED')}
-      className="h-[64px] w-[64px] shrink-0 rounded-sm"
-      style={{ border: `2px solid ${active ? GOLD : color}`, transition: 'border-color .25s ease', fontSize: 13 }}
+      className="h-[64px] w-[64px] shrink-0"
+      style={{
+        border: `2px solid ${active ? TEAL : color}`,
+        background: 'rgba(16,28,44,0.8)',
+        transition: 'border-color .25s ease',
+        fontSize: 13
+      }}
     />
   );
 
@@ -39,11 +55,11 @@ function TeamBadge({ state, side, align = 'left', active = false }) {
     <div className="min-w-0" style={{ textAlign: align === 'right' ? 'right' : 'left' }}>
       <div
         className="truncate font-display text-[38px] leading-none tracking-[0.06em]"
-        style={{ color: active ? '#ffffff' : '#ffffff', textShadow: active ? `0 0 22px ${GOLD}88` : 'none' }}
+        style={{ color: CREAM, textShadow: active ? `0 2px 12px rgba(0,0,0,0.55)` : 'none' }}
       >
         {state.overlay.showLogos ? t.name || sideLabel(side) : sideLabel(side)}
       </div>
-      <div className="text-[15px] font-semibold uppercase tracking-[0.24em]" style={{ color: active ? GOLD : color }}>
+      <div className="text-[15px] font-semibold uppercase tracking-[0.24em]" style={{ color: active ? TEAL : color }}>
         {sideLabel(side)} SIDE · {done}/5 PICK
       </div>
     </div>
@@ -64,8 +80,8 @@ function TeamBadge({ state, side, align = 'left', active = false }) {
       style={{
         paddingLeft: 30,
         paddingRight: 30,
-        background: `linear-gradient(${align === 'right' ? '270deg' : '90deg'}, ${color}33 0%, transparent 78%)`,
-        borderBottom: `2px solid ${active ? GOLD : color}`,
+        background: `linear-gradient(${align === 'right' ? '270deg' : '90deg'}, ${color}28 0%, transparent 78%)`,
+        borderBottom: `2px solid ${active ? TEAL : color}`,
         transition: 'border-color .25s ease'
       }}
     >
@@ -94,13 +110,14 @@ function OverlayPick({ hero, player, side, active, revealMs, showPlayer, showTie
   const ready = useAnimReady();
   return (
     <div
-      className={cx('relative overflow-hidden rounded-sm', active && 'turn-active')}
+      className={cx('relative overflow-hidden', active && 'turn-active')}
       style={{
         width: 126,
         height: 158,
-        background: '#060a12',
-        border: `2px solid ${active ? GOLD : hero ? color : 'rgba(255,255,255,0.14)'}`,
-        boxShadow: hero || active ? `0 0 22px ${active ? GOLD : color}55` : 'none',
+        background: 'rgba(16,28,44,0.9)',
+        border: `2px solid ${active ? TEAL : hero ? color : SLOT_STRONG}`,
+        clipPath: BC.clipCard,
+        boxShadow: hero || active ? BC.shadow : 'none',
         '--anim-ms': `${anim}ms`,
         transition: 'border-color .25s ease, box-shadow .25s ease'
       }}
@@ -121,14 +138,14 @@ function OverlayPick({ hero, player, side, active, revealMs, showPlayer, showTie
       </AnimatePresence>
 
       {!hero ? (
-        <div className="flex h-[118px] items-center justify-center text-[11px] uppercase tracking-[0.24em] text-white/25">
+        <div className="flex h-[118px] items-center justify-center text-[11px] uppercase tracking-[0.24em]" style={{ color: SLOT }}>
           slot
         </div>
       ) : null}
 
       {showTier && tier ? (
         <span
-          className="absolute left-1 top-1 rounded-sm px-1 text-[11px] font-black"
+          className="absolute left-1 top-1 px-1 text-[11px] font-black"
           style={{ background: GOLD, color: '#0a0f1a' }}
         >
           {tier.replace('-Tier', '')}
@@ -138,16 +155,16 @@ function OverlayPick({ hero, player, side, active, revealMs, showPlayer, showTie
       <div
         className="absolute bottom-0 left-0 right-0 px-1 py-1 text-center"
         style={{
-          background: side === 'blue' ? 'rgba(10,32,66,0.94)' : 'rgba(66,10,24,0.94)',
+          background: side === 'blue' ? 'rgba(24,52,82,0.94)' : 'rgba(66,24,34,0.94)',
           borderTop: `1px solid ${color}88`,
           height: 40
         }}
       >
-        <div className="truncate font-display text-[17px] leading-[18px] tracking-wide text-white">
+        <div className="truncate font-display text-[17px] leading-[18px] tracking-wide" style={{ color: CREAM }}>
           {hero ? hero.name : '—'}
         </div>
         {showPlayer ? (
-          <div className="truncate text-[11.5px] leading-[14px] text-white/70">{player || ' '}</div>
+          <div className="truncate text-[11.5px] leading-[14px] text-white/70">{player || ' '}</div>
         ) : null}
       </div>
     </div>
@@ -160,12 +177,13 @@ function OverlayBan({ hero, side, revealMs }) {
   const ready = useAnimReady();
   return (
     <div
-      className="relative overflow-hidden rounded-sm"
+      className="relative overflow-hidden"
       style={{
         width: 64,
         height: 64,
-        background: '#060a12',
-        border: `2px solid ${hero ? color : 'rgba(255,255,255,0.14)'}`,
+        background: 'rgba(16,28,44,0.9)',
+        border: `2px solid ${hero ? color : SLOT_STRONG}`,
+        clipPath: BC.clipChip,
         '--anim-ms': `${anim}ms`
       }}
     >
@@ -191,8 +209,8 @@ function OverlayBan({ hero, side, revealMs }) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: Math.max(0.15, anim / 1400), ease: [0.16, 1, 0.3, 1] }}
         >
-          <line x1="6" y1="6" x2="58" y2="58" stroke={RED} strokeWidth="5" strokeLinecap="round" />
-          <line x1="58" y1="6" x2="6" y2="58" stroke={RED} strokeWidth="5" strokeLinecap="round" />
+          <line x1="6" y1="6" x2="58" y2="58" stroke={RED} strokeWidth="4" strokeLinecap="round" />
+          <line x1="58" y1="6" x2="6" y2="58" stroke={RED} strokeWidth="4" strokeLinecap="round" />
         </motion.svg>
       ) : null}
     </div>
@@ -202,35 +220,12 @@ function OverlayBan({ hero, side, revealMs }) {
 function PhaseCore({ state, heroesById, meta }) {
   const draft = state.draft;
   const act = draft.actions[draft.cursor] || null;
-  const remaining = useCountdown(draft.timer);
-  const showTimer = state.overlay.showTimer;
   const last = draft.entries[draft.entries.length - 1];
   const lastHero = last ? heroesById[last.heroId] : null;
   const phaseLabel = act ? (act.type === 'ban' ? 'FASE BAN' : 'FASE PICK') : 'DRAFT SELESAI';
-  const phaseColor = act ? (act.type === 'ban' ? RED : GOLD) : '#35d399';
+  const phaseColor = act ? (act.type === 'ban' ? RED : TEAL) : OK;
   const anim = Math.max(150, state.overlay.animMs || 600);
   const ready = useAnimReady();
-  const warn = remaining <= 5000 && remaining > 0;
-  const critical = remaining <= 3000 && remaining > 0;
-  const secondsLeft = Math.ceil(remaining / 1000);
-
-  // kedipan "WAKTU HABIS" hanya dipicu event server, bukan state lokal
-  const [timedOut, setTimedOut] = useState(false);
-  useEffect(() => {
-    const s = getSocket();
-    if (!s) return undefined;
-    let hide = 0;
-    const onTimeout = () => {
-      setTimedOut(true);
-      clearTimeout(hide);
-      hide = setTimeout(() => setTimedOut(false), 2600);
-    };
-    s.on('draft:timeout', onTimeout);
-    return () => {
-      s.off('draft:timeout', onTimeout);
-      clearTimeout(hide);
-    };
-  }, []);
 
   return (
     <div className="flex flex-col items-center" style={{ width: 760 }}>
@@ -245,17 +240,18 @@ function PhaseCore({ state, heroesById, meta }) {
         >
           <div
             className="font-display text-[46px] leading-none tracking-[0.22em]"
-            style={{ color: phaseColor, textShadow: `0 0 26px ${phaseColor}66` }}
+            style={{ color: phaseColor, textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}
           >
             {phaseLabel}
           </div>
           {act ? (
             <div
-              className="mt-1.5 rounded-sm px-5 py-1 font-display text-[26px] tracking-[0.18em]"
+              className="mt-1.5 px-5 py-1 font-display text-[26px] tracking-[0.18em]"
               style={{
-                background: act.team === 'blue' ? `${BLUE}2e` : `${RED}2e`,
+                background: act.team === 'blue' ? `${BLUE}28` : `${RED}28`,
                 border: `1px solid ${act.team === 'blue' ? BLUE : RED}`,
-                color: '#fff'
+                color: CREAM,
+                clipPath: BC.clipChip
               }}
             >
               {sideLabel(act.team).toUpperCase()} SIDE
@@ -265,43 +261,6 @@ function PhaseCore({ state, heroesById, meta }) {
           )}
         </motion.div>
       </AnimatePresence>
-
-      {showTimer ? (
-        <div className="mt-5 flex flex-col items-center gap-2">
-          <div
-            className={cx(
-              'flex items-center justify-center rounded-sm px-8 py-2',
-              warn && !timedOut && 'timer-warn'
-            )}
-            style={{
-              background: PANEL,
-              border: `2px solid ${warn || timedOut ? RED : 'rgba(255,255,255,0.16)'}`,
-              boxShadow: warn || timedOut ? `0 0 30px ${RED}66` : '0 0 24px rgba(0,0,0,0.5)'
-            }}
-          >
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.span
-                key={timedOut ? 'habis' : secondsLeft}
-                initial={enter(ready || timedOut, { scale: 1.16, opacity: 0.7 })}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display tabular-nums"
-                style={{
-                  fontSize: 96,
-                  lineHeight: '96px',
-                  color: timedOut || critical ? RED : warn ? GOLD : '#ffffff',
-                  letterSpacing: '0.06em'
-                }}
-              >
-                {timedOut ? 'WAKTU HABIS' : fmtClock(remaining, true)}
-              </motion.span>
-            </AnimatePresence>
-          </div>
-          {warn && !timedOut ? (
-            <div className="text-[15px] font-bold uppercase tracking-[0.4em] text-[#ff8fa5]">Sisa waktu</div>
-          ) : null}
-        </div>
-      ) : null}
 
       {/* aksi terakhir */}
       <div style={{ width: 660, marginTop: 22, minHeight: 62 }}>
@@ -313,20 +272,20 @@ function PhaseCore({ state, heroesById, meta }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: anim / 1000, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-4 rounded-sm px-4 py-2.5"
-              style={{ background: PANEL, border: '1px solid rgba(255,255,255,0.12)' }}
+              className="flex items-center gap-4 px-4 py-2.5"
+              style={{ background: PANEL, border: `1px solid ${TEAL}55`, clipPath: BC.clipChip, boxShadow: BC.shadow }}
             >
               <div
-                className="flex h-[62px] w-[62px] shrink-0 items-center justify-center overflow-hidden rounded-sm"
+                className="flex h-[62px] w-[62px] shrink-0 items-center justify-center overflow-hidden"
                 style={{ border: `2px solid ${last.type === 'ban' ? RED : last.team === 'blue' ? BLUE : RED}` }}
               >
                 <HeroImage hero={lastHero} kind="portrait" className="h-full w-full object-cover object-top" loading="eager" />
               </div>
               <div className="min-w-0">
-                <div className="font-display text-[26px] leading-none tracking-[0.1em]" style={{ color: last.type === 'ban' ? RED : GOLD }}>
+                <div className="font-display text-[26px] leading-none tracking-[0.1em]" style={{ color: last.type === 'ban' ? RED : TEAL }}>
                   {last.team === 'blue' ? 'BLUE' : 'RED'} {last.type === 'ban' ? 'BAN' : 'PICK'}
                 </div>
-                <div className="truncate font-display text-[30px] leading-tight text-white">{lastHero.name}</div>
+                <div className="truncate font-display text-[30px] leading-tight" style={{ color: CREAM }}>{lastHero.name}</div>
               </div>
               <div className="ml-auto text-right text-[13px] uppercase tracking-[0.18em] text-white/50">
                 Aksi #{draft.entries.length}
@@ -337,8 +296,8 @@ function PhaseCore({ state, heroesById, meta }) {
               key="idle"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="rounded-sm px-4 py-3 text-center text-[15px] uppercase tracking-[0.3em] text-white/45"
-              style={{ background: PANEL, border: '1px dashed rgba(255,255,255,0.18)' }}
+              className="px-4 py-3 text-center text-[15px] uppercase tracking-[0.3em] text-white/45"
+              style={{ background: PANEL, border: `1px dashed ${SLOT_STRONG}` }}
             >
               Belum ada aksi
             </motion.div>
@@ -352,7 +311,7 @@ function PhaseCore({ state, heroesById, meta }) {
 function Announce({ announce, animMs }) {
   const ready = useAnimReady();
   if (!announce) return null;
-  const color = announce.type === 'winner' ? GOLD : announce.type === 'mvp' ? '#35d399' : GOLD;
+  const color = announce.type === 'winner' ? GOLD : announce.type === 'mvp' ? OK : TEAL;
   return (
     <AnimatePresence>
       <motion.div
@@ -370,9 +329,9 @@ function Announce({ announce, animMs }) {
         }}
       >
         <div
-          className="flex items-center gap-5 rounded-sm px-8 py-4"
+          className="flex items-center gap-5 px-8 py-4"
           style={{
-            background: 'linear-gradient(90deg, rgba(7,11,20,0.2) 0%, rgba(7,11,20,0.95) 12%, rgba(7,11,20,0.95) 88%, rgba(7,11,20,0.2) 100%)',
+            background: 'linear-gradient(90deg, rgba(16,28,44,0.2) 0%, rgba(16,28,44,0.95) 12%, rgba(16,28,44,0.95) 88%, rgba(16,28,44,0.2) 100%)',
             borderTop: `2px solid ${color}`,
             borderBottom: `2px solid ${color}`
           }}
@@ -380,7 +339,7 @@ function Announce({ announce, animMs }) {
           <span className="font-display text-[22px] tracking-[0.34em]" style={{ color }}>
             {announce.type === 'mvp' ? 'MVP' : announce.type === 'winner' ? 'WINNER' : 'INFO'}
           </span>
-          <span className="truncate font-display text-[40px] leading-none tracking-wide text-white">{announce.text}</span>
+          <span className="truncate font-display text-[40px] leading-none tracking-wide" style={{ color: CREAM }}>{announce.text}</span>
         </div>
       </motion.div>
     </AnimatePresence>
@@ -438,7 +397,7 @@ function FullLayout({ state, heroesById, meta }) {
   return (
     <>
       {/* header */}
-      <div className="absolute left-0 top-0 flex h-[110px] w-full" style={{ background: PANEL, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="absolute left-0 top-0 flex h-[110px] w-full" style={{ background: PANEL, borderBottom: `2px solid ${TEAL}66` }}>
         <div style={{ width: 620 }}>
           <TeamBadge state={state} side="blue" align="left" active={!!act && act.team === 'blue'} />
         </div>
@@ -446,7 +405,7 @@ function FullLayout({ state, heroesById, meta }) {
           <div className="truncate font-display text-[34px] leading-none tracking-[0.14em]" style={{ color: GOLD }}>
             {state.meta.tournament || 'MLBB TOURNAMENT'}
           </div>
-          <div className="mt-1 text-[15px] uppercase tracking-[0.3em] text-white/60">
+          <div className="mt-1 text-[15px] uppercase tracking-[0.3em]" style={{ color: 'rgba(243,239,224,0.6)' }}>
             {[state.meta.round, `GAME ${state.meta.gameNumber}`, `BO${state.meta.bestOf}`].filter(Boolean).join(' · ')}
           </div>
         </div>
@@ -466,7 +425,7 @@ function FullLayout({ state, heroesById, meta }) {
       {/* bar bawah: ban + nama tim */}
       <div
         className="absolute bottom-0 left-0 flex h-[112px] w-full items-center"
-        style={{ background: PANEL, borderTop: '1px solid rgba(255,255,255,0.1)' }}
+        style={{ background: PANEL, borderTop: `2px solid ${TEAL}66` }}
       >
         <div className="flex flex-1 items-center gap-4 pl-[30px]">
           <span className="font-display text-[24px] tracking-[0.2em]" style={{ color: BLUE }}>
@@ -476,7 +435,7 @@ function FullLayout({ state, heroesById, meta }) {
         </div>
 
         <div className="flex flex-col items-center px-6">
-          <div className="font-display text-[26px] tracking-[0.18em] text-white/85">
+          <div className="font-display text-[26px] tracking-[0.18em]" style={{ color: CREAM }}>
             {state.matchName || 'MLBB DRAFT'}
           </div>
           <div className="text-[13px] uppercase tracking-[0.26em] text-white/45">
@@ -502,9 +461,7 @@ function CompactLayout({ state, heroesById, meta }) {
   const draft = state.draft;
   const revealMs = state.overlay.animMs || 600;
   const act = draft.actions[draft.cursor] || null;
-  const remaining = useCountdown(draft.timer);
   const ready = useAnimReady();
-  const warn = remaining <= 5000 && remaining > 0;
 
   const Row = ({ side }) => {
     const picks = entriesOf(draft, side, 'pick');
@@ -512,18 +469,18 @@ function CompactLayout({ state, heroesById, meta }) {
     const color = side === 'blue' ? BLUE : RED;
     return (
       <div className="flex items-center gap-3" style={{ flexDirection: side === 'blue' ? 'row' : 'row-reverse' }}>
-        <div className="flex h-[54px] w-[190px] items-center gap-2 px-3" style={{ background: `${color}30`, borderRight: side === 'blue' ? `2px solid ${color}` : 'none', borderLeft: side === 'red' ? `2px solid ${color}` : 'none' }}>
+        <div className="flex h-[54px] w-[190px] items-center gap-2 px-3" style={{ background: `${color}28`, borderRight: side === 'blue' ? `2px solid ${color}` : 'none', borderLeft: side === 'red' ? `2px solid ${color}` : 'none' }}>
           {state.overlay.showLogos ? (
             <TeamLogo
               src={state.teams[side].logo}
               side={side}
               label={state.teams[side].name || undefined}
-              className="h-9 w-9 shrink-0 rounded-sm"
-              style={{ border: `1.5px solid ${color}`, fontSize: 11 }}
+              className="h-9 w-9 shrink-0"
+              style={{ border: `1.5px solid ${color}`, background: 'rgba(16,28,44,0.8)', fontSize: 11 }}
             />
           ) : null}
           <div className="min-w-0 flex-1" style={{ textAlign: side === 'blue' ? 'left' : 'right' }}>
-            <div className="truncate font-display text-[24px] leading-none text-white">{state.teams[side].name}</div>
+            <div className="truncate font-display text-[24px] leading-none" style={{ color: CREAM }}>{state.teams[side].name}</div>
             <div className="text-[11px] tracking-[0.2em]" style={{ color }}>
               {sideLabel(side).toUpperCase()}
             </div>
@@ -539,10 +496,11 @@ function CompactLayout({ state, heroesById, meta }) {
             return (
               <div
                 key={i}
-                className="relative h-[54px] w-[46px] overflow-hidden rounded-sm"
+                className="relative h-[54px] w-[46px] overflow-hidden"
                 style={{
-                  border: `1.5px solid ${hero ? color : 'rgba(255,255,255,0.16)'}`,
-                  background: '#060a12',
+                  border: `1.5px solid ${hero ? color : SLOT_STRONG}`,
+                  background: 'rgba(16,28,44,0.9)',
+                  clipPath: BC.clipChip,
                   '--anim-ms': `${revealMs}ms`
                 }}
               >
@@ -561,7 +519,8 @@ function CompactLayout({ state, heroesById, meta }) {
                 ) : null}
                 {state.overlay.showPlayerNames && hero ? (
                   <span
-                    className="absolute bottom-0 left-0 right-0 truncate bg-black/75 px-0.5 text-center text-[9.5px] text-white"
+                    className="absolute bottom-0 left-0 right-0 truncate px-0.5 text-center text-[9.5px]"
+                    style={{ background: 'rgba(0,0,0,.75)', color: CREAM }}
                   >
                     {(state.teams[side].players || [])[i] || ''}
                   </span>
@@ -582,21 +541,13 @@ function CompactLayout({ state, heroesById, meta }) {
 
   return (
     <>
-      <div className="absolute left-0 top-0 flex h-[86px] w-full flex-col justify-center gap-1.5 px-4" style={{ background: PANEL, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="absolute left-0 top-0 flex h-[86px] w-full flex-col justify-center gap-1.5 px-4" style={{ background: PANEL, borderBottom: `2px solid ${TEAL}66` }}>
         <div className="flex items-center justify-between gap-4">
           <Row side="blue" />
           <div className="flex flex-col items-center">
-            <div className="font-display text-[20px] leading-none tracking-[0.2em]" style={{ color: act ? (act.type === 'ban' ? RED : GOLD) : '#35d399' }}>
+            <div className="font-display text-[20px] leading-none tracking-[0.2em]" style={{ color: act ? (act.type === 'ban' ? RED : TEAL) : OK }}>
               {act ? (act.type === 'ban' ? 'BAN' : 'PICK') : 'SELESAI'}
             </div>
-            {state.overlay.showTimer ? (
-              <div
-                className={cx('font-display text-[26px] leading-none tabular-nums', warn && 'timer-warn-text')}
-                style={{ color: warn ? (remaining <= 3000 ? RED : GOLD) : '#ffffff' }}
-              >
-                {fmtClock(remaining, true)}
-              </div>
-            ) : null}
             <div className="text-[11px] tracking-[0.16em] text-white/50">
               {act ? `${sideLabel(act.team).toUpperCase()} · ${draft.cursor + 1}/${draft.actions.length}` : ''}
             </div>
@@ -618,7 +569,7 @@ function CompactLayout({ state, heroesById, meta }) {
 function OverlayBanSmall({ hero }) {
   const ready = useAnimReady();
   return (
-    <div className="relative h-[46px] w-[46px] overflow-hidden rounded-sm" style={{ background: '#060a12', border: `1.5px solid ${hero ? RED : 'rgba(255,255,255,0.16)'}` }}>
+    <div className="relative h-[46px] w-[46px] overflow-hidden" style={{ background: 'rgba(16,28,44,0.9)', border: `1.5px solid ${hero ? RED : SLOT_STRONG}`, clipPath: BC.clipChip }}>
       {hero ? (
         <HeroImage hero={hero} kind="portrait" className="h-full w-full object-cover object-top opacity-40 grayscale" />
       ) : null}
@@ -630,8 +581,8 @@ function OverlayBanSmall({ hero }) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
-          <line x1="5" y1="5" x2="41" y2="41" stroke={RED} strokeWidth="4" />
-          <line x1="41" y1="5" x2="5" y2="41" stroke={RED} strokeWidth="4" />
+          <line x1="5" y1="5" x2="41" y2="41" stroke={RED} strokeWidth="3" />
+          <line x1="41" y1="5" x2="5" y2="41" stroke={RED} strokeWidth="3" />
         </motion.svg>
       ) : null}
     </div>
@@ -648,7 +599,7 @@ function LineupLayout({ state, heroesById, meta }) {
       <div className="flex flex-col items-center" style={{ width: 740 }}>
         <div
           className="mb-4 w-full py-2 text-center font-display text-[34px] tracking-[0.2em]"
-          style={{ background: `${color}33`, borderBottom: `2px solid ${color}`, color: '#fff' }}
+          style={{ background: `${color}28`, borderBottom: `2px solid ${color}`, color: CREAM }}
         >
           {state.teams[side].name || sideLabel(side)}
         </div>
@@ -662,30 +613,31 @@ function LineupLayout({ state, heroesById, meta }) {
                 initial={enter(ready, { opacity: 0, y: 40, scale: 0.9 })}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: (i * revealMs) / 2000, duration: revealMs / 1000, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden rounded-sm"
+                className="relative overflow-hidden"
                 style={{
                   width: 140,
                   height: 296,
-                  background: '#060a12',
-                  border: `2px solid ${hero ? color : 'rgba(255,255,255,0.14)'}`,
-                  boxShadow: hero ? `0 0 26px ${color}55` : 'none'
+                  background: 'rgba(16,28,44,0.9)',
+                  border: `2px solid ${hero ? color : SLOT_STRONG}`,
+                  clipPath: BC.clipCard,
+                  boxShadow: hero ? BC.shadow : 'none'
                 }}
               >
                 {hero ? (
                   <HeroImage hero={hero} kind="portrait" className="h-[244px] w-full object-cover object-top" loading="eager" />
                 ) : (
-                  <div className="flex h-[244px] items-center justify-center text-[11px] uppercase tracking-[0.2em] text-white/25">
+                  <div className="flex h-[244px] items-center justify-center text-[11px] uppercase tracking-[0.2em]" style={{ color: SLOT }}>
                     kosong
                   </div>
                 )}
-                <div className="absolute bottom-0 left-0 right-0 px-1 py-1 text-center" style={{ background: side === 'blue' ? 'rgba(10,32,66,0.95)' : 'rgba(66,10,24,0.95)' }}>
-                  <div className="truncate font-display text-[21px] leading-[23px] text-white">{hero ? hero.name : '—'}</div>
+                <div className="absolute bottom-0 left-0 right-0 px-1 py-1 text-center" style={{ background: side === 'blue' ? 'rgba(24,52,82,0.94)' : 'rgba(66,24,34,0.94)' }}>
+                  <div className="truncate font-display text-[21px] leading-[23px]" style={{ color: CREAM }}>{hero ? hero.name : '—'}</div>
                   {state.overlay.showPlayerNames ? (
                     <div className="truncate text-[12.5px] text-white/70">{(state.teams[side].players || [])[i] || ' '}</div>
                   ) : null}
                 </div>
                 {state.overlay.showTier && hero && firstTier(meta, hero.id) ? (
-                  <span className="absolute left-1 top-1 rounded-sm px-1 text-[12px] font-black" style={{ background: GOLD, color: '#0a0f1a' }}>
+                  <span className="absolute left-1 top-1 px-1 text-[12px] font-black" style={{ background: GOLD, color: '#0a0f1a' }}>
                     {firstTier(meta, hero.id).replace('-Tier', '')}
                   </span>
                 ) : null}
@@ -699,7 +651,7 @@ function LineupLayout({ state, heroesById, meta }) {
 
   return (
     <>
-      <div className="absolute left-0 top-0 flex h-[74px] w-full items-center justify-center" style={{ background: PANEL, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="absolute left-0 top-0 flex h-[74px] w-full items-center justify-center" style={{ background: PANEL, borderBottom: `2px solid ${TEAL}66` }}>
         <div className="font-display text-[30px] tracking-[0.3em]" style={{ color: GOLD }}>
           FINAL LINEUP
         </div>
@@ -721,7 +673,7 @@ function LineupLayout({ state, heroesById, meta }) {
         <Team side="red" />
       </div>
 
-      <div className="absolute bottom-0 left-0 flex h-[96px] w-full items-center justify-center gap-8" style={{ background: PANEL, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="absolute bottom-0 left-0 flex h-[96px] w-full items-center justify-center gap-8" style={{ background: PANEL, borderTop: `2px solid ${TEAL}66` }}>
         {[
           ['BLUE BAN', 'blue'],
           ['RED BAN', 'red']
@@ -797,8 +749,8 @@ export default function OverlayDraft() {
       <Stage>
         <div className="flex h-full w-full items-center justify-center">
           <div
-            className="rounded px-8 py-4 font-display text-[26px] tracking-[0.2em]"
-            style={{ background: PANEL, color: GOLD, border: '1px solid rgba(255,255,255,0.15)' }}
+            className="px-8 py-4 font-display text-[26px] tracking-[0.2em]"
+            style={{ background: PANEL, color: GOLD, border: `1px solid ${TEAL}55` }}
           >
             MENGHUBUNGI SERVER…
           </div>

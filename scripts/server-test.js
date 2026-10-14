@@ -9,6 +9,10 @@
  *   1. Health endpoint & status autosave
  *   2. Skema battle-spell (hanya menampilkan data valid berikon)
  *   3. Unggah logo: validasi tipe/ukuran, nama file dibuat server, bisa disajikan
+ *   3b. Unggah sponsor multipart: PNG/JPG/WebP (signature), maks 5 MB, nama
+ *      file aman di DATA_DIR/sponsors, metadata persisten (state.sponsors),
+ *      urutan, hapus+cleanup file, penolakan SVG/teks/rusak/traversal, dan
+ *      bertahan setelah restart.
  *   4. Keamanan: token operator untuk REST & socket, CORS/Origin, peran overlay
  *      bersifat baca-saja
  *   5. Field overlay baru (branding, emergency) & penolakan nilai berbahaya
@@ -17,7 +21,9 @@
  *   8. Retensi backup (BACKUP_KEEP) dan penulisan atomik (tidak ada file .tmp)
  *   9. Integrasi GRID: konfigurasi via operator, gerbang mode, fixture provider
  *      (monitor tidak menulis state, auto menulis lewat Draft Engine, semi
- *      menunggu persetujuan), penolakan event invalid, dan jejak audit.
+ *      menunggu persetujuan), penolakan event invalid, jejak audit, dan
+ *      kebijakan scoreInput manual-only (skor eksternal ditolak, non-skor
+ *      tetap mengalir; gerbang external untuk integrasi masa depan).
  *
  * Catatan kejujuran: tidak ada kredensial GRID di repo/CI — koneksi live TIDAK
  * diuji di sini; pengujian live memerlukan credentials asli (GRID LIVE
@@ -276,6 +282,78 @@ async function main() {
   });
   assert(logoNoToken.status === 401, 'unggah logo tanpa token operator ditolak 401');
 
+  // 4b. sponsor upload multipart (lokal, persisten, aman)
+  const PNG_BUF = Buffer.from(PNG_1x1.split(',')[1], 'base64');
+  async function postSponsor(blobs, { token = TOKEN, port = PORTS.main } = {}) {
+    const fd = new FormData();
+    for (const b of blobs) fd.append('files', b.blob, b.name);
+    const res = await fetch(`http://127.0.0.1:${port}/api/sponsors`, {
+      method: 'POST',
+      headers: token ? { 'x-operator-token': token } : {},
+      body: fd
+    });
+    let data = null;
+    try {
+      data = await res.json();
+    } catch {
+      /* body bukan JSON */
+    }
+    return { status: res.status, data };
+  }
+  const sponsorFileOnDisk = (file) => fs.existsSync(path.join(DATA_DIR, 'sponsors', file));
+
+  const spNoTok = await postSponsor([{ name: 'a.png', blob: new Blob([PNG_BUF], { type: 'image/png' }) }], { token: '' });
+  assert(spNoTok.status === 401, 'unggah sponsor tanpa token operator ditolak 401');
+  const spTxt = await postSponsor([{ name: 'a.txt', blob: new Blob(['halo'], { type: 'text/plain' }) }]);
+  assert(spTxt.status === 400 && /PNG|format/i.test(spTxt.data?.error || ''), 'sponsor teks polos ditolak', spTxt.data?.error || `status=${spTxt.status}`);
+  const spSvg = await postSponsor([{ name: 'a.svg', blob: new Blob(['<svg xmlns="http://www.w3.org/2000/svg"/>'], { type: 'image/svg+xml' }) }]);
+  assert(spSvg.status === 400, 'sponsor SVG ditolak (tanpa sanitasi)', `status=${spSvg.status}`);
+  const spBig = await postSponsor([{ name: 'big.png', blob: new Blob([Buffer.alloc(5 * 1024 * 1024 + 100, 7), ], { type: 'image/png' }) }]);
+  assert(spBig.status === 400 && /besar|5 MB/i.test(spBig.data?.error || ''), 'sponsor > 5 MB ditolak', spBig.data?.error || `status=${spBig.status}`);
+  const spGarbage = await postSponsor([{ name: 'rusak.png', blob: new Blob([Buffer.from('bukan-gambar-sama-sekali')], { type: 'image/png' }) }]);
+  assert(spGarbage.status === 400, 'sponsor PNG dengan isi rusak ditolak (signature/sharp)', `status=${spGarbage.status}`);
+
+  const spUp1 = await postSponsor([{ name: 'sponsor-satu.png', blob: new Blob([PNG_BUF], { type: 'image/png' }) }]);
+  assert(spUp1.status === 200 && spUp1.data?.ok && spUp1.data?.sponsors?.length === 1, 'unggah sponsor PNG valid diterima', spUp1.data?.error || '');
+  const sp1 = spUp1.data?.sponsors?.[0] || {};
+  assert(/^sp-[a-f0-9]{16}$/.test(sp1.id || ''), 'ID sponsor dibuat server (sp-<hex>)', sp1.id || '-');
+  assert(sp1.url === `/assets/sponsors/${sp1.file}` && !String(sp1.file).includes('..'), 'URL sponsor lokal tanpa traversal', sp1.url || '-');
+  assert(sp1.name === 'sponsor-satu.png', 'nama file asli dipertahankan untuk metadata', sp1.name || '-');
+  assert(sponsorFileOnDisk(sp1.file), 'file sponsor tersimpan di DATA_DIR/sponsors');
+  const spGet = await fetch(`http://127.0.0.1:${PORTS.main}${sp1.url}`);
+  assert(spGet.status === 200 && (spGet.headers.get('content-type') || '').startsWith('image/'), 'file sponsor disajikan via static HTTP');
+  const spCtl = await connect(PORTS.main, { role: 'control', token: TOKEN });
+  const spState = (await ack(spCtl, 'state:request')).state;
+  spCtl.close();
+  assert(Array.isArray(spState.sponsors) && spState.sponsors.length === 1, 'state.sponsors tersinkron ke klien', `n=${spState?.sponsors?.length}`);
+
+  const spUp2 = await postSponsor([{ name: 'sponsor-dua.webp', blob: new Blob([PNG_BUF], { type: 'image/webp' }) }]);
+  assert(spUp2.status === 200 && spUp2.data?.sponsors?.length === 2, 'unggah sponsor kedua menambah daftar', spUp2.data?.error || '');
+  // catatan: blob berlabel webp tapi isinya PNG — server memakai signature
+  // (sharp), jadi format terdeteksi png dan file tersimpan sebagai .png.
+  const sp2 = spUp2.data?.sponsors?.find((s) => s.id !== sp1.id) || {};
+  const spOrder = await http(`http://127.0.0.1:${PORTS.main}/api/sponsors/order`, {
+    method: 'PATCH',
+    body: { ids: [sp2.id, sp1.id] },
+    headers: LH
+  });
+  assert(spOrder.status === 200 && spOrder.data?.sponsors?.[0]?.id === sp2.id, 'urutan sponsor dapat diubah', spOrder.data?.error || '');
+  const spOrderBad = await http(`http://127.0.0.1:${PORTS.main}/api/sponsors/order`, { method: 'PATCH', body: { ids: ['sp-0000000000000000'] }, headers: LH });
+  assert(spOrderBad.status === 400, 'urutan dengan ID asing ditolak', `status=${spOrderBad.status}`);
+  const spDel = await fetch(`http://127.0.0.1:${PORTS.main}/api/sponsors/${sp2.id}`, { method: 'DELETE', headers: { 'x-operator-token': TOKEN } });
+  const spDelData = await spDel.json().catch(() => ({}));
+  assert(spDel.status === 200 && spDelData.ok && spDelData.sponsors.length === 1, 'hapus sponsor mengurangi metadata', spDelData?.error || '');
+  assert(!sponsorFileOnDisk(sp2.file), 'file fisik sponsor ikut dihapus dari disk');
+  const spDelAgain = await fetch(`http://127.0.0.1:${PORTS.main}/api/sponsors/${sp2.id}`, { method: 'DELETE', headers: { 'x-operator-token': TOKEN } });
+  assert(spDelAgain.status === 404, 'hapus sponsor dua kali → 404');
+  const spDelTrav = await fetch(`http://127.0.0.1:${PORTS.main}/api/sponsors/..%2Fstate`, { method: 'DELETE', headers: { 'x-operator-token': TOKEN } });
+  assert(spDelTrav.status === 400 || spDelTrav.status === 404, 'ID delete tidak valid ditolak', `status=${spDelTrav.status}`);
+  await sleep(1000); // lewati debounce autosave
+  const spSaved = readStateFile();
+  assert(Array.isArray(spSaved.sponsors) && spSaved.sponsors.length === 1 && spSaved.sponsors[0].id === sp1.id, 'sponsor tersimpan persisten di state.json', `n=${spSaved.sponsors?.length}`);
+  const sponsorKeepId = sp1.id;
+  const sponsorKeepFile = sp1.file;
+
   // 5. REST match butuh token
   const mNoTok = await http(`http://127.0.0.1:${PORTS.main}/api/matches`, { method: 'POST', body: { name: 'tanpa token' } });
   assert(mNoTok.status === 401, 'simpan match tanpa token ditolak 401');
@@ -476,6 +554,8 @@ async function main() {
   assert(st2.ok && st2.state.revision === before.revision, 'state pulih persis setelah restart', `rev=${st2.state.revision}`);
   assert(st2.state.meta.gameNumber === before.meta.gameNumber, 'data pertandingan tidak hilang saat restart');
   assert(st2.state.overlay.theme.colors.accent === '#4FA4A5', 'tema scoreboard bertahan setelah restart', `accent=${st2.state.overlay.theme.colors.accent}`);
+  assert(Array.isArray(st2.state.sponsors) && st2.state.sponsors.length === 1 && st2.state.sponsors[0].id === sponsorKeepId, 'sponsor unggahan bertahan setelah restart', `n=${st2.state.sponsors?.length}`);
+  assert(sponsorFileOnDisk(sponsorKeepFile), 'file sponsor masih ada di disk setelah restart');
   assert(typeof st2.state.overlay.theme.presetId === 'string' && typeof st2.state.overlay.theme.visible === 'object', 'struktur tema valid setelah restart');
   // satu perubahan agar backup berisi keadaan terakhir sebelum state.json dirusak
   const b2 = await ack(s2, 'meta:update', { patch: { round: 'simpan-untuk-uji' } });
@@ -703,6 +783,51 @@ async function main() {
   const gStInv = (await ack(gCtl, 'state:request')).state;
   assert(gStInv.draft.entries.length === 0, 'event invalid tidak mengubah draft', `entri=${gStInv.draft.entries.length}`);
   assert(!JSON.stringify(gStInv).includes('apiKey'), 'state tidak pernah memuat field secret');
+
+  /* --- 13e. scoreInput manual-only: skor eksternal ditolak, non-skor jalan - */
+  const gRst5 = await ack(gCtl, 'draft:reset');
+  assert(gRst5.ok, 'draft direset sebelum uji scoreInput manual-only');
+  const liveBase = (await statusOf())?.status?.counts || {};
+  const gLive = await ack(gCtl, 'integration:update', {
+    patch: { enabled: true, dataSource: 'fixture', fixture: 'live', mode: 'auto', autoEnabled: true },
+    action: 'start'
+  });
+  assert(gLive.ok, 'fixture live (auto) diterima', gLive.error || '');
+  const liveFed = await poll(async () => {
+    const st = await statusOf();
+    const c = st?.status?.counts || {};
+    const delta = (k) => (c[k] || 0) - (liveBase[k] || 0);
+    return delta('applied') + delta('rejected') + delta('unsupported') >= 4;
+  }, 6000);
+  const liveSt = await statusOf();
+  const liveDelta = (k) => (liveSt?.status?.counts?.[k] || 0) - (liveBase[k] || 0);
+  assert(liveFed, 'fixture live mengalir sampai selesai', JSON.stringify(liveSt?.status?.counts || {}));
+  const gStLive = (await ack(gCtl, 'state:request')).state;
+  assert(gStLive.score.blue.kills === 0 && gStLive.score.durationMs === 0, 'skor GRID ditolak saat scoreInput=manual-only', `kills=${gStLive.score.blue.kills}`);
+  assert(gStLive.integration.scoreSource === 'manual', 'scoreSource tetap manual', gStLive.integration.scoreSource);
+  assert(gStLive.integration.scoreInput === 'manual-only', 'scoreInput default manual-only', gStLive.integration.scoreInput);
+  assert(liveDelta('rejected') >= 1, 'event skor GRID tercatat ditolak', `rejected+${liveDelta('rejected')}`);
+  assert(liveDelta('applied') >= 1, 'event non-skor (series) tetap diterapkan', `applied+${liveDelta('applied')}`);
+  await ack(gCtl, 'integration:update', { patch: {}, action: 'stop' });
+
+  // gerbang masa depan: scoreInput=external membuka tulis skor dari GRID
+  const gRst6 = await ack(gCtl, 'draft:reset');
+  assert(gRst6.ok, 'draft direset sebelum uji scoreInput external');
+  const gOpen = await ack(gCtl, 'integration:update', {
+    patch: { scoreInput: 'external', enabled: true, dataSource: 'fixture', fixture: 'live', mode: 'auto', autoEnabled: true },
+    action: 'start'
+  });
+  assert(gOpen.ok && gOpen.state?.integration?.scoreInput === 'external', 'scoreInput dapat dibuka ke external', gOpen.error || '');
+  const liveFed2 = await poll(async () => {
+    const st = (await ack(gCtl, 'state:request')).state;
+    return (st?.score?.blue?.kills || 0) > 0;
+  }, 6000);
+  const gStLive2 = (await ack(gCtl, 'state:request')).state;
+  assert(liveFed2, 'setelah scoreInput=external, skor GRID diterapkan', `kills=${gStLive2.score.blue.kills}`);
+  assert(gStLive2.integration.scoreSource === 'fixture', 'scoreSource tercatat fixture', gStLive2.integration.scoreSource);
+  const gBadInput = await ack(gCtl, 'integration:update', { patch: { scoreInput: 'sihir' } });
+  assert(gBadInput.ok === false, 'nilai scoreInput tidak valid ditolak');
+  await ack(gCtl, 'integration:update', { patch: {}, action: 'stop' });
 
   await ack(gCtl, 'integration:update', { patch: { enabled: false, dataSource: 'manual', mode: 'monitor', autoEnabled: false } });
   const gOff = await statusOf();

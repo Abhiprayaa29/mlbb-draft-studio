@@ -47,3 +47,59 @@ export async function pickLogoDataUrl(file) {
   assertLogoFile(file);
   return readAsDataUrl(file);
 }
+
+/* ------------------------------------------------------------- sponsor --
+ * Sponsor diunggah sebagai file asli (multipart/form-data) ke
+ * POST /api/sponsors — server yang menyimpan file & metadata persisten.
+ * Di sini hanya validasi tipe/ukuran awal + preview sementara (objectURL).
+ */
+export const MAX_SPONSOR_BYTES = 5_000_000; // 5 MB
+export const SPONSOR_TYPES = /^image\/(png|jpe?g|webp)$/;
+
+/** Validasi file sponsor; melempar pesan error yang bisa ditampilkan operator. */
+export function assertSponsorFile(file) {
+  if (!file) throw new Error('Tidak ada file yang dipilih.');
+  if (!SPONSOR_TYPES.test(file.type)) throw new Error('Sponsor harus berupa gambar PNG/JPG/WebP.');
+  if (file.size > MAX_SPONSOR_BYTES) throw new Error('File sponsor terlalu besar (maks 5 MB).');
+  return true;
+}
+
+/** Unggah banyak file sponsor sekaligus (multipart) → daftar sponsor terbaru. */
+export async function uploadSponsorFiles(fileList) {
+  const fd = new FormData();
+  for (const f of fileList) fd.append('files', f, f.name);
+  const token = getOperatorToken();
+  const res = await fetch('/api/sponsors', {
+    method: 'POST',
+    headers: token ? { 'x-operator-token': token } : {},
+    body: fd
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) throw new Error(data.error || `Server menolak unggahan (HTTP ${res.status}).`);
+  return data;
+}
+
+/** Hapus sponsor (metadata + file di server). */
+export async function deleteSponsor(id) {
+  const token = getOperatorToken();
+  const res = await fetch(`/api/sponsors/${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+    headers: token ? { 'x-operator-token': token } : {}
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) throw new Error(data.error || `Gagal menghapus sponsor (HTTP ${res.status}).`);
+  return data;
+}
+
+/** Simpan urutan tampil sponsor (daftar ID lengkap, urutan array = tampilan). */
+export async function reorderSponsors(ids) {
+  const token = getOperatorToken();
+  const res = await fetch('/api/sponsors/order', {
+    method: 'PATCH',
+    headers: { 'content-type': 'application/json', ...(token ? { 'x-operator-token': token } : {}) },
+    body: JSON.stringify({ ids })
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) throw new Error(data.error || `Gagal mengubah urutan sponsor (HTTP ${res.status}).`);
+  return data;
+}

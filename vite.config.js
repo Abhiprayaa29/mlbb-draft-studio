@@ -21,6 +21,9 @@ export default defineConfig({
     },
     proxy: {
       '/api': { target: `http://127.0.0.1:${SERVER_PORT}`, changeOrigin: true },
+      // aset terunggah (logo tim/sponsor) disimpan backend — teruskan ke sana
+      // agar berfungsi di dev (OBS Browser Source memakai URL relatif yang sama).
+      '/assets': { target: `http://127.0.0.1:${SERVER_PORT}`, changeOrigin: true },
       '/socket.io': { target: `http://127.0.0.1:${SERVER_PORT}`, ws: true }
     }
   },

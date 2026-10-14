@@ -52,7 +52,7 @@ export const COLOR_LABELS = {
 };
 
 /** Batas untuk setiap bagian tema (dicegah nilai ekstrem yang merusak layout). */
-const LIMITS = {
+export const LIMITS = {
   borderPx: [1, 16],
   deco: [0, 100],
   textScale: [0.8, 1.4],
@@ -185,7 +185,6 @@ export const VISIBILITY_KEYS = [
   'score',
   'stats',
   'lineup',
-  'timer',
   'mvp',
   'winner'
 ];

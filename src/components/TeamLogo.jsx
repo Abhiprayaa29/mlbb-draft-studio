@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
  *   - URL/data-URI ditolak bila tidak valid (bukan http/https/data:image).
  *   - Bila gambar gagal dimuat, kotak diganti monogram sisi — bukan ikon
  *     "gambar rusak" yang bisa merusak layout siaran.
+ * Warna fallback sisi mengikuti design system broadcast (biru/merah navy-friendly).
  * ---------------------------------------------------------------------------
  */
 export function isUsableLogo(src) {
@@ -22,9 +23,11 @@ export function isUsableLogo(src) {
   }
 }
 
+const SIDE_FALLBACK = { blue: '#3a7cb8', red: '#c4484e' };
+
 export default function TeamLogo({ src, side = 'blue', label = '', className = '', style }) {
   const [failed, setFailed] = useState(false);
-  const color = side === 'blue' ? '#2f80ff' : '#ff2d55';
+  const color = SIDE_FALLBACK[side] || SIDE_FALLBACK.blue;
 
   useEffect(() => {
     setFailed(false);
@@ -40,7 +43,7 @@ export default function TeamLogo({ src, side = 'blue', label = '', className = '
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        background: '#060a12',
+        background: 'rgba(16,28,44,0.88)',
         border: `2px solid ${color}`,
         ...style
       }}
