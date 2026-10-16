@@ -25,6 +25,30 @@ npm run build        # hasil di dist/
 npm run start        # http://127.0.0.1:5174
 ```
 
+### Auto-start Windows (saat login)
+
+Agar server ikut menyala otomatis setiap laptop dinyalakan/user login, task
+**"MLBB Draft Studio"** terdaftar di Task Scheduler dan menjalankan
+`scripts/auto-start.ps1` (menyalakan backend `:5174` + Vite `:5173` secara
+hidden; proses yang sudah hidup dilewati — aman dijalankan berulang).
+Log: `scripts/report/auto-start.log`.
+
+Kelola manual:
+
+```powershell
+# jalankan sekarang tanpa tunggu login
+powershell -ExecutionPolicy Bypass -File scripts\auto-start.ps1
+
+# hentikan kedua server
+powershell -ExecutionPolicy Bypass -File scripts\auto-stop.ps1
+
+# hapus auto-start
+Unregister-ScheduledTask -TaskName 'MLBB Draft Studio' -Confirm:$false
+```
+
+Di laptop **operator/PC kedua** (lihat bagian 8), daftarkan task yang sama
+dengan path proyek yang sesuai di mesin tersebut.
+
 ### URL
 
 | Halaman | Mode dev | Mode produksi |
@@ -371,6 +395,8 @@ mlbb-draft-studio/
 │   ├── validate-data.js
 │   ├── import-battle-spells.js   # impor manual battle spell + validasi skema
 │   ├── build-teams-catalog.mjs   # bangun katalog tim dari Markdown → server/data/
+│   ├── auto-start.ps1            # auto-start Task Scheduler (backend+Vite, idempoten)
+│   ├── auto-stop.ps1             # hentikan backend & Vite
 │   ├── server-test.js            # 166 asersi backend/multi-PC (tanpa browser)
 │   ├── ocr-test.js               # 34 asersi pipeline OCR
 │   ├── obs-ocr-test.js           # 39 asersi OBS capture + field policy (mock OBS)
